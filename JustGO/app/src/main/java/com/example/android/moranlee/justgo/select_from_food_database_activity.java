@@ -9,7 +9,25 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 public class select_from_food_database_activity extends AppCompatActivity {
+     Food_Repo getFoods;
 
+    TextView show_from_database;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_select_from_food_database_activity);
+        show_from_database = (TextView)findViewById(R.id.show_from_database);
+        getFoods = new Food_Repo(this);
+        String text = "";
+        ArrayList defaults = getFoods.get_default_food_list();
+        for(int i=0;i<defaults.size();i++){
+            text+=defaults.get(i);
+            text+="\n";
+        }
+        show_from_database.setText(text);
+    }
+    /*
     public String[] groupStrings = {"fruit", "meat", "dairy", "grain"};
     public String[][] childStrings = {
             {"apple", "banana", "pineapple", "peach"},
@@ -112,4 +130,5 @@ public class select_from_food_database_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_from_database_activity);
     }
+    */
 }
