@@ -10,7 +10,7 @@ public class login_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
-        login = (Button)findViewById(login);
+        login = (Button)findViewById(R.id.login);
     }
      
     private View.OnClickListener login(){
