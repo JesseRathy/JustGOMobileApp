@@ -9,17 +9,17 @@
    <RelativeLayout
        android:layout_width="fill_parent"
        android:layout_height="fill_parent"
-       android:background="@android:color/black"
+       android:background="@android:color/holo_blue_light"
        >
        <EditText
            android:layout_width="200dp"
            android:layout_height="50dp"
            android:hint="UserName"
-           android:layout_centerHorizontal="true"
-           android:layout_marginTop="150dp"
+           android:layout_marginTop="124dp"
            android:id="@+id/username"
            android:background="@android:color/white"
-           />
+           android:layout_alignParentTop="true"
+           android:layout_alignStart="@+id/password" />
 
        <EditText
            android:layout_width="200dp"
@@ -42,6 +42,24 @@
            android:text="login"
            android:id="@+id/login"
            />
+
+       <Button
+           android:id="@+id/signup"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="signup"
+           android:layout_below="@+id/login"
+           android:layout_alignStart="@+id/login"
+           android:layout_marginTop="27dp" />
+
+       <ImageView
+           android:id="@+id/imageView"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentTop="true"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="41dp"
+           app:srcCompat="@mipmap/ic_launcher" />
 
    </RelativeLayout>
 
