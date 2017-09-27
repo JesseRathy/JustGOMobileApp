@@ -1,10 +1,14 @@
 package com.example.android.moranlee.justgo;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 public class main_menu_activity extends AppCompatActivity {
-    
+
     Button go_add_diet;
 
     @Override
@@ -14,7 +18,7 @@ public class main_menu_activity extends AppCompatActivity {
         go_add_diet = (Button) findViewById(R.id.go_add_diet);
         go_add_diet.setOnClickListener(go_add_diet());
     }
-    
+
     private View.OnClickListener go_add_diet(){
         return new View.OnClickListener() {
             @Override
@@ -28,5 +32,5 @@ public class main_menu_activity extends AppCompatActivity {
     private Activity getItSelf(){
         return this;
     }
-    
+
 }

@@ -1,10 +1,15 @@
 package com.example.android.moranlee.justgo;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
 /**
  * Created by yul04 on 2017/9/23.
  */
 
-public class SQLite_Interface {
+public class SQLite_Interface extends SQLiteOpenHelper {
+
     private static final int DATABASE_VERSION = 2;
 
     private static final String DATABASE_NAME = "JustGo";
@@ -50,4 +55,64 @@ public class SQLite_Interface {
         droping[5] = "drop table if exists exercise;";
         return droping;
     }
+    /*
+    private String do_Insert_String(String table_name, String [] values){
+        switch (table_name){
+            case "food":
+                return "insert into JustGo.food values ("+values[0]+", "+values[1]+", "+values[2]+", "+values[3]+", "+values[4]+", "+values[5]+", "+values[6]+", "+values[7]+" );";
+            case"user":
+                return "insert into JustGo.user values ("+values[0]+", "+values[1]+", "+values[2]+", "+values[3]+", "+values[4]+", "+values[5]+" );";
+            case "weight":
+                return "insert into JustGo.weight values ("+values[0]+", "+values[1]+", "+values[2]+", "+values[3]+" );";
+            case "diet":
+                return "insert into JustGo.diet values ("+values[0]+", "+values[1]+", "+values[2]+", "+values[3]+", "+values[4]+" );";
+            case "exercise":
+                return "insert into JustGo.exercise values ("+values[0]+", "+values[1]+", "+values[2]+", "+values[3]+", "+values[4]+" );";
+            case "exercise daily":
+                return "insert into JustGo.Exercise_daily values ("+values[0]+", "+values[1]+", "+values[2]+" );";
+            default:
+                return "Invalid table name";
+        }
+    }
+
+    private String do_Delete_String(String table_name,String field_name, String values){
+        switch (table_name){
+            case "food":
+                return "delete from JustGo.food where "+field_name+" = "+values+" ;";
+            case"user":
+                return "delete from JustGo.user where "+field_name+" = "+values+" ;";
+            case "weight":
+                return "delete from JustGo.weight where "+field_name+" = "+values+" ;";
+            case "diet":
+                return "delete from JustGo.diet where "+field_name+" = "+values+" ;";
+            case "exercise":
+                return "delete from JustGo.exercise where "+field_name+" = "+values+" ;";
+            case "exercise daily":
+                return "delete from JustGo.Exercise_daily where "+field_name+" = "+values+" ;";
+            default:
+                return "Invalid table name";
+        }
+    }
+
+    private String do_Update_String(String table_name,String update_field_name, String update_values, String find_field_name, String find_values){
+        switch (table_name){
+            case "food":
+                return "update JustGo.food set "+update_field_name+" = "+update_values+" where "+find_field_name+" = "+find_values+" ;";
+            case"user":
+                return "update JustGo.user set "+update_field_name+" = "+update_values+" where "+find_field_name+" = "+find_values+" ;";
+            case "weight":
+                return "update JustGo.weight set "+update_field_name+" = "+update_values+" where "+find_field_name+" = "+find_values+" ;";
+            case "diet":
+                return "update JustGo.diet set "+update_field_name+" = "+update_values+" where "+find_field_name+" = "+find_values+" ;";
+            case "exercise":
+                return "update JustGo.exercise set "+update_field_name+" = "+update_values+" where "+find_field_name+" = "+find_values+" ;";
+            case "exercise daily":
+                return "update JustGo.Exercise_daily set "+update_field_name+" = "+update_values+" where "+find_field_name+" = "+find_values+" ;";
+            default:
+                return "Invalid table name";
+        }
+    }
+    */
+
+
 }

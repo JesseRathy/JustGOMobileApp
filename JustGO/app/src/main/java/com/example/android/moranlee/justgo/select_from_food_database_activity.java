@@ -2,14 +2,13 @@ package com.example.android.moranlee.justgo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class select_from_food_database_activity extends AppCompatActivity {
-     Food_Repo getFoods;
+
+    Food_Repo getFoods;
 
     TextView show_from_database;
 
@@ -27,7 +26,9 @@ public class select_from_food_database_activity extends AppCompatActivity {
         }
         show_from_database.setText(text);
     }
+
     /*
+
     public String[] groupStrings = {"fruit", "meat", "dairy", "grain"};
     public String[][] childStrings = {
             {"apple", "banana", "pineapple", "peach"},
@@ -125,10 +126,6 @@ public class select_from_food_database_activity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_from_database_activity);
-    }
+
     */
 }

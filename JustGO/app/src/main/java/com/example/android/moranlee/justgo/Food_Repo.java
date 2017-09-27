@@ -1,11 +1,19 @@
 package com.example.android.moranlee.justgo;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Created by yul04 on 2017/9/23.
  */
 
 public class Food_Repo {
-     private String [] meats = {"beef","pork","mutton","chicken"};
+    private String [] meats = {"beef","pork","mutton","chicken"};
 
     private SQLite_Interface sql;
 
@@ -100,4 +108,6 @@ public class Food_Repo {
         return foodList;
 
     }
+
+
 }
