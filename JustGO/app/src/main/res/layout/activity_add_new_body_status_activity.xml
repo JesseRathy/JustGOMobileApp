@@ -10,53 +10,60 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        >
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="16dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
             android:id="@+id/calorie_intake_layout"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Weight"
-                android:textSize="30dp"
                 android:layout_marginRight="20dp"
-                />
+                android:text="Weight"
+                android:textSize="30dp" />
+
             <EditText
                 android:layout_width="260dp"
                 android:layout_height="wrap_content"
-                android:hint="amount"
-                />
+                android:hint="amount" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
             android:id="@+id/fat_intake_layout"
-            >
+            android:layout_width="fill_parent"
+            android:layout_height="50dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Height"
-                android:textSize="30dp"
                 android:layout_marginRight="20dp"
-                />
+                android:text="Height"
+                android:textSize="30dp" />
+
             <EditText
                 android:layout_width="260dp"
                 android:layout_height="wrap_content"
-                android:hint="amount"
-                />
+                android:hint="amount" />
 
         </LinearLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="submit"
-            />
+        <LinearLayout
+            android:id="@+id/submit_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="submit" />
+        </LinearLayout>
 
     </LinearLayout>
 
