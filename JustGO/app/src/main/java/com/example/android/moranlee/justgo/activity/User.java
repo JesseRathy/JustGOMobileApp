@@ -9,7 +9,7 @@ public class User {
     private String name;
     private String password;
     private double height;
-    private char gender;
+    private String gender;
     private String birthday;
 
     public int getId() {
@@ -44,11 +44,11 @@ public class User {
         this.height = height;
     }
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

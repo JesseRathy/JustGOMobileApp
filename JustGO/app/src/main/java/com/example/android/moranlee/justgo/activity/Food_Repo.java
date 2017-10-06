@@ -66,7 +66,6 @@ public class Food_Repo {
     }
 
     public void update(Food food) {
-
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("id",food.getId());
@@ -200,7 +199,6 @@ public class Food_Repo {
         cursor.close();
         db.close();
         return foodList;
-
     }
 
 
