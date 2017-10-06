@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class login_activity extends AppCompatActivity {
 
     Button login;
@@ -32,14 +35,22 @@ public class login_activity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Pattern input_type = Pattern.compile("^[A-Za-z]*$");
                 username = ((TextView)findViewById(R.id.username)).getText().toString();
                 password = ((TextView)findViewById(R.id.password)).getText().toString();
+                Matcher username_matcher = input_type.matcher(username);
+                Matcher password_matcher = input_type.matcher(password);
                 if(username.length()<= 0 || password.length()<=0){
                     Toast.makeText(getApplicationContext(), "You must enter the user and the password",
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
                 else {
+                    if(!username_matcher.matches() || !password_matcher.matches()){
+                        Toast.makeText(getApplicationContext(), "Invalid input of username / password",
+                                Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     if (current_user.check_user_login(username,password)) {
                         Intent unit_intent = new Intent(getItSelf(), main_menu_activity.class);
                         startActivity(unit_intent);
