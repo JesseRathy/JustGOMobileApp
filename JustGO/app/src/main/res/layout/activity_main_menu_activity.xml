@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.moranlee.justgo.main_menu_activity">
+    tools:context="com.example.android.moranlee.justgo.activity.main_menu_activity">
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -61,8 +61,33 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/go_exercies_recommendation"
             android:id="@+id/go_share_experience"
-            android:text="share your experience"
-            />
+            android:text="share your experience" />
+        <Button
+            android:id="@+id/btn_simple"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SimpleAdapter ExpandableListView"
+            android:textAllCaps="false"
+            android:layout_below="@+id/btn_normal"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:id="@+id/btn_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="One ExpandableListView"
+            android:textAllCaps="false"
+            android:layout_below="@+id/btn_indicator"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:id="@+id/btn_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Personalized ExpandableListView"
+            android:textAllCaps="false"
+            android:layout_below="@+id/go_share_experience"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 

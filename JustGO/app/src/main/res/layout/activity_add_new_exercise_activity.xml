@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.moranlee.justgo.add_new_exercise_activity">
+    tools:context="com.example.android.moranlee.justgo.activity.add_new_exercise_activity">
 
     <LinearLayout
         android:layout_width="fill_parent"

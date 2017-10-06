@@ -9,25 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".login_activity">
+        <activity android:name=".activity.login_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main_menu_activity" />
-        <activity android:name=".select_food_option_activity" />
-        <activity android:name=".select_from_food_database_activity" />
-        <activity android:name=".confirm_nutrient_activity" />
-        <activity android:name=".add_new_diet_activity" />
-        <activity android:name=".select_from_exercise_database_activity" />
-        <activity android:name=".select_exercise_option_activity" />
-        <activity android:name=".add_new_exercise_activity" />
-        <activity android:name=".select_body_option_activity" />
-        <activity android:name=".show_body_activity" />
-        <activity android:name=".add_new_body_status_activity" />
-        <activity android:name=".get_exercise_recommendation_activity"></activity>
+        <activity android:name=".activity.main_menu_activity" />
+        <activity android:name=".activity.select_food_option_activity" />
+        <activity android:name=".activity.select_from_food_database_activity" />
+        <activity android:name=".activity.confirm_nutrient_activity" />
+        <activity android:name=".activity.add_new_diet_activity" />
+        <activity android:name=".activity.select_from_exercise_database_activity" />
+        <activity android:name=".activity.select_exercise_option_activity" />
+        <activity android:name=".activity.add_new_exercise_activity" />
+        <activity android:name=".activity.select_body_option_activity" />
+        <activity android:name=".activity.show_body_activity" />
+        <activity android:name=".activity.add_new_body_status_activity" />
+        <activity android:name=".activity.get_exercise_recommendation_activity"></activity>
     </application>
 
 </manifest>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.moranlee.justgo.select_food_option_activity">
+    tools:context="com.example.android.moranlee.justgo.activity.select_food_option_activity">
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
