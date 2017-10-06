@@ -187,6 +187,7 @@ public class Food_Repo {
             do {
                 HashMap<String, String> food = new HashMap<String, String>();
                 food.put("id", cursor.getString(cursor.getColumnIndex("id")));
+                food.put("category",cursor.getString(cursor.getColumnIndex("category")));
                 food.put("name", cursor.getString(cursor.getColumnIndex("name")));
                 food.put("protein",cursor.getString(cursor.getColumnIndex("protein")));
                 food.put("fat",cursor.getString(cursor.getColumnIndex("protein")));
