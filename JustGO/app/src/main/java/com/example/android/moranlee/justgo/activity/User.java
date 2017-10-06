@@ -59,4 +59,9 @@ public class User {
     public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
+
+    /**
+     * Created by yul04 on 2017/10/5.
+     */
+
 }

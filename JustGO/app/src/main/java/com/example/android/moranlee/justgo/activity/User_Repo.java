@@ -1,13 +1,9 @@
-package com.example.android.moranlee.justgo;
+package com.example.android.moranlee.justgo.activity;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
-/**
- * Created by yul04 on 2017/10/5.
- */
 
 public class User_Repo {
 
