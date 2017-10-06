@@ -27,7 +27,11 @@
         <activity android:name=".activity.select_body_option_activity" />
         <activity android:name=".activity.show_body_activity" />
         <activity android:name=".activity.add_new_body_status_activity" />
-        <activity android:name=".activity.get_exercise_recommendation_activity"></activity>
+        <activity android:name=".activity.get_exercise_recommendation_activity"/>
+        <activity android:name=".activity.IndicatorExpandActivity"/>
+        <activity android:name=".activity.NormalExpandActivity"/>
+        <activity android:name=".activity.SimpleExpandActivity">
+        </activity>
     </application>
 
 </manifest>
