@@ -9,7 +9,6 @@ import android.widget.Button;
 
 import com.example.android.moranlee.justgo.R;
 
-;
 
 public class
 main_menu_activity extends AppCompatActivity implements View.OnClickListener {

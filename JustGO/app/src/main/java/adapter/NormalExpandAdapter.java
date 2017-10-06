@@ -11,10 +11,15 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 import com.example.android.moranlee.justgo.R;
+
+import java.util.LinkedList;
+
 public class NormalExpandAdapter extends BaseExpandableListAdapter {
     private static final String TAG = "NormalExpandableListAda";
     private String[] groupData;
     private String[][] childData;
+    private LinkedList<String> group;
+    private LinkedList<LinkedList<String>> child;
     private OnGroupExpandedListener mOnGroupExpandedListener;
 
     public NormalExpandAdapter(String[] groupData, String[][] childData) {
