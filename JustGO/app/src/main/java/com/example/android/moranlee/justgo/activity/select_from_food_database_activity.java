@@ -17,29 +17,29 @@ public class select_from_food_database_activity extends AppCompatActivity {
 
     TextView show_from_database;
 
-    LinkedList<String> meats;
+    LinkedList<String> meats= new LinkedList<String>();;
 
-    String [] meat;
+    String [] meat= new String[20];
 
-    LinkedList<String> vegetables;
+    LinkedList<String> vegetables = new LinkedList<String>();
 
-    String [] vegetable;
+    String [] vegetable= new String[20];
 
-    LinkedList<String> fruits;
+    LinkedList<String> fruits= new LinkedList<String>();;
 
-    String [] fruit;
+    String [] fruit= new String[20];
 
-    LinkedList<String> grains;
+    LinkedList<String> grains= new LinkedList<String>();;
 
-    String [] grain;
+    String [] grain = new String[20];
 
-    LinkedList<String> dairys;
+    LinkedList<String> dairys= new LinkedList<String>();;
 
-    String [] dairy;
+    String [] dairy= new String[20];
 
-    LinkedList<String> fats;
+    LinkedList<String> fats= new LinkedList<String>();;
 
-    String [] fat;
+    String [] fat= new String[20];
 
     //For testing
     String[] m = {"1","2"};
@@ -74,12 +74,16 @@ public class select_from_food_database_activity extends AppCompatActivity {
                 fats.add(current.get("name"));
             }
         }
-        meat = (String [])meats.toArray();
-        fruit = (String [])fruits.toArray();
-        vegetable = (String [])vegetables.toArray();
-        grain = (String [])grains.toArray();
-        dairy = (String [])dairys.toArray();
-        fat = (String [])fats.toArray();
+
+
+
+//        meat = (String [])meats.toArray();
+//        fruit = (String [])fruits.toArray();
+//        vegetable = (String [])vegetables.toArray();
+//        grain = (String [])grains.toArray();
+//        dairy = (String [])dairys.toArray();
+//        fat = (String [])fats.toArray();
+
 
         //show_from_database.setText(text);
     }
