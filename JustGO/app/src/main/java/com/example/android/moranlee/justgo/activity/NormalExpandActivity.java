@@ -55,12 +55,15 @@ public class NormalExpandActivity extends AppCompatActivity {
 
     String [] fat;
 
-    private static String [] general
+    public static String[] general = {"meats","fruits","vegetables","dairys","grains","fats"};
+
+    public static String[][] specific;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expand);
+        getFoods = new Food_Repo(this);
         ArrayList defaults = getFoods.get_default_food_list();
         meats = new LinkedList<>();
         vegetables = new LinkedList<>();
@@ -120,8 +123,9 @@ public class NormalExpandActivity extends AppCompatActivity {
         for (int i=0;i<fats.size();i++){
             fat[i] = fats.get(i);
         }
+        specific = new String[][]{meat,vegetable,fruit,dairy,fat,grain};
         final ExpandableListView listView = (ExpandableListView) findViewById(R.id.expandable_list);
-        final NormalExpandAdapter adapter = new NormalExpandAdapter(general, Constant.FIGURES);
+        final NormalExpandAdapter adapter = new NormalExpandAdapter(general, specific);
         adapter.setOnGroupExpandedListener(new OnGroupExpandedListener() {
 
 

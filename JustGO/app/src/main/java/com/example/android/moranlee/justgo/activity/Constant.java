@@ -9,8 +9,6 @@ public class Constant {
 
     public  static select_from_food_database_activity a = new select_from_food_database_activity();
 
-    a.
-
     public static final String[][] FIGURES = {a.m,a.fruit,a.vegetable,a.dairy};
 
     public static final String BOOK_NAME = "book_name";
