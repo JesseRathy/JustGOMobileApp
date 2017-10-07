@@ -41,6 +41,8 @@ public class select_from_food_database_activity extends AppCompatActivity {
 
     String [] fat;
 
+    //For testing
+    String[] m = {"1","2"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +83,5 @@ public class select_from_food_database_activity extends AppCompatActivity {
 
         //show_from_database.setText(text);
     }
-
-
 
 }
