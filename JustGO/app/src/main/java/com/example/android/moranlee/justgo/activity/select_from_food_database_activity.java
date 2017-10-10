@@ -92,7 +92,7 @@ public class select_from_food_database_activity extends AppCompatActivity {
                 fats.add(current.get("name"));
             }
         }
-<<<<<<< HEAD
+
         meat = new String [meats.size()];
         for(int i=0;i<meats.size();i++){
             meat[i] = meats.get(i);
@@ -117,7 +117,6 @@ public class select_from_food_database_activity extends AppCompatActivity {
         for (int i=0;i<fats.size();i++){
             fat[i] = fats.get(i);
         }
-=======
 
 
 
@@ -130,7 +129,6 @@ public class select_from_food_database_activity extends AppCompatActivity {
 
 
         //show_from_database.setText(text);
->>>>>>> 0af49e46e0389c816cd835bca412e24504c11444
     }
 
 }
