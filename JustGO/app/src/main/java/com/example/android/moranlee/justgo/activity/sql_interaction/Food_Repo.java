@@ -1,4 +1,4 @@
-package com.example.android.moranlee.justgo.activity;
+package com.example.android.moranlee.justgo.activity.sql_interaction;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.*;
+
+import com.example.android.moranlee.justgo.activity.sql.SQLite_Interface;
+import com.example.android.moranlee.justgo.activity.datatype.Food;
 
 import java.util.ArrayList;
 import java.util.HashMap;

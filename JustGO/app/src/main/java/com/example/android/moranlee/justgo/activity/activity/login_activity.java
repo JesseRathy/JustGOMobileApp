@@ -1,4 +1,4 @@
-package com.example.android.moranlee.justgo.activity;
+package com.example.android.moranlee.justgo.activity.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.example.android.moranlee.justgo.R;
+import com.example.android.moranlee.justgo.activity.sql_interaction.User_Repo;
 
 public class login_activity extends AppCompatActivity {
 

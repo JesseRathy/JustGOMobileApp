@@ -6,7 +6,7 @@ package adapter;
 
 public interface OnGroupExpandedListener {
     /**
-     * 分组展开
+     *  expand on group
      *
      * @param groupPosition
      */

@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.moranlee.justgo.activity.select_from_exercise_database_activity">
+    tools:context="com.example.android.moranlee.justgo.activity.activity.select_from_exercise_database_activity">
 
 </android.support.constraint.ConstraintLayout>

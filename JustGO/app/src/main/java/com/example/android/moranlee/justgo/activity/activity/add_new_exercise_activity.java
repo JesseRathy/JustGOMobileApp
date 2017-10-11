@@ -1,15 +1,15 @@
-package com.example.android.moranlee.justgo.activity;
+package com.example.android.moranlee.justgo.activity.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.android.moranlee.justgo.R;
 
-public class confirm_nutrient_activity extends AppCompatActivity {
+public class add_new_exercise_activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirm_activity);
+        setContentView(R.layout.activity_add_new_exercise_activity);
     }
 }

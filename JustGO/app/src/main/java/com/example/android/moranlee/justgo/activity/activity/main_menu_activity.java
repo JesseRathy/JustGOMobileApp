@@ -1,4 +1,4 @@
-package com.example.android.moranlee.justgo.activity;
+package com.example.android.moranlee.justgo.activity.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.android.moranlee.justgo.R;
+import com.example.android.moranlee.justgo.activity.diet_suggestion;
 
 
 public class
@@ -46,9 +47,9 @@ main_menu_activity extends AppCompatActivity implements View.OnClickListener {
         if (id == R.id.btn_normal) {
             startActivity(new Intent(getItSelf(), NormalExpandActivity.class));
         } else if (id == R.id.btn_indicator) {
-            startActivity(new Intent(getItSelf(), IndicatorExpandActivity.class));
+            //startActivity(new Intent(getItSelf(), IndicatorExpandActivity.class));
         } else if(id == R.id.btn_simple){
-            startActivity(new Intent(getItSelf(), SimpleExpandActivity.class));
+           // startActivity(new Intent(getItSelf(), SimpleExpandActivity.class));
         }
     }
 

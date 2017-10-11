@@ -1,4 +1,4 @@
-package com.example.android.moranlee.justgo.activity;
+package com.example.android.moranlee.justgo.activity.sql;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

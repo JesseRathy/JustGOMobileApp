@@ -1,4 +1,4 @@
-package com.example.android.moranlee.justgo.activity;
+package com.example.android.moranlee.justgo.activity.activity;
 
 /**
  * Created by yul04 on 2017/9/23.

@@ -1,4 +1,4 @@
-package com.example.android.moranlee.justgo.activity;
+package com.example.android.moranlee.justgo.activity.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.moranlee.justgo.R;
+import com.example.android.moranlee.justgo.activity.sql_interaction.Food_Repo;
 
 import java.util.ArrayList;
 import java.util.HashMap;

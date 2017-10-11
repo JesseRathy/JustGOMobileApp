@@ -1,4 +1,4 @@
-package com.example.android.moranlee.justgo.activity;
+package com.example.android.moranlee.justgo.activity.activity;
 
 /**
  * Created by yugu on 2017-10-05.
@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.moranlee.justgo.R;
+import com.example.android.moranlee.justgo.activity.sql_interaction.Food_Repo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,7 +23,7 @@ import adapter.NormalExpandAdapter;
 import adapter.OnGroupExpandedListener;
 
 /**
- * 普通 ExpandableListView，支持只展开一个子项
+ * Normal ExpandableListView, expand one child only
  */
 public class NormalExpandActivity extends AppCompatActivity {
     private static final String TAG = "NormalExpandActivity";
@@ -123,7 +124,7 @@ public class NormalExpandActivity extends AppCompatActivity {
         for (int i=0;i<fats.size();i++){
             fat[i] = fats.get(i);
         }
-        specific = new String[][]{meat,vegetable,fruit,dairy,fat,grain};
+        specific = new String[][]{meat,fruit,vegetable,dairy,fat,grain};
         final ExpandableListView listView = (ExpandableListView) findViewById(R.id.expandable_list);
         final NormalExpandAdapter adapter = new NormalExpandAdapter(general, specific);
         adapter.setOnGroupExpandedListener(new OnGroupExpandedListener() {
@@ -132,32 +133,32 @@ public class NormalExpandActivity extends AppCompatActivity {
             @Override
 
             public void onGroupExpanded(int groupPosition) {
-                expandOnlyOne(listView, groupPosition, Constant.BOOKS.length);
+                expandOnlyOne(listView, groupPosition, general.length);
             }
         });
 
         listView.setAdapter(adapter);
-        //  设置分组项的点击监听事件
+        //  set on group listener
         listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
                 Log.d(TAG, "onGroupClick: groupPosition:" + groupPosition + ", id:" + id);
-                // 请务必返回 false，否则分组不会展开
+                // must return false
                 return false;
             }
         });
 
-        //  设置子选项点击监听事件
+        //  set child on child listener
         listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Toast.makeText(NormalExpandActivity.this, Constant.FIGURES[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
+                Toast.makeText(NormalExpandActivity.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
     }
 
-    // 每次展开一个分组后，关闭其他的分组
+    //close other if one is expand
     private boolean expandOnlyOne(ExpandableListView view, int expandedPosition, int groupLength) {
         boolean result = true;
         for (int i = 0; i < groupLength; i++) {

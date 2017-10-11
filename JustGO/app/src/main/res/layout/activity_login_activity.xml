@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.moranlee.justgo.activity.login_activity">
+    tools:context="com.example.android.moranlee.justgo.activity.activity.login_activity">
 
    <RelativeLayout
        android:layout_width="fill_parent"
