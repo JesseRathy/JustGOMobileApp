@@ -19,6 +19,8 @@ public class login_activity extends AppCompatActivity {
 
     Button login;
 
+    Button register;
+
     String username;
 
     String password;
@@ -32,6 +34,8 @@ public class login_activity extends AppCompatActivity {
         current_user = new User_Repo(this);
         login = (Button)findViewById(R.id.login);
         login.setOnClickListener(login());
+        register = (Button)findViewById(R.id.signup);
+        register.setOnClickListener(signup());
     }
 
     private View.OnClickListener login(){
@@ -67,6 +71,21 @@ public class login_activity extends AppCompatActivity {
             }
         };
     }
+
+    private View.OnClickListener signup(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent unit_intent = new Intent(getItSelf(),register_activity.class);
+                startActivity(unit_intent);
+            }
+        };
+    }
+
+
+
+
+
 
     private Activity getItSelf(){
         return this;
