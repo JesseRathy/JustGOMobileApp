@@ -20,6 +20,10 @@ public class SQLite_Interface extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        String [] end = drop_table();
+        for(int i=0;i<end.length;i++){
+            db.execSQL(end[i]);
+        }
         String [] start = do_create_table_string();
         for(int i=0;i<start.length;i++){
             db.execSQL(start[i]);

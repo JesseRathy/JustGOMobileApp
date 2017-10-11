@@ -15,6 +15,9 @@ import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.datatype.User;
 import com.example.android.moranlee.justgo.activity.global_value;
 import com.example.android.moranlee.justgo.activity.sql_interaction.User_Repo;
+
+import java.util.ArrayList;
+
 /**
  * Created by yugu on 2017-10-10.
  */
@@ -47,6 +50,7 @@ public class register_activity extends AppCompatActivity {
         gender = (RadioGroup)findViewById(R.id.choose_gender);
         birthday = (DatePicker)findViewById(R.id.birthday_Picker);
         submit = (Button)findViewById(R.id.submit_user_info);
+        submit.setOnClickListener(add_user());
     }
 
     private View.OnClickListener add_user (){
@@ -70,7 +74,13 @@ public class register_activity extends AppCompatActivity {
                 int day = birthday.getDayOfMonth();
                 int month = birthday.getMonth() + 1;
                 int year = birthday.getYear();
-                String Day = String.valueOf(day);
+                String Day;
+                if(month<10){
+                    Day = "0"+String.valueOf(day);
+                }
+                else{
+                    Day = String.valueOf(day);
+                }
                 String Month;
                 if(month<10){
                     Month = "0"+String.valueOf(month);
@@ -81,6 +91,7 @@ public class register_activity extends AppCompatActivity {
                 String Year = String.valueOf(year);
                 user.setBirthday(Year+Month+Day);
                 user_repo = new User_Repo(get_self());
+                ArrayList some = user_repo.get_user_list();
                 user_repo.insert(user);
                 Intent unit_intent = new Intent(get_self(),main_menu_activity.class);
                 startActivity(unit_intent);

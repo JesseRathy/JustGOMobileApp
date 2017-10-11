@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.global_value;
+import com.example.android.moranlee.justgo.activity.sql.SQLite_Interface;
 import com.example.android.moranlee.justgo.activity.sql_interaction.User_Repo;
 
 import java.util.regex.Matcher;
@@ -26,6 +27,8 @@ public class login_activity extends AppCompatActivity {
 
     String password;
 
+    SQLite_Interface sql;
+
     User_Repo current_user;
 
     @Override
@@ -33,10 +36,20 @@ public class login_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
         current_user = new User_Repo(this);
+        int past_user = current_user.get_user_num();
+        for(int i=1;i<=past_user;i++){
+            current_user.delete_by_id(i);
+        }
         login = (Button)findViewById(R.id.login);
         login.setOnClickListener(login());
         register = (Button)findViewById(R.id.signup);
         register.setOnClickListener(signup());
+        if(global_value.getCurrent_max_food_id()<25) {
+            global_value.setCurrent_max_food_id(25);
+        }
+        if(global_value.getCurrent_max_user_id() <= 0){
+            global_value.setCurrent_max_user_id(1);
+        }
     }
 
     private View.OnClickListener login(){
@@ -61,11 +74,8 @@ public class login_activity extends AppCompatActivity {
                     }
                     int id = current_user.check_user_login(username,password);
                     if (id >= 0) {
-                        Intent unit_intent = new Intent(getItSelf(), main_menu_activity.class);
                         global_value.setCurrent_user_id(id);
-                        if(global_value.getCurrent_max_food_id()<25) {
-                            global_value.setCurrent_max_food_id(25);
-                        }
+                        Intent unit_intent = new Intent(getItSelf(), main_menu_activity.class);
                         startActivity(unit_intent);
                     }
                     else{
