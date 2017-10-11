@@ -1,4 +1,4 @@
-package adapter;
+package com.example.android.moranlee.justgo.activity.adapter;
 
 /**
  * Created by yugu on 2017-10-05.

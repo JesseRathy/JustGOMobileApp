@@ -88,11 +88,6 @@ public class login_activity extends AppCompatActivity {
         };
     }
 
-
-
-
-
-
     private Activity getItSelf(){
         return this;
     }

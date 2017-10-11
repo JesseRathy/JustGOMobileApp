@@ -19,8 +19,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import adapter.NormalExpandAdapter;
-import adapter.OnGroupExpandedListener;
+import com.example.android.moranlee.justgo.activity.adapter.NormalExpandAdapter;
+import com.example.android.moranlee.justgo.activity.adapter.OnGroupExpandedListener;
 
 /**
  * Normal ExpandableListView, expand one child only
