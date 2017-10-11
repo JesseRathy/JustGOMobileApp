@@ -9,11 +9,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.moranlee.justgo.R;
+import com.example.android.moranlee.justgo.activity.global_value;
+import com.example.android.moranlee.justgo.activity.sql_interaction.User_Repo;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.sql_interaction.User_Repo;
 
 public class login_activity extends AppCompatActivity {
 
@@ -54,8 +55,11 @@ public class login_activity extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    if (current_user.check_user_login(username,password)) {
+                    int id = current_user.check_user_login(username,password);
+                    if (id >= 0) {
                         Intent unit_intent = new Intent(getItSelf(), main_menu_activity.class);
+                        global_value.setCurrent_user_id(id);
+                        global_value.setCurrent_max_food_id(25);
                         startActivity(unit_intent);
                     }
                     else{

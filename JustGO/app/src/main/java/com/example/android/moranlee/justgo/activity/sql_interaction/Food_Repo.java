@@ -5,10 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.widget.*;
 
-import com.example.android.moranlee.justgo.activity.sql.SQLite_Interface;
 import com.example.android.moranlee.justgo.activity.datatype.Food;
+import com.example.android.moranlee.justgo.activity.sql.SQLite_Interface;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,11 +26,7 @@ public class Food_Repo {
     private String [] fats = {"canola oil","corn oil","peanut oil","butter"};
     private String [] grains= {"wheat","rice","barley","oat"};
 
-
     private SQLite_Interface sql;
-    public ExpandableListView expandableListView;
-
-
 
     public Food_Repo(Context context){
         sql = new SQLite_Interface(context);

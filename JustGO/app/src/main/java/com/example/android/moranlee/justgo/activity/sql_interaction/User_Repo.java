@@ -46,7 +46,7 @@ public class User_Repo {
         insert(create_admin_user(0));
     }
 
-    public boolean check_user_login(String input_name,String input_password) {
+    public int check_user_login(String input_name,String input_password) {
         SQLiteDatabase db = sql.getReadableDatabase();
         String selectQuery =  "select * from user where name == '"+input_name+"'";
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -54,15 +54,16 @@ public class User_Repo {
             do {
                 String Password = cursor.getString(cursor.getColumnIndex("password"));
                 if(Password.equals(input_password)){
+                    int id = Integer.parseInt(cursor.getString(cursor.getColumnIndex("id")));
                     cursor.close();
                     db.close();
-                    return true;
+                    return id;
                 }
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
-        return false;
+        return -1;
     }
 
 }

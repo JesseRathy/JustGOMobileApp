@@ -56,7 +56,11 @@ public class NormalExpandActivity extends AppCompatActivity {
 
     String [] fat;
 
-    public static String[] general = {"meats","fruits","vegetables","dairys","grains","fats"};
+    LinkedList<String> users;
+
+    String [] user;
+
+    public static String[] general = {"meats","fruits","vegetables","dairys","grains","fats","users"};
 
     public static String[][] specific;
 
@@ -72,6 +76,7 @@ public class NormalExpandActivity extends AppCompatActivity {
         grains = new LinkedList<>();
         fats = new LinkedList<>();
         dairys = new LinkedList<>();
+        users = new LinkedList<>();
         for(int i=0;i<defaults.size();i++){
             HashMap<String,String> current = (HashMap<String,String>)defaults.get(i);
             System.out.println(current.toString());
@@ -99,6 +104,9 @@ public class NormalExpandActivity extends AppCompatActivity {
             if(category.equals("6")){
                 fats.add(current.get("name"));
             }
+            if(category.equals("7")){
+                users.add(current.get("name"));
+            }
         }
         meat = new String [meats.size()];
         for(int i=0;i<meats.size();i++){
@@ -124,7 +132,11 @@ public class NormalExpandActivity extends AppCompatActivity {
         for (int i=0;i<fats.size();i++){
             fat[i] = fats.get(i);
         }
-        specific = new String[][]{meat,fruit,vegetable,dairy,fat,grain};
+        user = new String[users.size()];
+        for (int i=0;i<users.size();i++){
+            user[i] = users.get(i);
+        }
+        specific = new String[][]{meat,fruit,vegetable,dairy,fat,grain,user};
         final ExpandableListView listView = (ExpandableListView) findViewById(R.id.expandable_list);
         final NormalExpandAdapter adapter = new NormalExpandAdapter(general, specific);
         adapter.setOnGroupExpandedListener(new OnGroupExpandedListener() {

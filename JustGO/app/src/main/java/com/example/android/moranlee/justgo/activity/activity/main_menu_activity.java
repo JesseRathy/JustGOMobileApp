@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.diet_suggestion;
 
 public class main_menu_activity extends AppCompatActivity {
 
