@@ -1,6 +1,7 @@
 package com.example.android.moranlee.justgo.activity.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -31,12 +32,6 @@ public class register_activity extends AppCompatActivity {
     DatePicker birthday;
 
     Button submit;
-
-    int year;
-
-    int month;
-
-    int date;
 
     User user;
 
@@ -87,6 +82,8 @@ public class register_activity extends AppCompatActivity {
                 user.setBirthday(Year+Month+Day);
                 user_repo = new User_Repo(get_self());
                 user_repo.insert(user);
+                Intent unit_intent = new Intent(get_self(),main_menu_activity.class);
+                startActivity(unit_intent);
             }
         };
     }
