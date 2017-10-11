@@ -59,7 +59,9 @@ public class login_activity extends AppCompatActivity {
                     if (id >= 0) {
                         Intent unit_intent = new Intent(getItSelf(), main_menu_activity.class);
                         global_value.setCurrent_user_id(id);
-                        global_value.setCurrent_max_food_id(25);
+                        if(global_value.getCurrent_max_food_id()<25) {
+                            global_value.setCurrent_max_food_id(25);
+                        }
                         startActivity(unit_intent);
                     }
                     else{
