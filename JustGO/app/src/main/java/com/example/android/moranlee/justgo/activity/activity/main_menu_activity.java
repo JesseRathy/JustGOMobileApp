@@ -10,15 +10,14 @@ import android.widget.Button;
 import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.diet_suggestion;
 
-
-public class
-main_menu_activity extends AppCompatActivity implements View.OnClickListener {
+public class main_menu_activity extends AppCompatActivity {
 
     Button go_add_diet;
     Button go_body_analysis;
     Button go_add_exercise;
     Button go_nutrition_suggestion;
     Button go_exercies_recommendation;
+    Button go_diet_management;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,23 +34,12 @@ main_menu_activity extends AppCompatActivity implements View.OnClickListener {
         go_exercies_recommendation = (Button) findViewById(R.id.go_exercies_recommendation);
         go_exercies_recommendation.setOnClickListener(go_exercies_recommendation());
 
-        findViewById(R.id.btn_simple).setOnClickListener(this);
-        findViewById(R.id.btn_normal).setOnClickListener(this);
-        findViewById(R.id.btn_indicator).setOnClickListener(this);
+        go_diet_management = (Button) findViewById(R.id.diet_management);
+        go_diet_management.setOnClickListener(go_diet_management());
 
     }
 
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        if (id == R.id.btn_normal) {
-            startActivity(new Intent(getItSelf(), NormalExpandActivity.class));
-        } else if (id == R.id.btn_indicator) {
-            //startActivity(new Intent(getItSelf(), IndicatorExpandActivity.class));
-        } else if(id == R.id.btn_simple){
-           // startActivity(new Intent(getItSelf(), SimpleExpandActivity.class));
-        }
-    }
+
 
     private View.OnClickListener go_add_diet(){
         return new View.OnClickListener() {
@@ -103,6 +91,15 @@ main_menu_activity extends AppCompatActivity implements View.OnClickListener {
         };
     }
 
+    private View.OnClickListener go_diet_management(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent unit_intent = new Intent(getItSelf(),select_diet_option_activity.class);
+                startActivity(unit_intent);
+            }
+        };
+    }
 
     private Activity getItSelf(){
         return this;

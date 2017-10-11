@@ -8,86 +8,59 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <Button
+            android:id="@+id/go_add_diet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="91dp"
-            android:id="@+id/go_add_diet"
-            android:text="add Today`s diet"
             android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="90dp"
+            android:text="food activity system" />
+
+        <Button
+            android:id="@+id/diet_management"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="diet management system"
+            android:layout_below="@+id/go_exercies_recommendation"
             android:layout_centerHorizontal="true" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/go_add_diet"
             android:id="@+id/go_body_analysis"
-            android:text="add body Info"
-            />
-
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/go_add_diet"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/go_body_analysis"
+            android:text="add body Info" />
+
+        <Button
             android:id="@+id/go_add_exercise"
-            android:text="add Today`s exercise"
-            />
-
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/go_body_analysis"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/go_add_exercise"
+            android:text="exercise management system" />
+
+        <Button
             android:id="@+id/go_nutrition_suggestion"
-            android:text="get nutrition analysis"
-            />
-
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/go_add_exercise"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/go_nutrition_suggestion"
+            android:text="get nutrition analysis" />
+
+        <Button
             android:id="@+id/go_exercies_recommendation"
-            android:text="get exercise recommendation"
-            />
-
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/go_nutrition_suggestion"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/go_exercies_recommendation"
-            android:id="@+id/go_share_experience"
-            android:text="share your experience" />
-        <Button
-            android:id="@+id/btn_simple"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="SimpleAdapter ExpandableListView"
-            android:textAllCaps="false"
-            android:layout_below="@+id/btn_normal"
-            android:layout_alignParentStart="true" />
+            android:text="get exercise recommendation" />
 
-        <Button
-            android:id="@+id/btn_normal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="One ExpandableListView"
-            android:textAllCaps="false"
-            android:layout_below="@+id/btn_indicator"
-            android:layout_alignParentStart="true" />
-
-        <Button
-            android:id="@+id/btn_indicator"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Personalized ExpandableListView"
-            android:textAllCaps="false"
-            android:layout_below="@+id/go_share_experience"
-            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 
