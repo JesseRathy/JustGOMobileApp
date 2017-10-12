@@ -12,6 +12,7 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
+
         <Button
             android:id="@+id/go_add_diet"
             android:layout_width="wrap_content"
@@ -19,15 +20,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="90dp"
-            android:text="food activity system" />
-
-        <Button
-            android:id="@+id/diet_management"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="diet management system"
-            android:layout_below="@+id/go_exercies_recommendation"
-            android:layout_centerHorizontal="true" />
+            android:text="food search" />
 
         <Button
             android:id="@+id/go_body_analysis"
@@ -35,15 +28,31 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/go_add_diet"
             android:layout_centerHorizontal="true"
-            android:text="add body Info" />
+            android:text="profile" />
+
+        <Button
+            android:id="@+id/main_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/go_body_analysis"
+            android:layout_centerHorizontal="true"
+            android:text="weight" />
+
+        <Button
+            android:id="@+id/diet_management"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/main_weight"
+            android:layout_centerHorizontal="true"
+            android:text="diet" />
 
         <Button
             android:id="@+id/go_add_exercise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/go_body_analysis"
+            android:layout_below="@id/diet_management"
             android:layout_centerHorizontal="true"
-            android:text="exercise management system" />
+            android:text="exercise" />
 
         <Button
             android:id="@+id/go_nutrition_suggestion"
@@ -51,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/go_add_exercise"
             android:layout_centerHorizontal="true"
-            android:text="get nutrition analysis" />
+            android:text="analysis" />
 
         <Button
             android:id="@+id/go_exercies_recommendation"
@@ -59,7 +68,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/go_nutrition_suggestion"
             android:layout_centerHorizontal="true"
-            android:text="get exercise recommendation" />
+            android:text="recommendation" />
+
+
+
+
+
+
+
 
 
     </RelativeLayout>

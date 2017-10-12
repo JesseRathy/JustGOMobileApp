@@ -31,7 +31,7 @@
         <activity android:name=".activity.activity.NormalExpandActivity"/>
         <activity android:name=".activity.activity.select_diet_option_activity"/>
         <activity android:name=".activity.activity.register_activity"/>
-
+        <activity android:name=".activity.activity.add_new_weight"/>
 
     </application>
 

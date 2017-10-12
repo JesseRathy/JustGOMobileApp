@@ -1,19 +1,20 @@
 package com.example.android.moranlee.justgo.activity.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 
 import com.example.android.moranlee.justgo.R;
 
-/**
- * Created by yugu on 2017-09-26.
- */
+public class add_new_weight extends AppCompatActivity {
 
-public class diet_suggestion extends AppCompatActivity{
+    Button submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.diet_suggestion);
+        setContentView(R.layout.activity_weight);
     }
+
+
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.moranlee.justgo.activity.activity.add_new_body_status_activity">
+    tools:context="com.example.android.moranlee.justgo.activity.activity.add_new_weight">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -14,7 +14,7 @@
         tools:layout_editor_absoluteY="16dp">
 
         <LinearLayout
-            android:id="@+id/calorie_intake_layout"
+            android:id="@+id/weight_weight"
             android:layout_width="match_parent"
             android:layout_height="50dp">
 
@@ -22,45 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
-                android:text="Gender"
-                android:textSize="30dp" />
-
-            <EditText
-                android:layout_width="260dp"
-                android:layout_height="wrap_content"
-                android:hint="amount" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/fat_intake_layout"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:text="Height"
-                android:textSize="30dp" />
-
-            <EditText
-                android:layout_width="260dp"
-                android:layout_height="wrap_content"
-                android:hint="amount" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/profile_password"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:text="New Password"
+                android:text="Weight"
                 android:textSize="30dp" />
 
             <EditText
