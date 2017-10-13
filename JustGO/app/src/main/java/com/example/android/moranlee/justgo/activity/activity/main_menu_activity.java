@@ -17,6 +17,8 @@ public class main_menu_activity extends AppCompatActivity {
     Button go_exercies_recommendation;
     Button go_diet_management;
     Button go_weight;
+    Button analysis_system;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,9 @@ public class main_menu_activity extends AppCompatActivity {
 
         go_weight = (Button) findViewById(R.id.main_weight);
         go_weight.setOnClickListener(go_weight());
+
+        analysis_system = (Button) findViewById(R.id.go_nutrition_suggestion);
+        analysis_system.setOnClickListener(go_analysis_suggestion());
 
     }
 
@@ -82,11 +87,11 @@ public class main_menu_activity extends AppCompatActivity {
         };
     }
 
-    private View.OnClickListener go_nutrition_suggestion(){
+    private View.OnClickListener go_analysis_suggestion(){
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),confirm_nutrient_activity.class);
+                Intent unit_intent = new Intent(getItSelf(),Analysis.class);
                 startActivity(unit_intent);
             }
         };
@@ -111,6 +116,9 @@ public class main_menu_activity extends AppCompatActivity {
             }
         };
     }
+
+
+
 
     private Activity getItSelf(){
         return this;

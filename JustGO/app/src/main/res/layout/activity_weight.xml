@@ -32,6 +32,14 @@
 
         </LinearLayout>
 
+
+        <com.jjoe64.graphview.GraphView
+            android:layout_width="match_parent"
+            android:layout_height="200dip"
+            app:seriesTitle="Foobar"
+            android:id="@+id/graph"
+            />
+
         <LinearLayout
             android:id="@+id/submit_layout"
             android:layout_width="match_parent"

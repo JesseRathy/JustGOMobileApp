@@ -27,12 +27,12 @@
         <activity android:name=".activity.activity.select_body_option_activity" />
         <activity android:name=".activity.activity.show_body_activity" />
         <activity android:name=".activity.activity.add_new_body_status_activity" />
-        <activity android:name=".activity.activity.get_exercise_recommendation_activity"/>
-        <activity android:name=".activity.activity.NormalExpandActivity"/>
-        <activity android:name=".activity.activity.select_diet_option_activity"/>
-        <activity android:name=".activity.activity.register_activity"/>
-        <activity android:name=".activity.activity.add_new_weight"/>
-
+        <activity android:name=".activity.activity.get_exercise_recommendation_activity" />
+        <activity android:name=".activity.activity.NormalExpandActivity" />
+        <activity android:name=".activity.activity.select_diet_option_activity" />
+        <activity android:name=".activity.activity.register_activity" />
+        <activity android:name=".activity.activity.add_new_weight" />
+        <activity android:name=".activity.activity.Analysis"></activity>
     </application>
 
 </manifest>
