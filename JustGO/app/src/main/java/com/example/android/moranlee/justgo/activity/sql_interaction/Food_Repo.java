@@ -192,12 +192,32 @@ public class Food_Repo {
                 food.put("calories",cursor.getString(cursor.getColumnIndex("calories")));
                 food.put("cholesterol",cursor.getString(cursor.getColumnIndex("cholesterol")));
                 foodList.add(food);
-
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
         return foodList;
+    }
+
+    public String get_food_by_name(String input_name) {
+        SQLiteDatabase db = sql.getReadableDatabase();
+        String selectQuery =  "select * from food where name == '"+input_name+"'";
+        HashMap<String, String> food = new HashMap<String, String>();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                food.put("id", cursor.getString(cursor.getColumnIndex("id")));
+                food.put("category",cursor.getString(cursor.getColumnIndex("category")));
+                food.put("name", cursor.getString(cursor.getColumnIndex("name")));
+                food.put("protein",cursor.getString(cursor.getColumnIndex("protein")));
+                food.put("fat",cursor.getString(cursor.getColumnIndex("protein")));
+                food.put("calories",cursor.getString(cursor.getColumnIndex("calories")));
+                food.put("cholesterol",cursor.getString(cursor.getColumnIndex("cholesterol")));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return food.toString();
     }
 
 

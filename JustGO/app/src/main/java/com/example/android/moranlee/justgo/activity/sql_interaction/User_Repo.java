@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.android.moranlee.justgo.activity.datatype.User;
+import com.example.android.moranlee.justgo.activity.global_value;
 import com.example.android.moranlee.justgo.activity.sql.SQLite_Interface;
 
 import java.util.ArrayList;
@@ -119,6 +120,42 @@ public class User_Repo {
         cursor.close();
         db.close();
         return num;
+    }
+
+    public void update_password (String password) {
+        SQLiteDatabase db = sql.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id", global_value.getCurrent_user_id());
+        values.put("password",password);
+        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+        db.close();
+    }
+
+    public void update_height (Double height) {
+        SQLiteDatabase db = sql.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id", global_value.getCurrent_user_id());
+        values.put("height",height);
+        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+        db.close();
+    }
+
+    public void update_weight (Double weight) {
+        SQLiteDatabase db = sql.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id", global_value.getCurrent_user_id());
+        values.put("weight",weight);
+        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+        db.close();
+    }
+
+    public void update_gender (String gender) {
+        SQLiteDatabase db = sql.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id", global_value.getCurrent_user_id());
+        values.put("gender",gender);
+        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+        db.close();
     }
 
 }

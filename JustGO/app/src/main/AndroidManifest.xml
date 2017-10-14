@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.activity.main_menu_activity" />
+        <activity android:name=".activity.activity.edit_profile_activity" />
+        <activity android:name=".activity.activity.change_password_activity" />
         <activity android:name=".activity.activity.select_food_option_activity" />
         <activity android:name=".activity.activity.select_from_food_database_activity" />
         <activity android:name=".activity.activity.confirm_nutrient_activity" />
@@ -32,7 +34,9 @@
         <activity android:name=".activity.activity.select_diet_option_activity" />
         <activity android:name=".activity.activity.register_activity" />
         <activity android:name=".activity.activity.add_new_weight" />
-        <activity android:name=".activity.activity.Analysis"></activity>
+        <activity android:name=".activity.activity.search_food_name_activity" />
+        <activity android:name=".activity.activity.Analysis"/>
+        <activity android:name=".activity.activity.NormalExpandExerciseActivity"></activity>
     </application>
 
 </manifest>

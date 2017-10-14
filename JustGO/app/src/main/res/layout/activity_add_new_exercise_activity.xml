@@ -10,33 +10,75 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        >
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <LinearLayout
+            android:id="@+id/add_exercise_category"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/calorie_layout"
-            >
+            android:layout_height="50dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Calorie"
-                android:textSize="30dp"
                 android:layout_marginRight="20dp"
-                />
+                android:text="Category"
+                android:textSize="30dp" />
+
             <EditText
+                android:id="@+id/edit_add_category"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
-                android:hint="amount"
-                />
+                android:hint="Text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/add_exercise_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="Name"
+                android:textSize="30dp" />
+
+            <EditText
+                android:id="@+id/edit_exercise_name"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:hint="put the name here" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/calorie_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="Calorie"
+                android:textSize="30dp" />
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:hint="amount in KJW" />
 
         </LinearLayout>
 
         <Button
+            android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="submit"
-            />
+            android:text="submit" />
 
     </LinearLayout>
 

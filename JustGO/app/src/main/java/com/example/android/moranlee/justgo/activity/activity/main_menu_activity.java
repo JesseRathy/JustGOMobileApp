@@ -13,12 +13,11 @@ public class main_menu_activity extends AppCompatActivity {
 
     Button go_add_diet;
     Button go_body_analysis;
-    Button go_add_exercise;
+    Button exercise;
     Button go_exercies_recommendation;
     Button go_diet_management;
     Button go_weight;
-    Button analysis_system;
-
+    Button analysis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +29,8 @@ public class main_menu_activity extends AppCompatActivity {
         go_body_analysis = (Button) findViewById(R.id.go_body_analysis);
         go_body_analysis.setOnClickListener(go_body_analysis());
 
-        go_add_exercise = (Button) findViewById(R.id.go_add_exercise);
-        go_add_exercise.setOnClickListener(go_add_exercise());
+        exercise = (Button) findViewById(R.id.go_add_exercise);
+        exercise.setOnClickListener(go_exercise());
 
         go_exercies_recommendation = (Button) findViewById(R.id.go_exercies_recommendation);
         go_exercies_recommendation.setOnClickListener(go_exercies_recommendation());
@@ -42,8 +41,8 @@ public class main_menu_activity extends AppCompatActivity {
         go_weight = (Button) findViewById(R.id.main_weight);
         go_weight.setOnClickListener(go_weight());
 
-        analysis_system = (Button) findViewById(R.id.go_nutrition_suggestion);
-        analysis_system.setOnClickListener(go_analysis_suggestion());
+        analysis = (Button) findViewById(R.id.go_nutrition_suggestion);
+        analysis.setOnClickListener(go_nutrition_suggestion());
 
     }
 
@@ -68,26 +67,28 @@ public class main_menu_activity extends AppCompatActivity {
     }
 
     private View.OnClickListener go_body_analysis(){
+       return new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent unit_intent = new Intent(getItSelf(),edit_profile_activity.class);
+               startActivity(unit_intent);
+           }
+       };
+   }
+
+
+
+    private View.OnClickListener go_exercise(){
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),add_new_body_status_activity.class);
+                Intent unit_intent = new Intent(getItSelf(),select_exercise_option_activity.class);
                 startActivity(unit_intent);
             }
         };
     }
 
-    private View.OnClickListener go_add_exercise(){
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),add_new_exercise_activity.class);
-                startActivity(unit_intent);
-            }
-        };
-    }
-
-    private View.OnClickListener go_analysis_suggestion(){
+    private View.OnClickListener go_nutrition_suggestion(){
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,9 +117,6 @@ public class main_menu_activity extends AppCompatActivity {
             }
         };
     }
-
-
-
 
     private Activity getItSelf(){
         return this;

@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dip"
             app:seriesTitle="Foobar"
-            android:id="@+id/graph"
+            android:id="@+id/weight_graph"
             />
 
         <LinearLayout

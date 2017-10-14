@@ -15,6 +15,8 @@ public class select_food_option_activity extends AppCompatActivity {
 
     Button add_new_food;
 
+    Button search_name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +25,8 @@ public class select_food_option_activity extends AppCompatActivity {
         select_from_old_food.setOnClickListener(select_from_old_food());
         add_new_food = (Button)findViewById(R.id.select_create_new_food);
         add_new_food.setOnClickListener(add_new_food());
+        search_name = (Button)findViewById(R.id.select_search_food_name);
+        search_name.setOnClickListener(search_food_name());
     }
 
     private View.OnClickListener select_from_old_food(){
@@ -40,6 +44,16 @@ public class select_food_option_activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent unit_intent = new Intent(getItSelf(),add_new_diet_activity.class);
+                startActivity(unit_intent);
+            }
+        };
+    }
+
+    private View.OnClickListener search_food_name(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent unit_intent = new Intent(getItSelf(),search_food_name_activity.class);
                 startActivity(unit_intent);
             }
         };

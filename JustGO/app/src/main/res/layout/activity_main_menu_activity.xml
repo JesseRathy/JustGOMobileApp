@@ -9,7 +9,8 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        tools:layout_editor_absoluteX="0dp"
+        android:background="@color/colorPrimaryDark"
+        tools:layout_editor_absoluteX="-36dp"
         tools:layout_editor_absoluteY="0dp">
 
 
@@ -17,65 +18,62 @@
             android:id="@+id/go_add_diet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="136dp"
+            android:background="@drawable/food"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="90dp"
-            android:text="food search" />
+            android:layout_alignStart="@+id/go_exercies_recommendation" />
 
         <Button
             android:id="@+id/go_body_analysis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/go_add_diet"
-            android:layout_centerHorizontal="true"
-            android:text="profile" />
+            android:background="@drawable/profile"
+            android:layout_below="@+id/main_weight"
+            android:layout_toEndOf="@+id/go_add_diet" />
 
         <Button
             android:id="@+id/main_weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/go_body_analysis"
-            android:layout_centerHorizontal="true"
-            android:text="weight" />
+            android:background="@drawable/weight"
+            android:layout_alignTop="@+id/go_add_exercise"
+            android:layout_toStartOf="@+id/go_body_analysis" />
 
         <Button
             android:id="@+id/diet_management"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/main_weight"
-            android:layout_centerHorizontal="true"
-            android:text="diet" />
+            android:background="@drawable/diet0"
+            android:layout_alignBaseline="@+id/go_add_diet"
+            android:layout_alignBottom="@+id/go_add_diet"
+            android:layout_alignEnd="@+id/go_exercies_recommendation" />
 
         <Button
             android:id="@+id/go_add_exercise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/diet_management"
-            android:layout_centerHorizontal="true"
-            android:text="exercise" />
+            android:layout_below="@+id/diet_management"
+            android:layout_marginTop="27dp"
+            android:layout_toEndOf="@+id/main_weight"
+            android:background="@drawable/exercise"
+            />
 
         <Button
             android:id="@+id/go_nutrition_suggestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/go_add_exercise"
-            android:layout_centerHorizontal="true"
-            android:text="analysis" />
+            android:background="@drawable/analysis"
+            android:layout_below="@+id/main_weight"
+            android:layout_toStartOf="@+id/go_body_analysis" />
 
         <Button
             android:id="@+id/go_exercies_recommendation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/go_nutrition_suggestion"
+            android:layout_below="@+id/go_body_analysis"
             android:layout_centerHorizontal="true"
-            android:text="recommendation" />
-
-
-
-
-
-
-
+            android:background="@drawable/recomm"
+            />
 
 
     </RelativeLayout>

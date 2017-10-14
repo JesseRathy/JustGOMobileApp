@@ -4,6 +4,8 @@ package com.example.android.moranlee.justgo.activity.activity;
  * Created by yugu on 2017-10-05.
  */
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -13,14 +15,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.moranlee.justgo.R;
+import com.example.android.moranlee.justgo.activity.adapter.NormalExpandAdapter;
+import com.example.android.moranlee.justgo.activity.adapter.OnGroupExpandedListener;
 import com.example.android.moranlee.justgo.activity.sql_interaction.Food_Repo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-
-import com.example.android.moranlee.justgo.activity.adapter.NormalExpandAdapter;
-import com.example.android.moranlee.justgo.activity.adapter.OnGroupExpandedListener;
 
 /**
  * Normal ExpandableListView, expand one child only
@@ -60,6 +61,8 @@ public class NormalExpandActivity extends AppCompatActivity {
 
     String [] user;
 
+    LinkedList<String> datas;
+
     public static String[] general = {"meats","fruits","vegetables","dairys","grains","fats","users"};
 
     public static String[][] specific;
@@ -77,6 +80,7 @@ public class NormalExpandActivity extends AppCompatActivity {
         fats = new LinkedList<>();
         dairys = new LinkedList<>();
         users = new LinkedList<>();
+        datas = new LinkedList<>();
         for(int i=0;i<defaults.size();i++){
             HashMap<String,String> current = (HashMap<String,String>)defaults.get(i);
             System.out.println(current.toString());
@@ -107,7 +111,8 @@ public class NormalExpandActivity extends AppCompatActivity {
             if(category.equals("7")){
                 users.add(current.get("name"));
             }
-        }
+            datas.add(current.toString())
+;        }
         meat = new String [meats.size()];
         for(int i=0;i<meats.size();i++){
             meat[i] = meats.get(i);
@@ -165,6 +170,14 @@ public class NormalExpandActivity extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 Toast.makeText(NormalExpandActivity.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
+                Intent go_to_confirm = new Intent(getItSelf(),confirm_nutrient_activity.class);
+                int pos = 0;
+                for(int i=0;i<groupPosition;i++){
+                    pos+=specific[i].length;
+                }
+                pos+=childPosition;
+                go_to_confirm.putExtra("data",datas.get(pos));
+                startActivity(go_to_confirm);
                 return true;
             }
         });
@@ -179,6 +192,10 @@ public class NormalExpandActivity extends AppCompatActivity {
             }
         }
         return result;
+    }
+
+    private Activity getItSelf(){
+        return this;
     }
 
 }

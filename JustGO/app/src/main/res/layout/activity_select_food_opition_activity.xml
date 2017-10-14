@@ -29,5 +29,14 @@
             android:text="add a new food to database"
             />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/select_create_new_food"
+            android:id="@+id/select_search_food_name"
+            android:text="search food by name"
+            />
+
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
