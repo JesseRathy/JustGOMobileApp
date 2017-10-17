@@ -16,8 +16,10 @@ import static android.content.ContentValues.TAG;
 
 
 public class Exercise_Repo {
-    private String [] slow = {"run","swim","dance"};
-    private String [] fast = {"basketball","soccer","football"};
+    private String [] endurance = {"run","walk","dance"};
+    private String [] strength = {"arm raise","chair dip","leg raise"};
+    private String [] balance = {"balance walk","stand on one foot","tai chi"};
+    private String [] flexibility = {"yoga","buddy stretch","calf"};
     private SQLite_Interface sql;
 
     public Exercise_Repo(Context context){
@@ -25,20 +27,38 @@ public class Exercise_Repo {
         add_default_exercise();
     }
 
-    private Exercise cretae_default_slow(int i){
+    private Exercise cretae_default_endurance(int i){
         Exercise ex = new Exercise();
         ex.setId(i);
         ex.setCategory(0);
-        ex.setName(slow[i]);
+        ex.setName(endurance[i]);
         ex.setEnergy_consumption(Math.random());
         return ex;
     }
 
-    private Exercise cretae_default_fast(int i){
+    private Exercise cretae_default_strength(int i){
         Exercise ex = new Exercise();
         ex.setId(i);
         ex.setCategory(1);
-        ex.setName(fast[i]);
+        ex.setName(strength[i-3]);
+        ex.setEnergy_consumption(Math.random());
+        return ex;
+    }
+
+    private Exercise cretae_default_balance(int i){
+        Exercise ex = new Exercise();
+        ex.setId(i);
+        ex.setCategory(2);
+        ex.setName(balance[i-6]);
+        ex.setEnergy_consumption(Math.random());
+        return ex;
+    }
+
+    private Exercise cretae_default_flexibility(int i){
+        Exercise ex = new Exercise();
+        ex.setId(i);
+        ex.setCategory(3);
+        ex.setName(flexibility[i-9]);
         ex.setEnergy_consumption(Math.random());
         return ex;
     }
@@ -57,17 +77,22 @@ public class Exercise_Repo {
 
     private void add_default_exercise(){
         for(int i=0;i<3;i++){
-            insert(cretae_default_slow(i));
+            insert(cretae_default_endurance(i));
         }
-        for(int i=0;i<3;i++){
-            insert(cretae_default_fast(i));
+        for(int i=3;i<6;i++){
+            insert(cretae_default_strength(i));
         }
-
+        for(int i=6;i<9;i++){
+            insert(cretae_default_balance(i));
+        }
+        for(int i=9;i<12;i++){
+            insert(cretae_default_flexibility(i));
+        }
     }
 
-    public ArrayList<HashMap<String, String>>  get_default_food_list() {
+    public ArrayList<HashMap<String, String>>  get_default_exercise_list() {
         SQLiteDatabase db = sql.getReadableDatabase();
-        String selectQuery =  "select * from exercise where user_id = 0";
+        String selectQuery =  "select * from exercise";
         ArrayList<HashMap<String, String>> exList = new ArrayList<HashMap<String, String>>();
         Log.d(TAG, "get_default_exercise_list: "+db.toString());
         Cursor cursor = db.rawQuery(selectQuery, null);

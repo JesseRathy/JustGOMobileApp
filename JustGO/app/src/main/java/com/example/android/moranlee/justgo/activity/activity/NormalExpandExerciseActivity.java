@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.adapter.NormalExpandAdapter;
 import com.example.android.moranlee.justgo.activity.adapter.OnGroupExpandedListener;
-import com.example.android.moranlee.justgo.activity.sql_interaction.Food_Repo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.Exercise_Repo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,25 +29,29 @@ import java.util.LinkedList;
 public class NormalExpandExerciseActivity extends AppCompatActivity {
     private static final String TAG = "NormalExpandActivity";
 
-    Food_Repo getFoods;
+    Exercise_Repo exercise_repo;
 
     TextView show_from_database;
 
-    LinkedList<String> yogas;
+    LinkedList<String> endurances;
 
-    String [] yoga;
+    String [] endurance;
 
-    LinkedList<String> cardios;
+    LinkedList<String> strengths;
 
-    String [] cardio;
+    String [] strength;
 
-    LinkedList<String> weightliftings;
+    LinkedList<String> balances;
 
-    String [] weightlifting;
+    String [] balance;
+
+    LinkedList<String> flexibilitys;
+
+    String [] flexibility;
 
     LinkedList<String> datas;
 
-    public static String[] general = {"yoga","cardio","weightlifting"};
+    public static String[] general = {"endurance","strength","balance","flexibility"};
 
     public static String[][] specific;
 
@@ -55,11 +59,12 @@ public class NormalExpandExerciseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expand);
-        getFoods = new Food_Repo(this);
-        ArrayList defaults = getFoods.get_default_food_list();
-        yogas = new LinkedList<>();
-        cardios = new LinkedList<>();
-        weightliftings = new LinkedList<>();
+        exercise_repo = new Exercise_Repo(this);
+        ArrayList defaults = exercise_repo.get_default_exercise_list();
+        endurances = new LinkedList<>();
+        strengths = new LinkedList<>();
+        balances = new LinkedList<>();
+        flexibilitys = new LinkedList<>();
         datas = new LinkedList<>();
         for(int i=0;i<defaults.size();i++){
             HashMap<String,String> current = (HashMap<String,String>)defaults.get(i);
@@ -70,31 +75,37 @@ public class NormalExpandExerciseActivity extends AppCompatActivity {
                 Toast.makeText(NormalExpandExerciseActivity.this,"no thing find in map",Toast.LENGTH_SHORT);
             }
             //Toast.makeText(this,category, Toast.LENGTH_SHORT).show();
+            if(category.equals("0")){
+                endurances.add(current.get("name"));
+            }
             if(category.equals("1")){
-                yogas.add(current.get("name"));
+                balances.add(current.get("name"));
             }
             if(category.equals("2")){
-                weightliftings.add(current.get("name"));
+                strengths.add(current.get("name"));
             }
             if(category.equals("3")){
-                cardios.add(current.get("name"));
+                flexibilitys.add(current.get("name"));
             }
-            datas.add(current.toString())
-            ;        }
-        yoga = new String [yogas.size()];
-        for(int i=0;i<yogas.size();i++){
-            yoga[i] = yogas.get(i);
+            datas.add(current.toString());
         }
-        weightlifting = new String[weightliftings.size()];
-        for (int i=0;i<weightliftings.size();i++){
-            weightlifting[i] = weightliftings.get(i);
+        endurance = new String [endurances.size()];
+        for(int i = 0; i< endurances.size(); i++){
+            endurance[i] = endurances.get(i);
         }
-        cardio = new String [cardios.size()];
-        for(int i=0;i<cardios.size();i++){
-            cardio[i] = cardios.get(i);
+        balance = new String[balances.size()];
+        for (int i = 0; i< balances.size(); i++){
+            balance[i] = balances.get(i);
         }
-
-        specific = new String[][]{yoga,weightlifting,cardio};
+        strength = new String [strengths.size()];
+        for(int i = 0; i< strengths.size(); i++){
+            strength[i] = strengths.get(i);
+        }
+        flexibility = new String[flexibilitys.size()];
+        for(int i = 0; i< flexibilitys.size(); i++){
+            flexibility[i] = flexibilitys.get(i);
+        }
+        specific = new String[][]{endurance, balance, strength,flexibility};
         final ExpandableListView listView = (ExpandableListView) findViewById(R.id.expandable_list);
         final NormalExpandAdapter adapter = new NormalExpandAdapter(general, specific);
         adapter.setOnGroupExpandedListener(new OnGroupExpandedListener() {

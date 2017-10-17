@@ -45,7 +45,7 @@ public class SQLite_Interface extends SQLiteOpenHelper {
         creating[2] = "create table weight (id int primary key not null, user_id int not null, date date not null, weight numeric not null);";
         creating[3] = "create table diet (id id int primary key not null, food_id int not null, user_id int not null, date date not null, meal_type char(1) not null);";
         creating[4] = "create table exercise_daily (id int primary key not null, exercise_id int not null, user_id int not null, time datetime not null, duration numeric not null);";
-        creating[5] = "create table exercise (id int primary key not null, name char(20) not null, energy_consumption numeric not null);";
+        creating[5] = "create table exercise (id int primary key not null, category int not null, name char(20) not null, energy_consumption numeric not null);";
         return creating;
     }
 
