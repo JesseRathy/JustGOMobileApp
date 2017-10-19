@@ -30,7 +30,7 @@ public class search_food_name_activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String data = food_repo.get_food_by_name(name.getText().toString());
-                Intent go_to_confirm = new Intent(getItSelf(),confirm_nutrient_activity.class);
+                Intent go_to_confirm = new Intent(getItSelf(),confirm_food_nutrient_activity.class);
                 go_to_confirm.putExtra("data",data);
                 startActivity(go_to_confirm);
             }

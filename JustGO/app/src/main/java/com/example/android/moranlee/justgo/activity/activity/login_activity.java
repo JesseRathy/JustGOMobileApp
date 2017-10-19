@@ -35,7 +35,7 @@ public class login_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
-        //this.deleteDatabase("JustGo");
+        this.deleteDatabase("JustGo");
         current_user = new User_Repo(this);
         int past_user = current_user.get_user_num();
         for(int i=1;i<=past_user;i++){
@@ -50,6 +50,9 @@ public class login_activity extends AppCompatActivity {
         }
         if(global_value.getCurrent_max_user_id() <= 0){
             global_value.setCurrent_max_user_id(1);
+        }
+        if(global_value.getCurrent_max_diet_id()<= 0){
+            global_value.setCurrent_max_diet_id(0);
         }
     }
 

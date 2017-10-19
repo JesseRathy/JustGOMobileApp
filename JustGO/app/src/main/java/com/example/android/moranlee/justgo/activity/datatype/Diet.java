@@ -9,7 +9,7 @@ public class Diet {
     private int food_id;
     private int user_id;
     private String date;
-    private char meal_type;
+    private Character meal_type;
 
     public int getId() {
         return id;
@@ -43,7 +43,7 @@ public class Diet {
         this.date = date;
     }
 
-    public char getMeal_type() {
+    public Character getMeal_type() {
         return meal_type;
     }
 
