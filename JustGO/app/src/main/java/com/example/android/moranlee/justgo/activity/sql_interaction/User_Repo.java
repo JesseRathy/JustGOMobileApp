@@ -10,7 +10,9 @@ import com.example.android.moranlee.justgo.activity.datatype.User;
 import com.example.android.moranlee.justgo.activity.global_value;
 import com.example.android.moranlee.justgo.activity.sql.SQLite_Interface;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 
 import static android.content.ContentValues.TAG;
@@ -120,6 +122,52 @@ public class User_Repo {
         cursor.close();
         db.close();
         return num;
+    }
+
+    public double get_current_user_height() {
+        SQLiteDatabase db = sql.getReadableDatabase();
+        String selectQuery =  "select height from user where id = "+global_value.getCurrent_user_id();
+        double height = 0.0;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                height = Double .parseDouble(cursor.getString(cursor.getColumnIndex("height")));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return height;
+    }
+
+    public int get_user_age (){
+        SQLiteDatabase db = sql.getReadableDatabase();
+        String selectQuery =  "select birthday from user where id = "+global_value.getCurrent_user_id();
+        String birthday = "";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                birthday = cursor.getString(cursor.getColumnIndex("birthday"));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        String timeStamp = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
+        int y1 = Integer.parseInt(birthday.substring(0,4));
+        int y2 = Integer.parseInt(timeStamp.substring(0,4));
+        int m1 = Integer.parseInt(timeStamp.substring(4,6));
+        int m2 = Integer.parseInt(birthday.substring(4,6));
+        int d1 = Integer.parseInt(birthday.substring(6));
+        int d2 = Integer.parseInt(timeStamp.substring(6));
+        int age = (y2-y1);
+        if(m2<m1){
+            age-=1;
+        }
+        else{
+            if(d2<d1){
+                age-=1;
+            }
+        }
+        return age;
     }
 
     public void update_password (String password) {

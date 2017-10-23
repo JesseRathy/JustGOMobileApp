@@ -54,6 +54,7 @@ public class login_activity extends AppCompatActivity {
         if(global_value.getCurrent_max_diet_id()<= 0){
             global_value.setCurrent_max_diet_id(0);
         }
+        //current_user.get_user_age();
     }
 
     private View.OnClickListener login(){
