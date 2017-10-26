@@ -2,6 +2,8 @@ package com.example.android.moranlee.justgo.activity.sql_interaction;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.android.moranlee.justgo.activity.datatype.Diet;
@@ -66,7 +68,44 @@ public class Diet_Repo {
         return diet;
     }
 
-    //public int total_calorie_intake()
+    /**
+     * Calculate total calories consumed by a given user
+     *
+     * @return total_calories
+     */
+    public int total_calorie_intake(){
+        SQLiteDatabase db = sql.getReadableDatabase();
+        String selectQuery =  "select food_id from diet where id = "+global_value.getCurrent_user_id();
+        String selectCalorieQuery = null;
+        int food_id = 0;
+        int calories = 0;
+        int total_calories = 0;
+
+        Cursor dietcursor = db.rawQuery(selectQuery, null);
+        if (dietcursor.moveToFirst()){
+            do{
+                food_id = Integer.parseInt(dietcursor.getString(dietcursor.getColumnIndex("food_id")));
+                selectCalorieQuery = "select calories from food where id = "+ food_id;
+                Cursor foodcursor = db.rawQuery(selectCalorieQuery,null);
+                calories = Integer.parseInt(foodcursor.getString(foodcursor.getColumnIndex("calories")));
+                total_calories += calories;
+                foodcursor.close();
+            } while (dietcursor.moveToNext());
+
+        }
+        dietcursor.close();
+        db.close();
+        return total_calories;
+    }
+
+    /**
+     * Print out a given user's recent one week diet activity along with the nutrition intake for each food
+     */
+    //public void print_diet_past_month()
+
+
+
+    //public void add_new_diet()
 
 
 }
