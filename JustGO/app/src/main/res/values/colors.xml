@@ -6,4 +6,5 @@
     <color name="beautiful_blue">#66FFFF</color>
     <color name="white">#FFFFFF</color>
     <color name="aqua">#009688</color>
+    <color name="background">#303030</color>
 </resources>
