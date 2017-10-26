@@ -2,6 +2,8 @@ package com.example.android.moranlee.justgo.activity.sql_interaction;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.android.moranlee.justgo.activity.datatype.Diet;
@@ -66,7 +68,22 @@ public class Diet_Repo {
         return diet;
     }
 
-    //public int total_calorie_intake()
+    public int total_calorie_intake(){
+        SQLiteDatabase db = sql.getReadableDatabase();
+        String selectQuery =  "select height from diet where id = "+global_value.getCurrent_user_id();
+        int calorie = 0;
+        int sumCalorie = 0;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()){
+            do{
+                calorie = Integer.parseInt(cursor.getString(cursor.getColumnIndex("calorie")));
+                sumCalorie = sumCalorie + calorie;
+            } while (cursor.moveToNext());
 
+        }
+        cursor.close();
+        db.close();
+        return sumCalorie;
+    }
 
 }
