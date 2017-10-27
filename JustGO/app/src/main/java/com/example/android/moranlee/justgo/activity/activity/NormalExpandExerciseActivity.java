@@ -134,7 +134,7 @@ public class NormalExpandExerciseActivity extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 Toast.makeText(NormalExpandExerciseActivity.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
-                Intent go_to_confirm = new Intent(getItSelf(),confirm_nutrient_activity.class);
+                Intent go_to_confirm = new Intent(getItSelf(),confirm_food_nutrient_activity.class);
                 int pos = 0;
                 for(int i=0;i<groupPosition;i++){
                     pos+=specific[i].length;

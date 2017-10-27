@@ -10,6 +10,7 @@ public class global_value extends Application {
     static int current_user_id;
     static int current_max_food_id;
     static int current_max_user_id;
+    static int current_max_diet_id;
 
     public static int getCurrent_user_id() {
         return current_user_id;
@@ -35,4 +36,11 @@ public class global_value extends Application {
         global_value.current_max_user_id = current_max_user_id;
     }
 
+    public static int getCurrent_max_diet_id() {
+        return current_max_diet_id;
+    }
+
+    public static void setCurrent_max_diet_id(int current_max_diet_id) {
+        global_value.current_max_diet_id = current_max_diet_id;
+    }
 }

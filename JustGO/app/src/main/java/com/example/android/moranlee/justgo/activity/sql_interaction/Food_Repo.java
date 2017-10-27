@@ -129,6 +129,7 @@ public class Food_Repo {
         a_food.setProtein(Math.random());
         return a_food;
     }
+
     private Food cretae_default_grains(int i){
         Food a_food = new Food();
         a_food.setId(i+meats.length+fruits.length+vegetables.length+dairys.length);
@@ -141,6 +142,7 @@ public class Food_Repo {
         a_food.setProtein(Math.random());
         return a_food;
     }
+
     private Food cretae_default_fats(int i){
         Food a_food = new Food();
         a_food.setId(i+meats.length+fruits.length+vegetables.length+dairys.length+grains.length);

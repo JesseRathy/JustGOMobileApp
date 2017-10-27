@@ -1,9 +1,5 @@
 package com.example.android.moranlee.justgo.activity.activity;
 
-/**
- * Created by yugu on 2017-10-05.
- */
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,10 +20,11 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
- * Normal ExpandableListView, expand one child only
+ * Created by yul04 on 2017/10/17.
  */
-public class NormalExpandActivity extends AppCompatActivity {
-    private static final String TAG = "NormalExpandActivity";
+
+public class NormalExpandDietActivity extends AppCompatActivity {
+    private static final String TAG = "ExpandDietActivity";
 
     Food_Repo getFoods;
 
@@ -87,7 +84,7 @@ public class NormalExpandActivity extends AppCompatActivity {
             //Log.d(TAG, "onCreate() returned: " + current.toString());
             String category = current.get("category");
             if(category.equals(null)){
-                Toast.makeText(NormalExpandActivity.this,"no thing find in map",Toast.LENGTH_SHORT);
+                Toast.makeText(NormalExpandDietActivity.this,"no thing find in map",Toast.LENGTH_SHORT);
             }
             //Toast.makeText(this,category, Toast.LENGTH_SHORT).show();
             if(category.equals("1")){
@@ -112,7 +109,7 @@ public class NormalExpandActivity extends AppCompatActivity {
                 users.add(current.get("name"));
             }
             datas.add(current.toString())
-;        }
+            ;        }
         meat = new String [meats.size()];
         for(int i=0;i<meats.size();i++){
             meat[i] = meats.get(i);
@@ -169,7 +166,7 @@ public class NormalExpandActivity extends AppCompatActivity {
         listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Toast.makeText(NormalExpandActivity.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
+                Toast.makeText(NormalExpandDietActivity.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
                 Intent go_to_confirm = new Intent(getItSelf(),confirm_food_nutrient_activity.class);
                 int pos = 0;
                 for(int i=0;i<groupPosition;i++){
@@ -177,6 +174,7 @@ public class NormalExpandActivity extends AppCompatActivity {
                 }
                 pos+=childPosition;
                 go_to_confirm.putExtra("data",datas.get(pos));
+                go_to_confirm.putExtra("id",pos);
                 startActivity(go_to_confirm);
                 return true;
             }
