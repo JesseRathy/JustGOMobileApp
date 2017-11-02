@@ -7,17 +7,20 @@
     tools:context="com.example.android.moranlee.justgo.activity.activity.main_menu_activity">
 
     <RelativeLayout
-        android:layout_width="384dp"
-        android:layout_height="569dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
+        android:background="@color/background"
         >
         <ImageView
         android:id="@+id/imageView3"
         android:layout_width="match_parent"
-        android:layout_height="87dp"
-        app:srcCompat="@drawable/justgo_icon2"
-            android:layout_alignParentStart="true" />
+        android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/relativeLayout"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="565dp"
+        app:srcCompat="@drawable/justgo_icon2" />
 
 
         <RelativeLayout
@@ -64,38 +67,36 @@
                 android:id="@+id/diet_management"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="-5dp"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/diet_icon_main"
+                android:layout_alignEnd="@+id/go_body_analysis"
                 android:layout_alignParentTop="true"
-                android:layout_alignStart="@+id/go_body_analysis" />
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/diet_icon_main" />
 
             <Button
                 android:id="@+id/go_add_exercise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/exercise_icon_main"
-                android:layout_marginEnd="70dp"
-                android:layout_marginBottom="10dp"
-                android:layout_above="@+id/go_body_analysis"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignBaseline="@+id/main_weight"
+                android:layout_alignBottom="@+id/main_weight"
+                android:layout_alignEnd="@+id/diet_management"
+                android:background="@drawable/exercise_icon_main" />
 
             <Button
                 android:id="@+id/go_nutrition_suggestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/analysis_icon_main"
-                android:layout_marginBottom="15dp"
-                android:layout_above="@+id/go_exercies_recommendation"
-                android:layout_alignStart="@+id/go_add_diet" />
+                android:layout_alignStart="@+id/go_add_diet"
+                android:layout_below="@+id/main_weight"
+                android:background="@drawable/analysis_icon_main" />
 
             <Button
                 android:id="@+id/go_exercies_recommendation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/recomm_icon_main"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_below="@+id/go_body_analysis"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/recomm_icon_main" />
 
 
         </RelativeLayout>

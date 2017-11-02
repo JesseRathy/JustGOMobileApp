@@ -16,22 +16,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Food Name"
-            android:textSize="25dp"
-            />
+            android:background="@drawable/food_name"/>
 
         <EditText
             android:layout_width="385dp"
             android:layout_height="wrap_content"
             android:id="@+id/object_food_name"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary"
             />
 
         <Button
+            android:id="@+id/submit_to_search_food_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="submit"
-            android:id="@+id/submit_to_search_food_name"
-             />
+            android:background="@drawable/submit_search" />
 
     </LinearLayout>
 
