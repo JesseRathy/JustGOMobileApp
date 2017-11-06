@@ -37,14 +37,14 @@
 
         <!--allow user to input amount and select unit-->
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
-            android:id="@+id/select_from_old_food"
-            android:background="@drawable/select_food_icon"
-            android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/select_create_new_food" />
+            <Button
+                android:id="@+id/select_from_old_food"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/select_create_new_food"
+                android:layout_marginTop="69dp"
+                android:background="@drawable/select_food_icon" />
 
         <Button
             android:layout_width="wrap_content"
