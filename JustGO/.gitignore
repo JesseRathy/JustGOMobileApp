@@ -7,3 +7,17 @@
 /build
 /captures
 .externalNativeBuild
+/.idea/misc.xml
+/.idea/modules.xml
+
+--Graph View Ignores
+/GraphView/build/intermediates/blame/res/androidTest/debug/multi/*.json
+/GraphView/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties
+/GraphView/build/intermediates/incremental/packageReleaseResources/merger.xml
+/GraphView/build/outputs/aar/GraphView-debug.aar
+/GraphView/build/outputs/aar/GraphView-release.aar
+/GraphView/build/intermediates/incremental/mergeDebugShaders/merger.xml
+/GraphView/build/intermediates/incremental/mergeReleaseAssets/merger.xml
+/GraphView/build/intermediates/incremental/mergeReleaseShaders/merger.xml
+/GraphView/build/intermediates/incremental/packageDebugResources/compile-file-map.properties
+/GraphView/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties
