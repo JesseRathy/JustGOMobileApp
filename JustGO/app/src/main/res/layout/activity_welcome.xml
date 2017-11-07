@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:background="@drawable/splash_background">
     <LinearLayout
-        android:id="@+id/l1"
+        android:id="@+id/up_part"
         android:layout_width="match_parent"
         android:layout_height="480dp"
         android:orientation="vertical">
@@ -24,6 +24,15 @@
             android:layout_height="wrap_content"
             android:background="@drawable/text_splash"
             android:layout_gravity="center"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/bottom_part"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        android:background="@drawable/uofs">
 
     </LinearLayout>
 

@@ -14,15 +14,18 @@ import com.example.android.moranlee.justgo.R;
 
 
 public class welcome_screen_activity extends Activity {
-    LinearLayout l1,l2;
+    LinearLayout up,bottom;
     Animation uptodown,downtoup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        l1 = (LinearLayout) findViewById(R.id.l1);
+        up = (LinearLayout) findViewById(R.id.up_part);
+        bottom = (LinearLayout) findViewById(R.id.bottom_part);
         uptodown = AnimationUtils.loadAnimation(this,R.anim.uptodown);
-        l1.setAnimation(uptodown);
+        downtoup = AnimationUtils.loadAnimation(this,R.anim.downtoup);
+        up.setAnimation(uptodown);
+        bottom.setAnimation(downtoup);
 
         Thread myThread = new Thread(){
             @Override
