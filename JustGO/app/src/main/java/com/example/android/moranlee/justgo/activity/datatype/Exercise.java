@@ -5,11 +5,17 @@ package com.example.android.moranlee.justgo.activity.datatype;
  */
 
 public class Exercise {
+    /*
+    fields of a exercise type data
+     */
     private int id;
     private String name;
     private int category;
     private double energy_consumption;
 
+    /*
+    getter and setter of exercise type datas
+     */
     public int getId() {
         return id;
     }

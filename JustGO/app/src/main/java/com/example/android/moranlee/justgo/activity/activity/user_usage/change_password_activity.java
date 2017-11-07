@@ -1,4 +1,4 @@
-package com.example.android.moranlee.justgo.activity.activity;
+package com.example.android.moranlee.justgo.activity.activity.user_usage;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

@@ -16,17 +16,33 @@ import static android.content.ContentValues.TAG;
 
 
 public class Exercise_Repo {
+    /**
+    default exercise type name string []
+     */
     private String [] endurance = {"run","walk","dance"};
     private String [] strength = {"arm raise","chair dip","leg raise"};
     private String [] balance = {"balance walk","stand on one foot","tai chi"};
     private String [] flexibility = {"yoga","buddy stretch","calf"};
+
+    /**
+     *  sql interface to interact with database
+     */
     private SQLite_Interface sql;
 
+    /**
+     *  constructor, add default exercise type
+     * @param context context hold the database
+     */
     public Exercise_Repo(Context context){
         sql = new SQLite_Interface(context);
         add_default_exercise();
     }
 
+    /**
+     *  create default exercise with type endurance
+     * @param i type id
+     * @return ex exercise type data
+     */
     private Exercise cretae_default_endurance(int i){
         Exercise ex = new Exercise();
         ex.setId(i);
@@ -36,6 +52,11 @@ public class Exercise_Repo {
         return ex;
     }
 
+    /**
+     *  create default exercise with type strength
+     * @param i type id
+     * @return ex exercise type data
+     */
     private Exercise cretae_default_strength(int i){
         Exercise ex = new Exercise();
         ex.setId(i);
@@ -45,6 +66,11 @@ public class Exercise_Repo {
         return ex;
     }
 
+    /**
+     *  create default exercise with type balance
+     * @param i type id
+     * @return ex exercise type data
+     */
     private Exercise cretae_default_balance(int i){
         Exercise ex = new Exercise();
         ex.setId(i);
@@ -54,6 +80,11 @@ public class Exercise_Repo {
         return ex;
     }
 
+    /**
+     *  create default exercise with type flexibility
+     * @param i type id
+     * @return ex exercise type data
+     */
     private Exercise cretae_default_flexibility(int i){
         Exercise ex = new Exercise();
         ex.setId(i);
@@ -63,6 +94,11 @@ public class Exercise_Repo {
         return ex;
     }
 
+    /**
+     *  insert a exercise type data to database
+     * @param ex exercise data contain all information about user
+     * @return int ex_id represent if the data is insert successfully
+     */
     public int insert(Exercise ex) {
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -75,6 +111,9 @@ public class Exercise_Repo {
         return (int) ex_id;
     }
 
+    /**
+     *  add default exercise datas to database
+     */
     private void add_default_exercise(){
         for(int i=0;i<3;i++){
             insert(cretae_default_endurance(i));
@@ -90,6 +129,10 @@ public class Exercise_Repo {
         }
     }
 
+    /**
+     *  get a list of all data and it`s information
+     * @return exlist list contain all exercise type info
+     */
     public ArrayList<HashMap<String, String>>  get_default_exercise_list() {
         SQLiteDatabase db = sql.getReadableDatabase();
         String selectQuery =  "select * from exercise";

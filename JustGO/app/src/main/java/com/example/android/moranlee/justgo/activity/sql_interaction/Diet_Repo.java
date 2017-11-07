@@ -18,12 +18,24 @@ import java.util.Date;
 
 public class Diet_Repo {
 
+    /**
+     *  sql interface to interact with database
+     */
     private SQLite_Interface sql;
 
+    /**
+     *  constructor
+     * @param context context hold the database
+     */
     public Diet_Repo(Context context){
         sql = new SQLite_Interface(context);
     }
 
+    /**
+     *  insert a diet type data to database
+     * @param diet diet data contain all information about diet
+     * @return diet_id represent if the data is insert successfully
+     */
     public int insert(Diet diet) {
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -32,11 +44,15 @@ public class Diet_Repo {
         values.put("food_id",diet.getFood_id());
         values.put("date",diet.getDate());
         values.put("meal_type",diet.getMeal_type().toString());
-        long food_Id = db.insert("diet", null, values);
+        long diet_Id = db.insert("diet", null, values);
         db.close();
-        return (int) food_Id;
+        return (int) diet_Id;
     }
 
+    /**
+     *  return current date as a string for usage when insert diet
+     * @return date string contain current date
+     */
     public String current_date(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(new Date());
@@ -66,7 +82,19 @@ public class Diet_Repo {
         return diet;
     }
 
-    //public int total_calorie_intake()
+    public int total_calorie_intake(){
+        String select_food_nutrient = "SELECT \n" +
+                "    food.user_id As user_Id,\n" +
+                "    user.name AS user_name,\n" +
+                "    food.name as food_name,\n" +
+                "    protein,\n" +
+                "    fat,\n" +
+                "    cholesterol,\n" +
+                "    calories\n" +
+                "    from food\n" +
+                "inner join diet ON diet.food_id = food.id and diet.user_id = "+global_value.getCurrent_user_id()+" ;";
+        return  0;
+    }
 
 
 }

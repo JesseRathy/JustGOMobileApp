@@ -1,4 +1,4 @@
-package com.example.android.moranlee.justgo.activity.activity;
+package com.example.android.moranlee.justgo.activity.activity.food_usage;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,28 +11,57 @@ import com.example.android.moranlee.justgo.activity.datatype.Food;
 import com.example.android.moranlee.justgo.activity.sql_interaction.Food_Repo;
 import com.example.android.moranlee.justgo.activity.*;
 
-public class add_new_diet_activity extends AppCompatActivity {
+public class add_new_food_activity extends AppCompatActivity {
 
+    /*
+    input field for name
+     */
     EditText name;
 
+    /*
+   input field for protein
+    */
     EditText protein;
 
+    /*
+   input field for calorie
+    */
     EditText calorie;
 
+    /*
+   input field for cholesterol
+    */
     EditText cholesterol;
 
+    /*
+   input field for fat
+    */
     EditText fat;
 
+    /*
+   submit new food
+    */
     Button submit;
 
+    /*
+    store data as a food type
+     */
     Food new_food;
 
+    /*
+    connection to the SQLite
+     */
     Food_Repo food_repo;
 
+    /**
+     *  initialize addnew food activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_diet_activity);
+        // connect var to fields by id
         name = (EditText)findViewById(R.id.new_food_name);
         protein = (EditText) findViewById(R.id.new_food_protein);
         calorie = (EditText) findViewById(R.id.new_food_calories);
@@ -40,6 +69,7 @@ public class add_new_diet_activity extends AppCompatActivity {
         fat = (EditText) findViewById(R.id.new_food_fat);
         submit = (Button) findViewById(R.id.submit_change);
         food_repo = new Food_Repo(this);
+        // onclick listener for button to submit change
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

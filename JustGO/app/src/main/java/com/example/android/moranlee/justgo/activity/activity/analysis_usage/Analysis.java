@@ -1,4 +1,4 @@
-package com.example.android.moranlee.justgo.activity.activity;
+package com.example.android.moranlee.justgo.activity.activity.analysis_usage;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,11 +11,15 @@ import com.jjoe64.graphview.LegendRenderer;
 
 public class Analysis extends AppCompatActivity {
 
+    /**
+     *  initialize analysis activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analysis);
-
+        //set graph view
         GraphView graph = (GraphView) findViewById(R.id.graph);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
                 new DataPoint(0, 1),
@@ -35,7 +39,7 @@ public class Analysis extends AppCompatActivity {
         });
         graph.addSeries(series2);
 
-// legend
+        // legend
         series.setTitle("user's weight change");
         series2.setTitle("user's height change");
         graph.getLegendRenderer().setVisible(true);

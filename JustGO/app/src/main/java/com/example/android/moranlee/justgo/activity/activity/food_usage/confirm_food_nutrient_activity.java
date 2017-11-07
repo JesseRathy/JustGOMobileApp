@@ -1,4 +1,4 @@
-package com.example.android.moranlee.justgo.activity.activity;
+package com.example.android.moranlee.justgo.activity.activity.food_usage;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,26 +9,46 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.android.moranlee.justgo.R;
+import com.example.android.moranlee.justgo.activity.activity.main_menu_activity;
 
 public class confirm_food_nutrient_activity extends AppCompatActivity {
 
+    /*
+    store info transfer from other activity
+     */
     String data;
 
+    /*
+    print info transfer from other activity
+     */
     TextView result;
 
+    /*
+    collect input to determine next step
+     */
     Button confirm;
 
+    /*
+   collect input to determine next step
+    */
     Button reselect;
 
+    /**
+     * initialize activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_food_activity);
+        // get info from other activity
         data = getIntent().getStringExtra("data");
+        // connect field to interface
         result = (TextView)findViewById(R.id.result_from_database);
         result.setText(data);
         confirm = (Button) findViewById(R.id.submit_change);
         reselect = (Button)findViewById(R.id.go_back_select);
+        // if user want to insert data to sql
         reselect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,6 +56,7 @@ public class confirm_food_nutrient_activity extends AppCompatActivity {
                 startActivity(go_back);
             }
         });
+        // if user want to select another
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

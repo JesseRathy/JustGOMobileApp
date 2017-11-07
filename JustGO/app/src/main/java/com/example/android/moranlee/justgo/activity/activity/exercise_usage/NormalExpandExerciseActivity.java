@@ -1,4 +1,4 @@
-package com.example.android.moranlee.justgo.activity.activity;
+package com.example.android.moranlee.justgo.activity.activity.exercise_usage;
 
 /**
  * Created by yugu on 2017-10-05.
@@ -8,10 +8,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.moranlee.justgo.R;
@@ -27,12 +25,16 @@ import java.util.LinkedList;
  * Normal ExpandableListView, expand one child only
  */
 public class NormalExpandExerciseActivity extends AppCompatActivity {
-    private static final String TAG = "NormalExpandActivity";
+    private static final String TAG = "NormalExpandFoodActivity";
 
+    /*
+   SQLite interface
+    */
     Exercise_Repo exercise_repo;
 
-    TextView show_from_database;
-
+    /*
+   LinkList to store data from database, array to store data for expand view usage
+    */
     LinkedList<String> endurances;
 
     String [] endurance;
@@ -51,30 +53,43 @@ public class NormalExpandExerciseActivity extends AppCompatActivity {
 
     LinkedList<String> datas;
 
+    /*
+    array store exercise type name
+     */
     public static String[] general = {"endurance","strength","balance","flexibility"};
 
+    /*
+    array store data specific exercise name from database
+     */
     public static String[][] specific;
 
+    /**
+     * initialize activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expand);
+        // initialize sql interface
         exercise_repo = new Exercise_Repo(this);
+        // get exercise item
         ArrayList defaults = exercise_repo.get_default_exercise_list();
+        // initialize list
         endurances = new LinkedList<>();
         strengths = new LinkedList<>();
         balances = new LinkedList<>();
         flexibilitys = new LinkedList<>();
         datas = new LinkedList<>();
+        // get data from database
         for(int i=0;i<defaults.size();i++){
             HashMap<String,String> current = (HashMap<String,String>)defaults.get(i);
             System.out.println(current.toString());
-            //Log.d(TAG, "onCreate() returned: " + current.toString());
+            // put data to array base on input type
             String category = current.get("category");
             if(category.equals(null)){
                 Toast.makeText(NormalExpandExerciseActivity.this,"no thing find in map",Toast.LENGTH_SHORT);
             }
-            //Toast.makeText(this,category, Toast.LENGTH_SHORT).show();
             if(category.equals("0")){
                 endurances.add(current.get("name"));
             }
@@ -89,6 +104,7 @@ public class NormalExpandExerciseActivity extends AppCompatActivity {
             }
             datas.add(current.toString());
         }
+        // transfer data to array because expand view only allow array as input
         endurance = new String [endurances.size()];
         for(int i = 0; i< endurances.size(); i++){
             endurance[i] = endurances.get(i);
@@ -105,7 +121,9 @@ public class NormalExpandExerciseActivity extends AppCompatActivity {
         for(int i = 0; i< flexibilitys.size(); i++){
             flexibility[i] = flexibilitys.get(i);
         }
+        // initialize specific with arrays
         specific = new String[][]{endurance, balance, strength,flexibility};
+        // create expand view and initialize
         final ExpandableListView listView = (ExpandableListView) findViewById(R.id.expandable_list);
         final NormalExpandAdapter adapter = new NormalExpandAdapter(general, specific);
         adapter.setOnGroupExpandedListener(new OnGroupExpandedListener() {
@@ -123,7 +141,7 @@ public class NormalExpandExerciseActivity extends AppCompatActivity {
         listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-                Log.d(TAG, "onGroupClick: groupPosition:" + groupPosition + ", id:" + id);
+                //Log.d(TAG, "onGroupClick: groupPosition:" + groupPosition + ", id:" + id);
                 // must return false
                 return false;
             }
@@ -134,7 +152,7 @@ public class NormalExpandExerciseActivity extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 Toast.makeText(NormalExpandExerciseActivity.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
-                Intent go_to_confirm = new Intent(getItSelf(),confirm_food_nutrient_activity.class);
+                Intent go_to_confirm = new Intent(getItSelf(),confirm_exercise_data_activity.class);
                 int pos = 0;
                 for(int i=0;i<groupPosition;i++){
                     pos+=specific[i].length;
@@ -158,6 +176,10 @@ public class NormalExpandExerciseActivity extends AppCompatActivity {
         return result;
     }
 
+    /**
+     *
+     * @return self because other function need
+     */
     private Activity getItSelf(){
         return this;
     }

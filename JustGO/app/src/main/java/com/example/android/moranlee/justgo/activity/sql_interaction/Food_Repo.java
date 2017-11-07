@@ -19,6 +19,9 @@ import static android.content.ContentValues.TAG;
  */
 
 public class Food_Repo {
+    /**
+     default exercise type name string []
+     */
     private String [] meats = {"beef","pork","mutton","chicken"};
     private String [] vegetables = {"cabbage","eggplant","cucumber","mushroom"};
     private String [] fruits = {"apple","pear","peach","berry"};
@@ -26,13 +29,25 @@ public class Food_Repo {
     private String [] fats = {"canola oil","corn oil","peanut oil","butter"};
     private String [] grains= {"wheat","rice","barley","oat"};
 
+    /**
+     *  sql interface to interact with database
+     */
     private SQLite_Interface sql;
 
+    /**
+     *  constructor, add default exercise type
+     * @param context context hold the database
+     */
     public Food_Repo(Context context){
         sql = new SQLite_Interface(context);
         add_default_food();
     }
 
+    /**
+     *  insert a food type data to database
+     * @param food food data contain all information about user
+     * @return int food_id represent if the data is insert successfully
+     */
     public int insert(Food food) {
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -49,6 +64,10 @@ public class Food_Repo {
         return (int) food_Id;
     }
 
+    /**
+     *  delete a food data by it`s id
+     * @param food_Id id of food need to delete
+     */
     public void delete_by_id(int food_Id) {
         SQLiteDatabase db = sql.getWritableDatabase();
 
@@ -56,6 +75,10 @@ public class Food_Repo {
         db.close();
     }
 
+    /**
+     *  delete a food data by it`s name
+     * @param food_name name of food need to delete
+     */
     public void delete_by_name(String food_name) {
         SQLiteDatabase db = sql.getWritableDatabase();
 
@@ -63,6 +86,10 @@ public class Food_Repo {
         db.close();
     }
 
+    /**
+     * update food data
+     * @param food the data of food want to update
+     */
     public void update(Food food) {
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -78,6 +105,11 @@ public class Food_Repo {
         db.close();
     }
 
+    /**
+     *  create default food with type meats
+     * @param i type id
+     * @return a_food food type data
+     */
     private Food cretae_default_meats(int i){
         Food a_food = new Food();
         a_food.setId(i);
@@ -91,6 +123,11 @@ public class Food_Repo {
         return a_food;
     }
 
+    /**
+     *  create default food with type fruits
+     * @param i type id
+     * @return a_food food type data
+     */
     private Food cretae_default_fruits(int i){
         Food a_food = new Food();
         a_food.setId(i+meats.length);
@@ -104,6 +141,11 @@ public class Food_Repo {
         return a_food;
     }
 
+    /**
+     *  create default food with type vegetables
+     * @param i type id
+     * @return a_food food type data
+     */
     private Food cretae_default_vegetables(int i){
         Food a_food = new Food();
         a_food.setId(i+meats.length+fruits.length);
@@ -117,6 +159,11 @@ public class Food_Repo {
         return a_food;
     }
 
+    /**
+     *  create default food with type dairys
+     * @param i type id
+     * @return a_food food type data
+     */
     private Food cretae_default_dairys(int i){
         Food a_food = new Food();
         a_food.setId(i+meats.length+fruits.length+vegetables.length);
@@ -130,6 +177,11 @@ public class Food_Repo {
         return a_food;
     }
 
+    /**
+     *  create default food with type grains
+     * @param i type id
+     * @return a_food food type data
+     */
     private Food cretae_default_grains(int i){
         Food a_food = new Food();
         a_food.setId(i+meats.length+fruits.length+vegetables.length+dairys.length);
@@ -143,6 +195,11 @@ public class Food_Repo {
         return a_food;
     }
 
+    /**
+     *  create default food with type fats
+     * @param i type id
+     * @return a_food food type data
+     */
     private Food cretae_default_fats(int i){
         Food a_food = new Food();
         a_food.setId(i+meats.length+fruits.length+vegetables.length+dairys.length+grains.length);
@@ -156,6 +213,9 @@ public class Food_Repo {
         return a_food;
     }
 
+    /**
+     *  add default food datas to database
+     */
     private void add_default_food(){
         for(int i=0;i<4;i++){
             insert(cretae_default_meats(i));
@@ -177,10 +237,14 @@ public class Food_Repo {
         }
     }
 
+    /**
+     *  get a list of all data and it`s information
+     * @return foodList list contain all food type info
+     */
     public ArrayList<HashMap<String, String>>  get_default_food_list() {
         SQLiteDatabase db = sql.getReadableDatabase();
         String selectQuery =  "select * from food where user_id = 0";
-        ArrayList<HashMap<String, String>> foodList = new ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> food_list = new ArrayList<HashMap<String, String>>();
         Log.d(TAG, "get_default_food_list: "+db.toString());
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
@@ -193,14 +257,18 @@ public class Food_Repo {
                 food.put("fat",cursor.getString(cursor.getColumnIndex("protein")));
                 food.put("calories",cursor.getString(cursor.getColumnIndex("calories")));
                 food.put("cholesterol",cursor.getString(cursor.getColumnIndex("cholesterol")));
-                foodList.add(food);
+                food_list.add(food);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
-        return foodList;
+        return food_list;
     }
 
+    /**
+     *  get specific food data by its name
+     * @return food.toString() contain selected food info
+     */
     public String get_food_by_name(String input_name) {
         SQLiteDatabase db = sql.getReadableDatabase();
         String selectQuery =  "select * from food where name == '"+input_name+"'";

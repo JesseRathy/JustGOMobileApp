@@ -5,11 +5,17 @@ package com.example.android.moranlee.justgo.activity.datatype;
  */
 
 public class Weight {
+    /*
+    fields of a weight type data
+     */
     private int id;
     private int user_id;
     private String date;
     private double weight;
 
+    /*
+    getter and setter of weight type datas
+     */
     public int getId() {
         return id;
     }

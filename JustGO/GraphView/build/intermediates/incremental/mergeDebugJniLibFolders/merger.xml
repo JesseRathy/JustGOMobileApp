@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\Users\yul04\Desktop\JustGo\JustGO\GraphView\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="C:\Users\yul04\Desktop\JustGo\JustGO\GraphView\src\debug\jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="D:\JustGo\JustGO\GraphView\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="D:\JustGo\JustGO\GraphView\src\debug\jniLibs"/></dataSet></merger>

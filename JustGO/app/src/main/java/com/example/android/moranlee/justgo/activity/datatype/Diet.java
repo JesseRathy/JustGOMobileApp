@@ -5,12 +5,18 @@ package com.example.android.moranlee.justgo.activity.datatype;
  */
 
 public class Diet {
+    /*
+    fields of a diet type data
+     */
     private int id;
     private int food_id;
     private int user_id;
     private String date;
     private Character meal_type;
 
+    /*
+    getter and setter of diet type datas
+     */
     public int getId() {
         return id;
     }
