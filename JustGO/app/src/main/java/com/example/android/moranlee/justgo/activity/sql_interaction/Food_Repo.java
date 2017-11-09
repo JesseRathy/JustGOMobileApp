@@ -9,6 +9,7 @@ import android.util.Log;
 import com.example.android.moranlee.justgo.activity.datatype.Food;
 import com.example.android.moranlee.justgo.activity.sql.SQLite_Interface;
 import com.example.android.moranlee.justgo.activity.global_value;
+import com.example.android.moranlee.justgo.activity.data.food_data;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,6 +34,7 @@ public class Food_Repo {
     private LinkedList<String> fat_type;
     private LinkedList<String> grain_type;
 
+    food_data dataCollection;
 
     /**
      *  sql interface to interact with database
@@ -46,6 +48,7 @@ public class Food_Repo {
     public Food_Repo(Context context){
         sql = new SQLite_Interface(context);
         add_default_food();
+        dataCollection = new food_data(context);
     }
 
     /**
