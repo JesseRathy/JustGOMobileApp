@@ -8,9 +8,11 @@ import android.util.Log;
 
 import com.example.android.moranlee.justgo.activity.datatype.Food;
 import com.example.android.moranlee.justgo.activity.sql.SQLite_Interface;
+import com.example.android.moranlee.justgo.activity.global_value;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 import static android.content.ContentValues.TAG;
 
@@ -22,12 +24,15 @@ public class Food_Repo {
     /**
      default exercise type name string []
      */
-    private String [] meats = {"beef","pork","mutton","chicken"};
-    private String [] vegetables = {"cabbage","eggplant","cucumber","mushroom"};
-    private String [] fruits = {"apple","pear","peach","berry"};
-    private String [] dairys = {"milk","yogurt","ice cream","cream"};
-    private String [] fats = {"canola oil","corn oil","peanut oil","butter"};
-    private String [] grains= {"wheat","rice","barley","oat"};
+
+
+    private LinkedList<String> meat_type;
+    private LinkedList<String> vegetable_type;
+    private LinkedList<String> fruit_type;
+    private LinkedList<String> dairy_type;
+    private LinkedList<String> fat_type;
+    private LinkedList<String> grain_type;
+
 
     /**
      *  sql interface to interact with database
@@ -113,7 +118,7 @@ public class Food_Repo {
     private Food cretae_default_meats(int i){
         Food a_food = new Food();
         a_food.setId(i);
-        a_food.setName(meats[i]);
+        a_food.setName(meat_type.get(i));
         a_food.setCalories(Math.random());
         a_food.setCategory(1);
         a_food.setCholesterol(Math.random());
@@ -130,8 +135,8 @@ public class Food_Repo {
      */
     private Food cretae_default_fruits(int i){
         Food a_food = new Food();
-        a_food.setId(i+meats.length);
-        a_food.setName(fruits[i]);
+        a_food.setId(i+meat_type.size());
+        a_food.setName(fruit_type.get(i));
         a_food.setCalories(Math.random());
         a_food.setCategory(2);
         a_food.setCholesterol(Math.random());
@@ -148,8 +153,8 @@ public class Food_Repo {
      */
     private Food cretae_default_vegetables(int i){
         Food a_food = new Food();
-        a_food.setId(i+meats.length+fruits.length);
-        a_food.setName(vegetables[i]);
+        a_food.setId(i+meat_type.size()+fruit_type.size());
+        a_food.setName(vegetable_type.get(i));
         a_food.setCalories(Math.random());
         a_food.setCategory(3);
         a_food.setCholesterol(Math.random());
@@ -166,8 +171,8 @@ public class Food_Repo {
      */
     private Food cretae_default_dairys(int i){
         Food a_food = new Food();
-        a_food.setId(i+meats.length+fruits.length+vegetables.length);
-        a_food.setName(dairys[i]);
+        a_food.setId(i+meat_type.size()+fruit_type.size()+vegetable_type.size());
+        a_food.setName(dairy_type.get(i));
         a_food.setCalories(Math.random());
         a_food.setCategory(4);
         a_food.setCholesterol(Math.random());
@@ -184,8 +189,8 @@ public class Food_Repo {
      */
     private Food cretae_default_grains(int i){
         Food a_food = new Food();
-        a_food.setId(i+meats.length+fruits.length+vegetables.length+dairys.length);
-        a_food.setName(grains[i]);
+        a_food.setId(i+meat_type.size()+fruit_type.size()+vegetable_type.size()+dairy_type.size());
+        a_food.setName(grain_type.get(i));
         a_food.setCalories(Math.random());
         a_food.setCategory(5);
         a_food.setCholesterol(Math.random());
@@ -202,8 +207,8 @@ public class Food_Repo {
      */
     private Food cretae_default_fats(int i){
         Food a_food = new Food();
-        a_food.setId(i+meats.length+fruits.length+vegetables.length+dairys.length+grains.length);
-        a_food.setName(fats[i]);
+        a_food.setId(i+meat_type.size()+fruit_type.size()+vegetable_type.size()+dairy_type.size()+grain_type.size());
+        a_food.setName(fat_type.get(i));
         a_food.setCalories(Math.random());
         a_food.setCategory(6);
         a_food.setCholesterol(Math.random());
@@ -213,10 +218,90 @@ public class Food_Repo {
         return a_food;
     }
 
+
+    public void add_meat(String name, double protein, double fat, double calories, double cholesterol){
+        Food new_meat = new Food();
+        new_meat.setName(name);
+        new_meat.setCategory(1);
+        new_meat.setUser_id(0);
+        new_meat.setId(global_value.get_and_set_Current_max_food_id());
+        new_meat.setCalories(calories);
+        new_meat.setCholesterol(cholesterol);
+        new_meat.setProtein(protein);
+        new_meat.setFat(fat);
+        this.insert(new_meat);
+    }
+
+    public void add_vegetable(String name, double protein, double fat, double calories, double cholesterol){
+        Food new_meat = new Food();
+        new_meat.setName(name);
+        new_meat.setCategory(3);
+        new_meat.setUser_id(0);
+        new_meat.setId(global_value.get_and_set_Current_max_food_id());
+        new_meat.setCalories(calories);
+        new_meat.setCholesterol(cholesterol);
+        new_meat.setProtein(protein);
+        new_meat.setFat(fat);
+        this.insert(new_meat);
+    }
+
+    public void add_fruit(String name, double protein, double fat, double calories, double cholesterol){
+        Food new_meat = new Food();
+        new_meat.setName(name);
+        new_meat.setCategory(2);
+        new_meat.setUser_id(0);
+        new_meat.setId(global_value.get_and_set_Current_max_food_id());
+        new_meat.setCalories(calories);
+        new_meat.setCholesterol(cholesterol);
+        new_meat.setProtein(protein);
+        new_meat.setFat(fat);
+        this.insert(new_meat);
+    }
+
+    public void add_diary(String name, double protein, double fat, double calories, double cholesterol){
+        Food new_meat = new Food();
+        new_meat.setName(name);
+        new_meat.setCategory(4);
+        new_meat.setUser_id(0);
+        new_meat.setId(global_value.get_and_set_Current_max_food_id());
+        new_meat.setCalories(calories);
+        new_meat.setCholesterol(cholesterol);
+        new_meat.setProtein(protein);
+        new_meat.setFat(fat);
+        this.insert(new_meat);
+    }
+
+    public void add_grain(String name, double protein, double fat, double calories, double cholesterol){
+        Food new_meat = new Food();
+        new_meat.setName(name);
+        new_meat.setCategory(5);
+        new_meat.setUser_id(0);
+        new_meat.setId(global_value.get_and_set_Current_max_food_id());
+        new_meat.setCalories(calories);
+        new_meat.setCholesterol(cholesterol);
+        new_meat.setProtein(protein);
+        new_meat.setFat(fat);
+        this.insert(new_meat);
+    }
+
+
     /**
      *  add default food datas to database
      */
     private void add_default_food(){
+        meat_type = new LinkedList<>();
+        vegetable_type = new LinkedList<>();
+        fruit_type = new LinkedList<>();
+        dairy_type = new LinkedList<>();
+        fat_type = new LinkedList<>();
+        grain_type = new LinkedList<>();
+
+        String [] meats = {"beef","pork","mutton","chicken"};
+        String [] vegetables = {"cabbage","eggplant","cucumber","mushroom"};
+        String [] fruits = {"apple","pear","peach","berry"};
+        String [] dairys = {"milk","yogurt","ice cream","cream"};
+        String [] fats = {"canola oil","corn oil","peanut oil","butter"};
+        String [] grains= {"wheat","rice","barley","oat"};
         for(int i=0;i<4;i++){
             insert(cretae_default_meats(i));
         }
@@ -279,7 +364,7 @@ public class Food_Repo {
                 food.put("category",cursor.getString(cursor.getColumnIndex("category")));
                 food.put("name", cursor.getString(cursor.getColumnIndex("name")));
                 food.put("protein",cursor.getString(cursor.getColumnIndex("protein")));
-                food.put("fat",cursor.getString(cursor.getColumnIndex("protein")));
+                food.put("fat",cursor.getString(cursor.getColumnIndex("fat")));
                 food.put("calories",cursor.getString(cursor.getColumnIndex("calories")));
                 food.put("cholesterol",cursor.getString(cursor.getColumnIndex("cholesterol")));
             } while (cursor.moveToNext());

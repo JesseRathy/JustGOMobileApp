@@ -42,6 +42,15 @@ public class global_value extends Application {
     }
 
     /*
+       @Return the maximum id avialable in food database,
+       count the number of items available for select in food table
+    */
+    public static int get_and_set_Current_max_food_id() {
+        current_max_food_id+=1;
+        return current_max_food_id;
+    }
+
+    /*
         @Return the maximum id avialable in user database,
         count the number of users available in user table
      */
