@@ -19,13 +19,25 @@ import static android.content.ContentValues.TAG;
 
 public class User_Repo {
 
+    /**
+     *  sql interface to interact with database
+     */
     private SQLite_Interface sql;
 
+    /**
+     *  constructor, add the admin(first user)
+     * @param context context hold the database
+     */
     public User_Repo(Context context){
         sql = new SQLite_Interface(context);
         add_admin_user();
     }
 
+    /**
+     *  insert a user type data to databse
+     * @param user user data contain all information about user
+     * @return int user_id represent if the data is insert successfully
+     */
     public int insert(User user) {
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -40,6 +52,11 @@ public class User_Repo {
         return (int) user_Id;
     }
 
+    /**
+     *
+     * @param id admin user id -> 0
+     * @return admin all info about admin
+     */
     public User create_admin_user(int id){
         User admin = new User();
         admin.setId(id);
@@ -51,6 +68,11 @@ public class User_Repo {
         return admin;
     }
 
+
+    /**
+     *  remove a user by user id
+     * @param user_Id the id of user aim to delete
+     */
     public void delete_by_id(int user_Id) {
         SQLiteDatabase db = sql.getWritableDatabase();
 
@@ -58,10 +80,20 @@ public class User_Repo {
         db.close();
     }
 
+
+    /**
+     *  add admin user to database
+     */
     public void add_admin_user(){
         insert(create_admin_user(0));
     }
 
+    /**
+     *  check the combine of user_name and password
+     * @param input_name user name in input field
+     * @param input_password user password in input field
+     * @return id if combination is valid, else return -1
+     */
     public int check_user_login(String input_name,String input_password) {
         SQLiteDatabase db = sql.getReadableDatabase();
         String selectQuery =  "select * from user where name == '"+input_name+"'";
@@ -83,30 +115,38 @@ public class User_Repo {
         return -1;
     }
 
+    /**
+     *  get all user data stored in an array
+     * @return userList list of all user in user table
+     */
     public ArrayList<HashMap<String, String>>  get_user_list() {
         SQLiteDatabase db = sql.getReadableDatabase();
         String selectQuery =  "select * from user";
-        ArrayList<HashMap<String, String>> foodList = new ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> userList = new ArrayList<HashMap<String, String>>();
         Log.d(TAG, "get_default_user_list: "+db.toString());
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
-                HashMap<String, String> food = new HashMap<String, String>();
-                food.put("id", cursor.getString(cursor.getColumnIndex("id")));
-                food.put("name", cursor.getString(cursor.getColumnIndex("name")));
-                food.put("password",cursor.getString(cursor.getColumnIndex("password")));
-                food.put("height",cursor.getString(cursor.getColumnIndex("height")));
-                food.put("gender",cursor.getString(cursor.getColumnIndex("gender")));
-                food.put("birthday",cursor.getString(cursor.getColumnIndex("birthday")));
-                foodList.add(food);
+                HashMap<String, String> user = new HashMap<String, String>();
+                user.put("id", cursor.getString(cursor.getColumnIndex("id")));
+                user.put("name", cursor.getString(cursor.getColumnIndex("name")));
+                user.put("password",cursor.getString(cursor.getColumnIndex("password")));
+                user.put("height",cursor.getString(cursor.getColumnIndex("height")));
+                user.put("gender",cursor.getString(cursor.getColumnIndex("gender")));
+                user.put("birthday",cursor.getString(cursor.getColumnIndex("birthday")));
+                userList.add(user);
 
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
-        return foodList;
+        return userList;
     }
 
+    /**
+     *  count number of num in database
+     * @return num number of user
+     */
     public int  get_user_num() {
         SQLiteDatabase db = sql.getReadableDatabase();
         String selectQuery =  "select * from user";
@@ -124,6 +164,10 @@ public class User_Repo {
         return num;
     }
 
+    /**
+     *  get height of current user in user database
+     * @return height height of current user
+     */
     public double get_current_user_height() {
         SQLiteDatabase db = sql.getReadableDatabase();
         String selectQuery =  "select height from user where id = "+global_value.getCurrent_user_id();
@@ -139,6 +183,10 @@ public class User_Repo {
         return height;
     }
 
+    /**
+     *  get age of current user in user database
+     * @return age age of current user
+     */
     public int get_user_age (){
         SQLiteDatabase db = sql.getReadableDatabase();
         String selectQuery =  "select birthday from user where id = "+global_value.getCurrent_user_id();
@@ -170,6 +218,10 @@ public class User_Repo {
         return age;
     }
 
+    /**
+     *  change password of current user
+     * @param password string of password
+     */
     public void update_password (String password) {
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -179,6 +231,10 @@ public class User_Repo {
         db.close();
     }
 
+    /**
+     * change height of current user
+     * @param height double of height
+     */
     public void update_height (Double height) {
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -188,6 +244,10 @@ public class User_Repo {
         db.close();
     }
 
+    /**
+     *  change weight of current user
+     * @param weight double of weight
+     */
     public void update_weight (Double weight) {
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -197,6 +257,10 @@ public class User_Repo {
         db.close();
     }
 
+    /**
+     * change gender of current user
+     * @param gender string of gender
+     */
     public void update_gender (String gender) {
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();

@@ -2,7 +2,6 @@ package com.example.android.moranlee.justgo.activity.sql_interaction;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -20,12 +19,24 @@ import java.util.Date;
 
 public class Diet_Repo {
 
+    /**
+     *  sql interface to interact with database
+     */
     private SQLite_Interface sql;
 
+    /**
+     *  constructor
+     * @param context context hold the database
+     */
     public Diet_Repo(Context context){
         sql = new SQLite_Interface(context);
     }
 
+    /**
+     *  insert a diet type data to database
+     * @param diet diet data contain all information about diet
+     * @return diet_id represent if the data is insert successfully
+     */
     public int insert(Diet diet) {
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -34,11 +45,15 @@ public class Diet_Repo {
         values.put("food_id",diet.getFood_id());
         values.put("date",diet.getDate());
         values.put("meal_type",diet.getMeal_type().toString());
-        long food_Id = db.insert("diet", null, values);
+        long diet_Id = db.insert("diet", null, values);
         db.close();
-        return (int) food_Id;
+        return (int) diet_Id;
     }
 
+    /**
+     *  return current date as a string for usage when insert diet
+     * @return date string contain current date
+     */
     public String current_date(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(new Date());

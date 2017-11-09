@@ -5,6 +5,9 @@ package com.example.android.moranlee.justgo.activity.datatype;
  */
 
 public class User {
+    /*
+    fields of a user type data
+     */
     private int id;
     private String name;
     private String password;
@@ -12,6 +15,9 @@ public class User {
     private String gender;
     private String birthday;
 
+    /*
+    getter and setter of food type datas
+     */
     public int getId() {
         return id;
     }

@@ -1,4 +1,4 @@
-package com.example.android.moranlee.justgo.activity.activity;
+package com.example.android.moranlee.justgo.activity.activity.food_usage;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,12 +13,25 @@ import com.example.android.moranlee.justgo.activity.sql_interaction.Food_Repo;
 
 public class search_food_name_activity extends AppCompatActivity {
 
+    /*
+    input field for name
+     */
     EditText name;
 
+    /*
+    submit change
+     */
     Button submit;
 
+    /*
+    sqlite interface
+     */
     Food_Repo food_repo;
 
+    /**
+     *  initialize addnew food activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +42,7 @@ public class search_food_name_activity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //get data and transfer to next activity
                 String data = food_repo.get_food_by_name(name.getText().toString());
                 Intent go_to_confirm = new Intent(getItSelf(),confirm_food_nutrient_activity.class);
                 go_to_confirm.putExtra("data",data);
@@ -36,6 +50,10 @@ public class search_food_name_activity extends AppCompatActivity {
             }
         });
     }
+    /**
+     *
+     * @return self because other function need
+     */
     private Activity getItSelf(){
         return this;
     }

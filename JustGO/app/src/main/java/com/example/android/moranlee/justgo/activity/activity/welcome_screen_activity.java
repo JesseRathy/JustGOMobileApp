@@ -3,6 +3,7 @@ package com.example.android.moranlee.justgo.activity.activity;
 /**
  * Created by homeyxue on 2017-11-04.
  */
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
 import com.example.android.moranlee.justgo.R;
+import com.example.android.moranlee.justgo.activity.activity.user_usage.login_activity;
 
 
 public class welcome_screen_activity extends Activity {

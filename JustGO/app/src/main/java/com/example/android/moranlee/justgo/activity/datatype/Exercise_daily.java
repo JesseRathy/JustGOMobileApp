@@ -5,12 +5,18 @@ package com.example.android.moranlee.justgo.activity.datatype;
  */
 
 public class Exercise_daily {
+    /*
+    fields of a exercise daily type data
+     */
     private int id;
     private int exercise_id;
     private int user_id;
     private String date;
     private double duration;
 
+    /*
+    getter and setter of exercise_daily type datas
+     */
     public int getId() {
         return id;
     }

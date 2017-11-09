@@ -1,4 +1,4 @@
-package com.example.android.moranlee.justgo.activity.activity;
+package com.example.android.moranlee.justgo.activity.activity.exercise_usage;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -42,7 +42,7 @@ public class select_exercise_option_activity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),add_new_exercise_activity.class);
+                Intent unit_intent = new Intent(getItSelf(), com.example.android.moranlee.justgo.activity.activity.exercise_usage.add_new_exercise.class);
                 startActivity(unit_intent);
             }
         };

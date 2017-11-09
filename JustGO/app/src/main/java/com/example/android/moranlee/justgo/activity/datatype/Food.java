@@ -5,6 +5,9 @@ package com.example.android.moranlee.justgo.activity.datatype;
  */
 
 public class Food {
+    /*
+    fields of a food type data
+     */
     private int id;
     private int user_id;
     private int category;
@@ -14,6 +17,9 @@ public class Food {
     private double cholesterol;
     private double calories;
 
+    /*
+    getter and setter of food type datas
+     */
     public void setId(int id) {
         this.id = id;
     }

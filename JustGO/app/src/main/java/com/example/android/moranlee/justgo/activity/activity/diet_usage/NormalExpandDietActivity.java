@@ -1,8 +1,4 @@
-package com.example.android.moranlee.justgo.activity.activity;
-
-/**
- * Created by yugu on 2017-10-05.
- */
+package com.example.android.moranlee.justgo.activity.activity.diet_usage;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,12 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.moranlee.justgo.R;
+import com.example.android.moranlee.justgo.activity.activity.food_usage.confirm_food_nutrient_activity;
 import com.example.android.moranlee.justgo.activity.adapter.NormalExpandAdapter;
 import com.example.android.moranlee.justgo.activity.adapter.OnGroupExpandedListener;
+import com.example.android.moranlee.justgo.activity.global_value;
 import com.example.android.moranlee.justgo.activity.sql_interaction.Food_Repo;
 
 import java.util.ArrayList;
@@ -24,15 +21,20 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
- * Normal ExpandableListView, expand one child only
+ * Created by yul04 on 2017/10/17.
  */
-public class NormalExpandActivity extends AppCompatActivity {
-    private static final String TAG = "NormalExpandActivity";
 
+public class NormalExpandDietActivity extends AppCompatActivity {
+    private static final String TAG = "ExpandDietActivity";
+
+    /*
+    SQLite interface
+     */
     Food_Repo getFoods;
 
-    TextView show_from_database;
-
+    /*
+   LinkList to store data from database, array to store data for expand view usage
+    */
     LinkedList<String> meats;
 
     String [] meat;
@@ -63,16 +65,29 @@ public class NormalExpandActivity extends AppCompatActivity {
 
     LinkedList<String> datas;
 
+    /*
+    array store food type name
+     */
     public static String[] general = {"meats","fruits","vegetables","dairys","grains","fats","users"};
 
+    /*
+    array store data specific food name from database
+     */
     public static String[][] specific;
 
+    /**
+     * initialize activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expand);
+        // initialize sql interface
         getFoods = new Food_Repo(this);
+        // get food item
         ArrayList defaults = getFoods.get_default_food_list();
+        // initialize list
         meats = new LinkedList<>();
         vegetables = new LinkedList<>();
         fruits = new LinkedList<>();
@@ -81,15 +96,15 @@ public class NormalExpandActivity extends AppCompatActivity {
         dairys = new LinkedList<>();
         users = new LinkedList<>();
         datas = new LinkedList<>();
+        // get data from database
         for(int i=0;i<defaults.size();i++){
             HashMap<String,String> current = (HashMap<String,String>)defaults.get(i);
             System.out.println(current.toString());
-            //Log.d(TAG, "onCreate() returned: " + current.toString());
+            // put data to array base on input type
             String category = current.get("category");
             if(category.equals(null)){
-                Toast.makeText(NormalExpandActivity.this,"no thing find in map",Toast.LENGTH_SHORT);
+                Toast.makeText(NormalExpandDietActivity.this,"no thing find in map",Toast.LENGTH_SHORT);
             }
-            //Toast.makeText(this,category, Toast.LENGTH_SHORT).show();
             if(category.equals("1")){
                 meats.add(current.get("name"));
             }
@@ -108,11 +123,13 @@ public class NormalExpandActivity extends AppCompatActivity {
             if(category.equals("6")){
                 fats.add(current.get("name"));
             }
-            if(category.equals("7")){
+            if(category.equals(Integer.toString(global_value.getCurrent_user_id()))){
                 users.add(current.get("name"));
             }
             datas.add(current.toString())
-;        }
+            ;
+        }
+        // transfer data to array because expand view only allow array as input
         meat = new String [meats.size()];
         for(int i=0;i<meats.size();i++){
             meat[i] = meats.get(i);
@@ -141,7 +158,9 @@ public class NormalExpandActivity extends AppCompatActivity {
         for (int i=0;i<users.size();i++){
             user[i] = users.get(i);
         }
+        // initialize specific with arrays
         specific = new String[][]{meat,fruit,vegetable,dairy,fat,grain,user};
+        // create expand view and initialize
         final ExpandableListView listView = (ExpandableListView) findViewById(R.id.expandable_list);
         final NormalExpandAdapter adapter = new NormalExpandAdapter(general, specific);
         adapter.setOnGroupExpandedListener(new OnGroupExpandedListener() {
@@ -169,7 +188,7 @@ public class NormalExpandActivity extends AppCompatActivity {
         listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Toast.makeText(NormalExpandActivity.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
+                Toast.makeText(NormalExpandDietActivity.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
                 Intent go_to_confirm = new Intent(getItSelf(),confirm_food_nutrient_activity.class);
                 int pos = 0;
                 for(int i=0;i<groupPosition;i++){
@@ -177,6 +196,7 @@ public class NormalExpandActivity extends AppCompatActivity {
                 }
                 pos+=childPosition;
                 go_to_confirm.putExtra("data",datas.get(pos));
+                go_to_confirm.putExtra("id",pos);
                 startActivity(go_to_confirm);
                 return true;
             }
@@ -193,7 +213,10 @@ public class NormalExpandActivity extends AppCompatActivity {
         }
         return result;
     }
-
+    /**
+     *
+     * @return self because other function need
+     */
     private Activity getItSelf(){
         return this;
     }
