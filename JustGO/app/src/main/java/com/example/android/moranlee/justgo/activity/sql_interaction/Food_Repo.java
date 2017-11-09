@@ -271,9 +271,8 @@ public class Food_Repo {
      */
     public String get_food_by_name(String input_name) {
         SQLiteDatabase db = sql.getReadableDatabase();
-        String selectQuery =  "select * from food where name == '"+input_name+"'";
         HashMap<String, String> food = new HashMap<String, String>();
-        Cursor cursor = db.rawQuery(selectQuery, null);
+        Cursor cursor = db.rawQuery(generateQuery(input_name), null);
         if (cursor.moveToFirst()) {
             do {
                 food.put("id", cursor.getString(cursor.getColumnIndex("id")));
@@ -289,6 +288,16 @@ public class Food_Repo {
         db.close();
         return food.toString();
     }
+
+
+    /*
+        Generate queries available for execution in SQLite database
+     */
+    public String generateQuery(String inputVar){
+        String selectQuery =  "select * from food where name == '"+inputVar+"'";
+        return selectQuery;
+    }
+
 
 
 }
