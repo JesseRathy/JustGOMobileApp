@@ -5,10 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-
+import com.example.android.moranlee.justgo.activity.global_value;
 import com.example.android.moranlee.justgo.activity.datatype.Exercise;
 import com.example.android.moranlee.justgo.activity.sql.SQLite_Interface;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -93,6 +92,17 @@ public class Exercise_Repo {
         ex.setEnergy_consumption(Math.random());
         return ex;
     }
+
+
+    public void addExercise(int category, String name, double energy){
+        Exercise new_exercise = new Exercise();
+        new_exercise.setName(name);
+        new_exercise.setCategory(category);
+        new_exercise.setEnergy_consumption(energy);
+        new_exercise.setId(global_value.get_and_set_Current_max_food_id());
+        this.insert(new_exercise);
+    }
+
 
     /**
      *  insert a exercise type data to database

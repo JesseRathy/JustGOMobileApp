@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import com.example.android.moranlee.justgo.R;
-
+import com.example.android.moranlee.justgo.activity.data.exercise_data;
 public class select_exercise_option_activity extends AppCompatActivity {
 
     Button select_from_database;
@@ -29,6 +29,7 @@ public class select_exercise_option_activity extends AppCompatActivity {
 
 
     private View.OnClickListener select_from_database(){
+        new exercise_data(this);
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {

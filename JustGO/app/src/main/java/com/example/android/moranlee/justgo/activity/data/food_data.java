@@ -19,6 +19,7 @@ public class food_data {
         add_food_data_meat();
         add_food_data_vegetalbe();
         add_food_data_diary();
+        add_food_data_fat();
     }
 
     /*
@@ -89,13 +90,30 @@ public class food_data {
     }
 
     public void add_food_data_grain(){
-        food.add_grain("",0,0,0,0);
+        food.add_grain("Bread, multi-grain, toasted",14.52,4.6,288,0);
+        food.add_grain("Bread, white, commercially prepared (includes soft bread crumbs)",8.85,3.33,266,0);
+        food.add_grain("DAVE'S KILLER BREAD, WHITE BREAD",7.50,5.00,275,0);
+        food.add_grain("PANERA BREAD, SESAME SEMOLINA BREAD",10.61,0.76,227,0);
+        food.add_grain("RAISIN BREAD, THE REAL BREAD COMPANY",8.89,6.67,311,0);
+        food.add_grain("Bread, egg",9.50,6,287,51);
+        food.add_grain("Bread, wheat",10.67,4.53,274,0);
+        food.add_grain("Bread, french or vienna, toasted (includes sourdough)",13,2.14,319,0);
+        food.add_grain("Bread, multi-grain, toasted (includes whole-grain)",14.52,2.6,288,0);
     }
 
 
 
     public void add_food_data_fat(){
-        
+        food.add_fat("BELLA IMPORTED, OIL CURED OLIVES, WITH OLIVE OIL",0,40.00,533,0);
+        food.add_fat("OLIVEXTRA PREMIUM, CANOLA OIL, EXTRA VIRGIN OLIVE OIL",0,93.33,800,0);
+        food.add_fat("LEONESSA, MIXED OLIVE BRUSCHETTA EXTRA VIRGIN OLIVE OIL",3.33,33.33,367,0);
+        food.add_fat("BLACK OLIVE PASTE WITH EXTRA VIRGIN OLIVE OIL",6.67,33.33,387,0);
+        food.add_fat("SUNFLOWER OIL & EXTRA VIRGIN OLIVE OIL",0,93.33,800,0);
+        food.add_fat("SUNFLOWER OIL & EXTRA VIRGIN OLIVE OIL BLEND",0,93.33,800,0);
+        food.add_fat("CANOLA OIL & FIRST COLD PRESS EXTRA VIRGIN OLIVE OIL",0,93.33,800,0);
+        food.add_fat("EXTRA VIRGIN OLIVE OIL",0,93.33,800,0);
+        food.add_fat("SUNFLOWER OIL & EXTRA VIRGIN OLIVE OIL",0,93.33,800,0);
+
     }
 
 
