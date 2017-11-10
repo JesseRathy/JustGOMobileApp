@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.example.android.moranlee.justgo.activity.data.food_data;
 import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.sql_interaction.Food_Repo;
 
@@ -51,9 +51,9 @@ public class select_from_food_database_activity extends AppCompatActivity {
         setContentView(R.layout.activity_select_from_food_database_activity);
         show_from_database = (TextView)findViewById(R.id.show_from_database);
         show_from_database.setMovementMethod(new ScrollingMovementMethod());
-        getFoods = new Food_Repo(this);
+        //getFoods = new Food_Repo(this);
+        //new food_data(this);
         //String text = "";
-
         //show_from_database.setText(text);
     }
 
@@ -120,14 +120,12 @@ public class select_from_food_database_activity extends AppCompatActivity {
         }
 
 
-
 //        meat = (String [])meats.toArray();
 //        fruit = (String [])fruits.toArray();
 //        vegetable = (String [])vegetables.toArray();
 //        grain = (String [])grains.toArray();
 //        dairy = (String [])dairys.toArray();
 //        fat = (String [])fats.toArray();
-
 
         //show_from_database.setText(text);
     }

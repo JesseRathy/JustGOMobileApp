@@ -34,7 +34,7 @@ public class Food_Repo {
     private LinkedList<String> fat_type;
     private LinkedList<String> grain_type;
 
-    food_data dataCollection;
+//    private food_data dataCollection;
 
     /**
      *  sql interface to interact with database
@@ -46,9 +46,9 @@ public class Food_Repo {
      * @param context context hold the database
      */
     public Food_Repo(Context context){
+        //dataCollection = new food_data(context);
         sql = new SQLite_Interface(context);
-        add_default_food();
-        dataCollection = new food_data(context);
+        //add_default_food();
     }
 
     /**
@@ -57,6 +57,7 @@ public class Food_Repo {
      * @return int food_id represent if the data is insert successfully
      */
     public int insert(Food food) {
+        System.out.println(" insert called");
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("id",food.getId());
@@ -258,6 +259,7 @@ public class Food_Repo {
         new_meat.setCholesterol(cholesterol);
         new_meat.setProtein(protein);
         new_meat.setFat(fat);
+        System.out.println("add fruit");
         this.insert(new_meat);
     }
 
@@ -289,40 +291,47 @@ public class Food_Repo {
 
 
     /**
-     *  add default food datas to database
+     *  add/update default food datas to database
      */
     private void add_default_food(){
-        meat_type = new LinkedList<>();
-        vegetable_type = new LinkedList<>();
-        fruit_type = new LinkedList<>();
-        dairy_type = new LinkedList<>();
-        fat_type = new LinkedList<>();
-        grain_type = new LinkedList<>();
+//        meat_type = new LinkedList<>();
+//        vegetable_type = new LinkedList<>();
+//        fruit_type = new LinkedList<>();
+//        dairy_type = new LinkedList<>();
+//        fat_type = new LinkedList<>();
+//        grain_type = new LinkedList<>();
 
-        String [] meats = {"beef","pork","mutton","chicken"};
-        String [] vegetables = {"cabbage","eggplant","cucumber","mushroom"};
-        String [] fruits = {"apple","pear","peach","berry"};
-        String [] dairys = {"milk","yogurt","ice cream","cream"};
-        String [] fats = {"canola oil","corn oil","peanut oil","butter"};
-        String [] grains= {"wheat","rice","barley","oat"};
-        for(int i=0;i<4;i++){
-            insert(cretae_default_meats(i));
-        }
-        for(int i=0;i<4;i++){
-            insert(cretae_default_fruits(i));
-        }
-        for(int i=0;i<4;i++){
-            insert(cretae_default_vegetables(i));
-        }
-        for(int i=0;i<4;i++){
-            insert(cretae_default_dairys(i));
-        }
-        for(int i=0;i<4;i++){
-            insert(cretae_default_grains(i));
-        }
-        for(int i=0;i<4;i++){
-            insert(cretae_default_fats(i));
-        }
+        //Operate add data action
+        //dataCollection.add_food_data_diary();
+        //dataCollection.add_food_data_fruit();
+        //dataCollection.add_food_data_meat();
+        //dataCollection.add_food_data_vegetalbe();
+        //dataCollection.add_food_data_grain();
+
+//        String [] meats = {"beef","pork","mutton","chicken"};
+//        String [] vegetables = {"cabbage","eggplant","cucumber","mushroom"};
+//        String [] fruits = {"apple","pear","peach","berry"};
+//        String [] dairys = {"milk","yogurt","ice cream","cream"};
+//        String [] fats = {"canola oil","corn oil","peanut oil","butter"};
+//        String [] grains= {"wheat","rice","barley","oat"};
+//        for(int i=0;i<4;i++){
+//            insert(cretae_default_meats(i));
+//        }
+//        for(int i=0;i<4;i++){
+//            insert(cretae_default_fruits(i));
+//        }
+//        for(int i=0;i<4;i++){
+//            insert(cretae_default_vegetables(i));
+//        }
+//        for(int i=0;i<4;i++){
+//            insert(cretae_default_dairys(i));
+//        }
+//        for(int i=0;i<4;i++){
+//            insert(cretae_default_grains(i));
+//        }
+//        for(int i=0;i<4;i++){
+//            insert(cretae_default_fats(i));
+//        }
     }
 
     /**
@@ -385,7 +394,6 @@ public class Food_Repo {
         String selectQuery =  "select * from food where name == '"+inputVar+"'";
         return selectQuery;
     }
-
 
 
 }
