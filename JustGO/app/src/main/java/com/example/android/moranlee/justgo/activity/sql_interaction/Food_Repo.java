@@ -279,7 +279,7 @@ public class Food_Repo {
     public void add_grain(String name, double protein, double fat, double calories, double cholesterol){
         Food new_meat = new Food();
         new_meat.setName(name);
-        new_meat.setCategory(5);
+        new_meat.setCategory(6);
         new_meat.setUser_id(0);
         new_meat.setId(global_value.get_and_set_Current_max_food_id());
         new_meat.setCalories(calories);
@@ -292,7 +292,7 @@ public class Food_Repo {
     public void add_fat(String name, double protein, double fat, double calories, double cholesterol){
         Food new_meat = new Food();
         new_meat.setName(name);
-        new_meat.setCategory(6);
+        new_meat.setCategory(5);
         new_meat.setUser_id(0);
         new_meat.setId(global_value.get_and_set_Current_max_food_id());
         new_meat.setCalories(calories);

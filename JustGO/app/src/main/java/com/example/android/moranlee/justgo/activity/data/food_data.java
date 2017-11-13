@@ -43,6 +43,7 @@ public class food_data {
         food.add_diary("BEEHIVE CHEESE CO., HAND CRAFTED CHEESE", 25, 21.43, 404, 0);
         food.add_diary("OLD FASHIONED CHEESE, PASTEURIZED CHEESE SNACK, PEPPER JACK MELT", 6.67, 6.67, 233, 17);
         food.add_diary("MOON CHEESE, PEPPER JACK CHEESE", 33.33, 25.000, 583, 167);
+        food.add_diary("Yogurt, fruit, lowfat, with low calorie sweetener, fortified with vitamin D",4.85,1.41,105,6);
     }
 
     public void add_food_data_fruit() {
@@ -57,6 +58,8 @@ public class food_data {
         food.add_fruit("Cranberries, dried, sweetened", 0.17, 0.42, 308, 0);
         food.add_fruit("Grapefruit, raw, white, California", 0.88, 0.05, 37, 0);
         food.add_fruit("Lemon juice, raw", 0.35, 0.06, 22, 0);
+        food.add_fruit("Peaches, yellow, raw",0.91,0.25,39,0);
+        food.add_fruit("WELCH'S, FRUIT SNACKS, MIXED FRUIT",0,0,314,0);
     }
 
     public void add_food_data_meat() {
@@ -71,6 +74,9 @@ public class food_data {
         food.add_meat("Pork, cured, ham with natural juices, spiral slice, meat only, boneless, separable lean only, heated, roasted", 22.56, 1.33, 126, 63);
         food.add_meat("Beef, ground, 97% lean meat / 3% fat, crumbles, cooked, pan-browned", 29.46, 4.9, 175, 89);
         food.add_meat("KFC, Fried Chicken, EXTRA CRISPY, Drumstick, meat only, skin and breading removed", 25.9, 6.3, 170, 137);
+        food.add_meat("Babyfood, meat, meat sticks, junior",13.4,14.6,184,70);
+        food.add_meat("Chicken, broilers or fryers, dark meat, meat and skin, cooked, stewed",23.5,14.66,233,82);
+        food.add_meat("Beef, ground, 97% lean meat / 3% fat, raw",21.98,3,121,60);
     }
 
     public void add_food_data_vegetalbe() {
@@ -87,6 +93,10 @@ public class food_data {
         food.add_vegetable("Tomatoes, yellow, raw", 0.98, 0.18, 15, 0);
         food.add_vegetable("CAMPBELL'S Red and White, Tomato Bisque, condensed", 1.59, 2.19, 103, 4);
         food.add_vegetable("Potatoes, white, flesh and skin, raw", 1.68, 0.07, 69, 0);
+        food.add_vegetable("Lettuce, green leaf, raw",1.36,0.15,15,0);
+        food.add_vegetable("Onions, raw",1.1,0.1,40,0);
+        food.add_vegetable("Pickles, chowchow, with cauliflower onion mustard, sweet",1.5,0.9,121,0);
+        food.add_vegetable("Peas and onions, frozen, cooked, boiled, drained, without salt",2.54,0.2,45,0);
     }
 
     public void add_food_data_grain(){
@@ -99,6 +109,8 @@ public class food_data {
         food.add_grain("Bread, wheat",10.67,4.53,274,0);
         food.add_grain("Bread, french or vienna, toasted (includes sourdough)",13,2.14,319,0);
         food.add_grain("Bread, multi-grain, toasted (includes whole-grain)",14.52,2.6,288,0);
+        food.add_grain("WHOLE GRAIN GLUTEN FREE PASTRY FLOUR ANCINET GRAIN",10,1.67,367,0);
+        food.add_grain("Triticale flour, whole-grain",13.18,1.81,338,0);
     }
 
 
@@ -113,7 +125,13 @@ public class food_data {
         food.add_fat("CANOLA OIL & FIRST COLD PRESS EXTRA VIRGIN OLIVE OIL",0,93.33,800,0);
         food.add_fat("EXTRA VIRGIN OLIVE OIL",0,93.33,800,0);
         food.add_fat("SUNFLOWER OIL & EXTRA VIRGIN OLIVE OIL",0,93.33,800,0);
-
+        food.add_fat("TENDERPOP CANOLA OIL, BUTTERY POPCORN OIL",0,100,886,0);
+        food.add_fat("51% VEGETABLE OIL SPREAD WITH NON-HYDROGENATED OILS",0,50,429,0);
+        food.add_fat("CANOLA OIL & FIRST COLD PRESS EXTRA VIRGIN OLIVE OIL",0,93.33,800,0);
+        food.add_fat("Fish oil, salmon",0.00,100,902,485);
+        food.add_fat("MAC NUT OIL, MACADAMIA NUT OIL",0,93.33,93,0);
+        food.add_fat("Oil, corn and canola",0,100,884,0);
+        food.add_fat("Oil, soybean, salad or cooking, (partially hydrogenated)",0,100,884,0);
     }
 
 
