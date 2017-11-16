@@ -61,7 +61,7 @@ public class select_food_option_activity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),add_new_food_activity.class);
+                Intent unit_intent = new Intent(getItSelf(),AddNewFoodActivity.class);
                 startActivity(unit_intent);
             }
         };

@@ -4,59 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.moranlee.justgo.activity.activity.select_food_option_activity">
+    tools:context="com.example.android.moranlee.justgo.activity.activity.select_body_option_activity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:background="@drawable/food_screen"
+        android:background="@drawable/splash_screen2"
         >
-
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/relativeLayout"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="567dp"
+        android:layout_marginBottom="565dp"
         app:srcCompat="@drawable/justgo_icon2" />
 
 
-    tools:context="com.example.android.moranlee.justgo.activity.activity.food_usage.select_food_option_activity">
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="1000dp"
-        android:background="@drawable/food_screen"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
+        android:background="@drawable/splash_screen2"
         android:layout_marginTop="67dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/relativeLayout">
-
-
-        <!--allow user to input amount and select unit-->
+        android:layout_alignParentStart="true">
 
         <Button
-            android:id="@+id/select_from_old_food"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/select_create_new_food"
-            android:layout_alignStart="@+id/select_create_new_food"
-            android:layout_marginBottom="65dp"
-            android:background="@drawable/select_diet" />
-
-        <Button
-            android:id="@+id/select_create_new_food"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/add_diet" />
+            android:layout_marginTop="100dp"
+            android:background="@drawable/old_body_status"
+            android:id="@+id/select_from_old_body_status"
+            />
+
+        <Button
+            android:id="@+id/select_create_new_body_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/select_from_old_body_status"
+            android:layout_below="@+id/select_from_old_body_status"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/new_body_status" />
 
     </RelativeLayout>
     </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

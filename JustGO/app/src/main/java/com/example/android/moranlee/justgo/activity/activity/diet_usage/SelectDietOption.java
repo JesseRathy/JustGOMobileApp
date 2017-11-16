@@ -14,12 +14,12 @@ import android.widget.Button;
 import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.activity.food_usage.search_food_name_activity;
 
-public class select_diet_option extends AppCompatActivity {
+public class SelectDietOption extends AppCompatActivity {
 
     /*
     button go to select food activity
      */
-    Button select_from_old_diet;
+    Button selectFromOldDiet;
 
     /**
      * initialize activity
@@ -29,8 +29,8 @@ public class select_diet_option extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_diet_option_activity);
-        select_from_old_diet = (Button)findViewById(R.id.select_from_old_food);
-        select_from_old_diet.setOnClickListener(select_from_old_food());
+        selectFromOldDiet = (Button)findViewById(R.id.select_from_old_food);
+        selectFromOldDiet.setOnClickListener(select_from_old_food());
     }
 
     /**
@@ -41,8 +41,8 @@ public class select_diet_option extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),NormalExpandDietActivity.class);
-                startActivity(unit_intent);
+                Intent unitIntent = new Intent(getItSelf(),NormalExpandDietActivity.class);
+                startActivity(unitIntent);
             }
         };
     }
@@ -55,8 +55,8 @@ public class select_diet_option extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),search_food_name_activity.class);
-                startActivity(unit_intent);
+                Intent unitIntent = new Intent(getItSelf(),search_food_name_activity.class);
+                startActivity(unitIntent);
             }
         };
     }

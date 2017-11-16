@@ -11,6 +11,7 @@ public class global_value extends Application {
     static int current_max_food_id;
     static int current_max_user_id;
     static int current_max_diet_id;
+    static int current_max_exercise_daily_id;
 
     /*
         @Return the id of user currently using the system
@@ -78,5 +79,20 @@ public class global_value extends Application {
      */
     public static void setCurrent_max_diet_id(int current_max_diet_id) {
         global_value.current_max_diet_id = current_max_diet_id;
+    }
+
+    /*
+        @Return the maximum id avialable in exercise_daily table,
+        count the number of diets available in diet table
+     */
+    public static int getCurrent_max_exercise_daily_id() {
+        return current_max_exercise_daily_id;
+    }
+
+    /*
+        Set maximum exercise_daily id available in exercise_daily table
+     */
+    public static void setCurrent_max_exercise_daily_id(int current_max_exercise_daily_id) {
+        global_value.current_max_exercise_daily_id = current_max_exercise_daily_id;
     }
 }

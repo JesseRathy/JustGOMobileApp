@@ -9,42 +9,49 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
+        android:background="@color/background"
         >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="height: 180cm"
+            android:textColor="@color/white"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="weight: 65kg"
+            android:textColor="@color/white"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="BMI: 20"
+            android:textColor="@color/white"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="calorie intake: 2000 kc/week"
+            android:textColor="@color/white"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="protein intake: 20 g/week"
+            android:textColor="@color/white"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="chorlestoral intake: 10 mg/week"
+            android:textColor="@color/white"
             />
 
         <com.jjoe64.graphview.GraphView

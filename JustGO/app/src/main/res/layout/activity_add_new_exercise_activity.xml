@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.moranlee.justgo.activity.activity.exercise_usage.add_new_exercise">
+    tools:context="com.example.android.moranlee.justgo.activity.activity.exercise_usage.AddNewExercise">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
+        android:background="@color/background"
         tools:layout_editor_absoluteX="-16dp"
         tools:layout_editor_absoluteY="0dp">
 
@@ -17,21 +18,18 @@
             android:id="@+id/add_exercise_category"
             android:layout_width="match_parent"
             android:layout_height="50dp">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:text="Category"
-                android:textSize="30dp" />
-
+                android:background="@drawable/category" />
+        </LinearLayout>
             <EditText
                 android:id="@+id/edit_add_category"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
-                android:hint="Text" />
-
-        </LinearLayout>
+                android:background="@drawable/input_text_1_dark"
+                android:hint="category of your exercise"
+                android:textColorHint="@color/white"/>
 
         <LinearLayout
             android:id="@+id/add_exercise_name"
@@ -41,18 +39,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:text="Name"
-                android:textSize="30dp" />
-
+                android:background="@drawable/exercise_name"/>
+        </LinearLayout>
             <EditText
                 android:id="@+id/edit_exercise_name"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
-                android:hint="put the name here" />
-
-        </LinearLayout>
-
+                android:hint="the name of your exercise"
+                android:textColorHint="@color/white"
+                android:background="@drawable/input_text_1_dark"/>
 
         <LinearLayout
             android:id="@+id/calorie_layout"
@@ -62,23 +57,21 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:text="Calorie"
-                android:textSize="30dp" />
-
+                android:background="@drawable/calories"/>
+        </LinearLayout>
             <EditText
                 android:id="@+id/editText3"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
-                android:hint="amount in KJW" />
-
-        </LinearLayout>
+                android:hint="amount in KJW"
+                android:textColorHint="@color/white"
+                android:background="@drawable/input_text_1_dark"/>
 
         <Button
             android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="submit" />
+            android:background="@drawable/submit_add_data"/>
 
     </LinearLayout>
 

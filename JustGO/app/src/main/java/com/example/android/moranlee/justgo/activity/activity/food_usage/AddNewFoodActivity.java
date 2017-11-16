@@ -11,7 +11,7 @@ import com.example.android.moranlee.justgo.activity.datatype.Food;
 import com.example.android.moranlee.justgo.activity.sql_interaction.Food_Repo;
 import com.example.android.moranlee.justgo.activity.*;
 
-public class add_new_food_activity extends AppCompatActivity {
+public class AddNewFoodActivity extends AppCompatActivity {
 
     /*
     input field for name
@@ -46,12 +46,12 @@ public class add_new_food_activity extends AppCompatActivity {
     /*
     store data as a food type
      */
-    Food new_food;
+    Food newFood;
 
     /*
     connection to the SQLite
      */
-    Food_Repo food_repo;
+    Food_Repo foodRepo;
 
     /**
      *  initialize addnew food activity
@@ -68,22 +68,22 @@ public class add_new_food_activity extends AppCompatActivity {
         cholesterol = (EditText)findViewById(R.id.new_food_cholesterol);
         fat = (EditText) findViewById(R.id.new_food_fat);
         submit = (Button) findViewById(R.id.submit_change);
-        food_repo = new Food_Repo(this);
+        foodRepo = new Food_Repo(this);
         // onclick listener for button to submit change
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new_food = new Food();
-                new_food.setId(global_value.getCurrent_max_food_id()+1);
+                newFood = new Food();
+                newFood.setId(global_value.getCurrent_max_food_id()+1);
                 global_value.setCurrent_max_food_id(global_value.getCurrent_max_food_id()+1);
-                new_food.setUser_id(global_value.getCurrent_user_id());
-                new_food.setCalories(Double.parseDouble(calorie.getText().toString()));
-                new_food.setCategory(7);
-                new_food.setCholesterol(Double.parseDouble(cholesterol.getText().toString()));
-                new_food.setProtein(Double.parseDouble(protein.getText().toString()));
-                new_food.setFat(Double.parseDouble(fat.getText().toString()));
-                new_food.setName(name.getText().toString());
-                food_repo.insert(new_food);
+                newFood.setUser_id(global_value.getCurrent_user_id());
+                newFood.setCalories(Double.parseDouble(calorie.getText().toString()));
+                newFood.setCategory(7);
+                newFood.setCholesterol(Double.parseDouble(cholesterol.getText().toString()));
+                newFood.setProtein(Double.parseDouble(protein.getText().toString()));
+                newFood.setFat(Double.parseDouble(fat.getText().toString()));
+                newFood.setName(name.getText().toString());
+                foodRepo.insert(newFood);
             }
         });
     }

@@ -9,8 +9,8 @@ import android.widget.Button;
 
 import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.activity.analysis_usage.Analysis;
-import com.example.android.moranlee.justgo.activity.activity.diet_usage.select_diet_option;
-import com.example.android.moranlee.justgo.activity.activity.exercise_usage.select_exercise_option_activity;
+import com.example.android.moranlee.justgo.activity.activity.diet_usage.SelectDietOption;
+import com.example.android.moranlee.justgo.activity.activity.exercise_usage.SelectExerciseOptionActivity;
 import com.example.android.moranlee.justgo.activity.activity.food_usage.select_food_option_activity;
 import com.example.android.moranlee.justgo.activity.activity.recommandition_usage.get_recommendation_activity;
 import com.example.android.moranlee.justgo.activity.activity.user_usage.edit_profile_activity;
@@ -111,7 +111,7 @@ public class main_menu_activity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),select_exercise_option_activity.class);
+                Intent unit_intent = new Intent(getItSelf(),SelectExerciseOptionActivity.class);
                 startActivity(unit_intent);
             }
         };
@@ -153,7 +153,7 @@ public class main_menu_activity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),select_diet_option.class);
+                Intent unit_intent = new Intent(getItSelf(),SelectDietOption.class);
                 startActivity(unit_intent);
             }
         };

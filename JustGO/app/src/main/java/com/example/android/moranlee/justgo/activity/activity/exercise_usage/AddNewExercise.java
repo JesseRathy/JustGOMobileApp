@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.example.android.moranlee.justgo.R;
 
-public class add_new_exercise extends AppCompatActivity {
+public class AddNewExercise extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

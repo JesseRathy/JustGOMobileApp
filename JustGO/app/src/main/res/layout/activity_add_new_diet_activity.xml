@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.moranlee.justgo.activity.activity.food_usage.add_new_food_activity">
+    tools:context="com.example.android.moranlee.justgo.activity.activity.food_usage.AddNewFoodActivity">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:background="@color/colorPrimary"
+        android:background="@color/background"
         >
 
         <LinearLayout

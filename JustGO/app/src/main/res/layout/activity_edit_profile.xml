@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:weightSum="1"
     tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:layout_editor_absoluteX="0dp"
+    android:background="@drawable/splash_screen2">
 
 
     <RelativeLayout
@@ -30,6 +31,7 @@
             android:layout_width="161dp"
             android:layout_height="37dp"
             android:text="Edit Profile"
+            android:textColor="@color/rice"
             android:textSize="30sp"
             tools:layout_editor_absoluteX="120dp"
             tools:layout_editor_absoluteY="16dp"
@@ -95,6 +97,8 @@
                 android:layout_marginStart="21dp"
                 android:checked="true"
                 android:text="Male"
+                android:textColor="@color/rice"
+                android:buttonTint="@color/rice"
                 tools:layout_editor_absoluteX="137dp"
                 tools:layout_editor_absoluteY="172dp" />
 
@@ -103,6 +107,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Female"
+                android:textColor="@color/rice"
+                android:buttonTint="@color/rice"
             tools:layout_editor_absoluteX="210dp"
             tools:layout_editor_absoluteY="172dp"
             android:layout_alignBaseline="@+id/Mbtn"
@@ -115,9 +121,8 @@
             android:id="@+id/GenderTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="49dp"
-            android:text="Gender"
-            android:textSize="30sp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/gender"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="172dp"
             android:layout_below="@+id/WeightText"
@@ -131,6 +136,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="15dp"
             android:text="Weight:"
+            android:textColor="@color/rice"
             android:textSize="30sp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="115dp" />
@@ -142,9 +148,9 @@
             android:layout_alignBaseline="@+id/input2"
             android:layout_alignBottom="@+id/input2"
             android:layout_alignEnd="@+id/WeightText"
-            android:autoText="false"
             android:text="Height:"
             android:textSize="30sp"
+            android:textColor="@color/rice"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="64dp" />
 

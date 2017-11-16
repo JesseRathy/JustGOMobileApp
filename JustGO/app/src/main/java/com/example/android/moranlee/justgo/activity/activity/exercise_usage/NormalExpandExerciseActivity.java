@@ -30,7 +30,7 @@ public class NormalExpandExerciseActivity extends AppCompatActivity {
     /*
    SQLite interface
     */
-    Exercise_Repo exercise_repo;
+    Exercise_Repo exerciseRepo;
 
     /*
    LinkList to store data from database, array to store data for expand view usage
@@ -72,9 +72,9 @@ public class NormalExpandExerciseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expand);
         // initialize sql interface
-        exercise_repo = new Exercise_Repo(this);
+        exerciseRepo = new Exercise_Repo(this);
         // get exercise item
-        ArrayList defaults = exercise_repo.get_default_exercise_list();
+        ArrayList defaults = exerciseRepo.get_default_exercise_list();
         // initialize list
         endurances = new LinkedList<>();
         strengths = new LinkedList<>();
@@ -152,14 +152,15 @@ public class NormalExpandExerciseActivity extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 Toast.makeText(NormalExpandExerciseActivity.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
-                Intent go_to_confirm = new Intent(getItSelf(),confirm_exercise_data_activity.class);
+                Intent goToConfirm = new Intent(getItSelf(),ConfirmExerciseDataActivity.class);
                 int pos = 0;
                 for(int i=0;i<groupPosition;i++){
                     pos+=specific[i].length;
                 }
                 pos+=childPosition;
-                go_to_confirm.putExtra("data",datas.get(pos));
-                startActivity(go_to_confirm);
+                goToConfirm.putExtra("data",datas.get(pos));
+                goToConfirm.putExtra("id",pos);
+                startActivity(goToConfirm);
                 return true;
             }
         });

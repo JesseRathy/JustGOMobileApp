@@ -189,15 +189,15 @@ public class NormalExpandDietActivity extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 Toast.makeText(NormalExpandDietActivity.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
-                Intent go_to_confirm = new Intent(getItSelf(),confirm_food_nutrient_activity.class);
+                Intent goToConfirm = new Intent(getItSelf(),confirm_food_nutrient_activity.class);
                 int pos = 0;
                 for(int i=0;i<groupPosition;i++){
                     pos+=specific[i].length;
                 }
                 pos+=childPosition;
-                go_to_confirm.putExtra("data",datas.get(pos));
-                go_to_confirm.putExtra("id",pos);
-                startActivity(go_to_confirm);
+                goToConfirm.putExtra("data",datas.get(pos));
+                goToConfirm.putExtra("id",pos);
+                startActivity(goToConfirm);
                 return true;
             }
         });

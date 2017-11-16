@@ -51,20 +51,20 @@
         <activity android:name=".activity.activity.food_usage.select_food_option_activity" />
         <activity android:name=".activity.activity.food_usage.select_from_food_database_activity" />
         <activity android:name=".activity.activity.food_usage.confirm_food_nutrient_activity" />
-        <activity android:name=".activity.activity.food_usage.add_new_food_activity" />
-        <activity android:name=".activity.activity.exercise_usage.select_exercise_option_activity" />
-        <activity android:name=".activity.activity.exercise_usage.add_new_exercise" />
+        <activity android:name=".activity.activity.food_usage.AddNewFoodActivity" />
+        <activity android:name=".activity.activity.exercise_usage.SelectExerciseOptionActivity" />
+        <activity android:name=".activity.activity.exercise_usage.AddNewExercise" />
         <activity android:name=".activity.activity.recommandition_usage.get_recommendation_activity" />
         <activity android:name=".activity.activity.food_usage.NormalExpandFoodActivity" />
-        <activity android:name=".activity.activity.diet_usage.select_diet_option" />
+        <activity android:name=".activity.activity.diet_usage.SelectDietOption" />
         <activity android:name=".activity.activity.user_usage.register_activity" />
         <activity android:name=".activity.activity.weight_usage.past_and_new_weight_activity" />
         <activity android:name=".activity.activity.food_usage.search_food_name_activity" />
         <activity android:name=".activity.activity.analysis_usage.Analysis" />
         <activity android:name=".activity.activity.exercise_usage.NormalExpandExerciseActivity" />
         <activity android:name=".activity.activity.diet_usage.NormalExpandDietActivity" />
-        <activity android:name=".activity.activity.diet_usage.confirm_diet_nutrient" />
-        <activity android:name=".activity.activity.exercise_usage.confirm_exercise_data_activity"></activity>
+        <activity android:name=".activity.activity.diet_usage.ConfirmDietNutrient" />
+        <activity android:name=".activity.activity.exercise_usage.ConfirmExerciseDataActivity"></activity>
     </application>
 
 </manifest>

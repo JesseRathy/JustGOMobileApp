@@ -7,9 +7,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:background="@android:color/holo_blue_light"
+        android:background="@color/rice"
         android:paddingLeft="20dp"
-        android:textColor="@android:color/white"
+        android:textColor="@color/background"
         android:textSize="20sp" />
 
 </LinearLayout>

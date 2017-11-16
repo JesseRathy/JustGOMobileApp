@@ -10,8 +10,10 @@ import com.example.android.moranlee.justgo.activity.global_value;
 import com.example.android.moranlee.justgo.activity.sql.SQLite_Interface;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * Created by yul04 on 2017/10/10.
@@ -111,6 +113,38 @@ public class Diet_Repo {
         dietcursor.close();
         db.close();
         return total_calories;
+    }
+
+    /**
+     *  get a list of all data and it`s information
+     * @return foodList list contain all food type info
+     */
+    public ArrayList<HashMap<String, String>>  get_today_food_list() {
+        int food_id;
+        String selectCalorieQuery;
+        SQLiteDatabase db = sql.getReadableDatabase();
+        String selectQuery =  "select food_id from diet where date = '"+current_date()+"'";
+        ArrayList<HashMap<String, String>> food_list = new ArrayList<HashMap<String, String>>();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                food_id = Integer.parseInt(cursor.getString(cursor.getColumnIndex("food_id")));
+                selectCalorieQuery = "select * from food where id = "+ food_id;
+                Cursor foodcursor = db.rawQuery(selectCalorieQuery,null);
+                HashMap<String, String> food = new HashMap<String, String>();
+                food.put("id", foodcursor.getString(foodcursor.getColumnIndex("id")));
+                food.put("category",foodcursor.getString(foodcursor.getColumnIndex("category")));
+                food.put("name", foodcursor.getString(foodcursor.getColumnIndex("name")));
+                food.put("protein",foodcursor.getString(foodcursor.getColumnIndex("protein")));
+                food.put("fat",foodcursor.getString(foodcursor.getColumnIndex("protein")));
+                food.put("calories",foodcursor.getString(foodcursor.getColumnIndex("calories")));
+                food.put("cholesterol",foodcursor.getString(foodcursor.getColumnIndex("cholesterol")));
+                food_list.add(food);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return food_list;
     }
 
     /**
