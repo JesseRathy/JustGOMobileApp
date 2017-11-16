@@ -56,8 +56,10 @@ public class main_menu_activity extends AppCompatActivity {
         go_weight = (Button) findViewById(R.id.main_weight);
         go_weight.setOnClickListener(go_weight());
 
-        analysis = (Button) findViewById(R.id.go_nutrition_suggestion);
-        analysis.setOnClickListener(go_analysis());
+
+        // Analysis button listener
+        analysis = (Button) findViewById(R.id.mainAnalysisBtn);
+        analysis.setOnClickListener(goAnalysis());
 
     }
 
@@ -121,7 +123,7 @@ public class main_menu_activity extends AppCompatActivity {
      *  switch activity to analysis
      * @return OnClickListener
      */
-    private View.OnClickListener go_analysis(){
+    private View.OnClickListener goAnalysis(){
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {

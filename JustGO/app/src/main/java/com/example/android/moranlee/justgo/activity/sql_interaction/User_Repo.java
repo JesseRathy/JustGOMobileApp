@@ -164,11 +164,60 @@ public class User_Repo {
         return num;
     }
 
-    /**
-     *  get height of current user in user database
-     * @return height height of current user
-     */
-    public double get_current_user_height() {
+    public void update_password (String password) {
+        SQLiteDatabase db = sql.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id", global_value.getCurrent_user_id());
+        values.put("password",password);
+        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+        db.close();
+    }
+
+    public void update_height (Double height) {
+        SQLiteDatabase db = sql.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id", global_value.getCurrent_user_id());
+        values.put("height",height);
+        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+        db.close();
+    }
+
+    public void update_weight (Double weight) {
+        SQLiteDatabase db = sql.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id", global_value.getCurrent_user_id());
+        values.put("weight",weight);
+        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+        db.close();
+    }
+
+    public void update_gender (String gender) {
+        SQLiteDatabase db = sql.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id", global_value.getCurrent_user_id());
+        values.put("gender",gender);
+        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+        db.close();
+    }
+
+    // Get current user gender
+    public String getUserGender() {
+        SQLiteDatabase db = sql.getReadableDatabase();
+        String selectQuery =  "select gender from user where id = "+global_value.getCurrent_user_id();
+        String gender = "";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                gender = cursor.getString(cursor.getColumnIndex("gender"));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return gender;
+    }
+
+    // Get current user height
+    public double getUserHeight() {
         SQLiteDatabase db = sql.getReadableDatabase();
         String selectQuery =  "select height from user where id = "+global_value.getCurrent_user_id();
         double height = 0.0;
@@ -183,11 +232,8 @@ public class User_Repo {
         return height;
     }
 
-    /**
-     *  get age of current user in user database
-     * @return age age of current user
-     */
-    public int get_user_age (){
+    // Get current user age
+    public int getUserAge(){
         SQLiteDatabase db = sql.getReadableDatabase();
         String selectQuery =  "select birthday from user where id = "+global_value.getCurrent_user_id();
         String birthday = "";
@@ -217,57 +263,75 @@ public class User_Repo {
         }
         return age;
     }
+// <<<<<<< HEAD
 
-    /**
-     *  change password of current user
-     * @param password string of password
-     */
-    public void update_password (String password) {
-        SQLiteDatabase db = sql.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("id", global_value.getCurrent_user_id());
-        values.put("password",password);
-        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
-        db.close();
-    }
+//     /**
+//      *  change password of current user
+//      * @param password string of password
+//      */
+//     public void update_password (String password) {
+//         SQLiteDatabase db = sql.getWritableDatabase();
+//         ContentValues values = new ContentValues();
+//         values.put("id", global_value.getCurrent_user_id());
+//         values.put("password",password);
+//         db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+//         db.close();
+//     }
 
-    /**
-     * change height of current user
-     * @param height double of height
-     */
-    public void update_height (Double height) {
-        SQLiteDatabase db = sql.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("id", global_value.getCurrent_user_id());
-        values.put("height",height);
-        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
-        db.close();
-    }
+//     /**
+//      * change height of current user
+//      * @param height double of height
+//      */
+//     public void update_height (Double height) {
+//         SQLiteDatabase db = sql.getWritableDatabase();
+//         ContentValues values = new ContentValues();
+//         values.put("id", global_value.getCurrent_user_id());
+//         values.put("height",height);
+//         db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+//         db.close();
+//     }
 
-    /**
-     *  change weight of current user
-     * @param weight double of weight
-     */
-    public void update_weight (Double weight) {
-        SQLiteDatabase db = sql.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("id", global_value.getCurrent_user_id());
-        values.put("weight",weight);
-        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
-        db.close();
-    }
+//     /**
+//      *  change weight of current user
+//      * @param weight double of weight
+//      */
+//     public void update_weight (Double weight) {
+//         SQLiteDatabase db = sql.getWritableDatabase();
+//         ContentValues values = new ContentValues();
+//         values.put("id", global_value.getCurrent_user_id());
+//         values.put("weight",weight);
+//         db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+//         db.close();
+//     }
 
-    /**
-     * change gender of current user
-     * @param gender string of gender
-     */
-    public void update_gender (String gender) {
-        SQLiteDatabase db = sql.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("id", global_value.getCurrent_user_id());
-        values.put("gender",gender);
-        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
-        db.close();
+//     /**
+//      * change gender of current user
+//      * @param gender string of gender
+//      */
+//     public void update_gender (String gender) {
+//         SQLiteDatabase db = sql.getWritableDatabase();
+//         ContentValues values = new ContentValues();
+//         values.put("id", global_value.getCurrent_user_id());
+//         values.put("gender",gender);
+//         db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+//         db.close();
+// =======
+    // Get most recent weight, waiting for wait system to test
+    public Double getRecentWeight() {
+//        SQLiteDatabase db = sql.getReadableDatabase();
+//        String selectQuery = "SELECT weight FROM user WHERE id = "+global_value.getCurrent_user_id()+
+//                " ORDER BY date DESC LIMIT 1";
+//        double weight = 0.0;
+//        Cursor cursor = db.rawQuery(selectQuery, null);
+//        if (cursor.moveToFirst()) {
+//            do {
+//                weight = Double .parseDouble(cursor.getString(cursor.getColumnIndex("weight")));
+//            } while (cursor.moveToNext());
+//        }
+//        cursor.close();
+//        db.close();
+//        return weight;
+        return 50.0;
     }
 
 }

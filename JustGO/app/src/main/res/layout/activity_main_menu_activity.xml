@@ -7,12 +7,13 @@
     tools:context="com.example.android.moranlee.justgo.activity.activity.main_menu_activity">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="368dp"
+        android:layout_height="551dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:background="@drawable/splash_screen2"
-        >
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
         <ImageView
         android:id="@+id/imageView3"
         android:layout_width="match_parent"
@@ -80,8 +81,9 @@
                 android:layout_marginEnd="15dp"
                 android:background="@drawable/exercise_icon_main" />
 
+            <!-- Analysis button in Main Menu -->
             <Button
-                android:id="@+id/go_nutrition_suggestion"
+                android:id="@+id/mainAnalysisBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/go_add_diet"
