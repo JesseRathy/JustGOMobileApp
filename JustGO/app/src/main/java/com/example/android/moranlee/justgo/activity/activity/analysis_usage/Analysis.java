@@ -1,19 +1,21 @@
 package com.example.android.moranlee.justgo.activity.activity.analysis_usage;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.example.android.moranlee.justgo.R;
+import com.example.android.moranlee.justgo.activity.sql_interaction.Diet_Repo;
 import com.example.android.moranlee.justgo.activity.sql_interaction.User_Repo;
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.*;
 import com.jjoe64.graphview.LegendRenderer;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 
 public class Analysis extends AppCompatActivity {
     User_Repo user;
-
+    Diet_Repo diet;
     /**
      *  initialize analysis activity
      * @param savedInstanceState
@@ -21,6 +23,7 @@ public class Analysis extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         user = new User_Repo(this);
+        diet = new Diet_Repo(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.analysis);
 
@@ -29,6 +32,7 @@ public class Analysis extends AppCompatActivity {
         String gender = user.getUserGender();
         Double height = user.getUserHeight();
         int age = user.getUserAge();
+        int calorie = diet.total_calorie_intake();
 
         // Display user information
         displayHeight(height);
@@ -37,7 +41,7 @@ public class Analysis extends AppCompatActivity {
         displayAge(age);
         int bmi = displayBMI(weight, height);
         displayHealth(bmi);
-
+        displayNutrition(calorie);
         displayGraph();
     }
 
@@ -83,10 +87,11 @@ public class Analysis extends AppCompatActivity {
             healthText.setText("Health Status: Obese");
     }
 
-    private void displayNutrition() {
+    private void displayNutrition(int calorie) {
         TextView calorieText = (TextView) findViewById(R.id.analysisCalorie);
         TextView proteinText = (TextView) findViewById(R.id.analysisProtein);
         TextView cholesterolText = (TextView) findViewById(R.id.analysisCholesterol);
+        calorieText.setText(""+calorie);
     }
 
     private void displayGraph() {

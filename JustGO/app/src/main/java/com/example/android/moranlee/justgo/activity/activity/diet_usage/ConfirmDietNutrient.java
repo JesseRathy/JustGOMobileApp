@@ -50,7 +50,8 @@ public class ConfirmDietNutrient extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirm_food_activity);
+        setContentView(R.layout.activity_confirm_diet_nutrient_activity);
+        diet_repo = new Diet_Repo(this);
         // get info from other activity
         data = getIntent().getStringExtra("data");
         id = getIntent().getIntExtra("id",0);

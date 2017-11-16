@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 
 import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.activity.user_usage.login_activity;
+import com.example.android.moranlee.justgo.activity.data.food_data;
 
 
 public class welcome_screen_activity extends Activity {
@@ -28,6 +29,7 @@ public class welcome_screen_activity extends Activity {
         downtoup = AnimationUtils.loadAnimation(this,R.anim.downtoup);
         up.setAnimation(uptodown);
         bottom.setAnimation(downtoup);
+
 
         Thread myThread = new Thread(){
             @Override

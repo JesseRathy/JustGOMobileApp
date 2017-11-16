@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.activity.main_menu_activity;
+import com.example.android.moranlee.justgo.activity.data.food_data;
 import com.example.android.moranlee.justgo.activity.global_value;
 import com.example.android.moranlee.justgo.activity.sql_interaction.User_Repo;
 
@@ -65,10 +66,6 @@ public class login_activity extends AppCompatActivity {
         for(int i=1;i<=past_user;i++){
             current_user.delete_by_id(i);
         }
-       // set global value when first time run
-        if(global_value.getCurrent_max_food_id()<25) {
-            global_value.setCurrent_max_food_id(25);
-        }
         if(global_value.getCurrent_max_user_id() <= 0){
             global_value.setCurrent_max_user_id(1);
         }
@@ -78,6 +75,7 @@ public class login_activity extends AppCompatActivity {
         if(global_value.getCurrent_max_exercise_daily_id()<=0){
             global_value.setCurrent_max_exercise_daily_id(0);
         }
+        new food_data(this);
     }
 
     /**

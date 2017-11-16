@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.android.moranlee.justgo.activity.data.food_data;
 import com.example.android.moranlee.justgo.R;
 
 public class select_food_option_activity extends AppCompatActivity {
@@ -43,7 +42,7 @@ public class select_food_option_activity extends AppCompatActivity {
      * @return
      */
     private View.OnClickListener select_from_old_food(){
-        new food_data(this);
+    //    new food_data(this);
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {

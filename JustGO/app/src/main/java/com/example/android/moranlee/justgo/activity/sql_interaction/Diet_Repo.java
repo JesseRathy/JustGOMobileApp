@@ -92,7 +92,8 @@ public class Diet_Repo {
      */
     public int total_calorie_intake(){
         SQLiteDatabase db = sql.getReadableDatabase();
-        String selectQuery =  "select food_id from diet where id = "+global_value.getCurrent_user_id();
+       // String selectQuery =  "select food_id from diet where user_id = "+global_value.getCurrent_user_id();
+        String selectQuery = "select * from diet where date = '"+current_date()+"'";
         String selectCalorieQuery = null;
         int food_id = 0;
         int calories = 0;
@@ -102,10 +103,13 @@ public class Diet_Repo {
         if (dietcursor.moveToFirst()){
             do{
                 food_id = Integer.parseInt(dietcursor.getString(dietcursor.getColumnIndex("food_id")));
-                selectCalorieQuery = "select calories from food where id = "+ food_id;
+                selectCalorieQuery = "select * from food where id = "+ food_id;
                 Cursor foodcursor = db.rawQuery(selectCalorieQuery,null);
-                calories = Integer.parseInt(foodcursor.getString(foodcursor.getColumnIndex("calories")));
-                total_calories += calories;
+                if(foodcursor.moveToFirst())
+                do{
+                    calories = Integer.parseInt(foodcursor.getString(foodcursor.getColumnIndex("calories")));
+                    total_calories += calories;
+                }while(foodcursor.moveToNext());
                 foodcursor.close();
             } while (dietcursor.moveToNext());
 
@@ -123,7 +127,7 @@ public class Diet_Repo {
         int food_id;
         String selectCalorieQuery;
         SQLiteDatabase db = sql.getReadableDatabase();
-        String selectQuery =  "select food_id from diet where date = '"+current_date()+"'";
+        String selectQuery =  "select food_id from diet where date = '"+current_date()+"' and user_id = "+global_value.getCurrent_user_id();
         ArrayList<HashMap<String, String>> food_list = new ArrayList<HashMap<String, String>>();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {

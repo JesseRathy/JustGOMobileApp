@@ -61,6 +61,7 @@ public class main_menu_activity extends AppCompatActivity {
         analysis = (Button) findViewById(R.id.mainAnalysisBtn);
         analysis.setOnClickListener(goAnalysis());
 
+     //   new food_data(this);
     }
 
     /**

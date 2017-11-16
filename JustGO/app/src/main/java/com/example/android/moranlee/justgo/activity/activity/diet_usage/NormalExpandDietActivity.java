@@ -10,7 +10,6 @@ import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.activity.food_usage.confirm_food_nutrient_activity;
 import com.example.android.moranlee.justgo.activity.adapter.NormalExpandAdapter;
 import com.example.android.moranlee.justgo.activity.adapter.OnGroupExpandedListener;
 import com.example.android.moranlee.justgo.activity.global_value;
@@ -189,14 +188,14 @@ public class NormalExpandDietActivity extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 Toast.makeText(NormalExpandDietActivity.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
-                Intent goToConfirm = new Intent(getItSelf(),confirm_food_nutrient_activity.class);
+                Intent goToConfirm = new Intent(getItSelf(),ConfirmDietNutrient.class);
                 int pos = 0;
                 for(int i=0;i<groupPosition;i++){
                     pos+=specific[i].length;
                 }
                 pos+=childPosition;
                 goToConfirm.putExtra("data",datas.get(pos));
-                goToConfirm.putExtra("id",pos);
+                goToConfirm.putExtra("id",pos+1);
                 startActivity(goToConfirm);
                 return true;
             }

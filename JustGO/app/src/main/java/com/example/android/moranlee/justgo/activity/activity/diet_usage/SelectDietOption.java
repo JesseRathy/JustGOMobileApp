@@ -31,6 +31,7 @@ public class SelectDietOption extends AppCompatActivity {
         setContentView(R.layout.activity_select_diet_option_activity);
         selectFromOldDiet = (Button)findViewById(R.id.select_from_old_food);
         selectFromOldDiet.setOnClickListener(select_from_old_food());
+//        new food_data(this);
     }
 
     /**
@@ -38,6 +39,7 @@ public class SelectDietOption extends AppCompatActivity {
      * @return
      */
     private View.OnClickListener select_from_old_food(){
+
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
