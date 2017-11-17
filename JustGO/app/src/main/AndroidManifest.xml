@@ -34,12 +34,12 @@
         <activity android:name=".activity.activity.food_usage.SearchFoodName" />
         <activity android:name=".activity.activity.analysis_usage.Analysis" />
         <activity android:name=".activity.activity.exercise_usage.NormalExpandExercise" />
-        <activity android:name=".activity.activity.diet_usage.NormalExpandDietActivity" />
+        <activity android:name=".activity.activity.diet_usage.NormalExpandDiet" />
         <activity android:name=".activity.activity.diet_usage.ConfirmDietNutrient" />
         <activity android:name=".activity.activity.exercise_usage.ConfirmExerciseData" />
         <activity android:name=".activity.activity.food_usage.NormalExpandSearch" />
-        <activity android:name=".activity.activity.diet_usage.searchDietNameActivity" />
-        <activity android:name=".activity.activity.diet_usage.NormalExpandDietSearchActivity"></activity>
+        <activity android:name=".activity.activity.diet_usage.SearchDietName" />
+        <activity android:name=".activity.activity.diet_usage.NormalExpandDietSearch"></activity>
     </application>
 
 </manifest>

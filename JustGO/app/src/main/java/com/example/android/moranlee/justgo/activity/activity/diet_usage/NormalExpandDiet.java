@@ -23,7 +23,7 @@ import java.util.LinkedList;
  * Created by yul04 on 2017/10/17.
  */
 
-public class NormalExpandDietActivity extends AppCompatActivity {
+public class NormalExpandDiet extends AppCompatActivity {
     private static final String TAG = "ExpandDietActivity";
 
     /*
@@ -102,7 +102,7 @@ public class NormalExpandDietActivity extends AppCompatActivity {
             // put data to array base on input type
             String category = current.get("category");
             if(category.equals(null)){
-                Toast.makeText(NormalExpandDietActivity.this,"no thing find in map",Toast.LENGTH_SHORT);
+                Toast.makeText(NormalExpandDiet.this,"no thing find in map",Toast.LENGTH_SHORT);
             }
             if(category.equals("1")){
                 meats.add(current.get("name"));
@@ -187,7 +187,7 @@ public class NormalExpandDietActivity extends AppCompatActivity {
         listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Toast.makeText(NormalExpandDietActivity.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
+                Toast.makeText(NormalExpandDiet.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
                 Intent goToConfirm = new Intent(getItSelf(),ConfirmDietNutrient.class);
                 int pos = 0;
                 for(int i=0;i<groupPosition;i++){

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.GlobalVariables;
 import com.example.android.moranlee.justgo.activity.activity.MainMenu;
+import com.example.android.moranlee.justgo.activity.data.ExerciseData;
 import com.example.android.moranlee.justgo.activity.data.FoodData;
 import com.example.android.moranlee.justgo.activity.sql_interaction.UserRepo;
 
@@ -79,7 +80,7 @@ public class Login extends AppCompatActivity {
             GlobalVariables.setCurrent_max_exercise_id(12);
         }
         new FoodData(this);
-        // new ExerciseData(this);
+        new ExerciseData(this);
     }
 
     /**

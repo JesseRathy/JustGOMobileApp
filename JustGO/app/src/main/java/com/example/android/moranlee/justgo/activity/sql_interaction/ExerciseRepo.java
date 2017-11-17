@@ -34,7 +34,7 @@ public class ExerciseRepo {
      */
     public ExerciseRepo(Context context){
         sql = new SQLiteInterface(context);
-        add_default_exercise();
+        //add_default_exercise();
     }
 
     /**

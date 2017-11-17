@@ -45,7 +45,7 @@ public class SelectDietOption extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unitIntent = new Intent(getItSelf(),NormalExpandDietActivity.class);
+                Intent unitIntent = new Intent(getItSelf(),NormalExpandDiet.class);
                 startActivity(unitIntent);
             }
         };
@@ -59,7 +59,7 @@ public class SelectDietOption extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unitIntent = new Intent(getItSelf(),searchDietNameActivity.class);
+                Intent unitIntent = new Intent(getItSelf(),SearchDietName.class);
                 startActivity(unitIntent);
             }
         };

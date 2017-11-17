@@ -14,7 +14,7 @@ import com.example.android.moranlee.justgo.activity.sql_interaction.FoodRepo;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class searchDietNameActivity extends AppCompatActivity {
+public class SearchDietName extends AppCompatActivity {
     /*
         input field for name
          */
@@ -55,7 +55,7 @@ public class searchDietNameActivity extends AppCompatActivity {
                     datas.add(result.get(i).toString());
                     ids.add(result.get(i).get("id"));
                 }
-                Intent go_to_confirm = new Intent(getItSelf(),NormalExpandDietSearchActivity.class);
+                Intent go_to_confirm = new Intent(getItSelf(),NormalExpandDietSearch.class);
                 go_to_confirm.putExtra("data",datas);
                 go_to_confirm.putExtra("name",names);
                 go_to_confirm.putExtra("id",ids);
