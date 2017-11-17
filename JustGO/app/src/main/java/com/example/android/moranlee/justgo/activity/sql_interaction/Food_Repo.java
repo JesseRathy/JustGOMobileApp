@@ -7,9 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.android.moranlee.justgo.activity.datatype.Food;
-import com.example.android.moranlee.justgo.activity.sql.SQLite_Interface;
 import com.example.android.moranlee.justgo.activity.global_value;
-import com.example.android.moranlee.justgo.activity.data.food_data;
+import com.example.android.moranlee.justgo.activity.sql.SQLite_Interface;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -378,12 +377,13 @@ public class Food_Repo {
      *  get specific food data by its name
      * @return food.toString() contain selected food info
      */
-    public String get_food_by_name(String input_name) {
+    public ArrayList<HashMap<String,String>> get_food_by_name(String input_name) {
         SQLiteDatabase db = sql.getReadableDatabase();
-        HashMap<String, String> food = new HashMap<String, String>();
-        Cursor cursor = db.rawQuery(generateQuery(input_name), null);
+        ArrayList<HashMap<String,String>> resultSet = new ArrayList<>();
+        Cursor cursor = db.query("food", null, "name like '%" + input_name + "%'", null, null, null, null);
         if (cursor.moveToFirst()) {
             do {
+                HashMap<String, String> food = new HashMap<String, String>();
                 food.put("id", cursor.getString(cursor.getColumnIndex("id")));
                 food.put("category",cursor.getString(cursor.getColumnIndex("category")));
                 food.put("name", cursor.getString(cursor.getColumnIndex("name")));
@@ -391,11 +391,13 @@ public class Food_Repo {
                 food.put("fat",cursor.getString(cursor.getColumnIndex("fat")));
                 food.put("calories",cursor.getString(cursor.getColumnIndex("calories")));
                 food.put("cholesterol",cursor.getString(cursor.getColumnIndex("cholesterol")));
+                 resultSet.add(food);
+
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
-        return food.toString();
+        return resultSet;
     }
 
 

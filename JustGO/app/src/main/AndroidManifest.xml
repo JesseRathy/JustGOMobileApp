@@ -9,43 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".activity.activity.welcome_screen_activity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-
-        <activity android:name=".activity.activity.login_activity">
-
-        </activity>
-        <activity android:name=".activity.activity.user_usage.login_activity"></activity>
-
+        <activity android:name=".activity.activity.user_usage.login_activity" />
         <activity android:name=".activity.activity.main_menu_activity" />
-        <activity android:name=".activity.activity.edit_profile_activity" />
-        <activity android:name=".activity.activity.change_password_activity" />
-        <activity android:name=".activity.activity.select_food_option_activity" />
-        <activity android:name=".activity.activity.select_from_food_database_activity" />
-        <activity android:name=".activity.activity.confirm_food_nutrient_activity" />
-        <activity android:name=".activity.activity.add_new_diet_activity" />
-        <activity android:name=".activity.activity.select_from_exercise_database_activity" />
-        <activity android:name=".activity.activity.select_exercise_option_activity" />
-        <activity android:name=".activity.activity.add_new_exercise_activity" />
-        <activity android:name=".activity.activity.select_body_option_activity" />
-        <activity android:name=".activity.activity.show_body_activity" />
-        <activity android:name=".activity.activity.add_new_body_status_activity" />
-        <activity android:name=".activity.activity.get_exercise_recommendation_activity" />
-        <activity android:name=".activity.activity.NormalExpandActivity" />
-        <activity android:name=".activity.activity.select_diet_option_activity" />
-        <activity android:name=".activity.activity.register_activity" />
-        <activity android:name=".activity.activity.add_new_weight" />
-        <activity android:name=".activity.activity.search_food_name_activity" />
-        <activity android:name=".activity.activity.Analysis" />
-        <activity android:name=".activity.activity.NormalExpandExerciseActivity" />
-        <activity android:name=".activity.activity.NormalExpandDietActivity" />
-        <activity android:name=".activity.activity.confirm_diet_nutrient_activity"></activity>
         <activity android:name=".activity.activity.user_usage.edit_profile_activity" />
         <activity android:name=".activity.activity.user_usage.change_password_activity" />
         <activity android:name=".activity.activity.food_usage.select_food_option_activity" />
@@ -64,7 +36,10 @@
         <activity android:name=".activity.activity.exercise_usage.NormalExpandExerciseActivity" />
         <activity android:name=".activity.activity.diet_usage.NormalExpandDietActivity" />
         <activity android:name=".activity.activity.diet_usage.ConfirmDietNutrient" />
-        <activity android:name=".activity.activity.exercise_usage.ConfirmExerciseDataActivity"></activity>
+        <activity android:name=".activity.activity.exercise_usage.ConfirmExerciseDataActivity" />
+        <activity android:name=".activity.activity.food_usage.NormalExpandSearchActivity" />
+        <activity android:name=".activity.activity.diet_usage.searchDietNameActivity" />
+        <activity android:name=".activity.activity.diet_usage.NormalExpandDietSearchActivity"></activity>
     </application>
 
 </manifest>

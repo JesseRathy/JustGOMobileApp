@@ -24,6 +24,7 @@
             android:id="@+id/object_food_name"
             android:textColor="@color/white"
             android:background="@color/colorPrimary"
+            android:maxLines="1"
             />
 
         <Button

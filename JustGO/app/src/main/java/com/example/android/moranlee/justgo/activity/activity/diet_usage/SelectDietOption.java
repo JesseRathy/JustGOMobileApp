@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.activity.food_usage.search_food_name_activity;
 
 public class SelectDietOption extends AppCompatActivity {
 
@@ -20,6 +19,8 @@ public class SelectDietOption extends AppCompatActivity {
     button go to select food activity
      */
     Button selectFromOldDiet;
+
+    Button selectByName;
 
     /**
      * initialize activity
@@ -30,8 +31,9 @@ public class SelectDietOption extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_diet_option_activity);
         selectFromOldDiet = (Button)findViewById(R.id.select_from_old_food);
+        selectByName = (Button)findViewById(R.id.select_search_food_by_name);
         selectFromOldDiet.setOnClickListener(select_from_old_food());
-//        new food_data(this);
+        selectByName.setOnClickListener(search_food_name());
     }
 
     /**
@@ -57,7 +59,7 @@ public class SelectDietOption extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unitIntent = new Intent(getItSelf(),search_food_name_activity.class);
+                Intent unitIntent = new Intent(getItSelf(),searchDietNameActivity.class);
                 startActivity(unitIntent);
             }
         };

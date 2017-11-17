@@ -11,6 +11,9 @@ import android.widget.EditText;
 import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.sql_interaction.Food_Repo;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class search_food_name_activity extends AppCompatActivity {
 
     /*
@@ -43,9 +46,17 @@ public class search_food_name_activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //get data and transfer to next activity
-                String data = food_repo.get_food_by_name(name.getText().toString());
-                Intent go_to_confirm = new Intent(getItSelf(),confirm_food_nutrient_activity.class);
-                go_to_confirm.putExtra("data",data);
+                ArrayList<HashMap<String,String>> result;
+                result = food_repo.get_food_by_name(name.getText().toString());
+                ArrayList<String> names = new ArrayList<String>();
+                ArrayList<String> datas = new ArrayList<String>();
+                for(int i=0;i<result.size();i++){
+                    names.add(result.get(i).get("name"));
+                    datas.add(result.get(i).toString());
+                }
+                Intent go_to_confirm = new Intent(getItSelf(),NormalExpandSearchActivity.class);
+                go_to_confirm.putExtra("data",datas);
+                go_to_confirm.putExtra("name",names);
                 startActivity(go_to_confirm);
             }
         });
