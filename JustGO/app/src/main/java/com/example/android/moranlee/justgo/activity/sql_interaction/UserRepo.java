@@ -6,9 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.example.android.moranlee.justgo.activity.GlobalVariables;
 import com.example.android.moranlee.justgo.activity.datatype.User;
-import com.example.android.moranlee.justgo.activity.global_value;
-import com.example.android.moranlee.justgo.activity.sql.SQLite_Interface;
+import com.example.android.moranlee.justgo.activity.sql.SQLiteInterface;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,19 +17,19 @@ import java.util.HashMap;
 
 import static android.content.ContentValues.TAG;
 
-public class User_Repo {
+public class UserRepo {
 
     /**
      *  sql interface to interact with database
      */
-    private SQLite_Interface sql;
+    private SQLiteInterface sql;
 
     /**
      *  constructor, add the admin(first user)
      * @param context context hold the database
      */
-    public User_Repo(Context context){
-        sql = new SQLite_Interface(context);
+    public UserRepo(Context context){
+        sql = new SQLiteInterface(context);
         add_admin_user();
     }
 
@@ -167,43 +167,43 @@ public class User_Repo {
     public void update_password (String password) {
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("id", global_value.getCurrent_user_id());
+        values.put("id", GlobalVariables.getG_CurrentUserId());
         values.put("password",password);
-        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(GlobalVariables.getG_CurrentUserId()) });
         db.close();
     }
 
     public void update_height (Double height) {
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("id", global_value.getCurrent_user_id());
+        values.put("id", GlobalVariables.getG_CurrentUserId());
         values.put("height",height);
-        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(GlobalVariables.getG_CurrentUserId()) });
         db.close();
     }
 
     public void update_weight (Double weight) {
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("id", global_value.getCurrent_user_id());
+        values.put("id", GlobalVariables.getG_CurrentUserId());
         values.put("weight",weight);
-        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(GlobalVariables.getG_CurrentUserId()) });
         db.close();
     }
 
     public void update_gender (String gender) {
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("id", global_value.getCurrent_user_id());
+        values.put("id", GlobalVariables.getG_CurrentUserId());
         values.put("gender",gender);
-        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+        db.update("user", values, "id" + "= ?", new String[] { String.valueOf(GlobalVariables.getG_CurrentUserId()) });
         db.close();
     }
 
     // Get current user gender
     public String getUserGender() {
         SQLiteDatabase db = sql.getReadableDatabase();
-        String selectQuery =  "select gender from user where id = "+global_value.getCurrent_user_id();
+        String selectQuery =  "select gender from user where id = "+ GlobalVariables.getG_CurrentUserId();
         String gender = "";
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
@@ -219,7 +219,7 @@ public class User_Repo {
     // Get current user height
     public double getUserHeight() {
         SQLiteDatabase db = sql.getReadableDatabase();
-        String selectQuery =  "select height from user where id = "+global_value.getCurrent_user_id();
+        String selectQuery =  "select height from user where id = "+ GlobalVariables.getG_CurrentUserId();
         double height = 0.0;
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
@@ -235,7 +235,7 @@ public class User_Repo {
     // Get current user age
     public int getUserAge(){
         SQLiteDatabase db = sql.getReadableDatabase();
-        String selectQuery =  "select birthday from user where id = "+global_value.getCurrent_user_id();
+        String selectQuery =  "select birthday from user where id = "+ GlobalVariables.getG_CurrentUserId();
         String birthday = "";
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
@@ -272,9 +272,9 @@ public class User_Repo {
 //     public void update_password (String password) {
 //         SQLiteDatabase db = sql.getWritableDatabase();
 //         ContentValues values = new ContentValues();
-//         values.put("id", global_value.getCurrent_user_id());
+//         values.put("id", GlobalVariables.getG_CurrentUserId());
 //         values.put("password",password);
-//         db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+//         db.update("user", values, "id" + "= ?", new String[] { String.valueOf(GlobalVariables.getG_CurrentUserId()) });
 //         db.close();
 //     }
 
@@ -285,9 +285,9 @@ public class User_Repo {
 //     public void update_height (Double height) {
 //         SQLiteDatabase db = sql.getWritableDatabase();
 //         ContentValues values = new ContentValues();
-//         values.put("id", global_value.getCurrent_user_id());
+//         values.put("id", GlobalVariables.getG_CurrentUserId());
 //         values.put("height",height);
-//         db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+//         db.update("user", values, "id" + "= ?", new String[] { String.valueOf(GlobalVariables.getG_CurrentUserId()) });
 //         db.close();
 //     }
 
@@ -298,9 +298,9 @@ public class User_Repo {
 //     public void update_weight (Double weight) {
 //         SQLiteDatabase db = sql.getWritableDatabase();
 //         ContentValues values = new ContentValues();
-//         values.put("id", global_value.getCurrent_user_id());
+//         values.put("id", GlobalVariables.getG_CurrentUserId());
 //         values.put("weight",weight);
-//         db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+//         db.update("user", values, "id" + "= ?", new String[] { String.valueOf(GlobalVariables.getG_CurrentUserId()) });
 //         db.close();
 //     }
 
@@ -311,15 +311,15 @@ public class User_Repo {
 //     public void update_gender (String gender) {
 //         SQLiteDatabase db = sql.getWritableDatabase();
 //         ContentValues values = new ContentValues();
-//         values.put("id", global_value.getCurrent_user_id());
+//         values.put("id", GlobalVariables.getG_CurrentUserId());
 //         values.put("gender",gender);
-//         db.update("user", values, "id" + "= ?", new String[] { String.valueOf(global_value.getCurrent_user_id()) });
+//         db.update("user", values, "id" + "= ?", new String[] { String.valueOf(GlobalVariables.getG_CurrentUserId()) });
 //         db.close();
 // =======
     // Get most recent weight, waiting for wait system to test
     public Double getRecentWeight() {
 //        SQLiteDatabase db = sql.getReadableDatabase();
-//        String selectQuery = "SELECT weight FROM user WHERE id = "+global_value.getCurrent_user_id()+
+//        String selectQuery = "SELECT weight FROM user WHERE id = "+GlobalVariables.getG_CurrentUserId()+
 //                " ORDER BY date DESC LIMIT 1";
 //        double weight = 0.0;
 //        Cursor cursor = db.rawQuery(selectQuery, null);

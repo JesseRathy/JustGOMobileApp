@@ -12,10 +12,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.activity.main_menu_activity;
+import com.example.android.moranlee.justgo.activity.GlobalVariables;
+import com.example.android.moranlee.justgo.activity.activity.MainMenu;
 import com.example.android.moranlee.justgo.activity.datatype.User;
-import com.example.android.moranlee.justgo.activity.global_value;
-import com.example.android.moranlee.justgo.activity.sql_interaction.User_Repo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.UserRepo;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ import java.util.ArrayList;
  * Created by yugu on 2017-10-10.
  */
 
-public class register_activity extends AppCompatActivity {
+public class Register extends AppCompatActivity {
 
     /*
     input field for name
@@ -63,7 +63,7 @@ public class register_activity extends AppCompatActivity {
     /*
     sqlite interface
      */
-    User_Repo user_repo;
+    UserRepo user_repo;
 
     /**
      * initialize activity
@@ -93,8 +93,8 @@ public class register_activity extends AppCompatActivity {
             public void onClick(View v) {
                 // create user
                 user = new User();
-                user.setId(global_value.getCurrent_max_user_id());
-                global_value.setCurrent_max_user_id(global_value.getCurrent_max_user_id()+1);
+                user.setId(GlobalVariables.getG_CurrentMaxUserId());
+                GlobalVariables.setG_CurrentMaxUserId(GlobalVariables.getG_CurrentMaxUserId()+1);
                 // getvalue from field
                 user.setName(name.getText().toString());
                 user.setHeight(Double.parseDouble(height.getText().toString()));
@@ -128,10 +128,10 @@ public class register_activity extends AppCompatActivity {
                 String Year = String.valueOf(year);
                 user.setBirthday(Year+Month+Day);
                 // insert to database
-                user_repo = new User_Repo(get_self());
+                user_repo = new UserRepo(get_self());
                 ArrayList some = user_repo.get_user_list();
                 user_repo.insert(user);
-                Intent unit_intent = new Intent(get_self(),main_menu_activity.class);
+                Intent unit_intent = new Intent(get_self(),MainMenu.class);
                 startActivity(unit_intent);
             }
         };
@@ -142,7 +142,7 @@ public class register_activity extends AppCompatActivity {
      * @return self because other function need
      */
     private Context get_self(){
-        return register_activity.this;
+        return Register.this;
     }
 
 }

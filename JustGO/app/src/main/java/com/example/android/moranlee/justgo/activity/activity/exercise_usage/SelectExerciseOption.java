@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.android.moranlee.justgo.R;
-public class SelectExerciseOptionActivity extends AppCompatActivity {
+public class SelectExerciseOption extends AppCompatActivity {
 
     Button selectFromDatabase;
     Button addNewExercise;
@@ -32,7 +32,7 @@ public class SelectExerciseOptionActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unitIntent = new Intent(getItSelf(),NormalExpandExerciseActivity.class);
+                Intent unitIntent = new Intent(getItSelf(),NormalExpandExercise.class);
                 startActivity(unitIntent);
             }
         };

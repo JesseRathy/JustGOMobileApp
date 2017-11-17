@@ -10,13 +10,13 @@ import android.widget.Button;
 import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.activity.analysis_usage.Analysis;
 import com.example.android.moranlee.justgo.activity.activity.diet_usage.SelectDietOption;
-import com.example.android.moranlee.justgo.activity.activity.exercise_usage.SelectExerciseOptionActivity;
-import com.example.android.moranlee.justgo.activity.activity.food_usage.select_food_option_activity;
-import com.example.android.moranlee.justgo.activity.activity.recommandition_usage.get_recommendation_activity;
-import com.example.android.moranlee.justgo.activity.activity.user_usage.edit_profile_activity;
+import com.example.android.moranlee.justgo.activity.activity.exercise_usage.SelectExerciseOption;
+import com.example.android.moranlee.justgo.activity.activity.food_usage.SelectFoodOption;
+import com.example.android.moranlee.justgo.activity.activity.recommandition_usage.GetRecommendation;
+import com.example.android.moranlee.justgo.activity.activity.user_usage.EditProfile;
 import com.example.android.moranlee.justgo.activity.activity.weight_usage.past_and_new_weight_activity;
 
-public class main_menu_activity extends AppCompatActivity {
+public class MainMenu extends AppCompatActivity {
 
     /*
     buttons to switch activity
@@ -61,7 +61,7 @@ public class main_menu_activity extends AppCompatActivity {
         analysis = (Button) findViewById(R.id.mainAnalysisBtn);
         analysis.setOnClickListener(goAnalysis());
 
-     //   new food_data(this);
+     //   new FoodData(this);
     }
 
     /**
@@ -86,7 +86,7 @@ public class main_menu_activity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),select_food_option_activity.class);
+                Intent unit_intent = new Intent(getItSelf(),SelectFoodOption.class);
                 startActivity(unit_intent);
             }
         };
@@ -100,7 +100,7 @@ public class main_menu_activity extends AppCompatActivity {
        return new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent unit_intent = new Intent(getItSelf(),edit_profile_activity.class);
+               Intent unit_intent = new Intent(getItSelf(),EditProfile.class);
                startActivity(unit_intent);
            }
        };
@@ -114,7 +114,7 @@ public class main_menu_activity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),SelectExerciseOptionActivity.class);
+                Intent unit_intent = new Intent(getItSelf(),SelectExerciseOption.class);
                 startActivity(unit_intent);
             }
         };
@@ -142,7 +142,7 @@ public class main_menu_activity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),get_recommendation_activity.class);
+                Intent unit_intent = new Intent(getItSelf(),GetRecommendation.class);
                 startActivity(unit_intent);
             }
         };

@@ -25,7 +25,7 @@
         app:srcCompat="@drawable/justgo_icon2" />
 
 
-    tools:context="com.example.android.moranlee.justgo.activity.activity.food_usage.select_food_option_activity">
+    tools:context="com.example.android.moranlee.justgo.activity.activity.food_usage.SelectFoodOption">
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="1000dp"

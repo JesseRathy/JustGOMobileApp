@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by yul04 on 2017/9/23.
  */
 
-public class SQLite_Interface extends SQLiteOpenHelper {
+public class SQLiteInterface extends SQLiteOpenHelper {
 
     /**
      *  database version require to initialize database
@@ -24,7 +24,7 @@ public class SQLite_Interface extends SQLiteOpenHelper {
      *  constructor
      * @param context context hold the databse
      */
-    public SQLite_Interface (Context context){
+    public SQLiteInterface(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -77,7 +77,7 @@ public class SQLite_Interface extends SQLiteOpenHelper {
         dropping[1] = "drop table if exists user;";
         dropping[2] = "drop table if exists weight;";
         dropping[3] = "drop table if exists diet;";
-        dropping[4] = "drop table if exists Exercise_daily;";
+        dropping[4] = "drop table if exists ExerciseDaily;";
         dropping[5] = "drop table if exists exercise;";
         return dropping;
     }

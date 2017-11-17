@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.sql_interaction.Food_Repo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.FoodRepo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,7 +28,7 @@ public class searchDietNameActivity extends AppCompatActivity {
     /*
     sqlite interface
      */
-    Food_Repo food_repo;
+    FoodRepo food_repo;
 
     /**
      *  initialize addnew food activity
@@ -40,7 +40,7 @@ public class searchDietNameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_diet_name);
         name = (EditText)findViewById(R.id.object_diet_name);
         submit = (Button) findViewById(R.id.submit_to_search_diet_name);
-        food_repo = new Food_Repo(this);
+        food_repo = new FoodRepo(this);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -3,7 +3,7 @@ package com.example.android.moranlee.justgo.activity.sql_interaction;
 import android.content.Context;
 
 import com.example.android.moranlee.justgo.activity.datatype.Weight;
-import com.example.android.moranlee.justgo.activity.sql.SQLite_Interface;
+import com.example.android.moranlee.justgo.activity.sql.SQLiteInterface;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,11 +12,11 @@ import java.util.HashMap;
  * Created by yul04 on 2017/10/13.
  */
 
-public class Weight_Repo {
-    private SQLite_Interface sql;
+public class WeightRepo {
+    private SQLiteInterface sql;
 
-    public Weight_Repo(Context context){
-        sql = new SQLite_Interface(context);
+    public WeightRepo(Context context){
+        sql = new SQLiteInterface(context);
     }
 
     public int insert(Weight weight){

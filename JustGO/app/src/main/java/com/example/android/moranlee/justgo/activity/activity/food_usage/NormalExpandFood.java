@@ -15,8 +15,8 @@ import android.widget.Toast;
 import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.adapter.NormalExpandAdapter;
 import com.example.android.moranlee.justgo.activity.adapter.OnGroupExpandedListener;
-import com.example.android.moranlee.justgo.activity.global_value;
-import com.example.android.moranlee.justgo.activity.sql_interaction.Food_Repo;
+import com.example.android.moranlee.justgo.activity.GlobalVariables;
+import com.example.android.moranlee.justgo.activity.sql_interaction.FoodRepo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,14 +25,14 @@ import java.util.LinkedList;
 /**
  * Normal ExpandableListView, expand one child only
  */
-public class NormalExpandFoodActivity extends AppCompatActivity {
+public class NormalExpandFood extends AppCompatActivity {
 
-    private static final String TAG = "NormalExpandFoodActivity";
+    private static final String TAG = "NormalExpandFood";
 
     /*
     SQLite interface
      */
-    Food_Repo getFoods;
+    FoodRepo getFoods;
 
     /*
     LinkList to store data from database, array to store data for expand view usage
@@ -86,7 +86,7 @@ public class NormalExpandFoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expand);
         // initialize sql interface
-        getFoods = new Food_Repo(this);
+        getFoods = new FoodRepo(this);
         // get food item
         ArrayList defaults = getFoods.get_default_food_list();
         // initialize list
@@ -104,8 +104,9 @@ public class NormalExpandFoodActivity extends AppCompatActivity {
             System.out.println(current.toString());
             // put data to array base on input type
             String category = current.get("category");
+            String user = current.get("user_id");
             if(category.equals(null)){
-                Toast.makeText(NormalExpandFoodActivity.this,"no thing find in map",Toast.LENGTH_SHORT);
+                Toast.makeText(NormalExpandFood.this,"no thing find in map",Toast.LENGTH_SHORT);
             }
             if(category.equals("1")){
                 meats.add(current.get("name"));
@@ -125,7 +126,7 @@ public class NormalExpandFoodActivity extends AppCompatActivity {
             if(category.equals("6")){
                 fats.add(current.get("name"));
             }
-            if(category.equals(Integer.toString(global_value.getCurrent_user_id()))){
+            if(category.equals("7") && user.equals(Integer.toString(GlobalVariables.getG_CurrentUserId()))) {
                 users.add(current.get("name"));
             }
             datas.add(current.toString())
@@ -189,8 +190,8 @@ public class NormalExpandFoodActivity extends AppCompatActivity {
         listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Toast.makeText(NormalExpandFoodActivity.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
-                Intent go_to_confirm = new Intent(getItSelf(),confirm_food_nutrient_activity.class);
+                Toast.makeText(NormalExpandFood.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
+                Intent go_to_confirm = new Intent(getItSelf(),ConfirmFoodNutrient.class);
                 int pos = 0;
                 for(int i=0;i<groupPosition;i++){
                     pos+=specific[i].length;

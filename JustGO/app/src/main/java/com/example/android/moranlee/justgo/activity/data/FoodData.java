@@ -2,18 +2,18 @@ package com.example.android.moranlee.justgo.activity.data;
 
 import android.content.Context;
 
-import com.example.android.moranlee.justgo.activity.sql_interaction.Food_Repo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.FoodRepo;
 
 /**
  * Created by yugu on 2017-11-08.
  */
 
-public class food_data {
+public class FoodData {
 
-    Food_Repo food;
+    FoodRepo food;
 
-    public food_data(Context context){
-        food = new Food_Repo(context);
+    public FoodData(Context context){
+        food = new FoodRepo(context);
         add_food_data_meat();
         add_food_data_fruit();
         add_food_data_vegetalbe();

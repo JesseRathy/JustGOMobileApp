@@ -4,7 +4,7 @@ package com.example.android.moranlee.justgo.activity.datatype;
  * Created by yul04 on 2017/9/23.
  */
 
-public class Exercise_daily {
+public class ExerciseDaily {
     /*
     fields of a exercise daily type data
      */

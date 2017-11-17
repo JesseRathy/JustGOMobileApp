@@ -5,16 +5,16 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import com.example.android.moranlee.justgo.activity.global_value;
+import com.example.android.moranlee.justgo.activity.GlobalVariables;
 import com.example.android.moranlee.justgo.activity.datatype.Exercise;
-import com.example.android.moranlee.justgo.activity.sql.SQLite_Interface;
+import com.example.android.moranlee.justgo.activity.sql.SQLiteInterface;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import static android.content.ContentValues.TAG;
 
 
-public class Exercise_Repo {
+public class ExerciseRepo {
     /**
     default exercise type name string []
      */
@@ -26,14 +26,14 @@ public class Exercise_Repo {
     /**
      *  sql interface to interact with database
      */
-    private SQLite_Interface sql;
+    private SQLiteInterface sql;
 
     /**
      *  constructor, add default exercise type
      * @param context context hold the database
      */
-    public Exercise_Repo(Context context){
-        sql = new SQLite_Interface(context);
+    public ExerciseRepo(Context context){
+        sql = new SQLiteInterface(context);
         add_default_exercise();
     }
 
@@ -99,7 +99,7 @@ public class Exercise_Repo {
         new_exercise.setName(name);
         new_exercise.setCategory(category);
         new_exercise.setEnergy_consumption(energy);
-        new_exercise.setId(global_value.getAndSetCurrent_max_exercise_id());
+        new_exercise.setId(GlobalVariables.getAndSetCurrent_max_exercise_id());
         this.insert(new_exercise);
     }
 

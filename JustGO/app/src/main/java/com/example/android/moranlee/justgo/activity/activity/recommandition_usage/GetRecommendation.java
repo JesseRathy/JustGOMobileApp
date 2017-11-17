@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.example.android.moranlee.justgo.R;
 
-public class get_recommendation_activity extends AppCompatActivity {
+public class GetRecommendation extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

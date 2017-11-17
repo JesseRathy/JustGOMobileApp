@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import com.example.android.moranlee.justgo.R;
 
-public class select_food_option_activity extends AppCompatActivity {
+public class SelectFoodOption extends AppCompatActivity {
 
     /*
     option to select food
@@ -42,11 +42,11 @@ public class select_food_option_activity extends AppCompatActivity {
      * @return
      */
     private View.OnClickListener select_from_old_food(){
-    //    new food_data(this);
+    //    new FoodData(this);
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),NormalExpandFoodActivity.class);
+                Intent unit_intent = new Intent(getItSelf(),NormalExpandFood.class);
                 startActivity(unit_intent);
             }
         };
@@ -60,7 +60,7 @@ public class select_food_option_activity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),AddNewFoodActivity.class);
+                Intent unit_intent = new Intent(getItSelf(),AddNewFood.class);
                 startActivity(unit_intent);
             }
         };
@@ -74,7 +74,7 @@ public class select_food_option_activity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),search_food_name_activity.class);
+                Intent unit_intent = new Intent(getItSelf(),SearchFoodName.class);
                 startActivity(unit_intent);
             }
         };

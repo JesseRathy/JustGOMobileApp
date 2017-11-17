@@ -6,10 +6,10 @@ import android.app.Application;
  * Created by yul04 on 2017/10/10.
  */
 
-public class global_value extends Application {
-    static int current_user_id;
-    static int current_max_food_id;
-    static int current_max_user_id;
+public class GlobalVariables extends Application {
+    static int g_CurrentUserId;
+    static int g_CurrentMaxFoodId;
+    static int g_CurrentMaxUserId;
     static int current_max_diet_id;
     static int current_max_exercise_daily_id;
     static int current_max_exercise_id;
@@ -17,30 +17,30 @@ public class global_value extends Application {
     /*
         @Return the id of user currently using the system
      */
-    public static int getCurrent_user_id() {
-        return current_user_id;
+    public static int getG_CurrentUserId() {
+        return g_CurrentUserId;
     }
 
     /*
         Set current user id
      */
-    public static void setCurrent_user_id(int current_user_id) {
-        global_value.current_user_id = current_user_id;
+    public static void setG_CurrentUserId(int g_CurrentUserId) {
+        GlobalVariables.g_CurrentUserId = g_CurrentUserId;
     }
 
     /*
         @Return the maximum id avialable in food database,
         count the number of items available for select in food table
      */
-    public static int getCurrent_max_food_id() {
-        return current_max_food_id;
+    public static int getG_CurrentMaxFoodId() {
+        return g_CurrentMaxFoodId;
     }
 
     /*
         Set the maximum food id
      */
-    public static void setCurrent_max_food_id(int current_max_food_id) {
-        global_value.current_max_food_id = current_max_food_id;
+    public static void setG_CurrentMaxFoodId(int g_CurrentMaxFoodId) {
+        GlobalVariables.g_CurrentMaxFoodId = g_CurrentMaxFoodId;
     }
 
     /*
@@ -48,8 +48,8 @@ public class global_value extends Application {
        count the number of items available for select in food table
     */
     public static int get_and_set_Current_max_food_id() {
-        current_max_food_id+=1;
-        return current_max_food_id;
+        g_CurrentMaxFoodId +=1;
+        return g_CurrentMaxFoodId;
     }
 
 
@@ -57,15 +57,15 @@ public class global_value extends Application {
             @Return the maximum id avialable in user database,
             count the number of users available in user table
          */
-    public static int getCurrent_max_user_id() {
-        return current_max_user_id;
+    public static int getG_CurrentMaxUserId() {
+        return g_CurrentMaxUserId;
     }
 
     /*
         Set the maximum the maximum user id
      */
-    public static void setCurrent_max_user_id(int current_max_user_id) {
-        global_value.current_max_user_id = current_max_user_id;
+    public static void setG_CurrentMaxUserId(int g_CurrentMaxUserId) {
+        GlobalVariables.g_CurrentMaxUserId = g_CurrentMaxUserId;
     }
 
     /*
@@ -80,7 +80,7 @@ public class global_value extends Application {
         Set maximum diet id available in diet table
      */
     public static void setCurrent_max_diet_id(int current_max_diet_id) {
-        global_value.current_max_diet_id = current_max_diet_id;
+        GlobalVariables.current_max_diet_id = current_max_diet_id;
     }
 
     /*
@@ -95,7 +95,7 @@ public class global_value extends Application {
         Set maximum exercise_daily id available in exercise_daily table
      */
     public static void setCurrent_max_exercise_daily_id(int current_max_exercise_daily_id) {
-        global_value.current_max_exercise_daily_id = current_max_exercise_daily_id;
+        GlobalVariables.current_max_exercise_daily_id = current_max_exercise_daily_id;
     }
 
     /*
@@ -110,7 +110,7 @@ public class global_value extends Application {
        Set maximum exercise id available in exercise_daily table
     */
     public static void setCurrent_max_exercise_id(int current_max_exercise_id) {
-        global_value.current_max_exercise_id = current_max_exercise_id;
+        GlobalVariables.current_max_exercise_id = current_max_exercise_id;
     }
 
     public static int  getAndSetCurrent_max_exercise_id(){

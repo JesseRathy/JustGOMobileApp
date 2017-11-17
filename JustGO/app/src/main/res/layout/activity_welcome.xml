@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.moranlee.justgo.activity.activity.welcome_screen_activity"
+    tools:context="com.example.android.moranlee.justgo.activity.activity.WelcomeScreen"
     android:orientation="vertical"
     android:background="@drawable/splash_background">
     <LinearLayout

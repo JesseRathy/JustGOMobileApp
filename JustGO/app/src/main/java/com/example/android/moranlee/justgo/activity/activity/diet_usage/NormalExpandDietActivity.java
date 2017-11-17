@@ -10,10 +10,10 @@ import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import com.example.android.moranlee.justgo.R;
+import com.example.android.moranlee.justgo.activity.GlobalVariables;
 import com.example.android.moranlee.justgo.activity.adapter.NormalExpandAdapter;
 import com.example.android.moranlee.justgo.activity.adapter.OnGroupExpandedListener;
-import com.example.android.moranlee.justgo.activity.global_value;
-import com.example.android.moranlee.justgo.activity.sql_interaction.Food_Repo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.FoodRepo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +29,7 @@ public class NormalExpandDietActivity extends AppCompatActivity {
     /*
     SQLite interface
      */
-    Food_Repo getFoods;
+    FoodRepo getFoods;
 
     /*
    LinkList to store data from database, array to store data for expand view usage
@@ -83,7 +83,7 @@ public class NormalExpandDietActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expand);
         // initialize sql interface
-        getFoods = new Food_Repo(this);
+        getFoods = new FoodRepo(this);
         // get food item
         ArrayList defaults = getFoods.get_default_food_list();
         // initialize list
@@ -122,7 +122,7 @@ public class NormalExpandDietActivity extends AppCompatActivity {
             if(category.equals("6")){
                 fats.add(current.get("name"));
             }
-            if(category.equals(Integer.toString(global_value.getCurrent_user_id()))){
+            if(category.equals(Integer.toString(GlobalVariables.getG_CurrentUserId()))){
                 users.add(current.get("name"));
             }
             datas.add(current.toString())

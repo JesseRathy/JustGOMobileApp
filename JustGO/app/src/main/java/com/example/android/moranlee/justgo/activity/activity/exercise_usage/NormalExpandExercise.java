@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.adapter.NormalExpandAdapter;
 import com.example.android.moranlee.justgo.activity.adapter.OnGroupExpandedListener;
-import com.example.android.moranlee.justgo.activity.sql_interaction.Exercise_Repo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.ExerciseRepo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,13 +24,13 @@ import java.util.LinkedList;
 /**
  * Normal ExpandableListView, expand one child only
  */
-public class NormalExpandExerciseActivity extends AppCompatActivity {
-    private static final String TAG = "NormalExpandFoodActivity";
+public class NormalExpandExercise extends AppCompatActivity {
+    private static final String TAG = "NormalExpandFood";
 
     /*
    SQLite interface
     */
-    Exercise_Repo exerciseRepo;
+    ExerciseRepo exerciseRepo;
 
     /*
    LinkList to store data from database, array to store data for expand view usage
@@ -72,7 +72,7 @@ public class NormalExpandExerciseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expand);
         // initialize sql interface
-        exerciseRepo = new Exercise_Repo(this);
+        exerciseRepo = new ExerciseRepo(this);
         // get exercise item
         ArrayList defaults = exerciseRepo.get_default_exercise_list();
         // initialize list
@@ -88,7 +88,7 @@ public class NormalExpandExerciseActivity extends AppCompatActivity {
             // put data to array base on input type
             String category = current.get("category");
             if(category.equals(null)){
-                Toast.makeText(NormalExpandExerciseActivity.this,"no thing find in map",Toast.LENGTH_SHORT);
+                Toast.makeText(NormalExpandExercise.this,"no thing find in map",Toast.LENGTH_SHORT);
             }
             if(category.equals("0")){
                 endurances.add(current.get("name"));
@@ -151,8 +151,8 @@ public class NormalExpandExerciseActivity extends AppCompatActivity {
         listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Toast.makeText(NormalExpandExerciseActivity.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
-                Intent goToConfirm = new Intent(getItSelf(),ConfirmExerciseDataActivity.class);
+                Toast.makeText(NormalExpandExercise.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
+                Intent goToConfirm = new Intent(getItSelf(),ConfirmExerciseData.class);
                 int pos = 0;
                 for(int i=0;i<groupPosition;i++){
                     pos+=specific[i].length;

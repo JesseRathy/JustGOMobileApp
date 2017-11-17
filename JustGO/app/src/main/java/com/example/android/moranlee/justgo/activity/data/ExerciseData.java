@@ -1,18 +1,18 @@
 package com.example.android.moranlee.justgo.activity.data;
 
-import com.example.android.moranlee.justgo.activity.sql_interaction.Exercise_Repo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.ExerciseRepo;
 import android.content.Context;
 
 /**
  * Created by yugu on 2017-11-10.
  */
 
-public class exercise_data {
+public class ExerciseData {
 
-    private Exercise_Repo exercises;
+    private ExerciseRepo exercises;
 
-    public exercise_data(Context context) {
-        exercises = new Exercise_Repo(context);
+    public ExerciseData(Context context) {
+        exercises = new ExerciseRepo(context);
         addExercise();
     }
 

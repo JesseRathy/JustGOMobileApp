@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,15 +11,15 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.activity.main_menu_activity;
-import com.example.android.moranlee.justgo.activity.sql_interaction.User_Repo;
+import com.example.android.moranlee.justgo.activity.activity.MainMenu;
+import com.example.android.moranlee.justgo.activity.sql_interaction.UserRepo;
 
 /**
  * Created by Jesse on 10/12/2017.
  */
 
 
-public class edit_profile_activity extends AppCompatActivity {
+public class EditProfile extends AppCompatActivity {
 
     /*
     input field to get new user height
@@ -60,7 +59,7 @@ public class edit_profile_activity extends AppCompatActivity {
     /*
     SQLite interface
      */
-    User_Repo user_repo;
+    UserRepo user_repo;
 
     /**
      * initialize activity
@@ -76,7 +75,7 @@ public class edit_profile_activity extends AppCompatActivity {
         submit = (Button)findViewById(R.id.button4);
         passwordBtn = (Button) findViewById(R.id.profile_change_password);
         // initialize interface
-        user_repo = new User_Repo(this);
+        user_repo = new UserRepo(this);
         passwordBtn.setOnClickListener(changePassword());
         submit.setOnClickListener(submit_change());
         }
@@ -90,7 +89,7 @@ public class edit_profile_activity extends AppCompatActivity {
        return new View.OnClickListener() {
           @Override
             public void onClick(View v) {
-               Intent unit_intent = new Intent(getItSelf(), change_password_activity.class);
+               Intent unit_intent = new Intent(getItSelf(), ChangePassword.class);
 
                startActivity(unit_intent);
           }
@@ -130,7 +129,7 @@ public class edit_profile_activity extends AppCompatActivity {
                 RadioButton genders = (RadioButton)findViewById( gender.getCheckedRadioButtonId());
                 user_repo.update_gender(genders.getText().toString());
                 // go back to main menu
-                Intent unit_intent = new Intent(getItSelf(), main_menu_activity.class);
+                Intent unit_intent = new Intent(getItSelf(), MainMenu.class);
                 startActivity(unit_intent);
             }
         };

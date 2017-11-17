@@ -6,9 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.example.android.moranlee.justgo.activity.GlobalVariables;
 import com.example.android.moranlee.justgo.activity.datatype.Food;
-import com.example.android.moranlee.justgo.activity.global_value;
-import com.example.android.moranlee.justgo.activity.sql.SQLite_Interface;
+import com.example.android.moranlee.justgo.activity.sql.SQLiteInterface;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +20,7 @@ import static android.content.ContentValues.TAG;
  * Created by yul04 on 2017/9/23.
  */
 
-public class Food_Repo {
+public class FoodRepo {
     /**
      default exercise type name string []
      */
@@ -33,20 +33,20 @@ public class Food_Repo {
     private LinkedList<String> fat_type;
     private LinkedList<String> grain_type;
 
-//    private food_data dataCollection;
+//    private FoodData dataCollection;
 
     /**
      *  sql interface to interact with database
      */
-    private SQLite_Interface sql;
+    private SQLiteInterface sql;
 
     /**
      *  constructor, add default exercise type
      * @param context context hold the database
      */
-    public Food_Repo(Context context){
-        //dataCollection = new food_data(context);
-        sql = new SQLite_Interface(context);
+    public FoodRepo(Context context){
+        //dataCollection = new FoodData(context);
+        sql = new SQLiteInterface(context);
         //add_default_food();
     }
 
@@ -227,7 +227,7 @@ public class Food_Repo {
         new_meat.setName(name);
         new_meat.setCategory(1);
         new_meat.setUser_id(0);
-        new_meat.setId(global_value.get_and_set_Current_max_food_id());
+        new_meat.setId(GlobalVariables.get_and_set_Current_max_food_id());
         new_meat.setCalories(calories);
         new_meat.setCholesterol(cholesterol);
         new_meat.setProtein(protein);
@@ -240,7 +240,7 @@ public class Food_Repo {
         new_meat.setName(name);
         new_meat.setCategory(3);
         new_meat.setUser_id(0);
-        new_meat.setId(global_value.get_and_set_Current_max_food_id());
+        new_meat.setId(GlobalVariables.get_and_set_Current_max_food_id());
         new_meat.setCalories(calories);
         new_meat.setCholesterol(cholesterol);
         new_meat.setProtein(protein);
@@ -253,7 +253,7 @@ public class Food_Repo {
         new_meat.setName(name);
         new_meat.setCategory(2);
         new_meat.setUser_id(0);
-        new_meat.setId(global_value.get_and_set_Current_max_food_id());
+        new_meat.setId(GlobalVariables.get_and_set_Current_max_food_id());
         new_meat.setCalories(calories);
         new_meat.setCholesterol(cholesterol);
         new_meat.setProtein(protein);
@@ -267,7 +267,7 @@ public class Food_Repo {
         new_meat.setName(name);
         new_meat.setCategory(4);
         new_meat.setUser_id(0);
-        new_meat.setId(global_value.get_and_set_Current_max_food_id());
+        new_meat.setId(GlobalVariables.get_and_set_Current_max_food_id());
         new_meat.setCalories(calories);
         new_meat.setCholesterol(cholesterol);
         new_meat.setProtein(protein);
@@ -280,7 +280,7 @@ public class Food_Repo {
         new_meat.setName(name);
         new_meat.setCategory(6);
         new_meat.setUser_id(0);
-        new_meat.setId(global_value.get_and_set_Current_max_food_id());
+        new_meat.setId(GlobalVariables.get_and_set_Current_max_food_id());
         new_meat.setCalories(calories);
         new_meat.setCholesterol(cholesterol);
         new_meat.setProtein(protein);
@@ -293,7 +293,7 @@ public class Food_Repo {
         new_meat.setName(name);
         new_meat.setCategory(5);
         new_meat.setUser_id(0);
-        new_meat.setId(global_value.get_and_set_Current_max_food_id());
+        new_meat.setId(GlobalVariables.get_and_set_Current_max_food_id());
         new_meat.setCalories(calories);
         new_meat.setCholesterol(cholesterol);
         new_meat.setProtein(protein);
@@ -365,6 +365,7 @@ public class Food_Repo {
                 food.put("fat",cursor.getString(cursor.getColumnIndex("protein")));
                 food.put("calories",cursor.getString(cursor.getColumnIndex("calories")));
                 food.put("cholesterol",cursor.getString(cursor.getColumnIndex("cholesterol")));
+                food.put("user_id",cursor.getString(cursor.getColumnIndex("user_id")));
                 food_list.add(food);
             } while (cursor.moveToNext());
         }

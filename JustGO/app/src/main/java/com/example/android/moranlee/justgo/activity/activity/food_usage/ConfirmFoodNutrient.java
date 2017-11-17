@@ -1,4 +1,4 @@
-package com.example.android.moranlee.justgo.activity.activity.exercise_usage;
+package com.example.android.moranlee.justgo.activity.activity.food_usage;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,20 +9,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.activity.main_menu_activity;
-import com.example.android.moranlee.justgo.activity.sql_interaction.Exercise_daily_Repo;
+import com.example.android.moranlee.justgo.activity.activity.MainMenu;
 
-public class ConfirmExerciseDataActivity extends AppCompatActivity {
+public class ConfirmFoodNutrient extends AppCompatActivity {
 
     /*
     store info transfer from other activity
      */
     String data;
-
-    /*
-    store info transfer from another activity
-    */
-    int exerciseId;
 
     /*
     print info transfer from other activity
@@ -39,11 +33,6 @@ public class ConfirmExerciseDataActivity extends AppCompatActivity {
     */
     Button reselect;
 
-    /*
-    sql interface
-     */
-    Exercise_daily_Repo exerciseDailyRepo;
-
     /**
      * initialize activity
      * @param savedInstanceState
@@ -54,8 +43,6 @@ public class ConfirmExerciseDataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_confirm_food_activity);
         // get info from other activity
         data = getIntent().getStringExtra("data");
-        exerciseId = getIntent().getIntExtra("id",0);
-        exerciseDailyRepo = new Exercise_daily_Repo(this);
         // connect field to interface
         result = (TextView)findViewById(R.id.result_from_database);
         result.setText(data);
@@ -65,17 +52,16 @@ public class ConfirmExerciseDataActivity extends AppCompatActivity {
         reselect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goBack = new Intent(getItSelf(),SelectExerciseOptionActivity.class);
-                startActivity(goBack);
+                Intent go_back = new Intent(getItSelf(),SelectFoodOption.class);
+                startActivity(go_back);
             }
         });
         // if user want to select another
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exerciseDailyRepo.insert(exerciseDailyRepo.create_exercise(0,1.0));
-                Intent unitIntent = new Intent(getItSelf(), main_menu_activity.class);
-                startActivity(unitIntent);
+                Intent unit_intent = new Intent(getItSelf(), MainMenu.class);
+                startActivity(unit_intent);
             }
         });
     }
@@ -83,4 +69,5 @@ public class ConfirmExerciseDataActivity extends AppCompatActivity {
     private Activity getItSelf(){
         return this;
     }
+
 }

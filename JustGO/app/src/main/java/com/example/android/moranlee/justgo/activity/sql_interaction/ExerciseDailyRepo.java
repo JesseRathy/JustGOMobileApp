@@ -5,9 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.android.moranlee.justgo.activity.datatype.Exercise_daily;
-import com.example.android.moranlee.justgo.activity.global_value;
-import com.example.android.moranlee.justgo.activity.sql.SQLite_Interface;
+import com.example.android.moranlee.justgo.activity.GlobalVariables;
+import com.example.android.moranlee.justgo.activity.datatype.ExerciseDaily;
+import com.example.android.moranlee.justgo.activity.sql.SQLiteInterface;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,12 +16,12 @@ import java.util.Date;
  * Created by yul04 on 2017/10/13.
  */
 
-public class Exercise_daily_Repo {
+public class ExerciseDailyRepo {
 
-    private SQLite_Interface sql;
+    private SQLiteInterface sql;
 
-    public Exercise_daily_Repo(Context context){
-        sql = new SQLite_Interface(context);
+    public ExerciseDailyRepo(Context context){
+        sql = new SQLiteInterface(context);
     }
 
     /**
@@ -29,7 +29,7 @@ public class Exercise_daily_Repo {
      * @param exercise_daily diet data contain all information about diet
      * @return diet_id represent if the data is insert successfully
      */
-    public int insert(Exercise_daily exercise_daily) {
+    public int insert(ExerciseDaily exercise_daily) {
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("id",exercise_daily.getId());
@@ -53,11 +53,11 @@ public class Exercise_daily_Repo {
     }
 
 
-    public Exercise_daily create_exercise(int exercise_id, double duration){
-        Exercise_daily exercise_daily = new Exercise_daily();
-        exercise_daily.setId(global_value.getCurrent_max_exercise_daily_id());
-        global_value.setCurrent_max_exercise_daily_id(global_value.getCurrent_max_exercise_daily_id()+1);
-        exercise_daily.setUser_id(global_value.getCurrent_user_id());
+    public ExerciseDaily create_exercise(int exercise_id, double duration){
+        ExerciseDaily exercise_daily = new ExerciseDaily();
+        exercise_daily.setId(GlobalVariables.getCurrent_max_exercise_daily_id());
+        GlobalVariables.setCurrent_max_exercise_daily_id(GlobalVariables.getCurrent_max_exercise_daily_id()+1);
+        exercise_daily.setUser_id(GlobalVariables.getG_CurrentUserId());
         exercise_daily.setDate(current_date());
         exercise_daily.setExercise_id(exercise_id);
         exercise_daily.setDuration(duration);
@@ -71,7 +71,7 @@ public class Exercise_daily_Repo {
      */
     public double total_calorie_consumption(){
         SQLiteDatabase db = sql.getReadableDatabase();
-        String selectQuery =  "select exercise_id from exercise_daily where id = "+ global_value.getCurrent_user_id();
+        String selectQuery =  "select exercise_id from exercise_daily where id = "+ GlobalVariables.getG_CurrentUserId();
         String selectCalorieQuery = null;
         int exercise_id = 0;
         double calories = 0;

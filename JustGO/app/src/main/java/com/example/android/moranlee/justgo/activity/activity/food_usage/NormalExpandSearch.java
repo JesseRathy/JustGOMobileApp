@@ -14,9 +14,9 @@ import com.example.android.moranlee.justgo.activity.adapter.OnGroupExpandedListe
 
 import java.util.ArrayList;
 
-public class NormalExpandSearchActivity extends AppCompatActivity {
+public class NormalExpandSearch extends AppCompatActivity {
 
-    private static final String TAG = "NormalExpandSearchActivity";
+    private static final String TAG = "NormalExpandSearch";
 
     /*
     array lists to store search result from other activity
@@ -81,8 +81,8 @@ public class NormalExpandSearchActivity extends AppCompatActivity {
         listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Toast.makeText(NormalExpandSearchActivity.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
-                Intent go_to_confirm = new Intent(getItSelf(),confirm_food_nutrient_activity.class);
+                Toast.makeText(NormalExpandSearch.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
+                Intent go_to_confirm = new Intent(getItSelf(),ConfirmFoodNutrient.class);
                 go_to_confirm.putExtra("data",dataList.get(childPosition));
                 startActivity(go_to_confirm);
                 return true;

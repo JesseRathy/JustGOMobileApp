@@ -5,17 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.android.moranlee.justgo.activity.data.food_data;
+
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.sql_interaction.Food_Repo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.FoodRepo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class select_from_food_database_activity extends AppCompatActivity {
+public class SelectFromFoodDatabase extends AppCompatActivity {
 
-    Food_Repo getFoods;
+    FoodRepo getFoods;
 
     TextView show_from_database;
 
@@ -51,8 +51,8 @@ public class select_from_food_database_activity extends AppCompatActivity {
         setContentView(R.layout.activity_select_from_food_database_activity);
         show_from_database = (TextView)findViewById(R.id.show_from_database);
         show_from_database.setMovementMethod(new ScrollingMovementMethod());
-        //getFoods = new Food_Repo(this);
-        //new food_data(this);
+        //getFoods = new FoodRepo(this);
+        //new FoodData(this);
         //String text = "";
         //show_from_database.setText(text);
     }
@@ -71,7 +71,7 @@ public class select_from_food_database_activity extends AppCompatActivity {
             //Log.d(TAG, "onCreate() returned: " + current.toString());
             String category = current.get("category");
             if(category.equals(null)){
-                Toast.makeText(select_from_food_database_activity.this,"no thing find in map",Toast.LENGTH_SHORT);
+                Toast.makeText(SelectFromFoodDatabase.this,"no thing find in map",Toast.LENGTH_SHORT);
             }
             //Toast.makeText(this,category, Toast.LENGTH_SHORT).show();
             if(category.equals("1")){

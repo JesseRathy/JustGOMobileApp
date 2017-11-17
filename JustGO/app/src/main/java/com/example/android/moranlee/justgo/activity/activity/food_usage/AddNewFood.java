@@ -1,5 +1,7 @@
 package com.example.android.moranlee.justgo.activity.activity.food_usage;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -7,11 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.android.moranlee.justgo.R;
+import com.example.android.moranlee.justgo.activity.activity.MainMenu;
 import com.example.android.moranlee.justgo.activity.datatype.Food;
-import com.example.android.moranlee.justgo.activity.sql_interaction.Food_Repo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.FoodRepo;
 import com.example.android.moranlee.justgo.activity.*;
 
-public class AddNewFoodActivity extends AppCompatActivity {
+public class AddNewFood extends AppCompatActivity {
 
     /*
     input field for name
@@ -51,7 +54,7 @@ public class AddNewFoodActivity extends AppCompatActivity {
     /*
     connection to the SQLite
      */
-    Food_Repo foodRepo;
+    FoodRepo foodRepo;
 
     /**
      *  initialize addnew food activity
@@ -68,15 +71,15 @@ public class AddNewFoodActivity extends AppCompatActivity {
         cholesterol = (EditText)findViewById(R.id.new_food_cholesterol);
         fat = (EditText) findViewById(R.id.new_food_fat);
         submit = (Button) findViewById(R.id.submit_change);
-        foodRepo = new Food_Repo(this);
+        foodRepo = new FoodRepo(this);
         // onclick listener for button to submit change
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 newFood = new Food();
-                newFood.setId(global_value.getCurrent_max_food_id()+1);
-                global_value.setCurrent_max_food_id(global_value.getCurrent_max_food_id()+1);
-                newFood.setUser_id(global_value.getCurrent_user_id());
+                newFood.setId(GlobalVariables.getG_CurrentMaxFoodId()+1);
+                GlobalVariables.setG_CurrentMaxFoodId(GlobalVariables.getG_CurrentMaxFoodId()+1);
+                newFood.setUser_id(GlobalVariables.getG_CurrentUserId());
                 newFood.setCalories(Double.parseDouble(calorie.getText().toString()));
                 newFood.setCategory(7);
                 newFood.setCholesterol(Double.parseDouble(cholesterol.getText().toString()));
@@ -84,7 +87,20 @@ public class AddNewFoodActivity extends AppCompatActivity {
                 newFood.setFat(Double.parseDouble(fat.getText().toString()));
                 newFood.setName(name.getText().toString());
                 foodRepo.insert(newFood);
+                Intent goBack = new Intent(getItSelf(),MainMenu.class);
+                startActivity(goBack);
             }
         });
     }
+
+
+    /**
+     *
+     * @return self for some function need
+     */
+    private Activity getItSelf(){
+        return this;
+    }
+
+
 }

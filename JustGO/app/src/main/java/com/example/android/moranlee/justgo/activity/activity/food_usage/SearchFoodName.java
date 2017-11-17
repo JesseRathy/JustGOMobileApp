@@ -9,12 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.sql_interaction.Food_Repo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.FoodRepo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class search_food_name_activity extends AppCompatActivity {
+public class SearchFoodName extends AppCompatActivity {
 
     /*
     input field for name
@@ -29,7 +29,7 @@ public class search_food_name_activity extends AppCompatActivity {
     /*
     sqlite interface
      */
-    Food_Repo food_repo;
+    FoodRepo food_repo;
 
     /**
      *  initialize addnew food activity
@@ -41,7 +41,7 @@ public class search_food_name_activity extends AppCompatActivity {
         setContentView(R.layout.activity_search_food_name_activity);
         name = (EditText)findViewById(R.id.object_food_name);
         submit = (Button) findViewById(R.id.submit_to_search_food_name);
-        food_repo = new Food_Repo(this);
+        food_repo = new FoodRepo(this);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +54,7 @@ public class search_food_name_activity extends AppCompatActivity {
                     names.add(result.get(i).get("name"));
                     datas.add(result.get(i).toString());
                 }
-                Intent go_to_confirm = new Intent(getItSelf(),NormalExpandSearchActivity.class);
+                Intent go_to_confirm = new Intent(getItSelf(),NormalExpandSearch.class);
                 go_to_confirm.putExtra("data",datas);
                 go_to_confirm.putExtra("name",names);
                 startActivity(go_to_confirm);

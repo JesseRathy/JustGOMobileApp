@@ -5,25 +5,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.sql_interaction.Diet_Repo;
-import com.example.android.moranlee.justgo.activity.sql_interaction.User_Repo;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.LegendRenderer;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
+import com.example.android.moranlee.justgo.activity.sql_interaction.DietRepo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.UserRepo;
 
 
 public class Analysis extends AppCompatActivity {
-    User_Repo user;
-    Diet_Repo diet;
+    UserRepo user;
+    DietRepo diet;
     /**
      *  initialize analysis activity
      * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        user = new User_Repo(this);
-        diet = new Diet_Repo(this);
+        user = new UserRepo(this);
+        diet = new DietRepo(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.analysis);
 

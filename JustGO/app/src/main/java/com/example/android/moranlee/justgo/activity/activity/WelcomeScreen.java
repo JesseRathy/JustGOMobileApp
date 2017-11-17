@@ -12,11 +12,10 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.activity.user_usage.login_activity;
-import com.example.android.moranlee.justgo.activity.data.food_data;
+import com.example.android.moranlee.justgo.activity.activity.user_usage.Login;
 
 
-public class welcome_screen_activity extends Activity {
+public class WelcomeScreen extends Activity {
     LinearLayout up,bottom;
     Animation uptodown,downtoup;
     @Override
@@ -36,7 +35,7 @@ public class welcome_screen_activity extends Activity {
             public void run(){
                 try {
                     sleep(4000);
-                    Intent intent = new Intent(getApplicationContext(), login_activity.class);
+                    Intent intent = new Intent(getApplicationContext(), Login.class);
                     startActivity(intent);
                     finish();
                 }catch (InterruptedException e){

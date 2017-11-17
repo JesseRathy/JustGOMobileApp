@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.sql_interaction.User_Repo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.UserRepo;
 
 
 /*
@@ -19,11 +19,11 @@ import com.example.android.moranlee.justgo.activity.sql_interaction.User_Repo;
 */
 
 
-public class change_password_activity extends AppCompatActivity {
+public class ChangePassword extends AppCompatActivity {
     EditText passwordField;
     EditText confirmPasswordField;
     Button confirmChange;
-    User_Repo userInfo;
+    UserRepo userInfo;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +31,7 @@ public class change_password_activity extends AppCompatActivity {
         passwordField = (EditText) findViewById(R.id.password_field);
         confirmPasswordField = (EditText)findViewById(R.id.password_confirm_field);
         confirmChange = (Button)findViewById(R.id.password_submit);
-        userInfo = new User_Repo(this);
+        userInfo = new UserRepo(this);
         confirmChange.setOnClickListener(SubmitPasswordChange());
 
     }
@@ -49,13 +49,13 @@ public class change_password_activity extends AppCompatActivity {
 
                 if (passwordString.equals(confirmPasswordString) && (!passwordString.equals("                ") ) && (!passwordString.isEmpty()) ) {
                     userInfo.update_password(passwordString);
-                    Toast successToast = Toast.makeText(change_password_activity.this,"Password Changed!",Toast.LENGTH_SHORT);
+                    Toast successToast = Toast.makeText(ChangePassword.this,"Password Changed!",Toast.LENGTH_SHORT);
                     successToast.show();
-                    Intent unit_intent = new Intent(getItSelf(), edit_profile_activity.class);
+                    Intent unit_intent = new Intent(getItSelf(), EditProfile.class);
                     startActivity(unit_intent);
 
                 } else {
-                   Toast errorToast = Toast.makeText(change_password_activity.this,"Passwords do not match or are invalid!",Toast.LENGTH_SHORT);
+                   Toast errorToast = Toast.makeText(ChangePassword.this,"Passwords do not match or are invalid!",Toast.LENGTH_SHORT);
                     errorToast.show();
                 }
                 //passwordString = "                ";

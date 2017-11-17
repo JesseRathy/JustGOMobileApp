@@ -10,15 +10,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.activity.main_menu_activity;
-import com.example.android.moranlee.justgo.activity.data.food_data;
-import com.example.android.moranlee.justgo.activity.global_value;
-import com.example.android.moranlee.justgo.activity.sql_interaction.User_Repo;
+import com.example.android.moranlee.justgo.activity.GlobalVariables;
+import com.example.android.moranlee.justgo.activity.activity.MainMenu;
+import com.example.android.moranlee.justgo.activity.data.FoodData;
+import com.example.android.moranlee.justgo.activity.sql_interaction.UserRepo;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class login_activity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     /*
     button to check user input and allow login
@@ -43,7 +43,7 @@ public class login_activity extends AppCompatActivity {
     /*
     SQLite interface
      */
-    User_Repo current_user;
+    UserRepo current_user;
 
     /**
      * initialize activity
@@ -60,26 +60,26 @@ public class login_activity extends AppCompatActivity {
         login.setOnClickListener(login());
         register = (Button)findViewById(R.id.signup);
         register.setOnClickListener(signup());
-        current_user = new User_Repo(this);
+        current_user = new UserRepo(this);
         // delete past user each time reinstall, not need when finish
         int past_user = current_user.get_user_num();
         for(int i=1;i<=past_user;i++){
             current_user.delete_by_id(i);
         }
-        if(global_value.getCurrent_max_user_id() <= 0){
-            global_value.setCurrent_max_user_id(1);
+        if(GlobalVariables.getG_CurrentMaxUserId() <= 0){
+            GlobalVariables.setG_CurrentMaxUserId(1);
         }
-        if(global_value.getCurrent_max_diet_id()<= 0){
-            global_value.setCurrent_max_diet_id(0);
+        if(GlobalVariables.getCurrent_max_diet_id()<= 0){
+            GlobalVariables.setCurrent_max_diet_id(0);
         }
-        if(global_value.getCurrent_max_exercise_daily_id()<=0){
-            global_value.setCurrent_max_exercise_daily_id(0);
+        if(GlobalVariables.getCurrent_max_exercise_daily_id()<=0){
+            GlobalVariables.setCurrent_max_exercise_daily_id(0);
         }
-        if(global_value.getCurrent_max_exercise_id()<=0){
-            global_value.setCurrent_max_exercise_id(12);
+        if(GlobalVariables.getCurrent_max_exercise_id()<=0){
+            GlobalVariables.setCurrent_max_exercise_id(12);
         }
-        new food_data(this);
-        // new exercise_data(this);
+        new FoodData(this);
+        // new ExerciseData(this);
     }
 
     /**
@@ -113,8 +113,8 @@ public class login_activity extends AppCompatActivity {
                     int id = current_user.check_user_login(username,password);
                     // go to main activity
                     if (id >= 0) {
-                        global_value.setCurrent_user_id(id);
-                        Intent unit_intent = new Intent(getItSelf(), main_menu_activity.class);
+                        GlobalVariables.setG_CurrentUserId(id);
+                        Intent unit_intent = new Intent(getItSelf(), MainMenu.class);
                         startActivity(unit_intent);
                     }
                     else{
@@ -135,7 +135,7 @@ public class login_activity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),register_activity.class);
+                Intent unit_intent = new Intent(getItSelf(),Register.class);
                 startActivity(unit_intent);
             }
         };

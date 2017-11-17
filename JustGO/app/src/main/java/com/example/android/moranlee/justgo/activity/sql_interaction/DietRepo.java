@@ -5,9 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.android.moranlee.justgo.activity.GlobalVariables;
 import com.example.android.moranlee.justgo.activity.datatype.Diet;
-import com.example.android.moranlee.justgo.activity.global_value;
-import com.example.android.moranlee.justgo.activity.sql.SQLite_Interface;
+import com.example.android.moranlee.justgo.activity.sql.SQLiteInterface;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,19 +19,19 @@ import java.util.HashMap;
  * Created by yul04 on 2017/10/10.
  */
 
-public class Diet_Repo {
+public class DietRepo {
 
     /**
      *  sql interface to interact with database
      */
-    private SQLite_Interface sql;
+    private SQLiteInterface sql;
 
     /**
      *  constructor
      * @param context context hold the database
      */
-    public Diet_Repo(Context context){
-        sql = new SQLite_Interface(context);
+    public DietRepo(Context context){
+        sql = new SQLiteInterface(context);
     }
 
     /**
@@ -65,9 +65,9 @@ public class Diet_Repo {
 
     public Diet create_diet(int food_id){
         Diet diet = new Diet();
-        diet.setId(global_value.getCurrent_max_diet_id());
-        global_value.setCurrent_max_diet_id(global_value.getCurrent_max_diet_id()+1);
-        diet.setUser_id(global_value.getCurrent_user_id());
+        diet.setId(GlobalVariables.getCurrent_max_diet_id());
+        GlobalVariables.setCurrent_max_diet_id(GlobalVariables.getCurrent_max_diet_id()+1);
+        diet.setUser_id(GlobalVariables.getG_CurrentUserId());
         diet.setDate(current_date());
         diet.setFood_id(food_id);
         Calendar cal = Calendar.getInstance();
@@ -192,7 +192,7 @@ public class Diet_Repo {
         int food_id;
         String selectCalorieQuery;
         SQLiteDatabase db = sql.getReadableDatabase();
-        String selectQuery =  "select food_id from diet where date = '"+current_date()+"' and user_id = "+global_value.getCurrent_user_id();
+        String selectQuery =  "select food_id from diet where date = '"+current_date()+"' and user_id = "+ GlobalVariables.getG_CurrentUserId();
         ArrayList<HashMap<String, String>> food_list = new ArrayList<HashMap<String, String>>();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
