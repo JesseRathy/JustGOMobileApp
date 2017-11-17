@@ -90,14 +90,13 @@ public class Diet_Repo {
      *
      * @return total_calories
      */
-    public int total_calorie_intake(){
+    public int totalCalorieIntake(){
         SQLiteDatabase db = sql.getReadableDatabase();
-       // String selectQuery =  "select food_id from diet where user_id = "+global_value.getCurrent_user_id();
         String selectQuery = "select * from diet where date = '"+current_date()+"'";
         String selectCalorieQuery = null;
         int food_id = 0;
         int calories = 0;
-        int total_calories = 0;
+        int totalCalories = 0;
 
         Cursor dietcursor = db.rawQuery(selectQuery, null);
         if (dietcursor.moveToFirst()){
@@ -108,7 +107,7 @@ public class Diet_Repo {
                 if(foodcursor.moveToFirst())
                 do{
                     calories = Integer.parseInt(foodcursor.getString(foodcursor.getColumnIndex("calories")));
-                    total_calories += calories;
+                    totalCalories += calories;
                 }while(foodcursor.moveToNext());
                 foodcursor.close();
             } while (dietcursor.moveToNext());
@@ -116,7 +115,73 @@ public class Diet_Repo {
         }
         dietcursor.close();
         db.close();
-        return total_calories;
+        return totalCalories;
+    }
+
+    /**
+     * Calculate total calories consumed by a given user
+     *
+     * @return total_calories
+     */
+    public int totalProteinIntake(){
+        SQLiteDatabase db = sql.getReadableDatabase();
+        String selectQuery = "select * from diet where date = '"+current_date()+"'";
+        String selectCalorieQuery = null;
+        int food_id = 0;
+        int protein = 0;
+        int totalProtein = 0;
+
+        Cursor dietCursor = db.rawQuery(selectQuery, null);
+        if (dietCursor.moveToFirst()){
+            do{
+                food_id = Integer.parseInt(dietCursor.getString(dietCursor.getColumnIndex("food_id")));
+                selectCalorieQuery = "select * from food where id = "+ food_id;
+                Cursor foodCursor = db.rawQuery(selectCalorieQuery,null);
+                if(foodCursor.moveToFirst())
+                    do{
+                        protein = (int)Double.parseDouble(foodCursor.getString(foodCursor.getColumnIndex("protein")));
+                        totalProtein += protein;
+                    }while(foodCursor.moveToNext());
+                foodCursor.close();
+            } while (dietCursor.moveToNext());
+
+        }
+        dietCursor.close();
+        db.close();
+        return totalProtein;
+    }
+
+    /**
+     * Calculate total calories consumed by a given user
+     *
+     * @return total_calories
+     */
+    public int totalCholesterolIntake(){
+        SQLiteDatabase db = sql.getReadableDatabase();
+        String selectQuery = "select * from diet where date = '"+current_date()+"'";
+        String selectCalorieQuery = null;
+        int food_id = 0;
+        int cholesterol = 0;
+        int totalCholesterol = 0;
+
+        Cursor dietCursor = db.rawQuery(selectQuery, null);
+        if (dietCursor.moveToFirst()){
+            do{
+                food_id = Integer.parseInt(dietCursor.getString(dietCursor.getColumnIndex("food_id")));
+                selectCalorieQuery = "select * from food where id = "+ food_id;
+                Cursor foodCursor = db.rawQuery(selectCalorieQuery,null);
+                if(foodCursor.moveToFirst())
+                    do{
+                        cholesterol = (int)Double.parseDouble(foodCursor.getString(foodCursor.getColumnIndex("cholesterol")));
+                        totalCholesterol += cholesterol;
+                    }while(foodCursor.moveToNext());
+                foodCursor.close();
+            } while (dietCursor.moveToNext());
+
+        }
+        dietCursor.close();
+        db.close();
+        return totalCholesterol;
     }
 
     /**
@@ -134,15 +199,15 @@ public class Diet_Repo {
             do {
                 food_id = Integer.parseInt(cursor.getString(cursor.getColumnIndex("food_id")));
                 selectCalorieQuery = "select * from food where id = "+ food_id;
-                Cursor foodcursor = db.rawQuery(selectCalorieQuery,null);
+                Cursor foodCursor = db.rawQuery(selectCalorieQuery,null);
                 HashMap<String, String> food = new HashMap<String, String>();
-                food.put("id", foodcursor.getString(foodcursor.getColumnIndex("id")));
-                food.put("category",foodcursor.getString(foodcursor.getColumnIndex("category")));
-                food.put("name", foodcursor.getString(foodcursor.getColumnIndex("name")));
-                food.put("protein",foodcursor.getString(foodcursor.getColumnIndex("protein")));
-                food.put("fat",foodcursor.getString(foodcursor.getColumnIndex("protein")));
-                food.put("calories",foodcursor.getString(foodcursor.getColumnIndex("calories")));
-                food.put("cholesterol",foodcursor.getString(foodcursor.getColumnIndex("cholesterol")));
+                food.put("id", foodCursor.getString(foodCursor.getColumnIndex("id")));
+                food.put("category",foodCursor.getString(foodCursor.getColumnIndex("category")));
+                food.put("name", foodCursor.getString(foodCursor.getColumnIndex("name")));
+                food.put("protein",foodCursor.getString(foodCursor.getColumnIndex("protein")));
+                food.put("fat",foodCursor.getString(foodCursor.getColumnIndex("protein")));
+                food.put("calories",foodCursor.getString(foodCursor.getColumnIndex("calories")));
+                food.put("cholesterol",foodCursor.getString(foodCursor.getColumnIndex("cholesterol")));
                 food_list.add(food);
             } while (cursor.moveToNext());
         }

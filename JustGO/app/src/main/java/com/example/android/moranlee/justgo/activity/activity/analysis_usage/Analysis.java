@@ -32,7 +32,9 @@ public class Analysis extends AppCompatActivity {
         String gender = user.getUserGender();
         Double height = user.getUserHeight();
         int age = user.getUserAge();
-        int calorie = diet.total_calorie_intake();
+        int calorie = diet.totalCalorieIntake();
+        int protein = diet.totalProteinIntake();
+        int cholesterol = diet.totalCholesterolIntake();
 
         // Display user information
         displayHeight(height);
@@ -41,7 +43,7 @@ public class Analysis extends AppCompatActivity {
         displayAge(age);
         int bmi = displayBMI(weight, height);
         displayHealth(bmi);
-        displayNutrition(calorie);
+        displayNutrition(calorie, protein, cholesterol);
     }
 
     private void displayHeight(Double height) {
@@ -86,11 +88,13 @@ public class Analysis extends AppCompatActivity {
             healthText.setText("Health Status: Obese");
     }
 
-    private void displayNutrition(int calorie) {
+    private void displayNutrition(int calorie, int protein, int cholesterol) {
         TextView calorieText = (TextView) findViewById(R.id.analysisCalorie);
         TextView proteinText = (TextView) findViewById(R.id.analysisProtein);
         TextView cholesterolText = (TextView) findViewById(R.id.analysisCholesterol);
         calorieText.setText("Calorie Intake: "+calorie);
+        proteinText.setText("Protein Intake: "+protein);
+        cholesterolText.setText("Cholesterol Intake: "+cholesterol);
     }
 
 }
