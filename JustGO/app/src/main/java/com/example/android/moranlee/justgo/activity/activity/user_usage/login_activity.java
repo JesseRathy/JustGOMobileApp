@@ -75,7 +75,11 @@ public class login_activity extends AppCompatActivity {
         if(global_value.getCurrent_max_exercise_daily_id()<=0){
             global_value.setCurrent_max_exercise_daily_id(0);
         }
+        if(global_value.getCurrent_max_exercise_id()<=0){
+            global_value.setCurrent_max_exercise_id(12);
+        }
         new food_data(this);
+        // new exercise_data(this);
     }
 
     /**

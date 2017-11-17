@@ -99,7 +99,7 @@ public class Exercise_Repo {
         new_exercise.setName(name);
         new_exercise.setCategory(category);
         new_exercise.setEnergy_consumption(energy);
-        new_exercise.setId(global_value.get_and_set_Current_max_food_id());
+        new_exercise.setId(global_value.getAndSetCurrent_max_exercise_id());
         this.insert(new_exercise);
     }
 
