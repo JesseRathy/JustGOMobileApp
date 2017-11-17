@@ -362,9 +362,10 @@ public class Food_Repo {
                 food.put("category",cursor.getString(cursor.getColumnIndex("category")));
                 food.put("name", cursor.getString(cursor.getColumnIndex("name")));
                 food.put("protein",cursor.getString(cursor.getColumnIndex("protein")));
-                food.put("fat",cursor.getString(cursor.getColumnIndex("protein")));
+                food.put("fat",cursor.getString(cursor.getColumnIndex("fat")));
                 food.put("calories",cursor.getString(cursor.getColumnIndex("calories")));
                 food.put("cholesterol",cursor.getString(cursor.getColumnIndex("cholesterol")));
+                food.put("user_id",cursor.getString(cursor.getColumnIndex("user_id")));
                 food_list.add(food);
             } while (cursor.moveToNext());
         }
@@ -398,6 +399,48 @@ public class Food_Repo {
         cursor.close();
         db.close();
         return resultSet;
+    }
+
+    public ArrayList<Food> getRecommendedFoods(double calorie, int category){
+        SQLiteDatabase db = sql.getReadableDatabase();
+        String category_id;
+        if(category == 2 ){
+            category_id = "category = 2 or category = 3";
+        }
+        else{
+            category_id = "category = "+category;
+        }
+        String selectQuery =  "select * from food where calorie < "+Double.toString(calorie)+" and "+category_id;
+        ArrayList<Food> food_list = new ArrayList<>();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                /*
+                HashMap<String, String> food = new HashMap<String, String>();
+                food.put("id", cursor.getString(cursor.getColumnIndex("id")));
+                food.put("category",cursor.getString(cursor.getColumnIndex("category")));
+                food.put("name", cursor.getString(cursor.getColumnIndex("name")));
+                food.put("protein",cursor.getString(cursor.getColumnIndex("protein")));
+                food.put("fat",cursor.getString(cursor.getColumnIndex("protein")));
+                food.put("calories",cursor.getString(cursor.getColumnIndex("calories")));
+                food.put("cholesterol",cursor.getString(cursor.getColumnIndex("cholesterol")));
+                food.put("user_id",cursor.getString(cursor.getColumnIndex("user_id")));
+                */
+                Food food = new Food();
+                food.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
+                food.setName(cursor.getString(cursor.getColumnIndex("name")));
+                food.setProtein(Double.parseDouble(cursor.getString(cursor.getColumnIndex("protein"))));
+                food.setFat(Double.parseDouble(cursor.getString(cursor.getColumnIndex("fat"))));
+                food.setCholesterol(Double.parseDouble(cursor.getString(cursor.getColumnIndex("cholesterol"))));
+                food.setCalories(Double.parseDouble(cursor.getString(cursor.getColumnIndex("calories"))));
+                food.setUser_id(Integer.parseInt(cursor.getString(cursor.getColumnIndex("user_id"))));
+                food.setCategory(Integer.parseInt(cursor.getString(cursor.getColumnIndex("category"))));
+                food_list.add(food);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return food_list;
     }
 
 

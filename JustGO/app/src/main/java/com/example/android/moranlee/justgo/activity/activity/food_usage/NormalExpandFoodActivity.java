@@ -104,6 +104,7 @@ public class NormalExpandFoodActivity extends AppCompatActivity {
             System.out.println(current.toString());
             // put data to array base on input type
             String category = current.get("category");
+            String user = current.get("user_id");
             if(category.equals(null)){
                 Toast.makeText(NormalExpandFoodActivity.this,"no thing find in map",Toast.LENGTH_SHORT);
             }
@@ -125,7 +126,7 @@ public class NormalExpandFoodActivity extends AppCompatActivity {
             if(category.equals("6")){
                 fats.add(current.get("name"));
             }
-            if(category.equals(Integer.toString(global_value.getCurrent_user_id()))){
+            if(category.equals("7") && user.equals(Integer.toString(global_value.getCurrent_user_id()))){
                 users.add(current.get("name"));
             }
             datas.add(current.toString())
