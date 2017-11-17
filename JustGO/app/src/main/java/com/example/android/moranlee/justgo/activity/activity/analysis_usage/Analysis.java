@@ -42,7 +42,6 @@ public class Analysis extends AppCompatActivity {
         int bmi = displayBMI(weight, height);
         displayHealth(bmi);
         displayNutrition(calorie);
-        displayGraph();
     }
 
     private void displayHeight(Double height) {
@@ -91,21 +90,7 @@ public class Analysis extends AppCompatActivity {
         TextView calorieText = (TextView) findViewById(R.id.analysisCalorie);
         TextView proteinText = (TextView) findViewById(R.id.analysisProtein);
         TextView cholesterolText = (TextView) findViewById(R.id.analysisCholesterol);
-        calorieText.setText(""+calorie);
+        calorieText.setText("Calorie Intake: "+calorie);
     }
 
-    private void displayGraph() {
-        GraphView graph = (GraphView) findViewById(R.id.graph);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
-        });
-        graph.addSeries(series);
-        series.setTitle("user's weight change");
-        graph.getLegendRenderer().setVisible(true);
-        graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
-    }
 }
