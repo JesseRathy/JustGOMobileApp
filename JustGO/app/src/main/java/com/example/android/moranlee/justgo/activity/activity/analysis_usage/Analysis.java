@@ -5,25 +5,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.sql_interaction.Diet_Repo;
-import com.example.android.moranlee.justgo.activity.sql_interaction.User_Repo;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.LegendRenderer;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
+import com.example.android.moranlee.justgo.activity.sql_interaction.DietRepo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.UserRepo;
 
 
 public class Analysis extends AppCompatActivity {
-    User_Repo user;
-    Diet_Repo diet;
+    UserRepo user;
+    DietRepo diet;
     /**
      *  initialize analysis activity
      * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        user = new User_Repo(this);
-        diet = new Diet_Repo(this);
+        user = new UserRepo(this);
+        diet = new DietRepo(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.analysis);
 
@@ -32,7 +28,9 @@ public class Analysis extends AppCompatActivity {
         String gender = user.getUserGender();
         Double height = user.getUserHeight();
         int age = user.getUserAge();
-        int calorie = diet.total_calorie_intake();
+        int calorie = diet.totalCalorieIntake();
+        int protein = diet.totalProteinIntake();
+        int cholesterol = diet.totalCholesterolIntake();
 
         // Display user information
         displayHeight(height);
@@ -41,8 +39,7 @@ public class Analysis extends AppCompatActivity {
         displayAge(age);
         int bmi = displayBMI(weight, height);
         displayHealth(bmi);
-        displayNutrition(calorie);
-        displayGraph();
+        displayNutrition(calorie, protein, cholesterol);
     }
 
     private void displayHeight(Double height) {
@@ -87,25 +84,13 @@ public class Analysis extends AppCompatActivity {
             healthText.setText("Health Status: Obese");
     }
 
-    private void displayNutrition(int calorie) {
+    private void displayNutrition(int calorie, int protein, int cholesterol) {
         TextView calorieText = (TextView) findViewById(R.id.analysisCalorie);
         TextView proteinText = (TextView) findViewById(R.id.analysisProtein);
         TextView cholesterolText = (TextView) findViewById(R.id.analysisCholesterol);
-        calorieText.setText(""+calorie);
+        calorieText.setText("Calorie Intake: "+calorie);
+        proteinText.setText("Protein Intake: "+protein);
+        cholesterolText.setText("Cholesterol Intake: "+cholesterol);
     }
 
-    private void displayGraph() {
-        GraphView graph = (GraphView) findViewById(R.id.graph);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
-        });
-        graph.addSeries(series);
-        series.setTitle("user's weight change");
-        graph.getLegendRenderer().setVisible(true);
-        graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
-    }
 }

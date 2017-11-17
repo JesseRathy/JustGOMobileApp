@@ -39,7 +39,9 @@
                 android:layout_height="wrap_content"
                 android:hint="amount"
                 android:textColorHint="@color/white"
-                android:background="@drawable/input_text_1_dark"/>
+                android:background="@drawable/input_text_1_dark"
+                android:id="@+id/new_weight_value"
+                />
 
         </LinearLayout>
 
@@ -58,7 +60,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/weight_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

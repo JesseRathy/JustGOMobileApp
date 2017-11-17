@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.activity.main_menu_activity;
-import com.example.android.moranlee.justgo.activity.sql_interaction.Diet_Repo;
+import com.example.android.moranlee.justgo.activity.activity.MainMenu;
+import com.example.android.moranlee.justgo.activity.sql_interaction.DietRepo;
 
 public class ConfirmDietNutrient extends AppCompatActivity {
     /*
@@ -41,7 +41,7 @@ public class ConfirmDietNutrient extends AppCompatActivity {
     /*
     SQLite interface
      */
-    Diet_Repo diet_repo;
+    DietRepo diet_repo;
 
     /**
      * initialize activity
@@ -51,7 +51,7 @@ public class ConfirmDietNutrient extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_diet_nutrient_activity);
-        diet_repo = new Diet_Repo(this);
+        diet_repo = new DietRepo(this);
         // get info from other activity
         data = getIntent().getStringExtra("data");
         id = getIntent().getIntExtra("id",0);
@@ -73,7 +73,7 @@ public class ConfirmDietNutrient extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 diet_repo.insert(diet_repo.create_diet(id));
-                Intent unitIntent = new Intent(getItSelf(), main_menu_activity.class);
+                Intent unitIntent = new Intent(getItSelf(), MainMenu.class);
                 startActivity(unitIntent);
             }
         });

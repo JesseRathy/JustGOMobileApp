@@ -13,10 +13,10 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.activity.main_menu_activity;
+import com.example.android.moranlee.justgo.activity.GlobalVariables;
+import com.example.android.moranlee.justgo.activity.activity.MainMenu;
 import com.example.android.moranlee.justgo.activity.datatype.Exercise;
-import com.example.android.moranlee.justgo.activity.global_value;
-import com.example.android.moranlee.justgo.activity.sql_interaction.Exercise_Repo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.ExerciseRepo;
 
 public class AddNewExercise extends AppCompatActivity {
 
@@ -52,7 +52,7 @@ public class AddNewExercise extends AppCompatActivity {
     /*
     sqlite interface
      */
-    Exercise_Repo exercise_repo;
+    ExerciseRepo exercise_repo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +67,7 @@ public class AddNewExercise extends AppCompatActivity {
         consumption = (EditText) findViewById(R.id.edit_exercise_consumption);
         submit = (Button)findViewById(R.id.add_exercise_submit);
         category = 0;
-        exercise_repo = new Exercise_Repo(this);
+        exercise_repo = new ExerciseRepo(this);
         categoryGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
@@ -93,12 +93,12 @@ public class AddNewExercise extends AppCompatActivity {
                 }
                 else{
                     Exercise exercise = new Exercise();
-                    exercise.setId(global_value.getAndSetCurrent_max_exercise_id());
+                    exercise.setId(GlobalVariables.getAndSetCurrent_max_exercise_id());
                     exercise.setCategory(category-1);
                     exercise.setName(name.getText().toString());
                     exercise.setEnergy_consumption(Double.parseDouble(consumption.getText().toString()));
                     exercise_repo.insert(exercise);
-                    Intent goBack = new Intent(get_self(), main_menu_activity.class);
+                    Intent goBack = new Intent(get_self(), MainMenu.class);
                     startActivity(goBack);
 
                 }

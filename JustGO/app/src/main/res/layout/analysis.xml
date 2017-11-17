@@ -9,15 +9,23 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:background="@color/background"
+        android:background="@drawable/splash_screen2"
         >
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="            Personal Information\n"
+            tools:layout_editor_absoluteX="120dp"
+            android:textSize="30sp"
+            android:textColor="@color/rice"
+            />
         <!-- Gender Box -->
         <TextView
             android:id="@+id/analysisGender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Gender Box"
+            android:textSize="20sp"
             android:textColor="@color/white"
             />
 
@@ -28,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Age Box"
+            android:textSize="20sp"
             android:textColor="@color/white"
             />
 
@@ -37,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Height Box"
+            android:textSize="20sp"
             android:textColor="@color/white"
             />
 
@@ -46,6 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Weight Box"
+            android:textSize="20sp"
             android:textColor="@color/white"
             />
 
@@ -55,24 +66,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="BMI Box"
+            android:textSize="20sp"
             android:textColor="@color/white"
             />
 
-        <!-- BMI Box -->
+        <!-- Health Status Box -->
         <TextView
             android:id="@+id/analysisHealth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Health Box"
+            android:textSize="20sp"
             android:textColor="@color/white"
             />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\n            Today's Nutritio\n"
+            tools:layout_editor_absoluteX="120dp"
+            android:textSize="30sp"
+            android:textColor="@color/rice"
+            />
         <!-- Calorie Box -->
         <TextView
             android:id="@+id/analysisCalorie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Calorie Box"
+            android:textSize="20sp"
             android:textColor="@color/white"
             />
 
@@ -82,6 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="proteinBox"
+            android:textSize="20sp"
             android:textColor="@color/white"
             />
 
@@ -91,17 +113,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cholesterol Box"
+            android:textSize="20sp"
             android:textColor="@color/white"
             />
 
-        <!-- Weight Graph -->
-        <com.jjoe64.graphview.GraphView
-            android:layout_width="368dp"
-            android:layout_height="200dp"
-            app:seriesTitle="Foobar"
-            android:id="@+id/graph"
-            tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="8dp" />
     </LinearLayout>
 
 
