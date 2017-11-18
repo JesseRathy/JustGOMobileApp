@@ -200,15 +200,19 @@ public class DietRepo {
                 food_id = Integer.parseInt(cursor.getString(cursor.getColumnIndex("food_id")));
                 selectCalorieQuery = "select * from food where id = "+ food_id;
                 Cursor foodCursor = db.rawQuery(selectCalorieQuery,null);
-                HashMap<String, String> food = new HashMap<String, String>();
-                food.put("id", foodCursor.getString(foodCursor.getColumnIndex("id")));
-                food.put("category",foodCursor.getString(foodCursor.getColumnIndex("category")));
-                food.put("name", foodCursor.getString(foodCursor.getColumnIndex("name")));
-                food.put("protein",foodCursor.getString(foodCursor.getColumnIndex("protein")));
-                food.put("fat",foodCursor.getString(foodCursor.getColumnIndex("protein")));
-                food.put("calories",foodCursor.getString(foodCursor.getColumnIndex("calories")));
-                food.put("cholesterol",foodCursor.getString(foodCursor.getColumnIndex("cholesterol")));
-                food_list.add(food);
+                if(foodCursor.moveToFirst())
+                    do{
+                        HashMap<String, String> food = new HashMap<String, String>();
+                        food.put("id", foodCursor.getString(foodCursor.getColumnIndex("id")));
+                        food.put("category",foodCursor.getString(foodCursor.getColumnIndex("category")));
+                        food.put("name", foodCursor.getString(foodCursor.getColumnIndex("name")));
+                        food.put("protein",foodCursor.getString(foodCursor.getColumnIndex("protein")));
+                        food.put("fat",foodCursor.getString(foodCursor.getColumnIndex("protein")));
+                        food.put("calories",foodCursor.getString(foodCursor.getColumnIndex("calories")));
+                        food.put("cholesterol",foodCursor.getString(foodCursor.getColumnIndex("cholesterol")));
+                        food_list.add(food);
+                    }while(foodCursor.moveToNext());
+                foodCursor.close();
             } while (cursor.moveToNext());
         }
         cursor.close();

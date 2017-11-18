@@ -302,50 +302,6 @@ public class FoodRepo {
     }
 
     /**
-     *  add/update default food datas to database
-     */
-    private void add_default_food(){
-//        meat_type = new LinkedList<>();
-//        vegetable_type = new LinkedList<>();
-//        fruit_type = new LinkedList<>();
-//        dairy_type = new LinkedList<>();
-//        fat_type = new LinkedList<>();
-//        grain_type = new LinkedList<>();
-
-        //Operate add data action
-        //dataCollection.add_food_data_diary();
-        //dataCollection.add_food_data_fruit();
-        //dataCollection.add_food_data_meat();
-        //dataCollection.add_food_data_vegetalbe();
-        //dataCollection.add_food_data_grain();
-
-//        String [] meats = {"beef","pork","mutton","chicken"};
-//        String [] vegetables = {"cabbage","eggplant","cucumber","mushroom"};
-//        String [] fruits = {"apple","pear","peach","berry"};
-//        String [] dairys = {"milk","yogurt","ice cream","cream"};
-//        String [] fats = {"canola oil","corn oil","peanut oil","butter"};
-//        String [] grains= {"wheat","rice","barley","oat"};
-//        for(int i=0;i<4;i++){
-//            insert(cretae_default_meats(i));
-//        }
-//        for(int i=0;i<4;i++){
-//            insert(cretae_default_fruits(i));
-//        }
-//        for(int i=0;i<4;i++){
-//            insert(cretae_default_vegetables(i));
-//        }
-//        for(int i=0;i<4;i++){
-//            insert(cretae_default_dairys(i));
-//        }
-//        for(int i=0;i<4;i++){
-//            insert(cretae_default_grains(i));
-//        }
-//        for(int i=0;i<4;i++){
-//            insert(cretae_default_fats(i));
-//        }
-    }
-
-    /**
      *  get a list of all data and it`s information
      * @return foodList list contain all food type info
      */
@@ -373,6 +329,8 @@ public class FoodRepo {
         db.close();
         return food_list;
     }
+
+
 
     /**
      *  get specific food data by its name
@@ -410,7 +368,7 @@ public class FoodRepo {
         else{
             category_id = "category = "+category;
         }
-        String selectQuery =  "select * from food where calorie < "+Double.toString(calorie)+" and "+category_id;
+        String selectQuery =  "select * from food where calories < "+Double.toString(calorie)+" and "+category_id;
         ArrayList<Food> food_list = new ArrayList<>();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
