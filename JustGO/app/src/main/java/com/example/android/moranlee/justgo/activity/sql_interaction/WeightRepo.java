@@ -59,7 +59,7 @@ public class WeightRepo {
 
     public Double get_last_weight(int user_id){
         SQLiteDatabase db = sql.getReadableDatabase();
-        String selectQuery = "SELECT * FROM weight where user_id = "+ user_id+ " ORDER BY column DESC LIMIT 1;";
+        String selectQuery = "SELECT * FROM weight where user_id = "+ user_id+ " ORDER BY id DESC LIMIT 1;";
         ArrayList<HashMap<String,String>> exList = new ArrayList<>();
         Cursor cursor = db.rawQuery(selectQuery, null);
         Double current_weight = 68.0;

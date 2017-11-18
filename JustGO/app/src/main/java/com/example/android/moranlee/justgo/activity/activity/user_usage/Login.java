@@ -55,7 +55,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
         // reinstall databse everytime run, do not need when finish but useful when testing
-        //this.deleteDatabase("JustGo");
+        this.deleteDatabase("JustGo");
         // connect interface with field, initialize sql interface
         login = (Button)findViewById(R.id.login);
         login.setOnClickListener(login());

@@ -5,13 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.example.android.moranlee.justgo.R;
+import com.example.android.moranlee.justgo.activity.GlobalVariables;
 import com.example.android.moranlee.justgo.activity.sql_interaction.DietRepo;
 import com.example.android.moranlee.justgo.activity.sql_interaction.UserRepo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.WeightRepo;
 
 
 public class Analysis extends AppCompatActivity {
     UserRepo user;
     DietRepo diet;
+    WeightRepo we;
     /**
      *  initialize analysis activity
      * @param savedInstanceState
@@ -20,11 +23,12 @@ public class Analysis extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         user = new UserRepo(this);
         diet = new DietRepo(this);
+        we = new WeightRepo(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.analysis);
 
         // Get user information
-        Double weight = user.getRecentWeight();
+        Double weight = we.get_last_weight(GlobalVariables.getG_CurrentUserId());
         String gender = user.getUserGender();
         Double height = user.getUserHeight();
         int age = user.getUserAge();
