@@ -4,7 +4,8 @@ package com.example.android.moranlee.justgo.activity.adapter;
  * Created by yugu on 2017-10-05.
  */
 
-public interface OnGroupExpandedListener {
+public interface OnGroupExpandedListener
+{
     /**
      *  expand on group
      *

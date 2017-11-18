@@ -4,7 +4,8 @@ package com.example.android.moranlee.justgo.activity.datatype;
  * Created by yul04 on 2017/9/23.
  */
 
-public class Food {
+public class Food
+{
     /*
     fields of a food type data
      */
@@ -20,67 +21,83 @@ public class Food {
     /*
     getter and setter of food type datas
      */
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(int user_id)
+    {
         this.user_id = user_id;
     }
 
-    public void setCategory(int category) {
+    public void setCategory(int category)
+    {
         this.category = category;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public void setProtein(double protein) {
+    public void setProtein(double protein)
+    {
         this.protein = protein;
     }
 
-    public void setFat(double fat) {
+    public void setFat(double fat)
+    {
         this.fat = fat;
     }
 
-    public void setCholesterol(double cholesterol) {
+    public void setCholesterol(double cholesterol)
+    {
         this.cholesterol = cholesterol;
     }
 
-    public void setCalories(double calories) {
+    public void setCalories(double calories)
+    {
         this.calories = calories;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public int getUser_id() {
+    public int getUser_id()
+    {
         return user_id;
     }
 
-    public int getCategory() {
+    public int getCategory()
+    {
         return category;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public double getProtein() {
+    public double getProtein()
+    {
         return protein;
     }
 
-    public double getFat() {
+    public double getFat()
+    {
         return fat;
     }
 
-    public double getCholesterol() {
+    public double getCholesterol()
+    {
         return cholesterol;
     }
 
-    public double getCalories() {
+    public double getCalories()
+    {
         return calories;
     }
 }

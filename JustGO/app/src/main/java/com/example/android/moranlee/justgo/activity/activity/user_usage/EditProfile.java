@@ -19,7 +19,8 @@ import com.example.android.moranlee.justgo.activity.sql_interaction.UserRepo;
  */
 
 
-public class EditProfile extends AppCompatActivity {
+public class EditProfile extends AppCompatActivity
+{
 
     /*
     input field to get new user height
@@ -65,7 +66,8 @@ public class EditProfile extends AppCompatActivity {
      * initialize activity
      * @param savedInstanceState
      */
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
         // connect field to interface
@@ -78,55 +80,56 @@ public class EditProfile extends AppCompatActivity {
         user_repo = new UserRepo(this);
         passwordBtn.setOnClickListener(changePassword());
         submit.setOnClickListener(submit_change());
-        }
+    }
 
 
     /**
      *  function to switch activity to change password
      * @return OnClickListener
      */
-    private View.OnClickListener changePassword() {
-       return new View.OnClickListener() {
-          @Override
+    private View.OnClickListener changePassword()
+    {
+        return new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-               Intent unit_intent = new Intent(getItSelf(), ChangePassword.class);
+                Intent unit_intent = new Intent(getItSelf(), ChangePassword.class);
 
-               startActivity(unit_intent);
-          }
-       };
+                startActivity(unit_intent);
+            }
+        };
     }
 
     /**
      *  function to update user data
      * @return OnClickListener
      */
-    private View.OnClickListener submit_change(){
+    private View.OnClickListener submit_change()
+    {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String new_weight = weight.getText().toString();
                 String new_height = height.getText().toString();
                 // check if user enter new height/weigth
-                if(new_height.length()==0){
+                if (new_height.length() == 0) {
                     height_change = false;
-                }
-                else{
+                } else {
                     height_change = true;
                 }
-                if(new_weight.length() == 0){
+                if (new_weight.length() == 0) {
                     weight_change = false;
-                }
-                else{
+                } else {
                     height_change = true;
                 }
                 // update field base on user input
-                if(height_change){
+                if (height_change) {
                     user_repo.update_height(Double.parseDouble(new_height));
                 }
-                if(weight_change){
+                if (weight_change) {
                     user_repo.update_weight(Double.parseDouble(new_weight));
                 }
-                RadioButton genders = (RadioButton)findViewById( gender.getCheckedRadioButtonId());
+                RadioButton genders = (RadioButton)findViewById(
+                                          gender.getCheckedRadioButtonId());
                 user_repo.update_gender(genders.getText().toString());
                 // go back to main menu
                 Intent unit_intent = new Intent(getItSelf(), MainMenu.class);
@@ -135,7 +138,10 @@ public class EditProfile extends AppCompatActivity {
         };
     }
 
-    private Activity getItSelf(){ return this; }
+    private Activity getItSelf()
+    {
+        return this;
+    }
 }
 
 

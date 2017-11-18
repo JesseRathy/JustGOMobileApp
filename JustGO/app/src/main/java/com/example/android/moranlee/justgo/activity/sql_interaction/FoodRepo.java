@@ -20,7 +20,8 @@ import static android.content.ContentValues.TAG;
  * Created by yul04 on 2017/9/23.
  */
 
-public class FoodRepo {
+public class FoodRepo
+{
     /**
      default exercise type name string []
      */
@@ -44,7 +45,8 @@ public class FoodRepo {
      *  constructor, add default exercise type
      * @param context context hold the database
      */
-    public FoodRepo(Context context){
+    public FoodRepo(Context context)
+    {
         //dataCollection = new FoodData(context);
         sql = new SQLiteInterface(context);
         //add_default_food();
@@ -55,18 +57,19 @@ public class FoodRepo {
      * @param food food data contain all information about user
      * @return int food_id represent if the data is insert successfully
      */
-    public int insert(Food food) {
+    public int insert(Food food)
+    {
         System.out.println(" insert called");
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("id",food.getId());
-        values.put("user_id",food.getUser_id());
-        values.put("category",food.getCategory());
-        values.put("name",food.getName());
-        values.put("protein",food.getProtein());
-        values.put("fat",food.getFat());
-        values.put("cholesterol",food.getCholesterol());
-        values.put("calories",food.getCalories());
+        values.put("id", food.getId());
+        values.put("user_id", food.getUser_id());
+        values.put("category", food.getCategory());
+        values.put("name", food.getName());
+        values.put("protein", food.getProtein());
+        values.put("fat", food.getFat());
+        values.put("cholesterol", food.getCholesterol());
+        values.put("calories", food.getCalories());
         long food_Id = db.insert("food", null, values);
         db.close();
         return (int) food_Id;
@@ -76,7 +79,8 @@ public class FoodRepo {
      *  delete a food data by it`s id
      * @param food_Id id of food need to delete
      */
-    public void delete_by_id(int food_Id) {
+    public void delete_by_id(int food_Id)
+    {
         SQLiteDatabase db = sql.getWritableDatabase();
 
         db.delete("food", "id" + "= ?", new String[] { String.valueOf(food_Id) });
@@ -87,7 +91,8 @@ public class FoodRepo {
      *  delete a food data by it`s name
      * @param food_name name of food need to delete
      */
-    public void delete_by_name(String food_name) {
+    public void delete_by_name(String food_name)
+    {
         SQLiteDatabase db = sql.getWritableDatabase();
 
         db.delete("food", "name" + "= ?", new String[] { food_name });
@@ -98,17 +103,18 @@ public class FoodRepo {
      * update food data
      * @param food the data of food want to update
      */
-    public void update(Food food) {
+    public void update(Food food)
+    {
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("id",food.getId());
-        values.put("user_id",food.getUser_id());
-        values.put("category",food.getCategory());
-        values.put("name",food.getName());
-        values.put("protein",food.getProtein());
-        values.put("fat",food.getFat());
-        values.put("cholesterol",food.getCholesterol());
-        values.put("calories",food.getCalories());
+        values.put("id", food.getId());
+        values.put("user_id", food.getUser_id());
+        values.put("category", food.getCategory());
+        values.put("name", food.getName());
+        values.put("protein", food.getProtein());
+        values.put("fat", food.getFat());
+        values.put("cholesterol", food.getCholesterol());
+        values.put("calories", food.getCalories());
         db.update("food", values, "id" + "= ?", new String[] { String.valueOf(food.getId()) });
         db.close();
     }
@@ -118,7 +124,8 @@ public class FoodRepo {
      * @param i type id
      * @return a_food food type data
      */
-    private Food cretae_default_meats(int i){
+    private Food cretae_default_meats(int i)
+    {
         Food a_food = new Food();
         a_food.setId(i);
         a_food.setName(meat_type.get(i));
@@ -136,9 +143,10 @@ public class FoodRepo {
      * @param i type id
      * @return a_food food type data
      */
-    private Food cretae_default_fruits(int i){
+    private Food cretae_default_fruits(int i)
+    {
         Food a_food = new Food();
-        a_food.setId(i+meat_type.size());
+        a_food.setId(i + meat_type.size());
         a_food.setName(fruit_type.get(i));
         a_food.setCalories(Math.random());
         a_food.setCategory(2);
@@ -154,9 +162,10 @@ public class FoodRepo {
      * @param i type id
      * @return a_food food type data
      */
-    private Food cretae_default_vegetables(int i){
+    private Food cretae_default_vegetables(int i)
+    {
         Food a_food = new Food();
-        a_food.setId(i+meat_type.size()+fruit_type.size());
+        a_food.setId(i + meat_type.size() + fruit_type.size());
         a_food.setName(vegetable_type.get(i));
         a_food.setCalories(Math.random());
         a_food.setCategory(3);
@@ -172,9 +181,10 @@ public class FoodRepo {
      * @param i type id
      * @return a_food food type data
      */
-    private Food cretae_default_dairys(int i){
+    private Food cretae_default_dairys(int i)
+    {
         Food a_food = new Food();
-        a_food.setId(i+meat_type.size()+fruit_type.size()+vegetable_type.size());
+        a_food.setId(i + meat_type.size() + fruit_type.size() + vegetable_type.size());
         a_food.setName(dairy_type.get(i));
         a_food.setCalories(Math.random());
         a_food.setCategory(4);
@@ -190,9 +200,11 @@ public class FoodRepo {
      * @param i type id
      * @return a_food food type data
      */
-    private Food cretae_default_grains(int i){
+    private Food cretae_default_grains(int i)
+    {
         Food a_food = new Food();
-        a_food.setId(i+meat_type.size()+fruit_type.size()+vegetable_type.size()+dairy_type.size());
+        a_food.setId(i + meat_type.size() + fruit_type.size() + vegetable_type.size() +
+                     dairy_type.size());
         a_food.setName(grain_type.get(i));
         a_food.setCalories(Math.random());
         a_food.setCategory(5);
@@ -208,9 +220,11 @@ public class FoodRepo {
      * @param i type id
      * @return a_food food type data
      */
-    private Food cretae_default_fats(int i){
+    private Food cretae_default_fats(int i)
+    {
         Food a_food = new Food();
-        a_food.setId(i+meat_type.size()+fruit_type.size()+vegetable_type.size()+dairy_type.size()+grain_type.size());
+        a_food.setId(i + meat_type.size() + fruit_type.size() + vegetable_type.size() +
+                     dairy_type.size() + grain_type.size());
         a_food.setName(fat_type.get(i));
         a_food.setCalories(Math.random());
         a_food.setCategory(6);
@@ -222,7 +236,9 @@ public class FoodRepo {
     }
 
 
-     public void add_meat(String name, double protein, double fat, double calories, double cholesterol){
+    public void add_meat(String name, double protein, double fat, double calories,
+                         double cholesterol)
+    {
         Food new_meat = new Food();
         new_meat.setName(name);
         new_meat.setCategory(1);
@@ -235,7 +251,9 @@ public class FoodRepo {
         this.insert(new_meat);
     }
 
-    public void add_vegetable(String name, double protein, double fat, double calories, double cholesterol){
+    public void add_vegetable(String name, double protein, double fat,
+                              double calories, double cholesterol)
+    {
         Food new_meat = new Food();
         new_meat.setName(name);
         new_meat.setCategory(3);
@@ -248,7 +266,9 @@ public class FoodRepo {
         this.insert(new_meat);
     }
 
-    public void add_fruit(String name, double protein, double fat, double calories, double cholesterol){
+    public void add_fruit(String name, double protein, double fat, double calories,
+                          double cholesterol)
+    {
         Food new_meat = new Food();
         new_meat.setName(name);
         new_meat.setCategory(2);
@@ -262,7 +282,9 @@ public class FoodRepo {
         this.insert(new_meat);
     }
 
-    public void add_diary(String name, double protein, double fat, double calories, double cholesterol){
+    public void add_diary(String name, double protein, double fat, double calories,
+                          double cholesterol)
+    {
         Food new_meat = new Food();
         new_meat.setName(name);
         new_meat.setCategory(4);
@@ -275,7 +297,9 @@ public class FoodRepo {
         this.insert(new_meat);
     }
 
-    public void add_grain(String name, double protein, double fat, double calories, double cholesterol){
+    public void add_grain(String name, double protein, double fat, double calories,
+                          double cholesterol)
+    {
         Food new_meat = new Food();
         new_meat.setName(name);
         new_meat.setCategory(6);
@@ -288,7 +312,9 @@ public class FoodRepo {
         this.insert(new_meat);
     }
 
-    public void add_fat(String name, double protein, double fat, double calories, double cholesterol){
+    public void add_fat(String name, double protein, double fat, double calories,
+                        double cholesterol)
+    {
         Food new_meat = new Food();
         new_meat.setName(name);
         new_meat.setCategory(5);
@@ -305,23 +331,26 @@ public class FoodRepo {
      *  get a list of all data and it`s information
      * @return foodList list contain all food type info
      */
-    public ArrayList<HashMap<String, String>>  get_default_food_list() {
+    public ArrayList<HashMap<String, String>>  get_default_food_list()
+    {
         SQLiteDatabase db = sql.getReadableDatabase();
         String selectQuery =  "select * from food where user_id = 0";
-        ArrayList<HashMap<String, String>> food_list = new ArrayList<HashMap<String, String>>();
-        Log.d(TAG, "get_default_food_list: "+db.toString());
+        ArrayList<HashMap<String, String>> food_list = new
+        ArrayList<HashMap<String, String>>();
+        Log.d(TAG, "get_default_food_list: " + db.toString());
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
                 HashMap<String, String> food = new HashMap<String, String>();
                 food.put("id", cursor.getString(cursor.getColumnIndex("id")));
-                food.put("category",cursor.getString(cursor.getColumnIndex("category")));
+                food.put("category", cursor.getString(cursor.getColumnIndex("category")));
                 food.put("name", cursor.getString(cursor.getColumnIndex("name")));
-                food.put("protein",cursor.getString(cursor.getColumnIndex("protein")));
-                food.put("fat",cursor.getString(cursor.getColumnIndex("fat")));
-                food.put("calories",cursor.getString(cursor.getColumnIndex("calories")));
-                food.put("cholesterol",cursor.getString(cursor.getColumnIndex("cholesterol")));
-                food.put("user_id",cursor.getString(cursor.getColumnIndex("user_id")));
+                food.put("protein", cursor.getString(cursor.getColumnIndex("protein")));
+                food.put("fat", cursor.getString(cursor.getColumnIndex("fat")));
+                food.put("calories", cursor.getString(cursor.getColumnIndex("calories")));
+                food.put("cholesterol", cursor.getString(
+                             cursor.getColumnIndex("cholesterol")));
+                food.put("user_id", cursor.getString(cursor.getColumnIndex("user_id")));
                 food_list.add(food);
             } while (cursor.moveToNext());
         }
@@ -336,21 +365,24 @@ public class FoodRepo {
      *  get specific food data by its name
      * @return food.toString() contain selected food info
      */
-    public ArrayList<HashMap<String,String>> get_food_by_name(String input_name) {
+    public ArrayList<HashMap<String, String>> get_food_by_name(String input_name)
+    {
         SQLiteDatabase db = sql.getReadableDatabase();
-        ArrayList<HashMap<String,String>> resultSet = new ArrayList<>();
-        Cursor cursor = db.query("food", null, "name like '%" + input_name + "%'", null, null, null, null);
+        ArrayList<HashMap<String, String>> resultSet = new ArrayList<>();
+        Cursor cursor = db.query("food", null, "name like '%" + input_name + "%'",
+                                 null, null, null, null);
         if (cursor.moveToFirst()) {
             do {
                 HashMap<String, String> food = new HashMap<String, String>();
                 food.put("id", cursor.getString(cursor.getColumnIndex("id")));
-                food.put("category",cursor.getString(cursor.getColumnIndex("category")));
+                food.put("category", cursor.getString(cursor.getColumnIndex("category")));
                 food.put("name", cursor.getString(cursor.getColumnIndex("name")));
-                food.put("protein",cursor.getString(cursor.getColumnIndex("protein")));
-                food.put("fat",cursor.getString(cursor.getColumnIndex("fat")));
-                food.put("calories",cursor.getString(cursor.getColumnIndex("calories")));
-                food.put("cholesterol",cursor.getString(cursor.getColumnIndex("cholesterol")));
-                 resultSet.add(food);
+                food.put("protein", cursor.getString(cursor.getColumnIndex("protein")));
+                food.put("fat", cursor.getString(cursor.getColumnIndex("fat")));
+                food.put("calories", cursor.getString(cursor.getColumnIndex("calories")));
+                food.put("cholesterol", cursor.getString(
+                             cursor.getColumnIndex("cholesterol")));
+                resultSet.add(food);
 
             } while (cursor.moveToNext());
         }
@@ -359,16 +391,17 @@ public class FoodRepo {
         return resultSet;
     }
 
-    public ArrayList<Food> getRecommendedFoods(double calorie, int category){
+    public ArrayList<Food> getRecommendedFoods(double calorie, int category)
+    {
         SQLiteDatabase db = sql.getReadableDatabase();
         String category_id;
-        if(category == 2 ){
+        if (category == 2 ) {
             category_id = "category = 2 or category = 3";
+        } else {
+            category_id = "category = " + category;
         }
-        else{
-            category_id = "category = "+category;
-        }
-        String selectQuery =  "select * from food where calories < "+Double.toString(calorie)+" and "+category_id;
+        String selectQuery =  "select * from food where calories < " + Double.toString(
+                                  calorie) + " and " + category_id;
         ArrayList<Food> food_list = new ArrayList<>();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
@@ -387,12 +420,18 @@ public class FoodRepo {
                 Food food = new Food();
                 food.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
                 food.setName(cursor.getString(cursor.getColumnIndex("name")));
-                food.setProtein(Double.parseDouble(cursor.getString(cursor.getColumnIndex("protein"))));
-                food.setFat(Double.parseDouble(cursor.getString(cursor.getColumnIndex("fat"))));
-                food.setCholesterol(Double.parseDouble(cursor.getString(cursor.getColumnIndex("cholesterol"))));
-                food.setCalories(Double.parseDouble(cursor.getString(cursor.getColumnIndex("calories"))));
-                food.setUser_id(Integer.parseInt(cursor.getString(cursor.getColumnIndex("user_id"))));
-                food.setCategory(Integer.parseInt(cursor.getString(cursor.getColumnIndex("category"))));
+                food.setProtein(Double.parseDouble(cursor.getString(
+                                                       cursor.getColumnIndex("protein"))));
+                food.setFat(Double.parseDouble(cursor.getString(
+                                                   cursor.getColumnIndex("fat"))));
+                food.setCholesterol(Double.parseDouble(cursor.getString(
+                        cursor.getColumnIndex("cholesterol"))));
+                food.setCalories(Double.parseDouble(cursor.getString(
+                                                        cursor.getColumnIndex("calories"))));
+                food.setUser_id(Integer.parseInt(cursor.getString(
+                                                     cursor.getColumnIndex("user_id"))));
+                food.setCategory(Integer.parseInt(cursor.getString(
+                                                      cursor.getColumnIndex("category"))));
                 food_list.add(food);
             } while (cursor.moveToNext());
         }
@@ -405,8 +444,9 @@ public class FoodRepo {
     /*
         Generate queries available for execution in SQLite database
      */
-    public String generateQuery(String inputVar){
-        String selectQuery =  "select * from food where name == '"+inputVar+"'";
+    public String generateQuery(String inputVar)
+    {
+        String selectQuery =  "select * from food where name == '" + inputVar + "'";
         return selectQuery;
     }
 

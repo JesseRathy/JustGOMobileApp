@@ -12,7 +12,8 @@ import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.activity.MainMenu;
 import com.example.android.moranlee.justgo.activity.sql_interaction.ExerciseDailyRepo;
 
-public class ConfirmExerciseData extends AppCompatActivity {
+public class ConfirmExerciseData extends AppCompatActivity
+{
 
     /*
     store info transfer from other activity
@@ -35,7 +36,7 @@ public class ConfirmExerciseData extends AppCompatActivity {
     Button confirm;
 
     /*
-   collect input to determine next step
+    collect input to determine next step
     */
     Button reselect;
 
@@ -49,12 +50,13 @@ public class ConfirmExerciseData extends AppCompatActivity {
      * @param savedInstanceState
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_food_activity);
         // get info from other activity
         data = getIntent().getStringExtra("data");
-        exerciseId = getIntent().getIntExtra("id",0);
+        exerciseId = getIntent().getIntExtra("id", 0);
         exerciseDailyRepo = new ExerciseDailyRepo(this);
         // connect field to interface
         result = (TextView)findViewById(R.id.result_from_database);
@@ -65,7 +67,7 @@ public class ConfirmExerciseData extends AppCompatActivity {
         reselect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goBack = new Intent(getItSelf(),SelectExerciseOption.class);
+                Intent goBack = new Intent(getItSelf(), SelectExerciseOption.class);
                 startActivity(goBack);
             }
         });
@@ -73,14 +75,15 @@ public class ConfirmExerciseData extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exerciseDailyRepo.insert(exerciseDailyRepo.create_exercise(0,1.0));
+                exerciseDailyRepo.insert(exerciseDailyRepo.create_exercise(0, 1.0));
                 Intent unitIntent = new Intent(getItSelf(), MainMenu.class);
                 startActivity(unitIntent);
             }
         });
     }
 
-    private Activity getItSelf(){
+    private Activity getItSelf()
+    {
         return this;
     }
 }

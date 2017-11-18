@@ -18,7 +18,8 @@ import com.example.android.moranlee.justgo.activity.activity.MainMenu;
 import com.example.android.moranlee.justgo.activity.datatype.Exercise;
 import com.example.android.moranlee.justgo.activity.sql_interaction.ExerciseRepo;
 
-public class AddNewExercise extends AppCompatActivity {
+public class AddNewExercise extends AppCompatActivity
+{
 
     /*
     radio button to select new exercise category
@@ -55,7 +56,8 @@ public class AddNewExercise extends AppCompatActivity {
     ExerciseRepo exercise_repo;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_exercise_activity);
         categoryGroup = (RadioGroup)findViewById(R.id.add_exercise_cate_choice);
@@ -68,19 +70,17 @@ public class AddNewExercise extends AppCompatActivity {
         submit = (Button)findViewById(R.id.add_exercise_submit);
         category = 0;
         exercise_repo = new ExerciseRepo(this);
-        categoryGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        categoryGroup.setOnCheckedChangeListener(new
+        RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if (checkedId == endurance.getId()){
+                if (checkedId == endurance.getId()) {
                     category = 1;
-                }
-                else if (checkedId == strength.getId()){
+                } else if (checkedId == strength.getId()) {
                     category = 2;
-                }
-                else if (checkedId == balance.getId()){
+                } else if (checkedId == balance.getId()) {
                     category = 3;
-                }
-                else if (checkedId == flexibility.getId()){
+                } else if (checkedId == flexibility.getId()) {
                     category = 4;
                 }
             }
@@ -88,15 +88,18 @@ public class AddNewExercise extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(name.getText().length() <= 0 || consumption.getText().length() <= 0 || category == 0){
-                    Toast.makeText(AddNewExercise.this, "new exercise can not exist without category/name/calorie consumption", Toast.LENGTH_SHORT).show();
-                }
-                else{
+                if (name.getText().length() <= 0 || consumption.getText().length() <= 0
+                        || category == 0) {
+                    Toast.makeText(AddNewExercise.this,
+                                   "new exercise can not exist without category/name/calorie consumption",
+                                   Toast.LENGTH_SHORT).show();
+                } else {
                     Exercise exercise = new Exercise();
                     exercise.setId(GlobalVariables.getAndSetCurrent_max_exercise_id());
-                    exercise.setCategory(category-1);
+                    exercise.setCategory(category - 1);
                     exercise.setName(name.getText().toString());
-                    exercise.setEnergy_consumption(Double.parseDouble(consumption.getText().toString()));
+                    exercise.setEnergy_consumption(Double.parseDouble(
+                                                       consumption.getText().toString()));
                     exercise_repo.insert(exercise);
                     Intent goBack = new Intent(get_self(), MainMenu.class);
                     startActivity(goBack);
@@ -106,7 +109,8 @@ public class AddNewExercise extends AppCompatActivity {
         });
     }
 
-    private Context get_self(){
+    private Context get_self()
+    {
         return AddNewExercise.this;
     }
 

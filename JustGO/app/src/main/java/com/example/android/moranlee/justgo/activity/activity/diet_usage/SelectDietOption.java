@@ -13,7 +13,8 @@ import android.widget.Button;
 
 import com.example.android.moranlee.justgo.R;
 
-public class SelectDietOption extends AppCompatActivity {
+public class SelectDietOption extends AppCompatActivity
+{
 
     /*
     button go to select food activity
@@ -27,7 +28,8 @@ public class SelectDietOption extends AppCompatActivity {
      * @param savedInstanceState
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_diet_option_activity);
         selectFromOldDiet = (Button)findViewById(R.id.select_from_old_food);
@@ -40,12 +42,13 @@ public class SelectDietOption extends AppCompatActivity {
      *  go to select from form old food activity
      * @return
      */
-    private View.OnClickListener select_from_old_food(){
+    private View.OnClickListener select_from_old_food()
+    {
 
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unitIntent = new Intent(getItSelf(),NormalExpandDiet.class);
+                Intent unitIntent = new Intent(getItSelf(), NormalExpandDiet.class);
                 startActivity(unitIntent);
             }
         };
@@ -55,11 +58,12 @@ public class SelectDietOption extends AppCompatActivity {
      *  go to search food by it`s name
      * @return
      */
-    private View.OnClickListener search_food_name(){
+    private View.OnClickListener search_food_name()
+    {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unitIntent = new Intent(getItSelf(),SearchDietName.class);
+                Intent unitIntent = new Intent(getItSelf(), SearchDietName.class);
                 startActivity(unitIntent);
             }
         };
@@ -69,7 +73,8 @@ public class SelectDietOption extends AppCompatActivity {
      *
      * @return self because other function need
      */
-    private Activity getItSelf(){
+    private Activity getItSelf()
+    {
         return this;
     }
 

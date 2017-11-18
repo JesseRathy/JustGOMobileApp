@@ -21,7 +21,8 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class past_and_new_weight_activity extends AppCompatActivity {
+public class past_and_new_weight_activity extends AppCompatActivity
+{
 
     Button submit;
 
@@ -30,7 +31,8 @@ public class past_and_new_weight_activity extends AppCompatActivity {
     WeightRepo weigthRepo;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weight);
         submit = (Button) findViewById(R.id.weight_submit);
@@ -39,21 +41,26 @@ public class past_and_new_weight_activity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(weightValue.getText().length()<=0 || Double.parseDouble(weightValue.getText().toString()) <= 0){
-                    Toast.makeText(past_and_new_weight_activity.this, "Can not add new weight with no value / negative value", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    weigthRepo.insert(weigthRepo.createNewWeight(Double.parseDouble(weightValue.getText().toString())));
-                    Intent goBack = new Intent(getItSelf(),MainMenu.class);
+                if (weightValue.getText().length() <= 0
+                        || Double.parseDouble(weightValue.getText().toString()) <= 0) {
+                    Toast.makeText(past_and_new_weight_activity.this,
+                                   "Can not add new weight with no value / negative value",
+                                   Toast.LENGTH_SHORT).show();
+                } else {
+                    weigthRepo.insert(weigthRepo.createNewWeight(Double.parseDouble(
+                                          weightValue.getText().toString())));
+                    Intent goBack = new Intent(getItSelf(), MainMenu.class);
                     startActivity(goBack);
                 }
             }
         });
-        ArrayList<HashMap<String,String>> weightDatas = weigthRepo.get_all_weight(GlobalVariables.getG_CurrentUserId());
+        ArrayList<HashMap<String, String>> weightDatas = weigthRepo.get_all_weight(
+                    GlobalVariables.getG_CurrentUserId());
         GraphView graph = (GraphView) findViewById(R.id.weight_graph);
         DataPoint [] some = new DataPoint[weightDatas.size()];
-        for(int i=0;i<weightDatas.size();i++){
-            some[i] = new DataPoint(i,Double.parseDouble(weightDatas.get(i).get("weight")));
+        for (int i = 0; i < weightDatas.size(); i++) {
+            some[i] = new DataPoint(i,
+                                    Double.parseDouble(weightDatas.get(i).get("weight")));
         }
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(some);
         graph.addSeries(series);
@@ -65,7 +72,8 @@ public class past_and_new_weight_activity extends AppCompatActivity {
 
     }
 
-    private Activity getItSelf(){
+    private Activity getItSelf()
+    {
         return this;
     }
 

@@ -9,7 +9,8 @@ import android.widget.Button;
 
 import com.example.android.moranlee.justgo.R;
 
-public class SelectFoodOption extends AppCompatActivity {
+public class SelectFoodOption extends AppCompatActivity
+{
 
     /*
     option to select food
@@ -25,7 +26,8 @@ public class SelectFoodOption extends AppCompatActivity {
      * @param savedInstanceState
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_food_opition_activity);
         //connect field to interface
@@ -41,12 +43,13 @@ public class SelectFoodOption extends AppCompatActivity {
      *  go to select food by category
      * @return
      */
-    private View.OnClickListener select_from_old_food(){
-    //    new FoodData(this);
+    private View.OnClickListener select_from_old_food()
+    {
+        //    new FoodData(this);
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),NormalExpandFood.class);
+                Intent unit_intent = new Intent(getItSelf(), NormalExpandFood.class);
                 startActivity(unit_intent);
             }
         };
@@ -56,11 +59,12 @@ public class SelectFoodOption extends AppCompatActivity {
      * go to add new food
      * @return
      */
-    private View.OnClickListener add_new_food(){
+    private View.OnClickListener add_new_food()
+    {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),AddNewFood.class);
+                Intent unit_intent = new Intent(getItSelf(), AddNewFood.class);
                 startActivity(unit_intent);
             }
         };
@@ -70,11 +74,12 @@ public class SelectFoodOption extends AppCompatActivity {
      *   go to search food by name
      * @return
      */
-    private View.OnClickListener search_food_name(){
+    private View.OnClickListener search_food_name()
+    {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),SearchFoodName.class);
+                Intent unit_intent = new Intent(getItSelf(), SearchFoodName.class);
                 startActivity(unit_intent);
             }
         };
@@ -84,7 +89,8 @@ public class SelectFoodOption extends AppCompatActivity {
      *
      * @return self becuse other function need
      */
-    private Activity getItSelf(){
+    private Activity getItSelf()
+    {
         return this;
     }
 

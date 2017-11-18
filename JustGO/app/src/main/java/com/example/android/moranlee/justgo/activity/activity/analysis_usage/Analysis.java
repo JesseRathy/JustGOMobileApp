@@ -11,7 +11,8 @@ import com.example.android.moranlee.justgo.activity.sql_interaction.UserRepo;
 import com.example.android.moranlee.justgo.activity.sql_interaction.WeightRepo;
 
 
-public class Analysis extends AppCompatActivity {
+public class Analysis extends AppCompatActivity
+{
     UserRepo user;
     DietRepo diet;
     WeightRepo we;
@@ -20,7 +21,8 @@ public class Analysis extends AppCompatActivity {
      * @param savedInstanceState
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         user = new UserRepo(this);
         diet = new DietRepo(this);
         we = new WeightRepo(this);
@@ -46,22 +48,26 @@ public class Analysis extends AppCompatActivity {
         displayNutrition(calorie, protein, cholesterol);
     }
 
-    private void displayHeight(Double height) {
+    private void displayHeight(Double height)
+    {
         TextView heightText = (TextView) findViewById(R.id.analysisHeight);
-        heightText.setText("Height: "+height);
+        heightText.setText("Height: " + height);
     }
 
-    private void displayWeight(Double weight) {
+    private void displayWeight(Double weight)
+    {
         TextView weightText = (TextView) findViewById(R.id.analysisWeight);
-        weightText.setText("Weight: "+weight);
+        weightText.setText("Weight: " + weight);
     }
 
-    private void displayAge(int age) {
+    private void displayAge(int age)
+    {
         TextView ageText = (TextView) findViewById(R.id.analysisAge);
-        ageText.setText("Age: "+age);
+        ageText.setText("Age: " + age);
     }
 
-    private void displayGender(String gender) {
+    private void displayGender(String gender)
+    {
         TextView genderText = (TextView) findViewById(R.id.analysisGender);
         if (gender.equals("M"))
             genderText.setText("Gender: Male");
@@ -69,14 +75,16 @@ public class Analysis extends AppCompatActivity {
             genderText.setText("Gender: Female");
     }
 
-    private int displayBMI(Double weight, Double height) {
-        int bmi = (int)(weight/(height*height/10000));
+    private int displayBMI(Double weight, Double height)
+    {
+        int bmi = (int)(weight / (height * height / 10000));
         TextView BMIText = (TextView) findViewById(R.id.analysisBMI);
-        BMIText.setText("BMI: "+bmi);
+        BMIText.setText("BMI: " + bmi);
         return bmi;
     }
 
-    private void displayHealth(int bmi) {
+    private void displayHealth(int bmi)
+    {
         TextView healthText = (TextView) findViewById(R.id.analysisHealth);
         if (bmi < 18.5)
             healthText.setText("Health Status: Underweight");
@@ -88,13 +96,14 @@ public class Analysis extends AppCompatActivity {
             healthText.setText("Health Status: Obese");
     }
 
-    private void displayNutrition(int calorie, int protein, int cholesterol) {
+    private void displayNutrition(int calorie, int protein, int cholesterol)
+    {
         TextView calorieText = (TextView) findViewById(R.id.analysisCalorie);
         TextView proteinText = (TextView) findViewById(R.id.analysisProtein);
         TextView cholesterolText = (TextView) findViewById(R.id.analysisCholesterol);
-        calorieText.setText("Calorie Intake: "+calorie);
-        proteinText.setText("Protein Intake: "+protein);
-        cholesterolText.setText("Cholesterol Intake: "+cholesterol);
+        calorieText.setText("Calorie Intake: " + calorie);
+        proteinText.setText("Protein Intake: " + protein);
+        cholesterolText.setText("Cholesterol Intake: " + cholesterol);
     }
 
 }

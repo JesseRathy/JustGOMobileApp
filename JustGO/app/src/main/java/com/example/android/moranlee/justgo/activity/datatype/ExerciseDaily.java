@@ -4,7 +4,8 @@ package com.example.android.moranlee.justgo.activity.datatype;
  * Created by yul04 on 2017/9/23.
  */
 
-public class ExerciseDaily {
+public class ExerciseDaily
+{
     /*
     fields of a exercise daily type data
      */
@@ -17,43 +18,53 @@ public class ExerciseDaily {
     /*
     getter and setter of exercise_daily type datas
      */
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public int getExercise_id() {
+    public int getExercise_id()
+    {
         return exercise_id;
     }
 
-    public void setExercise_id(int exercise_id) {
+    public void setExercise_id(int exercise_id)
+    {
         this.exercise_id = exercise_id;
     }
 
-    public int getUser_id() {
+    public int getUser_id()
+    {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(int user_id)
+    {
         this.user_id = user_id;
     }
 
-    public String getDate() {
+    public String getDate()
+    {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(String date)
+    {
         this.date = date;
     }
 
-    public double getDuration() {
+    public double getDuration()
+    {
         return duration;
     }
 
-    public void setDuration(double duration) {
+    public void setDuration(double duration)
+    {
         this.duration = duration;
     }
 }

@@ -16,7 +16,8 @@ import com.example.android.moranlee.justgo.activity.sql_interaction.FoodRepo;
 import com.example.android.moranlee.justgo.activity.*;
 
 
-public class AddNewFood extends AppCompatActivity {
+public class AddNewFood extends AppCompatActivity
+{
 
     /*
     input field for name
@@ -24,27 +25,27 @@ public class AddNewFood extends AppCompatActivity {
     EditText name;
 
     /*
-   input field for protein
+    input field for protein
     */
     EditText protein;
 
     /*
-   input field for calorie
+    input field for calorie
     */
     EditText calorie;
 
     /*
-   input field for cholesterol
+    input field for cholesterol
     */
     EditText cholesterol;
 
     /*
-   input field for fat
+    input field for fat
     */
     EditText fat;
 
     /*
-   submit new food
+    submit new food
     */
     Button submit;
 
@@ -63,7 +64,8 @@ public class AddNewFood extends AppCompatActivity {
      * @param savedInstanceState
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_diet_activity);
         // connect var to fields by id
@@ -79,8 +81,9 @@ public class AddNewFood extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 newFood = new Food();
-                newFood.setId(GlobalVariables.getG_CurrentMaxFoodId()+1);
-                GlobalVariables.setG_CurrentMaxFoodId(GlobalVariables.getG_CurrentMaxFoodId()+1);
+                newFood.setId(GlobalVariables.getG_CurrentMaxFoodId() + 1);
+                GlobalVariables.setG_CurrentMaxFoodId(GlobalVariables.getG_CurrentMaxFoodId() +
+                                                      1);
                 newFood.setUser_id(GlobalVariables.getG_CurrentUserId());
                 newFood.setCalories(Double.parseDouble(calorie.getText().toString()));
                 newFood.setCategory(7);
@@ -89,7 +92,7 @@ public class AddNewFood extends AppCompatActivity {
                 newFood.setFat(Double.parseDouble(fat.getText().toString()));
                 newFood.setName(name.getText().toString());
                 foodRepo.insert(newFood);
-                Intent goBack = new Intent(getItSelf(),MainMenu.class);
+                Intent goBack = new Intent(getItSelf(), MainMenu.class);
                 startActivity(goBack);
             }
         });
@@ -99,7 +102,8 @@ public class AddNewFood extends AppCompatActivity {
      *
      * @return self for some function need
      */
-    private Activity getItSelf(){
+    private Activity getItSelf()
+    {
         return this;
     }
 

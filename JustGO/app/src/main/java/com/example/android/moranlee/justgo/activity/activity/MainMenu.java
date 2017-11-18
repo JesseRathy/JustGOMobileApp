@@ -16,7 +16,8 @@ import com.example.android.moranlee.justgo.activity.activity.recommandition_usag
 import com.example.android.moranlee.justgo.activity.activity.user_usage.EditProfile;
 import com.example.android.moranlee.justgo.activity.activity.weight_usage.past_and_new_weight_activity;
 
-public class MainMenu extends AppCompatActivity {
+public class MainMenu extends AppCompatActivity
+{
 
     /*
     buttons to switch activity
@@ -34,7 +35,8 @@ public class MainMenu extends AppCompatActivity {
      * @param savedInstanceState
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu_activity);
         // connect field and interface and set listener
@@ -47,7 +49,8 @@ public class MainMenu extends AppCompatActivity {
         exercise = (Button) findViewById(R.id.go_add_exercise);
         exercise.setOnClickListener(go_exercise());
 
-        go_exercies_recommendation = (Button) findViewById(R.id.go_exercies_recommendation);
+        go_exercies_recommendation = (Button) findViewById(
+                                         R.id.go_exercies_recommendation);
         go_exercies_recommendation.setOnClickListener(go_recommendation());
 
         go_diet_management = (Button) findViewById(R.id.diet_management);
@@ -61,18 +64,20 @@ public class MainMenu extends AppCompatActivity {
         analysis = (Button) findViewById(R.id.mainAnalysisBtn);
         analysis.setOnClickListener(goAnalysis());
 
-     //   new FoodData(this);
+        //   new FoodData(this);
     }
 
     /**
      *  switch activity to weight activity
      * @return OnClickListener
      */
-    private View.OnClickListener go_weight(){
+    private View.OnClickListener go_weight()
+    {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),past_and_new_weight_activity.class);
+                Intent unit_intent = new Intent(getItSelf(),
+                                                past_and_new_weight_activity.class);
                 startActivity(unit_intent);
             }
         };
@@ -82,11 +87,12 @@ public class MainMenu extends AppCompatActivity {
      *  switch activity to add diet activity
      * @return OnClickListener
      */
-    private View.OnClickListener go_check_food_nutrient(){
+    private View.OnClickListener go_check_food_nutrient()
+    {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),SelectFoodOption.class);
+                Intent unit_intent = new Intent(getItSelf(), SelectFoodOption.class);
                 startActivity(unit_intent);
             }
         };
@@ -96,25 +102,27 @@ public class MainMenu extends AppCompatActivity {
      *  switch activity to analysis activity
      * @return OnClickListener
      */
-    private View.OnClickListener go_edit_profile(){
-       return new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent unit_intent = new Intent(getItSelf(),EditProfile.class);
-               startActivity(unit_intent);
-           }
-       };
-   }
+    private View.OnClickListener go_edit_profile()
+    {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent unit_intent = new Intent(getItSelf(), EditProfile.class);
+                startActivity(unit_intent);
+            }
+        };
+    }
 
     /**
      *  switch activity to exercise activity
      * @return OnClickListener
      */
-    private View.OnClickListener go_exercise(){
+    private View.OnClickListener go_exercise()
+    {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),SelectExerciseOption.class);
+                Intent unit_intent = new Intent(getItSelf(), SelectExerciseOption.class);
                 startActivity(unit_intent);
             }
         };
@@ -124,11 +132,12 @@ public class MainMenu extends AppCompatActivity {
      *  switch activity to analysis
      * @return OnClickListener
      */
-    private View.OnClickListener goAnalysis(){
+    private View.OnClickListener goAnalysis()
+    {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),Analysis.class);
+                Intent unit_intent = new Intent(getItSelf(), Analysis.class);
                 startActivity(unit_intent);
             }
         };
@@ -138,11 +147,12 @@ public class MainMenu extends AppCompatActivity {
      *  switch activity to recommendation
      * @return OnClickListener
      */
-    private View.OnClickListener go_recommendation(){
+    private View.OnClickListener go_recommendation()
+    {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),GetRecommendation.class);
+                Intent unit_intent = new Intent(getItSelf(), GetRecommendation.class);
                 startActivity(unit_intent);
             }
         };
@@ -152,11 +162,12 @@ public class MainMenu extends AppCompatActivity {
      *  switch activity to add diet
      * @return OnClickListener
      */
-    private View.OnClickListener go_add_diet(){
+    private View.OnClickListener go_add_diet()
+    {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(),SelectDietOption.class);
+                Intent unit_intent = new Intent(getItSelf(), SelectDietOption.class);
                 startActivity(unit_intent);
             }
         };
@@ -166,7 +177,8 @@ public class MainMenu extends AppCompatActivity {
      *
      * @return self for some function need
      */
-    private Activity getItSelf(){
+    private Activity getItSelf()
+    {
         return this;
     }
 

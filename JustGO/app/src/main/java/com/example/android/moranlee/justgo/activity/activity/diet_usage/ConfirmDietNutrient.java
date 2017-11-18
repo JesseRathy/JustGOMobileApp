@@ -12,7 +12,8 @@ import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.activity.MainMenu;
 import com.example.android.moranlee.justgo.activity.sql_interaction.DietRepo;
 
-public class ConfirmDietNutrient extends AppCompatActivity {
+public class ConfirmDietNutrient extends AppCompatActivity
+{
     /*
     store info transfer from other activity
      */
@@ -34,7 +35,7 @@ public class ConfirmDietNutrient extends AppCompatActivity {
     Button confirm;
 
     /*
-   collect input to determine next step
+    collect input to determine next step
     */
     Button reselect;
 
@@ -48,13 +49,14 @@ public class ConfirmDietNutrient extends AppCompatActivity {
      * @param savedInstanceState
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_diet_nutrient_activity);
         diet_repo = new DietRepo(this);
         // get info from other activity
         data = getIntent().getStringExtra("data");
-        id = getIntent().getIntExtra("id",0);
+        id = getIntent().getIntExtra("id", 0);
         // connect field to interface
         result = (TextView)findViewById(R.id.result_diet_from_database);
         result.setText(data);
@@ -64,7 +66,7 @@ public class ConfirmDietNutrient extends AppCompatActivity {
         reselect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goBaCK = new Intent(getItSelf(),SelectDietOption.class);
+                Intent goBaCK = new Intent(getItSelf(), SelectDietOption.class);
                 startActivity(goBaCK);
             }
         });
@@ -79,7 +81,8 @@ public class ConfirmDietNutrient extends AppCompatActivity {
         });
     }
 
-    private Activity getItSelf(){
+    private Activity getItSelf()
+    {
         return this;
     }
 }

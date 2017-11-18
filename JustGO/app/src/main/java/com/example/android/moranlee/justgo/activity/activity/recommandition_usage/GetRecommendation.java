@@ -22,7 +22,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 
-public class GetRecommendation extends AppCompatActivity {
+public class GetRecommendation extends AppCompatActivity
+{
 
     EditText target_weight;
     Button submit;
@@ -50,16 +51,18 @@ public class GetRecommendation extends AppCompatActivity {
     private double goalWeight;
     //calories eaten today
     private int currentCaloriesEaten;
-    private ArrayList<com.example.android.moranlee.justgo.activity.datatype.Food> recommendedFoodList;
+    private ArrayList<com.example.android.moranlee.justgo.activity.datatype.Food>
+    recommendedFoodList;
     private int recommendedListIterator;
 
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_exercise_recommendation_activity);
-        current_user =new UserRepo(this);
+        current_user = new UserRepo(this);
         dietRepo = new DietRepo(this);
         exerciseDailyRepo = new ExerciseDailyRepo(this);
         weightRepo = new WeightRepo(this);
@@ -74,10 +77,10 @@ public class GetRecommendation extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(target_weight.getText().length()<= 0){
-                    Toast.makeText(GetRecommendation.this, "please enter your target weight", Toast.LENGTH_SHORT).show();
-                }
-                else{
+                if (target_weight.getText().length() <= 0) {
+                    Toast.makeText(GetRecommendation.this, "please enter your target weight",
+                                   Toast.LENGTH_SHORT).show();
+                } else {
                     DisplayRecommendedFood();
                 }
             }
@@ -102,25 +105,25 @@ public class GetRecommendation extends AppCompatActivity {
     public void initializeDay()
     {
         fruitsAndVegToday = 0;
-        meatToday=0;
-        grainsToday=0;
-        dairyToday=0;
+        meatToday = 0;
+        grainsToday = 0;
+        dairyToday = 0;
     }
 
     //sets goal weight
     public void setGoalWeight(int weight)
     {
-        this.goalWeight=weight;
+        this.goalWeight = weight;
     }
     //sets calories eaten today
     public double getCurrentCaloriesEaten()
     {
-        double sumOfCalories=0;
-        ArrayList<HashMap<String,String>> todayFoodList = dietRepo.get_today_food_list();
-        for(int i=0; i<todayFoodList.size(); i++)
-        {
-            HashMap<String,String> some = todayFoodList.get(i);
-            sumOfCalories+= Double.parseDouble(some.get("calories"));
+        double sumOfCalories = 0;
+        ArrayList<HashMap<String, String>> todayFoodList =
+                                            dietRepo.get_today_food_list();
+        for (int i = 0; i < todayFoodList.size(); i++) {
+            HashMap<String, String> some = todayFoodList.get(i);
+            sumOfCalories += Double.parseDouble(some.get("calories"));
         }
         return sumOfCalories;
 
@@ -144,51 +147,50 @@ public class GetRecommendation extends AppCompatActivity {
         //6 is fat
         //other is userDefined
 
-        ArrayList<HashMap<String,String>> todayFoodList = dietRepo.get_today_food_list();
+        ArrayList<HashMap<String, String>> todayFoodList =
+                                            dietRepo.get_today_food_list();
         //set current food intake to zero because we are about to iterate and account for daily food intake
         initializeDay();
-        for(int i=0; i<todayFoodList.size(); i++)
-        {
-            HashMap<String,String> some = todayFoodList.get(i);
+        for (int i = 0; i < todayFoodList.size(); i++) {
+            HashMap<String, String> some = todayFoodList.get(i);
             int foodGroup = Integer.parseInt(some.get("category"));
-            switch(foodGroup)
-            {
-                case 1:
+            switch (foodGroup) {
+            case 1:
                 meatToday++;
-                case 2:
+            case 2:
                 fruitsAndVegToday++;
-                case 3:
+            case 3:
                 fruitsAndVegToday++;
-                case 4:
+            case 4:
                 dairyToday++;
-                case 5:
+            case 5:
                 grainsToday++;
 
-                default:
+            default:
             }
         }
     }
 
     //sourced from https://www.canada.ca/en/health-canada/services/food-nutrition/canada-food-guide/food-guide-basics/much-food-you-need-every-day.html
-    public void getRecoFruitsAndVeg() {
+    public void getRecoFruitsAndVeg()
+    {
         if (current_user.getUserAge() < 14) {
             recoFruitsAndVeg = 6;
-        }
-        else if ((current_user.getUserAge() >= 14) && current_user.getUserAge() < 19) {
+        } else if ((current_user.getUserAge() >= 14)
+                   && current_user.getUserAge() < 19) {
             if (current_user.getUserGender().equals("M")) {
                 recoFruitsAndVeg = 8;
             } else {
                 recoFruitsAndVeg = 7;
             }
-        }
-        else if ((current_user.getUserAge() >= 19) && (current_user.getUserAge() < 51)) {
+        } else if ((current_user.getUserAge() >= 19)
+                   && (current_user.getUserAge() < 51)) {
             if (current_user.getUserGender().equals("M")) {
                 recoFruitsAndVeg = 9;
             } else {
                 recoFruitsAndVeg = 8;
             }
-        }
-        else {
+        } else {
             if (current_user.getUserGender().equals("M")) {
                 recoFruitsAndVeg = 7;
             } else {
@@ -203,22 +205,21 @@ public class GetRecommendation extends AppCompatActivity {
     {
         if (current_user.getUserAge() < 14) {
             recoDairy = 3;
-        }
-        else if ((current_user.getUserAge() >= 14) && current_user.getUserAge() < 19) {
+        } else if ((current_user.getUserAge() >= 14)
+                   && current_user.getUserAge() < 19) {
             if (current_user.getUserGender().equals("M")) {
                 recoDairy = 4;
             } else {
                 recoDairy = 3;
             }
-        }
-        else if ((current_user.getUserAge() >= 19) && (current_user.getUserAge() < 51)) {
+        } else if ((current_user.getUserAge() >= 19)
+                   && (current_user.getUserAge() < 51)) {
             if (current_user.getUserGender().equals("M")) {
                 recoDairy = 2;
             } else {
                 recoDairy = 2;
             }
-        }
-        else {
+        } else {
             if (current_user.getUserGender().equals("M")) {
                 recoDairy = 3;
             } else {
@@ -232,22 +233,21 @@ public class GetRecommendation extends AppCompatActivity {
     {
         if (current_user.getUserAge() < 14) {
             recoGrains = 6;
-        }
-        else if ((current_user.getUserAge() >= 14) && current_user.getUserAge() < 19) {
+        } else if ((current_user.getUserAge() >= 14)
+                   && current_user.getUserAge() < 19) {
             if (current_user.getUserGender().equals("M")) {
                 recoGrains = 7;
             } else {
                 recoGrains = 6;
             }
-        }
-        else if ((current_user.getUserAge() >= 19) && (current_user.getUserAge() < 51)) {
+        } else if ((current_user.getUserAge() >= 19)
+                   && (current_user.getUserAge() < 51)) {
             if (current_user.getUserGender().equals("M")) {
                 recoGrains = 8;
             } else {
                 recoGrains = 6;
             }
-        }
-        else {
+        } else {
             if (current_user.getUserGender().equals("M")) {
                 recoGrains = 7;
             } else {
@@ -256,16 +256,19 @@ public class GetRecommendation extends AppCompatActivity {
         }
     }
 
-    public void getRecoMeats() {
+    public void getRecoMeats()
+    {
         if (current_user.getUserAge() < 14) {
             recoMeat = 1;
-        } else if ((current_user.getUserAge() >= 14) && current_user.getUserAge() < 19) {
+        } else if ((current_user.getUserAge() >= 14)
+                   && current_user.getUserAge() < 19) {
             if (current_user.getUserGender().equals("M")) {
                 recoMeat = 3;
             } else {
                 recoMeat = 2;
             }
-        } else if ((current_user.getUserAge() >= 19) && (current_user.getUserAge() < 51)) {
+        } else if ((current_user.getUserAge() >= 19)
+                   && (current_user.getUserAge() < 51)) {
             if (current_user.getUserGender().equals("M")) {
                 recoMeat = 3;
             } else {
@@ -280,8 +283,8 @@ public class GetRecommendation extends AppCompatActivity {
         }
     }
 
-        // sets the global variables
-        //stores how much of each food group user is supposed to eat
+    // sets the global variables
+    //stores how much of each food group user is supposed to eat
     public void setRecommendedFoodPortions()
     {
         getRecoDairy();
@@ -299,9 +302,10 @@ public class GetRecommendation extends AppCompatActivity {
 
     public double calcBMI()
     {
-        Double weight = weightRepo.get_last_weight(GlobalVariables.getG_CurrentUserId());
+        Double weight = weightRepo.get_last_weight(
+                            GlobalVariables.getG_CurrentUserId());
         Double height = current_user.getUserHeight();
-        return weight/(height*height);
+        return weight / (height * height);
     }
     //amount of calories you burn per day by doing nothing
     //assumes metric
@@ -309,15 +313,13 @@ public class GetRecommendation extends AppCompatActivity {
     // user has birthday now, so need to calculate current_user.get_user_age() from birthday
     public double neededBmr()
     {
-        Double weight = weightRepo.get_last_weight(GlobalVariables.getG_CurrentUserId());
+        Double weight = weightRepo.get_last_weight(
+                            GlobalVariables.getG_CurrentUserId());
         Double height = current_user.getUserHeight();
-        if((current_user.getUserGender().equals("M")))
-        {
-            return (10*weight + (6.25 * height) - (5*current_user.getUserAge()) -5);
-        }
-        else
-        {
-            return (10*weight + (6.25 * height) - (5*current_user.getUserAge()) -161);
+        if ((current_user.getUserGender().equals("M"))) {
+            return (10 * weight + (6.25 * height) - (5 * current_user.getUserAge()) - 5);
+        } else {
+            return (10 * weight + (6.25 * height) - (5 * current_user.getUserAge()) - 161);
         }
     }
     //example if food_repo (and other repo classes) in how to get databases
@@ -328,21 +330,19 @@ public class GetRecommendation extends AppCompatActivity {
         // needed_Bmr - sumOfCaloriesAtenSoFar + Sum_of_Calories_of_exercise_burnt
 
         //float CaloriesToMaintainWeight = (neededBmr() - Integer.parseInt(getCurrentCaloriesEaten()) + Integer.parseInt(getSumOfCaloriesBurnt()));
-        double goalBMR =0;
+        double goalBMR = 0;
         Double height = current_user.getUserHeight();
-        if(goalWeight==0)
-        {
+        if (goalWeight == 0) {
             //user has not set their goal weight yet
             //sets goal weight to current weight
             goalWeight = 68.0;
         }
-        if((current_user.getUserGender().equals("M")))
-        {
-            goalBMR = (10*goalWeight + (6.25 * height) - (5*current_user.getUserAge()) -5);
-        }
-        else
-        {
-            goalBMR =  (10*goalWeight + (6.25 * height) - (5*current_user.getUserAge()) -161);
+        if ((current_user.getUserGender().equals("M"))) {
+            goalBMR = (10 * goalWeight + (6.25 * height) - (5 * current_user.getUserAge())
+                       - 5);
+        } else {
+            goalBMR =  (10 * goalWeight + (6.25 * height) - (5 * current_user.getUserAge())
+                        - 161);
         }
         return (goalBMR - getCurrentCaloriesEaten() + getSumOfCaloriesBurnt());
     }
@@ -359,10 +359,10 @@ public class GetRecommendation extends AppCompatActivity {
 
         setFoodPortions();
         //gets ratio of todays current intake / recoommended intake -- for each food group
-        double meatRatio = (meatToday/recoMeat);
-        double fruitRatio = fruitsAndVegToday/recoFruitsAndVeg;
-        double dairyRatio = dairyToday/recoDairy;
-        double grainRatio = grainsToday/recoGrains;
+        double meatRatio = (meatToday / recoMeat);
+        double fruitRatio = fruitsAndVegToday / recoFruitsAndVeg;
+        double dairyRatio = dairyToday / recoDairy;
+        double grainRatio = grainsToday / recoGrains;
         //assumes meat is the smallest ratio
         double ratioArray[] = {meatRatio, fruitRatio, dairyRatio, grainRatio};
         int  returnArray[] = new int [4];
@@ -370,23 +370,15 @@ public class GetRecommendation extends AppCompatActivity {
         double Value = meatRatio;
         Arrays.sort(ratioArray);
 
-        for(int i=0; i<4; i++)
-        {
-            if (ratioArray[i]==meatRatio)
-            {
-                returnArray[i]=1;
-            }
-            else if(ratioArray[i]==fruitRatio)
-            {
-                returnArray[i]=2;
-            }
-            else if (ratioArray[i]==dairyRatio)
-            {
-                returnArray[i]=3;
-            }
-            else if (ratioArray[i]==grainRatio)
-            {
-                returnArray[i]=4;
+        for (int i = 0; i < 4; i++) {
+            if (ratioArray[i] == meatRatio) {
+                returnArray[i] = 1;
+            } else if (ratioArray[i] == fruitRatio) {
+                returnArray[i] = 2;
+            } else if (ratioArray[i] == dairyRatio) {
+                returnArray[i] = 3;
+            } else if (ratioArray[i] == grainRatio) {
+                returnArray[i] = 4;
             }
         }
 
@@ -401,34 +393,35 @@ public class GetRecommendation extends AppCompatActivity {
         setFoodPortions();
         setRecommendedFoodPortions();
         foodSuggestion();
-        recommendedListIterator=0;
+        recommendedListIterator = 0;
 
     }
     //fills global variable reccomendedFoodList with food recommended to user
     public void foodSuggestion()
     {
 
-    //gets food group with the highest priority
-    //priority array key:
-    //1 is meats
-    //2 is fruit/vegetable
-    //4 is dairy
-    //5 grain
+        //gets food group with the highest priority
+        //priority array key:
+        //1 is meats
+        //2 is fruit/vegetable
+        //4 is dairy
+        //5 grain
 
 
-    //Food Database key:
-    //1 is meat
-    //2 is fruit
-    //3 is vegetable
-    //4 is dairy
-    //5 is grain
-    //6 is fat
-    int foodGroupsToRecommend[] = getPriorityFood();
-    int highestPriorityFoodGroup = foodGroupsToRecommend[0];
-    double caloriesAvail = caloriesAvailable();
-    ArrayList<Food> FoodList = foodRepo.getRecommendedFoods(caloriesAvail,highestPriorityFoodGroup);
-    Collections.shuffle(FoodList);
-    recommendedFoodList = FoodList;
+        //Food Database key:
+        //1 is meat
+        //2 is fruit
+        //3 is vegetable
+        //4 is dairy
+        //5 is grain
+        //6 is fat
+        int foodGroupsToRecommend[] = getPriorityFood();
+        int highestPriorityFoodGroup = foodGroupsToRecommend[0];
+        double caloriesAvail = caloriesAvailable();
+        ArrayList<Food> FoodList = foodRepo.getRecommendedFoods(caloriesAvail,
+                                   highestPriorityFoodGroup);
+        Collections.shuffle(FoodList);
+        recommendedFoodList = FoodList;
 
     }
 
@@ -437,38 +430,32 @@ public class GetRecommendation extends AppCompatActivity {
         int foodGroupsToRecommend[] = getPriorityFood();
         float highestPriorityFoodGroup = foodGroupsToRecommend[0];
         String foodGroup;
-        if(highestPriorityFoodGroup==1)
-        {
+        if (highestPriorityFoodGroup == 1) {
             foodGroup = "meat";
-        }
-        else if(highestPriorityFoodGroup==2)
-        {
-            foodGroup="fruits and vegetables";
-        }
-        else if(highestPriorityFoodGroup==3)
-        {
-            foodGroup="dairy";
-        }
-        else
-        {
+        } else if (highestPriorityFoodGroup == 2) {
+            foodGroup = "fruits and vegetables";
+        } else if (highestPriorityFoodGroup == 3) {
+            foodGroup = "dairy";
+        } else {
             foodGroup = "grains";
         }
-        print_food.setText("It appears you are lacking in "+ foodGroup+ ".  We recommend you eat some "+ recommendedFoodList.get(recommendedListIterator).getName());
+        print_food.setText("It appears you are lacking in " + foodGroup +
+                           ".  We recommend you eat some " + recommendedFoodList.get(
+                               recommendedListIterator).getName());
         //Toast.makeText(this, "It appears you are lacking in "+ foodGroup+ ".  We recommend you eat some "+ recommendedFoodList.get(0).getName(), Toast.LENGTH_SHORT).show();
     }
 
     public void DisplayNextFood()
     {
         //makes sure they are not at the last element in recommended food list
-        if(recommendedListIterator>=recommendedFoodList.size()-1)
-        {
+        if (recommendedListIterator >= recommendedFoodList.size() - 1) {
             //throw toast error
             DisplayRecommendedFood();
-            Toast.makeText(this,"Reach maxNumber of suggestion",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Reach maxNumber of suggestion",
+                           Toast.LENGTH_SHORT).show();
         }
 
-        else
-        {
+        else {
             recommendedListIterator++;
             DisplayRecommendedFood();
         }
@@ -476,15 +463,14 @@ public class GetRecommendation extends AppCompatActivity {
 
     public void DisplayPrevFood()
     {
-        if(recommendedListIterator<=0)
-        {
+        if (recommendedListIterator <= 0) {
             //throw toast error
-            Toast.makeText(this,"Reach minNumber of suggestion",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Reach minNumber of suggestion",
+                           Toast.LENGTH_SHORT).show();
             DisplayRecommendedFood();
         }
 
-        else
-        {
+        else {
             recommendedListIterator--;
             DisplayRecommendedFood();
         }

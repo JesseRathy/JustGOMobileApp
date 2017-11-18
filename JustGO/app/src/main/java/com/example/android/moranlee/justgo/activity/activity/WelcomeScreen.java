@@ -15,30 +15,32 @@ import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.activity.user_usage.Login;
 
 
-public class WelcomeScreen extends Activity {
-    LinearLayout up,bottom;
-    Animation uptodown,downtoup;
+public class WelcomeScreen extends Activity
+{
+    LinearLayout up, bottom;
+    Animation uptodown, downtoup;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         up = (LinearLayout) findViewById(R.id.up_part);
         bottom = (LinearLayout) findViewById(R.id.bottom_part);
-        uptodown = AnimationUtils.loadAnimation(this,R.anim.uptodown);
-        downtoup = AnimationUtils.loadAnimation(this,R.anim.downtoup);
+        uptodown = AnimationUtils.loadAnimation(this, R.anim.uptodown);
+        downtoup = AnimationUtils.loadAnimation(this, R.anim.downtoup);
         up.setAnimation(uptodown);
         bottom.setAnimation(downtoup);
 
 
-        Thread myThread = new Thread(){
+        Thread myThread = new Thread() {
             @Override
-            public void run(){
+            public void run() {
                 try {
                     sleep(4000);
                     Intent intent = new Intent(getApplicationContext(), Login.class);
                     startActivity(intent);
                     finish();
-                }catch (InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
 

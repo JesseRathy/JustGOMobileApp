@@ -11,7 +11,8 @@ import android.widget.TextView;
 import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.activity.MainMenu;
 
-public class ConfirmFoodNutrient extends AppCompatActivity {
+public class ConfirmFoodNutrient extends AppCompatActivity
+{
 
     /*
     store info transfer from other activity
@@ -29,7 +30,7 @@ public class ConfirmFoodNutrient extends AppCompatActivity {
     Button confirm;
 
     /*
-   collect input to determine next step
+    collect input to determine next step
     */
     Button reselect;
 
@@ -38,7 +39,8 @@ public class ConfirmFoodNutrient extends AppCompatActivity {
      * @param savedInstanceState
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_food_activity);
         // get info from other activity
@@ -52,7 +54,7 @@ public class ConfirmFoodNutrient extends AppCompatActivity {
         reselect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent go_back = new Intent(getItSelf(),SelectFoodOption.class);
+                Intent go_back = new Intent(getItSelf(), SelectFoodOption.class);
                 startActivity(go_back);
             }
         });
@@ -66,7 +68,8 @@ public class ConfirmFoodNutrient extends AppCompatActivity {
         });
     }
 
-    private Activity getItSelf(){
+    private Activity getItSelf()
+    {
         return this;
     }
 

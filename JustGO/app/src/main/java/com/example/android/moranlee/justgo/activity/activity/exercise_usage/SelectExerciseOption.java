@@ -8,13 +8,15 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.android.moranlee.justgo.R;
-public class SelectExerciseOption extends AppCompatActivity {
+public class SelectExerciseOption extends AppCompatActivity
+{
 
     Button selectFromDatabase;
     Button addNewExercise;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_exercise_option);
 
@@ -28,17 +30,19 @@ public class SelectExerciseOption extends AppCompatActivity {
 
 
 
-    private View.OnClickListener select_from_database(){
+    private View.OnClickListener select_from_database()
+    {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unitIntent = new Intent(getItSelf(),NormalExpandExercise.class);
+                Intent unitIntent = new Intent(getItSelf(), NormalExpandExercise.class);
                 startActivity(unitIntent);
             }
         };
     }
 
-    private View.OnClickListener add_new_exercise(){
+    private View.OnClickListener add_new_exercise()
+    {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,7 +52,8 @@ public class SelectExerciseOption extends AppCompatActivity {
         };
     }
 
-    private Activity getItSelf(){
+    private Activity getItSelf()
+    {
         return this;
     }
 

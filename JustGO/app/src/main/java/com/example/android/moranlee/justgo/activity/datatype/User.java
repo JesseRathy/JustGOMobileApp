@@ -4,7 +4,8 @@ package com.example.android.moranlee.justgo.activity.datatype;
  * Created by yul04 on 2017/9/23.
  */
 
-public class User {
+public class User
+{
     /*
     fields of a user type data
      */
@@ -18,51 +19,63 @@ public class User {
     /*
     getter and setter of food type datas
      */
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public String getPassword() {
+    public String getPassword()
+    {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(String password)
+    {
         this.password = password;
     }
 
-    public double getHeight() {
+    public double getHeight()
+    {
         return height;
     }
 
-    public void setHeight(double height) {
+    public void setHeight(double height)
+    {
         this.height = height;
     }
 
-    public String getGender() {
+    public String getGender()
+    {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(String gender)
+    {
         this.gender = gender;
     }
 
-    public String getBirthday() {
+    public String getBirthday()
+    {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(String birthday)
+    {
         this.birthday = birthday;
     }
 

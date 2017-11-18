@@ -4,7 +4,8 @@ package com.example.android.moranlee.justgo.activity.datatype;
  * Created by yul04 on 2017/9/23.
  */
 
-public class Weight {
+public class Weight
+{
     /*
     fields of a weight type data
      */
@@ -16,35 +17,43 @@ public class Weight {
     /*
     getter and setter of weight type datas
      */
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public int getUser_id() {
+    public int getUser_id()
+    {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(int user_id)
+    {
         this.user_id = user_id;
     }
 
-    public String getDate() {
+    public String getDate()
+    {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(String date)
+    {
         this.date = date;
     }
 
-    public double getWeight() {
+    public double getWeight()
+    {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(double weight)
+    {
         this.weight = weight;
     }
 }

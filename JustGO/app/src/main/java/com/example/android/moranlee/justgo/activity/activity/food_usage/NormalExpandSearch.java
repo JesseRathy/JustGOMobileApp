@@ -14,7 +14,8 @@ import com.example.android.moranlee.justgo.activity.adapter.OnGroupExpandedListe
 
 import java.util.ArrayList;
 
-public class NormalExpandSearch extends AppCompatActivity {
+public class NormalExpandSearch extends AppCompatActivity
+{
 
     private static final String TAG = "NormalExpandSearch";
 
@@ -41,7 +42,8 @@ public class NormalExpandSearch extends AppCompatActivity {
      * @param savedInstanceState
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expand);
         nameList = getIntent().getStringArrayListExtra("name");
@@ -49,12 +51,13 @@ public class NormalExpandSearch extends AppCompatActivity {
 
         specific = new String[1][nameList.size()];
 
-        for(int i=0;i<nameList.size();i++){
+        for (int i = 0; i < nameList.size(); i++) {
             specific[0][i] = nameList.get(i);
         }
 
         // create expand view and initialize
-        final ExpandableListView listView = (ExpandableListView) findViewById(R.id.expandable_list);
+        final ExpandableListView listView = (ExpandableListView) findViewById(
+                                                R.id.expandable_list);
         final NormalExpandAdapter adapter = new NormalExpandAdapter(general, specific);
         adapter.setOnGroupExpandedListener(new OnGroupExpandedListener() {
 
@@ -68,9 +71,11 @@ public class NormalExpandSearch extends AppCompatActivity {
 
         listView.setAdapter(adapter);
         //  set on group listener
-        listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+        listView.setOnGroupClickListener(new
+        ExpandableListView.OnGroupClickListener() {
             @Override
-            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+            public boolean onGroupClick(ExpandableListView parent, View v,
+                                        int groupPosition, long id) {
                 //Log.d(TAG, "groupPosition:" + groupPosition + ", id:" + id);
                 // must return false
                 return false;
@@ -78,12 +83,15 @@ public class NormalExpandSearch extends AppCompatActivity {
         });
 
         //  set child on child listener
-        listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+        listView.setOnChildClickListener(new
+        ExpandableListView.OnChildClickListener() {
             @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Toast.makeText(NormalExpandSearch.this, specific[groupPosition][childPosition], Toast.LENGTH_SHORT).show();
-                Intent go_to_confirm = new Intent(getItSelf(),ConfirmFoodNutrient.class);
-                go_to_confirm.putExtra("data",dataList.get(childPosition));
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+                Toast.makeText(NormalExpandSearch.this, specific[groupPosition][childPosition],
+                               Toast.LENGTH_SHORT).show();
+                Intent go_to_confirm = new Intent(getItSelf(), ConfirmFoodNutrient.class);
+                go_to_confirm.putExtra("data", dataList.get(childPosition));
                 startActivity(go_to_confirm);
                 return true;
             }
@@ -91,7 +99,9 @@ public class NormalExpandSearch extends AppCompatActivity {
     }
 
     //close other if one is expand
-    private boolean expandOnlyOne(ExpandableListView view, int expandedPosition, int groupLength) {
+    private boolean expandOnlyOne(ExpandableListView view, int expandedPosition,
+                                  int groupLength)
+    {
         boolean result = true;
         for (int i = 0; i < groupLength; i++) {
             if (i != expandedPosition && view.isGroupExpanded(i)) {
@@ -105,7 +115,8 @@ public class NormalExpandSearch extends AppCompatActivity {
      *
      * @return self becuse other function need
      */
-    private Activity getItSelf(){
+    private Activity getItSelf()
+    {
         return this;
     }
 }
