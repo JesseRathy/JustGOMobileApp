@@ -1,7 +1,9 @@
 package com.example.android.moranlee.justgo.activity.activity;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -38,6 +40,7 @@ public class MainMenu extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main_menu_activity);
         // connect field and interface and set listener
         go_add_diet = (Button) findViewById(R.id.go_add_diet);

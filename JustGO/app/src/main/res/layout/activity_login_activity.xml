@@ -9,9 +9,7 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/splash_screen2"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="135dp">
+        android:background="@drawable/splash_screen2">
 
 
         <ImageView
@@ -20,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="87dp"
+            android:layout_marginTop="35dp"
             app:srcCompat="@drawable/logo1" />
 
         <EditText
@@ -69,15 +67,6 @@
             android:layout_alignParentStart="true"
             android:layout_marginBottom="-15dp"
             android:background="@drawable/signup" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/username"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="220dp"
-            app:srcCompat="@drawable/justgo_icon2" />
 
 
     </RelativeLayout>
