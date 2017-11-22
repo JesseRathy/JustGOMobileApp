@@ -92,7 +92,7 @@ public class AddNewFood extends AppCompatActivity
                 newFood.setFat(Double.parseDouble(fat.getText().toString()));
                 newFood.setName(name.getText().toString());
                 foodRepo.insert(newFood);
-                Intent goBack = new Intent(getItSelf(), MainMenu.class);
+                Intent goBack = new Intent(getItSelf(), SelectFoodOption.class);
                 startActivity(goBack);
             }
         });

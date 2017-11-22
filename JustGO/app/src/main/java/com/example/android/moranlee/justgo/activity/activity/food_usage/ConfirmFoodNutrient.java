@@ -62,8 +62,8 @@ public class ConfirmFoodNutrient extends AppCompatActivity
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent unit_intent = new Intent(getItSelf(), MainMenu.class);
-                startActivity(unit_intent);
+                Intent return_food = new Intent(getItSelf(), SelectFoodOption.class);
+                startActivity(return_food);
             }
         });
     }

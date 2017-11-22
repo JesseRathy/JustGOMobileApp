@@ -36,7 +36,7 @@ public class WelcomeScreen extends Activity
             @Override
             public void run() {
                 try {
-                    sleep(4000);
+                    sleep(3000);
                     Intent intent = new Intent(getApplicationContext(), Login.class);
                     startActivity(intent);
                     finish();

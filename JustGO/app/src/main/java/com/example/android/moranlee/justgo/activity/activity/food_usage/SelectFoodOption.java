@@ -50,7 +50,9 @@ public class SelectFoodOption extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent unit_intent = new Intent(getItSelf(), NormalExpandFood.class);
+                unit_intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(unit_intent);
+                finish();
             }
         };
     }
@@ -65,7 +67,9 @@ public class SelectFoodOption extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent unit_intent = new Intent(getItSelf(), AddNewFood.class);
+                unit_intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(unit_intent);
+                finish();
             }
         };
     }
@@ -80,7 +84,9 @@ public class SelectFoodOption extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent unit_intent = new Intent(getItSelf(), SearchFoodName.class);
+                unit_intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(unit_intent);
+                finish();
             }
         };
     }

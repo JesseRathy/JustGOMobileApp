@@ -101,7 +101,7 @@ public class AddNewExercise extends AppCompatActivity
                     exercise.setEnergy_consumption(Double.parseDouble(
                                                        consumption.getText().toString()));
                     exercise_repo.insert(exercise);
-                    Intent goBack = new Intent(get_self(), MainMenu.class);
+                    Intent goBack = new Intent(get_self(), SelectExerciseOption.class);
                     startActivity(goBack);
 
                 }

@@ -36,7 +36,9 @@ public class SelectExerciseOption extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent unitIntent = new Intent(getItSelf(), NormalExpandExercise.class);
+                unitIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(unitIntent);
+                finish();
             }
         };
     }
@@ -47,7 +49,9 @@ public class SelectExerciseOption extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent unitIntent = new Intent(getItSelf(), AddNewExercise.class);
+                unitIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(unitIntent);
+                finish();
             }
         };
     }

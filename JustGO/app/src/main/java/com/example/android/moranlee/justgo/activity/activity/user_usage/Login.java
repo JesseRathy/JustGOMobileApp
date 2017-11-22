@@ -3,6 +3,7 @@ package com.example.android.moranlee.justgo.activity.activity.user_usage;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.IntentCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -119,6 +120,7 @@ public class Login extends AppCompatActivity
                     if (id >= 0) {
                         GlobalVariables.setG_CurrentUserId(id);
                         Intent unit_intent = new Intent(getItSelf(), MainMenu.class);
+                        unit_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(unit_intent);
                     } else {
                         Toast.makeText(getApplicationContext(),
