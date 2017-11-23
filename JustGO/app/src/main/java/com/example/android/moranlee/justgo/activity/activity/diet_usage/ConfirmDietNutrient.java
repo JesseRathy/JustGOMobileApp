@@ -76,7 +76,9 @@ public class ConfirmDietNutrient extends AppCompatActivity
             public void onClick(View v) {
                 diet_repo.insert(diet_repo.create_diet(id));
                 Intent return_diet = new Intent(getItSelf(), SelectDietOption.class);
+                return_diet.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(return_diet);
+                finish();
             }
         });
     }

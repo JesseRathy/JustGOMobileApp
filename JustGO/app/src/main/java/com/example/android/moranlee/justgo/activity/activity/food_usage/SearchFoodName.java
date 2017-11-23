@@ -59,7 +59,10 @@ public class SearchFoodName extends AppCompatActivity
                 Intent go_to_confirm = new Intent(getItSelf(), NormalExpandSearch.class);
                 go_to_confirm.putExtra("data", datas);
                 go_to_confirm.putExtra("name", names);
+
+                go_to_confirm.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(go_to_confirm);
+                finish();
             }
         });
     }

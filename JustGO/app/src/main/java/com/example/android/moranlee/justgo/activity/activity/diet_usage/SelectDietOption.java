@@ -51,7 +51,6 @@ public class SelectDietOption extends AppCompatActivity
                 Intent unitIntent = new Intent(getItSelf(), NormalExpandDiet.class);
                 unitIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(unitIntent);
-                finish();
             }
         };
     }
@@ -68,7 +67,6 @@ public class SelectDietOption extends AppCompatActivity
                 Intent unitIntent = new Intent(getItSelf(), SearchDietName.class);
                 unitIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(unitIntent);
-                finish();
             }
         };
     }

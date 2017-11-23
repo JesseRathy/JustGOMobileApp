@@ -42,8 +42,7 @@
         <activity android:name=".activity.activity.exercise_usage.SelectExerciseOption"
             android:launchMode="singleTop"/>
         <activity android:name=".activity.activity.exercise_usage.AddNewExercise"
-            android:launchMode="singleTop"
-            android:noHistory="true"/>
+            android:launchMode="singleTop" />
         <activity android:name=".activity.activity.recommandition_usage.GetRecommendation"
             android:launchMode="singleTop"
             android:noHistory="true"/>
@@ -64,8 +63,7 @@
         <activity android:name=".activity.activity.analysis_usage.Analysis"
             android:launchMode="singleTop"/>
         <activity android:name=".activity.activity.exercise_usage.NormalExpandExercise"
-            android:launchMode="singleTop"
-            android:noHistory="true"/>
+            android:launchMode="singleTop"/>
         <activity android:name=".activity.activity.diet_usage.NormalExpandDiet"
             android:launchMode="singleTop"
             android:noHistory="true"/>

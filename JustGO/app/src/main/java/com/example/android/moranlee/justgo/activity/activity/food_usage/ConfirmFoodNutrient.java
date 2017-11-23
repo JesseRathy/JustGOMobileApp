@@ -63,7 +63,10 @@ public class ConfirmFoodNutrient extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent return_food = new Intent(getItSelf(), SelectFoodOption.class);
+
+                return_food.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(return_food);
+                finish();
             }
         });
     }

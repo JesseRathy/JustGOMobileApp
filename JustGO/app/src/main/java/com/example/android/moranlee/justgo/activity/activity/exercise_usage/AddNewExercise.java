@@ -102,7 +102,9 @@ public class AddNewExercise extends AppCompatActivity
                                                        consumption.getText().toString()));
                     exercise_repo.insert(exercise);
                     Intent goBack = new Intent(get_self(), SelectExerciseOption.class);
+                    goBack.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(goBack);
+                    finish();
 
                 }
             }

@@ -205,7 +205,9 @@ public class NormalExpandDiet extends AppCompatActivity
                 pos += childPosition;
                 goToConfirm.putExtra("data", datas.get(pos));
                 goToConfirm.putExtra("id", pos + 1);
+                goToConfirm.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(goToConfirm);
+                finish();
                 return true;
             }
         });

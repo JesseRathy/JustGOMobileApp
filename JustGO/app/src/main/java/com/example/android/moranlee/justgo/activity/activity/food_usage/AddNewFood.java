@@ -93,7 +93,9 @@ public class AddNewFood extends AppCompatActivity
                 newFood.setName(name.getText().toString());
                 foodRepo.insert(newFood);
                 Intent goBack = new Intent(getItSelf(), SelectFoodOption.class);
+                goBack.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(goBack);
+                finish();
             }
         });
     }

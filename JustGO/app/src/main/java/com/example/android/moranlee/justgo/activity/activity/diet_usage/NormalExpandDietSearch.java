@@ -95,7 +95,9 @@ public class NormalExpandDietSearch extends AppCompatActivity
                 Intent go_to_confirm = new Intent(getItSelf(), ConfirmDietNutrient.class);
                 go_to_confirm.putExtra("data", dataList.get(childPosition));
                 go_to_confirm.putExtra("id", Integer.parseInt(idList.get(childPosition)));
+                go_to_confirm.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(go_to_confirm);
+                finish();
                 return true;
             }
         });

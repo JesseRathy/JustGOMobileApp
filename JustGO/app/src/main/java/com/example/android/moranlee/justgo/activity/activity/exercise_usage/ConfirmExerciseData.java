@@ -77,7 +77,9 @@ public class ConfirmExerciseData extends AppCompatActivity
             public void onClick(View v) {
                 exerciseDailyRepo.insert(exerciseDailyRepo.create_exercise(0, 1.0));
                 Intent return_exercise = new Intent(getItSelf(), SelectExerciseOption.class);
+                return_exercise.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(return_exercise);
+                finish();
             }
         });
     }
