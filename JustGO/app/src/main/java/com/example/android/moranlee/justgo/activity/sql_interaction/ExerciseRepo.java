@@ -177,5 +177,27 @@ public class ExerciseRepo
         return exList;
     }
 
+    /**
+     *  get current max exercise id
+     * @return result max exercise id in database
+     */
+    public int getMaxExerciseId ()
+    {
+        SQLiteDatabase db = sql.getReadableDatabase();
+        String selectQuery =  "select MAX(id) as id from exercise";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        int result = 0;
+        if (cursor.moveToFirst()) {
+            do {
+                int temp = cursor.getInt(cursor.getColumnIndex("id"));
+                if(result<temp){
+                    result = temp;
+                }
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return result+1;
+    }
 
 }

@@ -244,13 +244,31 @@ public class DietRepo
     }
 
     /**
-     * Print out a given user's recent one week diet activity along with the nutrition intake for each food
+     *  get current max diet id
+     * @return result max diet id in database
      */
-    //public void print_diet_past_month()
-
-
-
-    //public void add_new_diet()
-
+    public int getMaxDietId ()
+    {
+        SQLiteDatabase db = sql.getReadableDatabase();
+        String selectQuery =  "select MAX(id) as id from diet ";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        int result = 0;
+        if (cursor.moveToFirst()) {
+            do {
+                int temp = cursor.getInt(cursor.getColumnIndex("id"));
+                if(result<temp){
+                    result = temp;
+                }
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        if(result == 0) {
+            return result;
+        }
+        else{
+            return result+1;
+        }
+    }
 
 }

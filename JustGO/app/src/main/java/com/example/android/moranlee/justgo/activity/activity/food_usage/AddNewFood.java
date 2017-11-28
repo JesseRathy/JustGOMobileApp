@@ -7,13 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.android.moranlee.justgo.R;
-
-import com.example.android.moranlee.justgo.activity.activity.MainMenu;
+import com.example.android.moranlee.justgo.activity.GlobalVariables;
 import com.example.android.moranlee.justgo.activity.datatype.Food;
 import com.example.android.moranlee.justgo.activity.sql_interaction.FoodRepo;
-import com.example.android.moranlee.justgo.activity.*;
 
 
 public class AddNewFood extends AppCompatActivity
@@ -80,22 +79,27 @@ public class AddNewFood extends AppCompatActivity
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newFood = new Food();
-                newFood.setId(GlobalVariables.getG_CurrentMaxFoodId() + 1);
-                GlobalVariables.setG_CurrentMaxFoodId(GlobalVariables.getG_CurrentMaxFoodId() +
-                                                      1);
-                newFood.setUser_id(GlobalVariables.getG_CurrentUserId());
-                newFood.setCalories(Double.parseDouble(calorie.getText().toString()));
-                newFood.setCategory(7);
-                newFood.setCholesterol(Double.parseDouble(cholesterol.getText().toString()));
-                newFood.setProtein(Double.parseDouble(protein.getText().toString()));
-                newFood.setFat(Double.parseDouble(fat.getText().toString()));
-                newFood.setName(name.getText().toString());
-                foodRepo.insert(newFood);
-                Intent goBack = new Intent(getItSelf(), SelectFoodOption.class);
-                goBack.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(goBack);
-                finish();
+                if(name.getText().length() <= 0 || protein.getText().length()<=0 || calorie.getText().length()<=0 || cholesterol.getText().length()<= 0 || fat.getText().length() <= 0){
+                    Toast.makeText(getItSelf(),"Can not create a food without some info",Toast.LENGTH_SHORT);
+                }
+                else {
+                    newFood = new Food();
+                    newFood.setId(GlobalVariables.getG_CurrentMaxFoodId() + 1);
+                    GlobalVariables.setG_CurrentMaxFoodId(GlobalVariables.getG_CurrentMaxFoodId() +
+                            1);
+                    newFood.setUser_id(GlobalVariables.getG_CurrentUserId());
+                    newFood.setCalories(Double.parseDouble(calorie.getText().toString()));
+                    newFood.setCategory(7);
+                    newFood.setCholesterol(Double.parseDouble(cholesterol.getText().toString()));
+                    newFood.setProtein(Double.parseDouble(protein.getText().toString()));
+                    newFood.setFat(Double.parseDouble(fat.getText().toString()));
+                    newFood.setName(name.getText().toString());
+                    foodRepo.insert(newFood);
+                    Intent goBack = new Intent(getItSelf(), SelectFoodOption.class);
+                    goBack.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(goBack);
+                    finish();
+                }
             }
         });
     }

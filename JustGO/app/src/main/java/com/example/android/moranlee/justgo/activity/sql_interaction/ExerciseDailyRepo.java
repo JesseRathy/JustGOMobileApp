@@ -105,4 +105,32 @@ public class ExerciseDailyRepo
         return total_calories;
     }
 
+    /**
+     *  get current max exercise daily id
+     * @return result max exercise daily id in database
+     */
+    public int getMaxExerciseDailyId ()
+    {
+        SQLiteDatabase db = sql.getReadableDatabase();
+        String selectQuery =  "select MAX(id) as id from exercise_daily ";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        int result = 0;
+        if (cursor.moveToFirst()) {
+            do {
+                int temp = cursor.getInt(cursor.getColumnIndex("id"));
+                if(result<temp){
+                    result = temp;
+                }
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        if(result == 0) {
+            return result;
+        }
+        else{
+            return result+1;
+        }
+    }
+
 }

@@ -3,7 +3,6 @@ package com.example.android.moranlee.justgo.activity.activity.user_usage;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.IntentCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +14,12 @@ import com.example.android.moranlee.justgo.activity.GlobalVariables;
 import com.example.android.moranlee.justgo.activity.activity.MainMenu;
 import com.example.android.moranlee.justgo.activity.data.ExerciseData;
 import com.example.android.moranlee.justgo.activity.data.FoodData;
+import com.example.android.moranlee.justgo.activity.sql_interaction.DietRepo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.ExerciseDailyRepo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.ExerciseRepo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.FoodRepo;
 import com.example.android.moranlee.justgo.activity.sql_interaction.UserRepo;
+import com.example.android.moranlee.justgo.activity.sql_interaction.WeightRepo;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -48,6 +52,16 @@ public class Login extends AppCompatActivity
      */
     UserRepo current_user;
 
+    FoodRepo foodRepo;
+
+    DietRepo dietRepo;
+
+    ExerciseDailyRepo exerciseDailyRepo;
+
+    ExerciseRepo exerciseRepo;
+
+    WeightRepo weightRepo;
+
     /**
      * initialize activity
      * @param savedInstanceState
@@ -58,32 +72,35 @@ public class Login extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
         // reinstall databse everytime run, do not need when finish but useful when testing
-        this.deleteDatabase("JustGo");
+        //this.deleteDatabase("JustGo");
         // connect interface with field, initialize sql interface
         login = (Button)findViewById(R.id.login);
         login.setOnClickListener(login());
         register = (Button)findViewById(R.id.signup);
         register.setOnClickListener(signup());
         current_user = new UserRepo(this);
+        foodRepo = new FoodRepo(this);
+        exerciseDailyRepo = new ExerciseDailyRepo(this);
+        exerciseRepo = new ExerciseRepo(this);
+        weightRepo = new WeightRepo(this);
+        dietRepo = new DietRepo(this);
         // delete past user each time reinstall, not need when finish
-        int past_user = current_user.get_user_num();
-        for (int i = 1; i <= past_user; i++) {
-            current_user.delete_by_id(i);
+        ///int past_user = current_user.get_user_num();
+        //for (int i = 1; i <= past_user; i++) {
+        //    current_user.delete_by_id(i);
+       // }
+        int maxFood = foodRepo.getMaxFoodId();
+        int maxExercise = exerciseRepo.getMaxExerciseId();
+        GlobalVariables.setCurrent_max_exercise_id(maxExercise);
+        GlobalVariables.setG_CurrentMaxWeightId(weightRepo.getMaxWeightId());
+        GlobalVariables.setCurrent_max_exercise_daily_id(exerciseDailyRepo.getMaxExerciseDailyId());
+        GlobalVariables.setG_CurrentMaxUserId(current_user.getMaxUserId());
+        GlobalVariables.setCurrent_max_diet_id(dietRepo.getMaxDietId());
+        GlobalVariables.setG_CurrentMaxFoodId(maxFood);
+        if(maxFood<20 && maxExercise<20) {
+            new FoodData(this);
+            new ExerciseData(this);
         }
-        if (GlobalVariables.getG_CurrentMaxUserId() <= 0) {
-            GlobalVariables.setG_CurrentMaxUserId(1);
-        }
-        if (GlobalVariables.getCurrent_max_diet_id() <= 0) {
-            GlobalVariables.setCurrent_max_diet_id(0);
-        }
-        if (GlobalVariables.getCurrent_max_exercise_daily_id() <= 0) {
-            GlobalVariables.setCurrent_max_exercise_daily_id(0);
-        }
-        if (GlobalVariables.getCurrent_max_exercise_id() <= 0) {
-            GlobalVariables.setCurrent_max_exercise_id(12);
-        }
-        new FoodData(this);
-        new ExerciseData(this);
     }
 
     /**

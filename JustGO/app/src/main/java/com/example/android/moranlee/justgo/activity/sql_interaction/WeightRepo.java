@@ -101,4 +101,32 @@ public class WeightRepo
         return weight;
     }
 
+    /**
+     *  get current max weight id
+     * @return result max weight id in database
+     */
+    public int getMaxWeightId ()
+    {
+        SQLiteDatabase db = sql.getReadableDatabase();
+        String selectQuery =  "select MAX(id) as id from weight ";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        int result = 0;
+        if (cursor.moveToFirst()) {
+            do {
+                int temp = cursor.getInt(cursor.getColumnIndex("id"));
+                if(result<temp){
+                    result = temp;
+                }
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        if(result == 0) {
+            return result;
+        }
+        else{
+            return result+1;
+        }
+    }
+
 }

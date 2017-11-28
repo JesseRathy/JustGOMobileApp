@@ -32,6 +32,7 @@
                 android:textColorHint="@color/white"
                 android:id="@+id/new_food_name"
                 android:background="@drawable/input_text_1_dark"
+                android:maxLines="1"
                 />
 
         <LinearLayout
@@ -53,6 +54,8 @@
                 android:textColorHint="@color/white"
                 android:id="@+id/new_food_calories"
                 android:background="@drawable/input_text_1_dark"
+                android:inputType="number"
+                android:maxLines="1"
                 />
 
 
@@ -75,6 +78,8 @@
                 android:textColorHint="@color/white"
                 android:id="@+id/new_food_fat"
                 android:background="@drawable/input_text_1_dark"
+                android:inputType="number"
+                android:maxLines="1"
                 />
 
         <LinearLayout
@@ -98,6 +103,8 @@
                 android:textColorHint="@color/white"
                 android:id="@+id/new_food_protein"
                 android:background="@drawable/input_text_1_dark"
+                android:inputType="number"
+                android:maxLines="1"
                 />
 
 
@@ -118,9 +125,11 @@
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:hint="amount in gram"
-            android:textColorHint="@color/white"
+                android:textColorHint="@color/white"
                 android:id="@+id/new_food_cholesterol"
                 android:background="@drawable/input_text_1_dark"
+                android:inputType="number"
+                android:maxLines="1"
                 />
 
         <Button

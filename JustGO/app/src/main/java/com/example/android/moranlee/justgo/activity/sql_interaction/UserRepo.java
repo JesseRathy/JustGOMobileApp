@@ -284,6 +284,30 @@ public class UserRepo
         }
         return age;
     }
+
+    /**
+     *  get current max user id
+     * @return result max user id in database
+     */
+    public int getMaxUserId ()
+    {
+        SQLiteDatabase db = sql.getReadableDatabase();
+        String selectQuery =  "select MAX(id) as id from user ";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        int result = 0;
+        if (cursor.moveToFirst()) {
+            do {
+                int temp = cursor.getInt(cursor.getColumnIndex("id"));
+                if(result<temp){
+                    result = temp;
+                }
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return result+1;
+    }
+
 // <<<<<<< HEAD
 
 //     /**
