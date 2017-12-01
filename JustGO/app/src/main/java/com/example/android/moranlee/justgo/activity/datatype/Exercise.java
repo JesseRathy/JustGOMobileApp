@@ -52,6 +52,11 @@ public class Exercise
         return energy_consumption;
     }
 
+    public String toString(){
+        String result = "name: " + name + "\n" + "category: " + category + "\n" + "energy consumption: " + energy_consumption + "\n" + "id: " + id;
+        return result;
+    }
+
     public void setEnergy_consumption(double energy_consumption)
     {
         this.energy_consumption = energy_consumption;

@@ -70,7 +70,7 @@ public class SelectFromFoodDatabase extends AppCompatActivity
         dairys = new LinkedList<>();
         for (int i = 0; i < defaults.size(); i++) {
             HashMap<String, String> current = (HashMap<String, String>)defaults.get(i);
-            System.out.println(current.toString());
+            // System.out.println(current.toString());
             //Log.d(TAG, "onCreate() returned: " + current.toString());
             String category = current.get("category");
             if (category.equals(null)) {

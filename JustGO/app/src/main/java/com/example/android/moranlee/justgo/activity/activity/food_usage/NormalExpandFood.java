@@ -103,7 +103,7 @@ public class NormalExpandFood extends AppCompatActivity
         // get data from database
         for (int i = 0; i < defaults.size(); i++) {
             HashMap<String, String> current = (HashMap<String, String>)defaults.get(i);
-            System.out.println(current.toString());
+            // System.out.println(current.toString());
             // put data to array base on input type
             String category = current.get("category");
             String user = current.get("user_id");
@@ -134,7 +134,7 @@ public class NormalExpandFood extends AppCompatActivity
                     && user.equals(Integer.toString(GlobalVariables.getG_CurrentUserId()))) {
                 users.add(current.get("name"));
             }
-            datas.add(current.toString())
+            datas.add(HashToString(current))
             ;
         }
         // transfer data to array because expand view only allow array as input
@@ -239,6 +239,40 @@ public class NormalExpandFood extends AppCompatActivity
     private Activity getItSelf()
     {
         return this;
+    }
+
+    /**
+     *  new HashMap.toString to help display better
+     * @param food
+     * @return string of food data
+     */
+    private String HashToString(HashMap<String,String> food){
+        String result = "";
+        result+="id:\t";
+        result+=food.get("id");
+        result+="\n";
+        result+="category:\t";
+        result+=food.get("category");
+        result+="\n";
+        result+="user_id:\t";
+        result+=food.get("user_id");
+        result+="\n";
+        result+="name:\t";
+        result+=food.get("name");
+        result+="\n";
+        result+="calories:\t";
+        result+=food.get("calories");
+        result+="\n";
+        result+="protein:\t";
+        result+=food.get("protein");
+        result+="\n";
+        result+="fat:\t";
+        result+=food.get("fat");
+        result+="\n";
+        result+="cholesterol:\t";
+        result+=food.get("cholesterol");
+        result+="\n";
+        return result;
     }
 
 }

@@ -86,7 +86,7 @@ public class NormalExpandExercise extends AppCompatActivity
         // get data from database
         for (int i = 0; i < defaults.size(); i++) {
             HashMap<String, String> current = (HashMap<String, String>)defaults.get(i);
-            System.out.println(current.toString());
+            // System.out.println(current.toString());
             // put data to array base on input type
             String category = current.get("category");
             if (category.equals(null)) {
@@ -105,7 +105,7 @@ public class NormalExpandExercise extends AppCompatActivity
             if (category.equals("3")) {
                 flexibilitys.add(current.get("name"));
             }
-            datas.add(current.toString());
+            datas.add(HashToString(current));
         }
         // transfer data to array because expand view only allow array as input
         endurance = new String [endurances.size()];
@@ -197,6 +197,28 @@ public class NormalExpandExercise extends AppCompatActivity
     private Activity getItSelf()
     {
         return this;
+    }
+
+    /**
+     *  new HashMap.toString to help display better
+     * @param exercise
+     * @return string of exercise data
+     */
+    private String HashToString(HashMap<String,String> exercise){
+        String result = "";
+        result+="id:\t";
+        result+=exercise.get("id");
+        result+="\n";
+        result+="category:\t";
+        result+=exercise.get("category");
+        result+="\n";
+        result+="name:\t";
+        result+=exercise.get("name");
+        result+="\n";
+        result+="energy consumption:\t";
+        result+=exercise.get("energy_consumption");
+        result+="\n";
+        return result;
     }
 
 }

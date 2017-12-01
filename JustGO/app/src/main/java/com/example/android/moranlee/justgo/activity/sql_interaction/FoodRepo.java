@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.example.android.moranlee.justgo.activity.GlobalVariables;
 import com.example.android.moranlee.justgo.activity.datatype.Food;
@@ -13,8 +12,6 @@ import com.example.android.moranlee.justgo.activity.sql.SQLiteInterface;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by yul04 on 2017/9/23.
@@ -59,7 +56,7 @@ public class FoodRepo
      */
     public int insert(Food food)
     {
-        System.out.println(" insert called");
+        // System.out.println(" insert called");
         SQLiteDatabase db = sql.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("id", food.getId());
@@ -278,7 +275,7 @@ public class FoodRepo
         new_meat.setCholesterol(cholesterol);
         new_meat.setProtein(protein);
         new_meat.setFat(fat);
-        System.out.println("add fruit");
+        // System.out.println("add fruit");
         this.insert(new_meat);
     }
 
@@ -337,7 +334,7 @@ public class FoodRepo
         String selectQuery =  "select * from food where user_id = 0";
         ArrayList<HashMap<String, String>> food_list = new
         ArrayList<HashMap<String, String>>();
-        Log.d(TAG, "get_default_food_list: " + db.toString());
+        // Log.d(TAG, "get_default_food_list: " + db.toString());
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {

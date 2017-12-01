@@ -74,8 +74,11 @@ public class ConfirmExerciseData extends AppCompatActivity
         reselect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goBack = new Intent(getItSelf(), SelectExerciseOption.class);
+                Intent goBack = new Intent(getItSelf(), NormalExpandExercise.class);
+
+                goBack.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(goBack);
+                finish();
             }
         });
         // if user want to select another

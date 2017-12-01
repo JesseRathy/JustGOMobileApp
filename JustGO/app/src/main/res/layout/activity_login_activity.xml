@@ -30,7 +30,7 @@
             android:background="@drawable/edit_text1"
             android:hint="UserName"
             android:inputType="text"
-            android:textColor="@color/aqua"
+            android:textColor="@color/white"
             android:maxLines="1"
             android:textColorHint="@color/white"
             android:textStyle="italic" />

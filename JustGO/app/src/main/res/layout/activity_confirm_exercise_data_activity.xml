@@ -15,11 +15,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="15dp"
             android:layout_marginRight="10dp"
             android:layout_height="380dp"
             android:id="@+id/result_from_database"
-            android:background="@android:color/white"
+            android:textColor="@color/rice"
+            android:textSize="25dp"
+            android:background="@drawable/food_screen"
             />
 
         <LinearLayout
@@ -52,14 +54,14 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Submit change"
             android:id="@+id/submit_change"
             android:layout_alignParentBottom="true"
+            android:background="@drawable/comfirm_item"
             />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="reselect item"
+            android:background="@drawable/reselect_item"
             android:id="@+id/go_back_select"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"

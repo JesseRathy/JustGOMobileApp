@@ -107,7 +107,7 @@ public class UserRepo
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
-                System.out.println(cursor.getString(cursor.getColumnIndex("name")));
+                // System.out.println(cursor.getString(cursor.getColumnIndex("name")));
                 String Password = cursor.getString(cursor.getColumnIndex("password"));
                 if (Password.equals(input_password)) {
                     int id = Integer.parseInt(cursor.getString(cursor.getColumnIndex("id")));

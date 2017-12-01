@@ -4,14 +4,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
+
 import com.example.android.moranlee.justgo.activity.GlobalVariables;
 import com.example.android.moranlee.justgo.activity.datatype.Exercise;
 import com.example.android.moranlee.justgo.activity.sql.SQLiteInterface;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import static android.content.ContentValues.TAG;
 
 
 public class ExerciseRepo
@@ -124,7 +123,7 @@ public class ExerciseRepo
         values.put("name", ex.getName());
         values.put("category", ex.getCategory());
         values.put("energy_consumption", ex.getEnergy_consumption());
-        long ex_id = db.insert("exercise", null, values);
+        long ex_id = db.insert("exercise", "\n", values);
         db.close();
         return (int) ex_id;
     }
@@ -158,7 +157,7 @@ public class ExerciseRepo
         String selectQuery =  "select * from exercise";
         ArrayList<HashMap<String, String>> exList = new
         ArrayList<HashMap<String, String>>();
-        Log.d(TAG, "get_default_exercise_list: " + db.toString());
+        // Log.d(TAG, "get_default_exercise_list: " + db.toString());
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {

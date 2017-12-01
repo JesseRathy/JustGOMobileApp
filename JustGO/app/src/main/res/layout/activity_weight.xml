@@ -31,14 +31,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:text="Weight"
-                android:textColor="@color/white"
+                android:textColor="@color/rice"
                 android:textSize="30dp" />
 
             <EditText
                 android:layout_width="260dp"
                 android:layout_height="wrap_content"
                 android:hint="amount"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/rice"
+                android:maxLines="1"
+                android:textColor="@color/rice"
                 android:background="@drawable/input_text_1_dark"
                 android:id="@+id/new_weight_value"
                 />
@@ -63,8 +65,8 @@
                 android:id="@+id/weight_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="submit" />
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/weight_submit"/>
         </LinearLayout>
 
     </LinearLayout>

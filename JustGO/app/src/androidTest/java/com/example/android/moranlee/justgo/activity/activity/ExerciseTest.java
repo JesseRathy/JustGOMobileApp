@@ -65,7 +65,7 @@ public class ExerciseTest {
         appCompatButton6.perform(click());
 
         ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.edit_add_category), isDisplayed()));
+                allOf(withId(R.id.add_exercise_cate_choice), isDisplayed()));
         appCompatEditText3.perform(replaceText("0"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText4 = onView(
