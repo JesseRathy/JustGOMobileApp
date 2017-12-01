@@ -6,10 +6,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.activity.MainMenu;
 import com.example.android.moranlee.justgo.activity.sql_interaction.ExerciseDailyRepo;
 
 public class ConfirmExerciseData extends AppCompatActivity
@@ -41,6 +42,11 @@ public class ConfirmExerciseData extends AppCompatActivity
     Button reselect;
 
     /*
+   collect amount user want to input
+   */
+    EditText amount;
+
+    /*
     sql interface
      */
     ExerciseDailyRepo exerciseDailyRepo;
@@ -61,8 +67,14 @@ public class ConfirmExerciseData extends AppCompatActivity
         // connect field to interface
         result = (TextView)findViewById(R.id.result_diet_from_database);
         result.setText(data);
+<<<<<<< HEAD
         confirm = (Button) findViewById(R.id.submit_diet_change);
         reselect = (Button)findViewById(R.id.go_back_diet_select);
+=======
+        confirm = (Button) findViewById(R.id.submit_change);
+        reselect = (Button)findViewById(R.id.go_back_select);
+        amount = (EditText)findViewById(R.id.submit_exercise_amount);
+>>>>>>> 78932867adba8003cb678cbdd906070e7a0c678d
         // if user want to insert data to sql
         reselect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +90,17 @@ public class ConfirmExerciseData extends AppCompatActivity
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exerciseDailyRepo.insert(exerciseDailyRepo.create_exercise(0, 1.0));
+                Double times = 1.0;
+                try{
+                    times = Double.parseDouble(amount.getText().toString());
+                }
+                catch (Exception e){
+                    Toast.makeText(ConfirmExerciseData.this, "Invalid value or forget to input amount", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                for(int i=0;i<times.intValue();i++){
+                    exerciseDailyRepo.insert(exerciseDailyRepo.create_exercise(0, 1.0));
+                }
                 Intent return_exercise = new Intent(getItSelf(), SelectExerciseOption.class);
                 return_exercise.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(return_exercise);
