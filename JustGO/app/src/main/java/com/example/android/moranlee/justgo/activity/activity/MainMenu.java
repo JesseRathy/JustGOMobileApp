@@ -40,6 +40,9 @@ public class MainMenu extends AppCompatActivity
     Button go_weight;
     Button analysis;
 
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mToggle;
+
     /**
      * initialize activity
      * @param savedInstanceState
@@ -77,16 +80,58 @@ public class MainMenu extends AppCompatActivity
 
         //   new FoodData(this);
 
-        DrawerLayout mainDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mainDrawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        mainDrawer.addDrawerListener(toggle);
-        toggle.syncState();
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+
+        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if(mToggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if(id == R.id.food) {
+            this.startActivity(new Intent(MainMenu.this, SelectFoodOption.class));
+        }
+        if(id == R.id.diet) {
+            this.startActivity(new Intent(this, SelectDietOption.class));
+        }
+        else if ( id == R.id.weight) {
+            this.startActivity(new Intent(getItSelf(),past_and_new_weight_activity.class));
+        }
+        else if ( id == R.id.exercise) {
+            this.startActivity(new Intent(getItSelf(), SelectExerciseOption.class));
+        }
+        else if ( id == R.id.analyize) {
+            startActivity(new Intent(getItSelf(), Analysis.class));
+        }
+        else if ( id == R.id.profile) {
+            startActivity(new Intent(getItSelf(), EditProfile.class));
+        }
+        else if ( id == R.id.recommendation) {
+            startActivity(new Intent(getItSelf(), GetRecommendation.class));
+        }
+        else{
+            startActivity(new Intent(getItSelf(),MainMenu.class));
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
     /**
      *  switch activity to weight activity
      * @return OnClickListener
@@ -201,41 +246,6 @@ public class MainMenu extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if(id == R.id.food) {
-            startActivity(new Intent(getItSelf(), SelectFoodOption.class));
-        }
-        if(id == R.id.diet) {
-            startActivity(new Intent(getItSelf(), SelectDietOption.class));
-        }
-        else if ( id == R.id.weight) {
-            startActivity(new Intent(getItSelf(),past_and_new_weight_activity.class));
-        }
-        else if ( id == R.id.exercise) {
-            startActivity(new Intent(getItSelf(), SelectExerciseOption.class));
-        }
-        else if ( id == R.id.analyize) {
-            startActivity(new Intent(getItSelf(), Analysis.class));
-        }
-        else if ( id == R.id.profile) {
-            startActivity(new Intent(getItSelf(), EditProfile.class));
-        }
-        else if ( id == R.id.recommendation) {
-            startActivity(new Intent(getItSelf(), GetRecommendation.class));
-        }
-        else{
-            startActivity(new Intent(getItSelf(),MainMenu.class));
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 
     /**

@@ -53,22 +53,25 @@ public class ConfirmExerciseData extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirm_food_activity);
+        setContentView(R.layout.activity_confirm_diet_nutrient_activity);
         // get info from other activity
         data = getIntent().getStringExtra("data");
         exerciseId = getIntent().getIntExtra("id", 0);
         exerciseDailyRepo = new ExerciseDailyRepo(this);
         // connect field to interface
-        result = (TextView)findViewById(R.id.result_from_database);
+        result = (TextView)findViewById(R.id.result_diet_from_database);
         result.setText(data);
-        confirm = (Button) findViewById(R.id.submit_change);
-        reselect = (Button)findViewById(R.id.go_back_select);
+        confirm = (Button) findViewById(R.id.submit_diet_change);
+        reselect = (Button)findViewById(R.id.go_back_diet_select);
         // if user want to insert data to sql
         reselect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goBack = new Intent(getItSelf(), SelectExerciseOption.class);
+                Intent goBack = new Intent(getItSelf(), NormalExpandExercise.class);
+
+                goBack.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(goBack);
+                finish();
             }
         });
         // if user want to select another

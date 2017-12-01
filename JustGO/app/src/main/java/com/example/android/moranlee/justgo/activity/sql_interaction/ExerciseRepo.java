@@ -124,7 +124,7 @@ public class ExerciseRepo
         values.put("name", ex.getName());
         values.put("category", ex.getCategory());
         values.put("energy_consumption", ex.getEnergy_consumption());
-        long ex_id = db.insert("exercise", null, values);
+        long ex_id = db.insert("exercise", "\n", values);
         db.close();
         return (int) ex_id;
     }

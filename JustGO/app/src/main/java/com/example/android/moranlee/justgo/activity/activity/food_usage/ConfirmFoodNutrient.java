@@ -54,8 +54,10 @@ public class ConfirmFoodNutrient extends AppCompatActivity
         reselect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent go_back = new Intent(getItSelf(), SelectFoodOption.class);
+                Intent go_back = new Intent(getItSelf(), NormalExpandFood.class);
+                go_back.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(go_back);
+                finish();
             }
         });
         // if user want to select another
