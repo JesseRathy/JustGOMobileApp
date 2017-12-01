@@ -6,10 +6,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.activity.MainMenu;
 import com.example.android.moranlee.justgo.activity.sql_interaction.DietRepo;
 
 public class ConfirmDietNutrient extends AppCompatActivity
@@ -40,6 +41,11 @@ public class ConfirmDietNutrient extends AppCompatActivity
     Button reselect;
 
     /*
+    collect amount user want to input
+    */
+    EditText amount;
+
+    /*
     SQLite interface
      */
     DietRepo diet_repo;
@@ -62,6 +68,7 @@ public class ConfirmDietNutrient extends AppCompatActivity
         result.setText(data);
         confirm = (Button) findViewById(R.id.submit_diet_change);
         reselect = (Button)findViewById(R.id.go_back_diet_select);
+        amount = (EditText)findViewById(R.id.submit_diet_amount);
         // if user want to insert data to sql
         reselect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +84,17 @@ public class ConfirmDietNutrient extends AppCompatActivity
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                diet_repo.insert(diet_repo.create_diet(id));
+                Double times = 1.0;
+                try{
+                    times = Double.parseDouble(amount.getText().toString());
+                }
+                catch (Exception e){
+                    Toast.makeText(ConfirmDietNutrient.this, "Invalid value or forget to input amount", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                for(int i=0;i<times.intValue();i++){
+                    diet_repo.insert(diet_repo.create_diet(id));
+                }
                 Intent return_diet = new Intent(getItSelf(), SelectDietOption.class);
                 return_diet.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(return_diet);
