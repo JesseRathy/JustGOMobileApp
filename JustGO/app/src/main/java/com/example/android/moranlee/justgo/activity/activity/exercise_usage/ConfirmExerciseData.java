@@ -59,7 +59,7 @@ public class ConfirmExerciseData extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirm_food_activity);
+        setContentView(R.layout.activity_confirm_exercise_data_activity);
         // get info from other activity
         data = getIntent().getStringExtra("data");
         exerciseId = getIntent().getIntExtra("id", 0);

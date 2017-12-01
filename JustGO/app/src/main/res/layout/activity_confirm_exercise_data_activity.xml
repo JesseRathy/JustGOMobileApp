@@ -7,4 +7,64 @@
     tools:context="com.example.android.moranlee.justgo.activity.activity.exercise_usage.ConfirmExerciseData">
 
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/background"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="380dp"
+            android:id="@+id/result_from_database"
+            android:background="@android:color/white"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@id/result_from_database"
+            android:layout_marginTop="5dp"
+            >
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="14dp"
+                android:text="Please enter the amount of exercise you want to input, each unit is 1 hour"
+                android:textColor="@color/white"
+                />
+
+            <EditText
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:maxLines="1"
+                android:inputType="number"
+                android:id="@+id/submit_exercise_amount"
+                />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit change"
+            android:id="@+id/submit_change"
+            android:layout_alignParentBottom="true"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="reselect item"
+            android:id="@+id/go_back_select"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+
+
 </android.support.constraint.ConstraintLayout>
