@@ -409,6 +409,33 @@ public class FoodRepo
         return resultSet;
     }
 
+    public ArrayList<HashMap<String, String>> get_food_by_food_id(int food_id)
+    {
+        SQLiteDatabase db = sql.getReadableDatabase();
+        ArrayList<HashMap<String, String>> resultSet = new ArrayList<>();
+        String selectQuery =  "select * from food where id =" + food_id;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                HashMap<String, String> food = new HashMap<String, String>();
+                food.put("id", cursor.getString(cursor.getColumnIndex("id")));
+                food.put("category", cursor.getString(cursor.getColumnIndex("category")));
+                food.put("name", cursor.getString(cursor.getColumnIndex("name")));
+                food.put("protein", cursor.getString(cursor.getColumnIndex("protein")));
+                food.put("fat", cursor.getString(cursor.getColumnIndex("fat")));
+                food.put("calories", cursor.getString(cursor.getColumnIndex("calories")));
+                food.put("cholesterol", cursor.getString(
+                        cursor.getColumnIndex("cholesterol")));
+                resultSet.add(food);
+
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return resultSet;
+    }
+
+
     public ArrayList<Food> getRecommendedFoods(double calorie, int category)
     {
         SQLiteDatabase db = sql.getReadableDatabase();

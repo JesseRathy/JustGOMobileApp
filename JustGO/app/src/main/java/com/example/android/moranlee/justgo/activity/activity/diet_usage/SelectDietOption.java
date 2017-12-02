@@ -23,6 +23,7 @@ public class SelectDietOption extends AppCompatActivity
 
     Button selectByName;
 
+    Button viewHistory;
     /**
      * initialize activity
      * @param savedInstanceState
@@ -36,6 +37,9 @@ public class SelectDietOption extends AppCompatActivity
         selectByName = (Button)findViewById(R.id.select_search_food_by_name);
         selectFromOldDiet.setOnClickListener(select_from_old_food());
         selectByName.setOnClickListener(search_food_name());
+        viewHistory = (Button)findViewById(R.id.display_diet_history);
+        viewHistory.setOnClickListener(display_diet_history());
+
     }
 
     /**
@@ -65,6 +69,22 @@ public class SelectDietOption extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent unitIntent = new Intent(getItSelf(), SearchDietName.class);
+                unitIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(unitIntent);
+            }
+        };
+    }
+
+    /**
+     *  go to search food by it`s name
+     * @return
+     */
+    private View.OnClickListener display_diet_history()
+    {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent unitIntent = new Intent(getItSelf(), DisplayDietHistory.class);
                 unitIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(unitIntent);
             }

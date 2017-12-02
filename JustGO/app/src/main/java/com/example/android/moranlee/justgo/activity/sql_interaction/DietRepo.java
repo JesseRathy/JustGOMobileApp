@@ -271,4 +271,30 @@ public class DietRepo
         }
     }
 
+    public ArrayList<HashMap<String, String>>  get_default_diet_list()
+    {
+        SQLiteDatabase db = sql.getReadableDatabase();
+        String selectQuery =  "select * from diet where user_id = "+ GlobalVariables.getG_CurrentUserId();
+        ArrayList<HashMap<String, String>> dietHistoryList = new ArrayList<HashMap<String, String>>();
+        // Log.d(TAG, "get_default_food_list: " + db.toString());
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                HashMap<String, String> diet_history = new HashMap<String, String>();
+                diet_history.put("id", cursor.getString(cursor.getColumnIndex("id")));
+                diet_history.put("food_id", cursor.getString(cursor.getColumnIndex("food_id")));
+                diet_history.put("user_id", cursor.getString(cursor.getColumnIndex("user_id")));
+                diet_history.put("date", cursor.getString(cursor.getColumnIndex("date")));
+                diet_history.put("meal_type", cursor.getString(cursor.getColumnIndex("meal_type")));
+
+                dietHistoryList.add(diet_history);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return dietHistoryList;
+    }
+
+
+
 }
