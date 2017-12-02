@@ -6,14 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.android.moranlee.justgo.R;
-import com.example.android.moranlee.justgo.activity.activity.exercise_usage.NormalExpandExercise;
-import com.example.android.moranlee.justgo.activity.activity.food_usage.NormalExpandFood;
-import com.example.android.moranlee.justgo.activity.activity.food_usage.SelectFromFoodDatabase;
 import com.example.android.moranlee.justgo.activity.sql_interaction.DietRepo;
 import com.example.android.moranlee.justgo.activity.sql_interaction.FoodRepo;
 
@@ -54,10 +49,16 @@ public class DisplayDietHistory extends AppCompatActivity
 
         for (int i = 0; i < defaults.size(); i++) {
             HashMap<String, String> current = (HashMap<String, String>)defaults.get(i);
-            ArrayList food_list = food_repo.get_food_by_food_id(Integer.parseInt(current.get("food_id")));
-            food_list.add(current.get("date"));
-            food_list.add(current.get("meal_type"));
-            datas.add(food_list.toString());
+            ArrayList<HashMap<String, String>> food_list = food_repo.get_food_by_food_id(Integer.parseInt(current.get("food_id")));
+
+            String result = HashToString(food_list.get(0));
+            result+="date:\t";
+            result+=current.get("date").toString();
+            result+="\n";
+            result+="meal_type:\t";
+            result+=current.get("meal_type").toString();
+            result+="\n";
+            datas.add(result);
         }
 
         name.setText(datas.toString());
@@ -82,6 +83,38 @@ public class DisplayDietHistory extends AppCompatActivity
     {
         return this;
     }
+
+    /**
+     *  new HashMap.toString to help display better
+     * @param food
+     * @return string of food data
+     */
+    private String HashToString(HashMap<String,String> food){
+        String result = "";
+        result+="id:\t";
+        result+=food.get("id");
+        result+="\n";
+        result+="category:\t";
+        result+=food.get("category");
+        result+="\n";
+        result+="name:\t";
+        result+=food.get("name");
+        result+="\n";
+        result+="calories:\t";
+        result+=food.get("calories");
+        result+="\n";
+        result+="protein:\t";
+        result+=food.get("protein");
+        result+="\n";
+        result+="fat:\t";
+        result+=food.get("fat");
+        result+="\n";
+        result+="cholesterol:\t";
+        result+=food.get("cholesterol");
+        result+="\n";
+        return result;
+    }
+
 
 
 }
