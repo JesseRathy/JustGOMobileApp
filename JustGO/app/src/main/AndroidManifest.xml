@@ -81,8 +81,10 @@
             android:noHistory="true"/>
         <activity android:name=".activity.activity.diet_usage.NormalExpandDietSearch"
             android:launchMode="singleTop"
+            android:noHistory="true"/>
+        <activity android:name=".activity.activity.diet_usage.DisplayDietHistory"
+            android:launchMode="singleTop"
             android:noHistory="true">
-
         </activity>
     </application>
 

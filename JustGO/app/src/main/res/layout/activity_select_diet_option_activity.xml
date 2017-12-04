@@ -12,8 +12,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:background="@drawable/splash_screen2"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        tools:layout_editor_absoluteY="52dp"
+        tools:layout_editor_absoluteX="0dp">
 
 
 
@@ -35,6 +35,15 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:background="@drawable/search_diet" />
+
+        <Button
+            android:id="@+id/display_diet_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "display diet History"
+            android:layout_marginTop="65dp"
+            android:layout_below="@+id/select_search_food_by_name"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
