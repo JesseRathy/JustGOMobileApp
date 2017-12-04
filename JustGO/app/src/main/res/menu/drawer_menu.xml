@@ -27,5 +27,17 @@
             android:icon="@drawable/ic_recommand_white_48px"/>
 
     </group>
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/share"
+                android:icon="@drawable/ic_share_white_48px"
+                android:title="Share" />
+            <item
+                android:id="@+id/send"
+                android:icon="@drawable/ic_send_white_48px"
+                android:title="Send" />
+        </menu>
+    </item>
 
 </menu>

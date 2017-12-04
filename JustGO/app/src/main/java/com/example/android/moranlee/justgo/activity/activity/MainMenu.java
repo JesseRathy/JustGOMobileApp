@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,6 +16,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.android.moranlee.justgo.R;
 import com.example.android.moranlee.justgo.activity.activity.analysis_usage.Analysis;
@@ -24,6 +26,7 @@ import com.example.android.moranlee.justgo.activity.activity.food_usage.SelectFo
 import com.example.android.moranlee.justgo.activity.activity.recommandition_usage.GetRecommendation;
 import com.example.android.moranlee.justgo.activity.activity.user_usage.EditProfile;
 import com.example.android.moranlee.justgo.activity.activity.weight_usage.past_and_new_weight_activity;
+import com.example.android.moranlee.justgo.activity.datatype.Weight;
 
 public class MainMenu extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener
@@ -40,8 +43,9 @@ public class MainMenu extends AppCompatActivity
     Button go_weight;
     Button analysis;
 
-    private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mToggle;
+    DrawerLayout mDrawerLayout;
+    ActionBarDrawerToggle mToggle;
+    NavigationView mNavigation;
 
     /**
      * initialize activity
@@ -87,8 +91,8 @@ public class MainMenu extends AppCompatActivity
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        mNavigation= (NavigationView) findViewById(R.id.nav_view);
+        mNavigation.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -101,31 +105,40 @@ public class MainMenu extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
+        switch (item.getItemId()) {
 
-        if(id == R.id.food) {
-            this.startActivity(new Intent(MainMenu.this, SelectFoodOption.class));
-        }
-        if(id == R.id.diet) {
-            this.startActivity(new Intent(this, SelectDietOption.class));
-        }
-        else if ( id == R.id.weight) {
-            this.startActivity(new Intent(getItSelf(),past_and_new_weight_activity.class));
-        }
-        else if ( id == R.id.exercise) {
-            this.startActivity(new Intent(getItSelf(), SelectExerciseOption.class));
-        }
-        else if ( id == R.id.analyize) {
-            startActivity(new Intent(getItSelf(), Analysis.class));
-        }
-        else if ( id == R.id.profile) {
-            startActivity(new Intent(getItSelf(), EditProfile.class));
-        }
-        else if ( id == R.id.recommendation) {
-            startActivity(new Intent(getItSelf(), GetRecommendation.class));
-        }
-        else{
-            startActivity(new Intent(getItSelf(),MainMenu.class));
+            case R.id.food:
+                Intent afood = new Intent(MainMenu.this, SelectFoodOption.class);
+                startActivity(afood);
+                break;
+            case R.id.diet:
+                Intent adiet = new Intent(MainMenu.this, SelectDietOption.class);
+                startActivity(adiet);
+                break;
+            case R.id.weight:
+                Intent aweight = new Intent(MainMenu.this, past_and_new_weight_activity.class);
+                startActivity(aweight);
+                break;
+            case R.id.exercise:
+                Intent aexercise = new Intent(MainMenu.this, SelectExerciseOption.class);
+                startActivity(aexercise);
+                break;
+            case R.id.analyize:
+                Intent aanalyize = new Intent(MainMenu.this, Analysis.class);
+                startActivity(aanalyize);
+                break;
+            case R.id.profile:
+                Intent aprofile = new Intent(MainMenu.this, EditProfile.class);
+                startActivity(aprofile);
+                break;
+            case R.id.recommendation:
+                Intent arecom = new Intent(MainMenu.this, GetRecommendation.class);
+                startActivity(arecom);
+                break;
+            default:
+                    Intent a = new Intent(MainMenu.this, MainMenu.class);
+                    startActivity(a);
+                    break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
