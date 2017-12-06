@@ -46,24 +46,8 @@ public class SearchDietName extends AppCompatActivity
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //get data and transfer to next activity
-                ArrayList<HashMap<String, String>> result;
-                result = food_repo.get_food_by_name(name.getText().toString());
-                ArrayList<String> names = new ArrayList<String>();
-                ArrayList<String> datas = new ArrayList<String>();
-                ArrayList<String> ids = new ArrayList<String>();
-                for (int i = 0; i < result.size(); i++) {
-                    names.add(result.get(i).get("name"));
-                    datas.add(result.get(i).toString());
-                    ids.add(result.get(i).get("id"));
-                }
-                Intent go_to_confirm = new Intent(getItSelf(), NormalExpandDietSearch.class);
-                go_to_confirm.putExtra("data", datas);
-                go_to_confirm.putExtra("name", names);
-                go_to_confirm.putExtra("id", ids);
-                go_to_confirm.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(go_to_confirm);
-                finish();
+                /* Josh Pudrycki -- Refactoring Via Extract Method Starts HERE*/
+                getDataAndTransfer();
             }
         });
     }
@@ -74,5 +58,25 @@ public class SearchDietName extends AppCompatActivity
     private Activity getItSelf()
     {
         return this;
+    }
+    /* Josh Pudrycki -- New Function Created for Refactoring via Extract Method */
+    private void getDataAndTransfer(){
+        ArrayList<HashMap<String, String>> result;
+        result = food_repo.get_food_by_name(name.getText().toString());
+        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<String> datas = new ArrayList<String>();
+        ArrayList<String> ids = new ArrayList<String>();
+        for (int i = 0; i < result.size(); i++) {
+            names.add(result.get(i).get("name"));
+            datas.add(result.get(i).toString());
+            ids.add(result.get(i).get("id"));
+        }
+        Intent go_to_confirm = new Intent(getItSelf(), NormalExpandDietSearch.class);
+        go_to_confirm.putExtra("data", datas);
+        go_to_confirm.putExtra("name", names);
+        go_to_confirm.putExtra("id", ids);
+        go_to_confirm.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(go_to_confirm);
+        finish();
     }
 }

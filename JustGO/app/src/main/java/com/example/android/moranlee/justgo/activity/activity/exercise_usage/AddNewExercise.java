@@ -94,13 +94,9 @@ public class AddNewExercise extends AppCompatActivity
                                    "new exercise can not exist without category/name/calorie consumption",
                                    Toast.LENGTH_SHORT).show();
                 } else {
-                    Exercise exercise = new Exercise();
-                    exercise.setId(GlobalVariables.getAndSetCurrent_max_exercise_id());
-                    exercise.setCategory(category - 1);
-                    exercise.setName(name.getText().toString());
-                    exercise.setEnergy_consumption(Double.parseDouble(
-                                                       consumption.getText().toString()));
-                    exercise_repo.insert(exercise);
+                    /*Jesse Rathy -- Refactoring Via Extract Method Plan Starts HERE*/
+                    createAndInsertExercise();
+
                     Intent goBack = new Intent(get_self(), SelectExerciseOption.class);
                     goBack.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(goBack);
@@ -116,5 +112,15 @@ public class AddNewExercise extends AppCompatActivity
         return AddNewExercise.this;
     }
 
+    /* Jesse Rathy -- New Function Created for Refactoring via Extract Method */
+    private void createAndInsertExercise(){
+        Exercise exercise = new Exercise();
+        exercise.setId(GlobalVariables.getAndSetCurrent_max_exercise_id());
+        exercise.setCategory(category - 1);
+        exercise.setName(name.getText().toString());
+        exercise.setEnergy_consumption(Double.parseDouble(
+                consumption.getText().toString()));
+        exercise_repo.insert(exercise);
+    }
 
 }
