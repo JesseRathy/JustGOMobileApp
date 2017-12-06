@@ -40,7 +40,7 @@
             android:id="@+id/display_diet_history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text = "display diet History"
+            android:background="@drawable/display_diet"
             android:layout_marginTop="65dp"
             android:layout_below="@+id/select_search_food_by_name"
             android:layout_centerHorizontal="true" />

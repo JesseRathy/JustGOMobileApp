@@ -23,7 +23,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="17dp"
-            android:text="Submit" />
+            android:background="@drawable/submit_confirm"/>
 
 
         <TextView
@@ -41,13 +41,13 @@
 
         <Button
             android:id="@+id/profile_change_password"
-            android:layout_width="222dp"
-            android:layout_height="60dp"
-            android:text="Change Password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="81dp"
             tools:layout_editor_absoluteY="292dp"
             android:layout_above="@+id/button4"
             android:layout_centerHorizontal="true"
+            android:background="@drawable/change_password"
             android:layout_marginBottom="14dp" />
 
         <EditText

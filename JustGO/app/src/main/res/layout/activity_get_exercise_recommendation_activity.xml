@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/submit_reco"
             android:layout_below="@id/target_weight"
-            android:text="Submit"
+            android:background="@drawable/submit_add_data"
             />
 
         <TextView
@@ -45,8 +45,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/reco_prev"
-            android:text="prev"
             android:layout_alignParentLeft="true"
+            android:background="@drawable/prev"
             android:layout_below="@id/print_reco_food"
             />
 
@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/reco_next"
-            android:text="next"
+            android:background="@drawable/next"
             android:layout_alignParentRight="true"
             android:layout_below="@id/print_reco_food"
             />
