@@ -16,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.example.android.moranlee.justgo.activity.GlobalVariables;
 import com.example.android.moranlee.justgo.activity.datatype.Diet;
 import com.example.android.moranlee.justgo.activity.datatype.Food;
 import com.example.android.moranlee.justgo.activity.sql.SQLiteInterface;
@@ -50,6 +51,8 @@ public class FoodInteractionUnitTest {
 
     Food f3;
 
+    Food f4;
+
     SQLiteDatabase db;
 
     final private int testID = 100;
@@ -68,6 +71,22 @@ public class FoodInteractionUnitTest {
 
     final private double test_protein = 0.0;
 
+    final private int testID1 = 101;
+
+    final private int test_userID1=0;
+
+    final private double test_fat1 = 0.0;
+
+    final private int test_category1 = 1;
+
+    final private String test_name1 = "test";
+
+    final private double test_cholesteral1 = 0.0;
+
+    final private double test_calories1 = 0.0;
+
+    final private double test_protein1 = 0.0;
+
     Context context;
 
     @Test
@@ -75,12 +94,15 @@ public class FoodInteractionUnitTest {
         assertNull(f1);
         assertNull(f2);
         f3 = new Food();
+        f4 = new Food();
         this.setData();
         assertNotNull(f3);
 
         sql = new SQLiteInterface(mMockContext);
         db = sql.getWritableDatabase();
         f1 = new FoodRepo(mMockContext);
+
+        int numFood = GlobalVariables.getG_CurrentMaxFoodId();
 
         this.insertdata();
 
@@ -105,8 +127,8 @@ public class FoodInteractionUnitTest {
         assertEquals(Double.parseDouble(testCholesterol),test_cholesteral,0);
         assertEquals(Double.parseDouble(testCalories),(test_calories),0);
         assertEquals(Double.parseDouble(testProtein),(test_protein),0);
-
-
+        int numFood1 = GlobalVariables.getG_CurrentMaxFoodId();
+        assertEquals(numFood,numFood1,2);
         Log.d("myTag", "End of testing");
         db.close();
     }
@@ -120,9 +142,17 @@ public class FoodInteractionUnitTest {
         f3.setCholesterol(test_cholesteral);
         f3.setCalories(test_calories);
         f3.setProtein(test_protein);
+        f4.setId(testID1);
+        f4.setUser_id(test_userID1);
+        f4.setFat(test_fat1);
+        f4.setCategory(test_category1);
+        f4.setName(test_name1);
+        f4.setCholesterol(test_cholesteral1);
+        f4.setCalories(test_calories1);
+        f4.setProtein(test_protein1);
     }
 
-    public void insertdata() { f1.insert(f3); }
+    public void insertdata() { f1.insert(f3); f1.insert(f4);}
 
 
     public ArrayList<HashMap<String, String>> get_food_by_user_id(int user_id)

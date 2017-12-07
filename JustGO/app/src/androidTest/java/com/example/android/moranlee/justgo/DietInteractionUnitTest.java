@@ -16,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.example.android.moranlee.justgo.activity.GlobalVariables;
 import com.example.android.moranlee.justgo.activity.datatype.Diet;
 import com.example.android.moranlee.justgo.activity.sql.SQLiteInterface;
 import com.example.android.moranlee.justgo.activity.sql_interaction.DietRepo;
@@ -50,6 +51,8 @@ public class DietInteractionUnitTest {
 
     Diet f3;
 
+    Diet f4;
+
     SQLiteDatabase db;
 
     final private int testID = 100;
@@ -62,6 +65,16 @@ public class DietInteractionUnitTest {
 
     final private int test_food_id = 1;
 
+    final private int testID1 = 101;
+
+    final private int test_userID1=0;
+
+    final private String test_date1 = "2015-01-01";
+
+    final private char test_meal_type1 = 'B';
+
+    final private int test_food_id1 = 1;
+
     Context context;
 
     @Test
@@ -69,21 +82,19 @@ public class DietInteractionUnitTest {
         assertNull(f1);
         assertNull(f2);
         f3 = new Diet();
+        f4 = new Diet();
         this.setData();
         assertNotNull(f3);
         assertEquals(f3.getDate(),test_date);
-
         sql = new SQLiteInterface(mMockContext);
         db = sql.getWritableDatabase();
         f1 = new DietRepo(mMockContext);
         f2 = new DietRepo(context);
-
+        int numDiet = GlobalVariables.getCurrent_max_diet_id();
         this.insertdata();
-
+        int numDiet1 = GlobalVariables.getCurrent_max_diet_id();
         ArrayList<HashMap<String, String>> test_diet_list = this.get_diet_by_user_id(test_userID);
-
         assertNotNull(test_diet_list);
-
         String testUserID = test_diet_list.get(0).get("user_id");
         String testFoodID = test_diet_list.get(0).get("food_id");
         String testDate = test_diet_list.get(0).get("date");
@@ -93,6 +104,8 @@ public class DietInteractionUnitTest {
         assertEquals(testDate,test_date);
         assertEquals(parseInt(testFoodID),test_food_id);
         assertEquals(parseInt(testUserID),test_userID);
+        assertEquals(numDiet,numDiet1,2);
+
         Log.d("myTag", "End of testing");
         db.close();
     }
@@ -103,6 +116,11 @@ public class DietInteractionUnitTest {
         f3.setUser_id(test_userID);
         f3.setId(testID);
         f3.setFood_id(test_food_id);
+        f4.setDate(test_date1);
+        f4.setMeal_type(test_meal_type1);
+        f4.setUser_id(test_userID1);
+        f4.setId(testID1);
+        f4.setFood_id(test_food_id1);
     }
 
     public void insertdata() { f1.insert(f3); }
