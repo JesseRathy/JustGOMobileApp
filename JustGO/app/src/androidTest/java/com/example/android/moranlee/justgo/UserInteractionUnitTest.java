@@ -50,6 +50,8 @@ public class UserInteractionUnitTest {
 
     User f3;
 
+    User f4;
+
     SQLiteDatabase db;
 
     //SET ID TO Avoid id = 0, which is the id of administrator in this case
@@ -65,6 +67,18 @@ public class UserInteractionUnitTest {
 
     final private String test_birthday = "2015-01-01";
 
+    final private int testID1 = 100;
+
+    final private String test_name1= "test2";
+
+    final private String test_password1 = "test2";
+
+    final private double test_height1 = 50.0;
+
+    final private String test_gender1 = "F";
+
+    final private String test_birthday1 = "2015-01-01";
+
     Context context;
 
     @Test
@@ -72,6 +86,7 @@ public class UserInteractionUnitTest {
         assertNull(f1);
         assertNull(f2);
         f3 = new User();
+        f4 = new User();
         this.setData();
 
         sql = new SQLiteInterface(mMockContext);
@@ -98,6 +113,11 @@ public class UserInteractionUnitTest {
         assertEquals(Double.parseDouble(testHeight),test_height,0);
         assertEquals(testGender, test_gender);
         assertEquals(testBirthday, test_birthday);
+        assertEquals(1,test_user_list);
+
+        ArrayList<HashMap<String, String>> test_user_list1 = this.get_user_by_user_id(testID);
+        assertEquals(2,test_user_list1);
+
         Log.d("myTag", "End of testing");
         db.close();
     }
@@ -109,10 +129,17 @@ public class UserInteractionUnitTest {
         f3.setGender(test_gender);
         f3.setHeight(test_height);
         f3.setPassword(test_password);
+
+        f4.setId(testID1);
+        f4.setName(test_name1);
+        f4.setBirthday(test_birthday1);
+        f4.setGender(test_gender1);
+        f4.setHeight(test_height1);
+        f4.setPassword(test_password1);
     }
 
     public void insertdata() { f1.insert(f3); }
-
+    public void insertdata2() {f1.insert(f4); }
 
     public ArrayList<HashMap<String, String>> get_user_by_user_id(int user_id)
     {

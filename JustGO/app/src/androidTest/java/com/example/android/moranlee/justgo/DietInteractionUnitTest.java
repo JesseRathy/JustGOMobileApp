@@ -71,9 +71,9 @@ public class DietInteractionUnitTest {
 
     final private String test_date1 = "2015-01-01";
 
-    final private char test_meal_type1 = 'B';
+    final private char test_meal_type1 = 'V';
 
-    final private int test_food_id1 = 1;
+    final private int test_food_id1 = 2;
 
     Context context;
 
@@ -93,6 +93,7 @@ public class DietInteractionUnitTest {
         int numDiet = GlobalVariables.getCurrent_max_diet_id();
         this.insertdata();
         int numDiet1 = GlobalVariables.getCurrent_max_diet_id();
+
         ArrayList<HashMap<String, String>> test_diet_list = this.get_diet_by_user_id(test_userID);
         assertNotNull(test_diet_list);
         String testUserID = test_diet_list.get(0).get("user_id");
@@ -100,11 +101,21 @@ public class DietInteractionUnitTest {
         String testDate = test_diet_list.get(0).get("date");
         String testMealType = test_diet_list.get(0).get("meal_type");
 
+
         assertEquals(testMealType,Character.toString(test_meal_type));
         assertEquals(testDate,test_date);
         assertEquals(parseInt(testFoodID),test_food_id);
         assertEquals(parseInt(testUserID),test_userID);
-        assertEquals(numDiet,numDiet1,2);
+        assertEquals(1,test_diet_list.size());
+
+        insertdata2();
+        Log.d("array", test_diet_list.toString());
+
+        ArrayList<HashMap<String, String>> test_diet_list2 = this.get_diet_by_user_id(test_userID);
+        Log.d("array", test_diet_list2.toString());
+        assertEquals(2,test_diet_list2.size());
+        //assertEquals(numDiet,numDiet1,2);
+
 
         Log.d("myTag", "End of testing");
         db.close();
@@ -124,7 +135,7 @@ public class DietInteractionUnitTest {
     }
 
     public void insertdata() { f1.insert(f3); }
-
+    public void insertdata2() {f1.insert(f4); }
 
     public ArrayList<HashMap<String, String>> get_diet_by_user_id(int user_id)
     {

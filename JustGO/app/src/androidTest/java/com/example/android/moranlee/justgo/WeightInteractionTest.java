@@ -44,6 +44,7 @@ public class WeightInteractionTest {
     private SQLiteInterface sql;
 
     Weight f3;
+    Weight f4;
 
     SQLiteDatabase db;
 
@@ -55,6 +56,13 @@ public class WeightInteractionTest {
 
     final private double testWeight = 20.0;
 
+    final private int testID1 = 101;
+
+    final private int testUserID1= 1;
+
+    final private String testDate1 = "2015-01-02";
+
+    final private double testWeight1 = 30.0;
     Context context;
 
     @Test
@@ -62,8 +70,10 @@ public class WeightInteractionTest {
         assertNull(f1);
         assertNull(f2);
         f3 = new Weight();
+        f4 = new Weight();
         this.setData();
         assertNotNull(f3);
+        assertNotNull(f4);
 
         sql = new SQLiteInterface(mMockContext);
         db = sql.getWritableDatabase();
@@ -86,6 +96,15 @@ public class WeightInteractionTest {
         assertEquals(Double.parseDouble(ListWeight),testWeight,0);
 
 
+        assertEquals(1,weightList.size());
+
+        insertdata2();
+        Log.d("array", weightList.toString());
+
+        ArrayList<HashMap<String, String>> weightList2 = this.getWeightByUserId(1);
+
+        assertEquals(2,weightList2.size());
+
 
         Log.d("myTag", "End of testing");
         db.close();
@@ -97,10 +116,14 @@ public class WeightInteractionTest {
         f3.setDate(testDate);
         f3.setWeight(testWeight);
 
+        f4.setId(testID1);
+        f4.setUser_id(testUserID1);
+        f4.setDate(testDate1);
+        f4.setWeight(testWeight1);
     }
 
     public void insertdata() { f1.insert(f3); }
-
+    public void insertdata2() {f1.insert(f3); }
 
     public ArrayList<HashMap<String, String>> getWeightByUserId(int userID)
     {

@@ -75,17 +75,17 @@ public class FoodInteractionUnitTest {
 
     final private int test_userID1=0;
 
-    final private double test_fat1 = 0.0;
+    final private double test_fat1 = 20.0;
 
-    final private int test_category1 = 1;
+    final private int test_category1 = 4;
 
-    final private String test_name1 = "test";
+    final private String test_name1 = "test432";
 
-    final private double test_cholesteral1 = 0.0;
+    final private double test_cholesteral1 = 67.0;
 
-    final private double test_calories1 = 0.0;
+    final private double test_calories1 = 64.0;
 
-    final private double test_protein1 = 0.0;
+    final private double test_protein1 = 22.0;
 
     Context context;
 
@@ -97,6 +97,7 @@ public class FoodInteractionUnitTest {
         f4 = new Food();
         this.setData();
         assertNotNull(f3);
+        assertNotNull(f4);
 
         sql = new SQLiteInterface(mMockContext);
         db = sql.getWritableDatabase();
@@ -127,8 +128,13 @@ public class FoodInteractionUnitTest {
         assertEquals(Double.parseDouble(testCholesterol),test_cholesteral,0);
         assertEquals(Double.parseDouble(testCalories),(test_calories),0);
         assertEquals(Double.parseDouble(testProtein),(test_protein),0);
-        int numFood1 = GlobalVariables.getG_CurrentMaxFoodId();
-        assertEquals(numFood,numFood1,2);
+
+        this.insertdata1();
+        ArrayList<HashMap<String, String>> test_food_list1 = this.get_food_by_user_id(test_userID);
+        assertEquals(2,test_food_list1);
+
+        //int numFood1 = GlobalVariables.getG_CurrentMaxFoodId();
+        //assertEquals(numFood,numFood1,2);
         Log.d("myTag", "End of testing");
         db.close();
     }
@@ -152,7 +158,8 @@ public class FoodInteractionUnitTest {
         f4.setProtein(test_protein1);
     }
 
-    public void insertdata() { f1.insert(f3); f1.insert(f4);}
+    public void insertdata() { f1.insert(f3); }
+    public void insertdata1() { f1.insert(f4);}
 
 
     public ArrayList<HashMap<String, String>> get_food_by_user_id(int user_id)
