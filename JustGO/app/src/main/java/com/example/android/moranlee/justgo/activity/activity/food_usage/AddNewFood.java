@@ -83,6 +83,24 @@ public class AddNewFood extends AppCompatActivity
                     Toast.makeText(getItSelf(),"Can not create a food without some info",Toast.LENGTH_SHORT);
                 }
                 else {
+                    /* Yu Gu -- Refactoring Via Extract Method Starts HERE*/
+                    getDataAndTransfer();
+                }
+            }
+        });
+    }
+
+    /**
+     *
+     * @return self for some function need
+     */
+    private Activity getItSelf()
+    {
+        return this;
+    }
+
+    /* Yu Gu -- New Function Created for Refactoring via Extract Method */
+    public void getDataAndTransfer(){
                     newFood = new Food();
                     newFood.setId(GlobalVariables.getG_CurrentMaxFoodId() + 1);
                     GlobalVariables.setG_CurrentMaxFoodId(GlobalVariables.getG_CurrentMaxFoodId() +
@@ -99,18 +117,6 @@ public class AddNewFood extends AppCompatActivity
                     goBack.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(goBack);
                     finish();
-                }
-            }
-        });
-    }
-
-    /**
-     *
-     * @return self for some function need
-     */
-    private Activity getItSelf()
-    {
-        return this;
     }
 
 }
