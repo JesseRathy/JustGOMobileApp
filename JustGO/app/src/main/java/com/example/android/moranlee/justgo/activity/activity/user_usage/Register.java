@@ -23,7 +23,7 @@ import java.util.ArrayList;
  * Created by yugu on 2017-10-10.
  */
 
-public class Register extends AppCompatActivity
+public class   Register extends AppCompatActivity
 {
 
     /*
@@ -75,14 +75,7 @@ public class Register extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_activity);
-        // connect field with interface
-        name = (EditText)findViewById(R.id.username_textedit);
-        password = (EditText)findViewById(R.id.password_register_layout);
-        height = (EditText) findViewById(R.id.height_register_layout);
-        gender = (RadioGroup)findViewById(R.id.choose_gender);
-        birthday = (DatePicker)findViewById(R.id.birthday_Picker);
-        submit = (Button)findViewById(R.id.submit_user_info);
-        submit.setOnClickListener(add_user());
+        connectFieldWithInterface();
     }
 
     /**
@@ -94,40 +87,12 @@ public class Register extends AppCompatActivity
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // create user
-                user = new User();
-                user.setId(GlobalVariables.getG_CurrentMaxUserId());
-                GlobalVariables.setG_CurrentMaxUserId(GlobalVariables.getG_CurrentMaxUserId() +
-                                                      1);
-                // getvalue from field
-                user.setName(name.getText().toString());
-                user.setHeight(Double.parseDouble(height.getText().toString()));
-                user.setPassword(password.getText().toString());
-                int selectedId = gender.getCheckedRadioButtonId();
-                RadioButton radioButton = (RadioButton) findViewById(selectedId);
-                if (radioButton.getText().toString().equals("male")) {
-                    user.setGender("M");
-                } else {
-                    user.setGender("F");
-                }
-                // get birthday and store as a string
-                int day = birthday.getDayOfMonth();
-                int month = birthday.getMonth() + 1;
-                int year = birthday.getYear();
-                String Day;
-                if (month < 10) {
-                    Day = "0" + String.valueOf(day);
-                } else {
-                    Day = String.valueOf(day);
-                }
-                String Month;
-                if (month < 10) {
-                    Month = "0" + String.valueOf(month);
-                } else {
-                    Month = String.valueOf(month);
-                }
-                String Year = String.valueOf(year);
-                user.setBirthday(Year + Month + Day);
+                /* Brandon -- Changed all these pieces to individual methods using Extract Method */
+
+                createUser();
+                getUserValues();
+                getBirthday();
+
                 // insert to database
                 user_repo = new UserRepo(get_self());
                 ArrayList some = user_repo.get_user_list();
@@ -145,6 +110,62 @@ public class Register extends AppCompatActivity
     private Context get_self()
     {
         return Register.this;
+    }
+
+
+    /* Brandon -- All Methods Below here were created for Extract Method Idea */
+
+    private void connectFieldWithInterface() {
+
+        name = (EditText) findViewById(R.id.username_textedit);
+        password = (EditText) findViewById(R.id.password_register_layout);
+        height = (EditText) findViewById(R.id.height_register_layout);
+        gender = (RadioGroup) findViewById(R.id.choose_gender);
+        birthday = (DatePicker) findViewById(R.id.birthday_Picker);
+        submit = (Button) findViewById(R.id.submit_user_info);
+        submit.setOnClickListener(add_user());
+    }
+
+    private void createUser(){
+        user = new User();
+        user.setId(GlobalVariables.getG_CurrentMaxUserId());
+        GlobalVariables.setG_CurrentMaxUserId(GlobalVariables.getG_CurrentMaxUserId() +
+                1);
+    }
+
+    private void getUserValues(){
+        // getvalue from field
+        user.setName(name.getText().toString());
+        user.setHeight(Double.parseDouble(height.getText().toString()));
+        user.setPassword(password.getText().toString());
+        int selectedId = gender.getCheckedRadioButtonId();
+        RadioButton radioButton = (RadioButton) findViewById(selectedId);
+        if (radioButton.getText().toString().equals("male")) {
+            user.setGender("M");
+        } else {
+            user.setGender("F");
+        }
+    }
+
+    private void getBirthday(){
+        // get birthday and store as a string
+        int day = birthday.getDayOfMonth();
+        int month = birthday.getMonth() + 1;
+        int year = birthday.getYear();
+        String Day;
+        if (month < 10) {
+            Day = "0" + String.valueOf(day);
+        } else {
+            Day = String.valueOf(day);
+        }
+        String Month;
+        if (month < 10) {
+            Month = "0" + String.valueOf(month);
+        } else {
+            Month = String.valueOf(month);
+        }
+        String Year = String.valueOf(year);
+        user.setBirthday(Year + Month + Day);
     }
 
 }

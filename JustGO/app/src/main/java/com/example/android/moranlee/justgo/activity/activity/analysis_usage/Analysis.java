@@ -29,23 +29,11 @@ public class Analysis extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.analysis);
 
-        // Get user information
-        Double weight = we.get_last_weight(GlobalVariables.getG_CurrentUserId());
-        String gender = user.getUserGender();
-        Double height = user.getUserHeight();
-        int age = user.getUserAge();
-        int calorie = diet.totalCalorieIntake();
-        int protein = diet.totalProteinIntake();
-        int cholesterol = diet.totalCholesterolIntake();
+        /* Yuhan -- Refactoring done here via Extract Method*/
+       getAndDisplayUserInfo();
 
-        // Display user information
-        displayHeight(height);
-        displayWeight(weight);
-        displayGender(gender);
-        displayAge(age);
-        int bmi = displayBMI(weight, height);
-        displayHealth(bmi);
-        displayNutrition(calorie, protein, cholesterol);
+
+
     }
 
     private void displayHeight(Double height)
@@ -104,6 +92,27 @@ public class Analysis extends AppCompatActivity
         calorieText.setText("Calorie Intake: " + calorie);
         proteinText.setText("Protein Intake: " + protein);
         cholesterolText.setText("Cholesterol Intake: " + cholesterol);
+    }
+
+    /* Yuhan -- Method created for Extract Method*/
+    private void getAndDisplayUserInfo(){
+        //get User Info
+        Double weight = we.get_last_weight(GlobalVariables.getG_CurrentUserId());
+        String gender = user.getUserGender();
+        Double height = user.getUserHeight();
+        int age = user.getUserAge();
+        int calorie = diet.totalCalorieIntake();
+        int protein = diet.totalProteinIntake();
+        int cholesterol = diet.totalCholesterolIntake();
+
+        //display User Info
+        displayHeight(height);
+        displayWeight(weight);
+        displayGender(gender);
+        displayAge(age);
+        int bmi = displayBMI(weight, height);
+        displayHealth(bmi);
+        displayNutrition(calorie, protein, cholesterol);
     }
 
 }

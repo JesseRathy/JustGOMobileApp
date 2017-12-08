@@ -67,17 +67,17 @@ public class UserInteractionUnitTest {
 
     final private String test_birthday = "2015-01-01";
 
-    final private int testID1 = 100;
+    final private int testID1 = 101;
 
-    final private String test_name1= "test2";
+    final private String test_name1= "test3";
 
     final private String test_password1 = "test2";
 
     final private double test_height1 = 50.0;
 
-    final private String test_gender1 = "F";
+    final private String test_gender1 = "M";
 
-    final private String test_birthday1 = "2015-01-01";
+    final private String test_birthday1 = "2015-01-02";
 
     Context context;
 
@@ -92,14 +92,14 @@ public class UserInteractionUnitTest {
         sql = new SQLiteInterface(mMockContext);
         db = sql.getWritableDatabase();
         f1 = new UserRepo(mMockContext);
-        f2 = new UserRepo(mMockContext);
+        //f2 = new UserRepo(mMockContext);
 
         this.insertdata();
 
         ArrayList<HashMap<String, String>> test_user_list = this.get_user_by_user_id(testID);
 
         assertNotNull(test_user_list);
-
+        Log.d("myTag", test_user_list.toString());
         String testUserID = test_user_list.get(0).get("id");
         String testName = test_user_list.get(0).get("name");
         String testPassword = test_user_list.get(0).get("password");
@@ -113,10 +113,14 @@ public class UserInteractionUnitTest {
         assertEquals(Double.parseDouble(testHeight),test_height,0);
         assertEquals(testGender, test_gender);
         assertEquals(testBirthday, test_birthday);
-        assertEquals(1,test_user_list);
+        assertEquals(1,test_user_list.size());
 
-        ArrayList<HashMap<String, String>> test_user_list1 = this.get_user_by_user_id(testID);
-        assertEquals(2,test_user_list1);
+        insertdata2();
+        ArrayList<HashMap<String, String>> test_user_list1 = this.get_user_by_user_id(testID1);
+        Log.d("myTag", test_user_list1.toString());
+        assertEquals(1,test_user_list1.size());
+
+        //sincce we should only have one user per id, if we grab the second id for a different thing, it will be the same.
 
         Log.d("myTag", "End of testing");
         db.close();
@@ -139,13 +143,13 @@ public class UserInteractionUnitTest {
     }
 
     public void insertdata() { f1.insert(f3); }
-    public void insertdata2() {f1.insert(f4); }
+    public void insertdata2(){ f1.insert(f4); }
 
-    public ArrayList<HashMap<String, String>> get_user_by_user_id(int user_id)
+    public ArrayList<HashMap<String, String>> get_user_by_user_id(int id)
     {
         SQLiteDatabase db = sql.getReadableDatabase();
         ArrayList<HashMap<String, String>> resultSet = new ArrayList<>();
-        String selectQuery =  "select * from user where id = " + user_id;
+        String selectQuery =  "select * from user where id = " + id;
         Cursor cursor = db.rawQuery(selectQuery,null);
         if (cursor.moveToFirst()) {
             do {

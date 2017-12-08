@@ -77,12 +77,10 @@ public class NormalExpandExercise extends AppCompatActivity
         exerciseRepo = new ExerciseRepo(this);
         // get exercise item
         ArrayList defaults = exerciseRepo.get_default_exercise_list();
-        // initialize list
-        endurances = new LinkedList<>();
-        strengths = new LinkedList<>();
-        balances = new LinkedList<>();
-        flexibilitys = new LinkedList<>();
-        datas = new LinkedList<>();
+
+        /* Mark -- Added method for Extract Method Refactoring*/
+        initializeLists();
+
         // get data from database
         for (int i = 0; i < defaults.size(); i++) {
             HashMap<String, String> current = (HashMap<String, String>)defaults.get(i);
@@ -108,22 +106,8 @@ public class NormalExpandExercise extends AppCompatActivity
             datas.add(HashToString(current));
         }
         // transfer data to array because expand view only allow array as input
-        endurance = new String [endurances.size()];
-        for (int i = 0; i < endurances.size(); i++) {
-            endurance[i] = endurances.get(i);
-        }
-        balance = new String[balances.size()];
-        for (int i = 0; i < balances.size(); i++) {
-            balance[i] = balances.get(i);
-        }
-        strength = new String [strengths.size()];
-        for (int i = 0; i < strengths.size(); i++) {
-            strength[i] = strengths.get(i);
-        }
-        flexibility = new String[flexibilitys.size()];
-        for (int i = 0; i < flexibilitys.size(); i++) {
-            flexibility[i] = flexibilitys.get(i);
-        }
+        /* Mark -- Added method for Extract Method Refactoring*/
+        transferDataToArrays();
         // initialize specific with arrays
         specific = new String[][] {endurance, balance, strength, flexibility};
         // create expand view and initialize
@@ -219,6 +203,32 @@ public class NormalExpandExercise extends AppCompatActivity
         result+=exercise.get("energy_consumption");
         result+="\n";
         return result;
+    }
+    private void initializeLists(){
+        endurances = new LinkedList<>();
+        strengths = new LinkedList<>();
+        balances = new LinkedList<>();
+        flexibilitys = new LinkedList<>();
+        datas = new LinkedList<>();
+    }
+
+    private void transferDataToArrays(){
+        endurance = new String [endurances.size()];
+        for (int i = 0; i < endurances.size(); i++) {
+            endurance[i] = endurances.get(i);
+        }
+        balance = new String[balances.size()];
+        for (int i = 0; i < balances.size(); i++) {
+            balance[i] = balances.get(i);
+        }
+        strength = new String [strengths.size()];
+        for (int i = 0; i < strengths.size(); i++) {
+            strength[i] = strengths.get(i);
+        }
+        flexibility = new String[flexibilitys.size()];
+        for (int i = 0; i < flexibilitys.size(); i++) {
+            flexibility[i] = flexibilitys.get(i);
+        }
     }
 
 }

@@ -123,7 +123,7 @@ public class WeightInteractionTest {
     }
 
     public void insertdata() { f1.insert(f3); }
-    public void insertdata2() {f1.insert(f3); }
+    public void insertdata2() {f1.insert(f4); }
 
     public ArrayList<HashMap<String, String>> getWeightByUserId(int userID)
     {

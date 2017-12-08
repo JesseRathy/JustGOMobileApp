@@ -48,21 +48,8 @@ public class SearchFoodName extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 //get data and transfer to next activity
-                ArrayList<HashMap<String, String>> result;
-                result = food_repo.get_food_by_name(name.getText().toString());
-                ArrayList<String> names = new ArrayList<String>();
-                ArrayList<String> datas = new ArrayList<String>();
-                for (int i = 0; i < result.size(); i++) {
-                    names.add(result.get(i).get("name"));
-                    datas.add(result.get(i).toString());
-                }
-                Intent go_to_confirm = new Intent(getItSelf(), NormalExpandSearch.class);
-                go_to_confirm.putExtra("data", datas);
-                go_to_confirm.putExtra("name", names);
-
-                go_to_confirm.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(go_to_confirm);
-                finish();
+                getDataAndTransfer();
+               /* Hongyi -- Added new method via Extract method Idea */
             }
         });
     }
@@ -74,4 +61,23 @@ public class SearchFoodName extends AppCompatActivity
     {
         return this;
     }
+    /* Hongyi --Created new method for Extract method */
+    private void getDataAndTransfer(){
+        ArrayList<HashMap<String, String>> result;
+        result = food_repo.get_food_by_name(name.getText().toString());
+        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<String> datas = new ArrayList<String>();
+        for (int i = 0; i < result.size(); i++) {
+            names.add(result.get(i).get("name"));
+            datas.add(result.get(i).toString());
+        }
+        Intent go_to_confirm = new Intent(getItSelf(), NormalExpandSearch.class);
+        go_to_confirm.putExtra("data", datas);
+        go_to_confirm.putExtra("name", names);
+
+        go_to_confirm.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(go_to_confirm);
+        finish();
+    }
 }
+

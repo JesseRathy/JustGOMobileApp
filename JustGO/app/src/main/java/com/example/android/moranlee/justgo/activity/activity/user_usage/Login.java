@@ -50,7 +50,7 @@ public class Login extends AppCompatActivity
     /*
     SQLite interface
      */
-    UserRepo current_user;
+    UserRepo currentUser;
 
     FoodRepo foodRepo;
 
@@ -78,7 +78,7 @@ public class Login extends AppCompatActivity
         login.setOnClickListener(login());
         register = (Button)findViewById(R.id.signup);
         register.setOnClickListener(signup());
-        current_user = new UserRepo(this);
+        currentUser = new UserRepo(this);
         foodRepo = new FoodRepo(this);
         exerciseDailyRepo = new ExerciseDailyRepo(this);
         exerciseRepo = new ExerciseRepo(this);
@@ -94,7 +94,7 @@ public class Login extends AppCompatActivity
         GlobalVariables.setCurrent_max_exercise_id(maxExercise);
         GlobalVariables.setG_CurrentMaxWeightId(weightRepo.getMaxWeightId());
         GlobalVariables.setCurrent_max_exercise_daily_id(exerciseDailyRepo.getMaxExerciseDailyId());
-        GlobalVariables.setG_CurrentMaxUserId(current_user.getMaxUserId());
+        GlobalVariables.setG_CurrentMaxUserId(currentUser.getMaxUserId());
         GlobalVariables.setCurrent_max_diet_id(dietRepo.getMaxDietId());
         GlobalVariables.setG_CurrentMaxFoodId(maxFood);
         if(maxFood<20 && maxExercise<20) {
@@ -116,8 +116,8 @@ public class Login extends AppCompatActivity
                 Pattern input_type = Pattern.compile("^[A-Za-z]*$");
                 username = ((TextView)findViewById(R.id.username)).getText().toString();
                 password = ((TextView)findViewById(R.id.password)).getText().toString();
-                Matcher username_matcher = input_type.matcher(username);
-                Matcher password_matcher = input_type.matcher(password);
+                Matcher usernameMatcher = input_type.matcher(username);
+                Matcher passwordMatcher = input_type.matcher(password);
                 // check user do input somthing in both field
                 if (username.length() <= 0 || password.length() <= 0) {
                     Toast.makeText(getApplicationContext(),
@@ -126,19 +126,17 @@ public class Login extends AppCompatActivity
                     return;
                 } else {
                     // check if user input if legal
-                    if (!username_matcher.matches() || !password_matcher.matches()) {
+                    if (!usernameMatcher.matches() || !passwordMatcher.matches()) {
                         Toast.makeText(getApplicationContext(), "Invalid input of username / password",
                                        Toast.LENGTH_SHORT).show();
                         return;
                     }
                     //check input with data from database to confirm user exist and legal
-                    int id = current_user.check_user_login(username, password);
+                    int id = currentUser.check_user_login(username, password);
                     // go to main activity
                     if (id >= 0) {
-                        GlobalVariables.setG_CurrentUserId(id);
-                        Intent unit_intent = new Intent(getItSelf(), MainMenu.class);
-                        unit_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(unit_intent);
+                        /* Yuhan -- Extract Method refactoring done here  */
+                       goToMainMenu(id);
                     } else {
                         Toast.makeText(getApplicationContext(),
                                        "Invalid combination of user name and password",
@@ -174,4 +172,11 @@ public class Login extends AppCompatActivity
         return this;
     }
 
+    /* Yukun -- method added for Extract Method */
+    private void goToMainMenu(int id){
+        GlobalVariables.setG_CurrentUserId(id);
+        Intent unit_intent = new Intent(getItSelf(), MainMenu.class);
+        unit_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(unit_intent);
+    }
 }

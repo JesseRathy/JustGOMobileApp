@@ -50,7 +50,7 @@ public class ExcerciseInteractionUnitTest {
 
     SQLiteDatabase db;
 
-    final private int testUserID=5;
+    final private int testID=5;
 
     final private String testName = "test";
 
@@ -59,7 +59,7 @@ public class ExcerciseInteractionUnitTest {
     final private double testConsumption = 50.0;
 
 
-    final private int testUserID1=5;
+    final private int testID1=6;
 
     final private String testName1 = "test2";
 
@@ -88,30 +88,35 @@ public class ExcerciseInteractionUnitTest {
         db = sql.getWritableDatabase();
         f1 = new ExerciseRepo(mMockContext);
 
+
         //int numFood = GlobalVariables.getG_CurrentMaxFoodId();
 
         this.insertdata();
 
-        ArrayList<HashMap<String, String>> test_food_list = this.get_food_by_user_id(testUserID);
+        ArrayList<HashMap<String, String>> test_food_list = this.get_food_by_user_id(testID);
 
         assertNotNull(test_food_list);
 
-
-        String testExerciseID = test_food_list.get(0).get("user_id");
+        Log.d("myTag", test_food_list.toString());
+        String testExerciseID = test_food_list.get(0).get("id");
         String testExerciseCategory = test_food_list.get(0).get("category");
         String testExerciseName = test_food_list.get(0).get("name");
         String testExerciseEnergyUse = test_food_list.get(0).get("energy_consumption");
 
 
-        assertEquals(testUserID,parseInt(testExerciseID));
+        assertEquals(testID,parseInt(testExerciseID));
         //assertEquals(parseInt(testUserID),test_userID);
         assertEquals(Double.parseDouble(testExerciseEnergyUse),testConsumption,0);
-        assertEquals(parseInt(testExerciseCategory),testUserID);
+        assertEquals(parseInt(testExerciseCategory),testCategory);
         assertEquals(testName,testExerciseName);
 
         this.insertdata1();
-        ArrayList<HashMap<String, String>> test_food_list1 = this.get_food_by_user_id(testUserID);
-        assertEquals(2,test_food_list1);
+        ArrayList<HashMap<String, String>> test_food_list1 = this.get_food_by_user_id(testID1);
+
+        Log.d("myTag", test_food_list1.toString());
+        assertEquals(1,test_food_list1.size());
+        test_food_list1 = this.get_food_by_user_id(testID);
+        assertEquals(1,test_food_list1.size());
 
         //int numFood1 = GlobalVariables.getG_CurrentMaxFoodId();
         //assertEquals(numFood,numFood1,2);
@@ -120,12 +125,12 @@ public class ExcerciseInteractionUnitTest {
     }
 
     public void setData(){
-        f3.setId(testUserID);
+        f3.setId(testID);
         f3.setName(testName);
         f3.setCategory(testCategory);
         f3.setEnergy_consumption(testConsumption);
 
-        f4.setId(testUserID1);
+        f4.setId(testID1);
         f4.setName(testName1);
         f4.setCategory(testCategory1);
         f4.setEnergy_consumption(testConsumption1);
@@ -136,13 +141,13 @@ public class ExcerciseInteractionUnitTest {
     public void insertdata1() { f1.insert(f4);}
 
 
-    public ArrayList<HashMap<String, String>> get_food_by_user_id(int user_id)
+    public ArrayList<HashMap<String, String>> get_food_by_user_id(int id)
     {
         SQLiteDatabase db = sql.getReadableDatabase();
         ArrayList<HashMap<String, String>> resultSet = new ArrayList<>();
 //        Cursor cursor = db.query("food", null, "name like '%" + input_name + "%'",
 //                null, null, null, null);
-        String selectQuery =  "select * from exercise where user_id = " + user_id;
+        String selectQuery =  "select * from exercise where id = " + id;
         Cursor cursor = db.rawQuery(selectQuery,null);
         if (cursor.moveToFirst()) {
             do {

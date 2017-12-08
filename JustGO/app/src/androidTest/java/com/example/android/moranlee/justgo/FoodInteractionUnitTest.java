@@ -57,7 +57,7 @@ public class FoodInteractionUnitTest {
 
     final private int testID = 100;
 
-    final private int test_userID=0;
+    final private int test_userID =1;
 
     final private double test_fat = 0.0;
 
@@ -73,7 +73,7 @@ public class FoodInteractionUnitTest {
 
     final private int testID1 = 101;
 
-    final private int test_userID1=0;
+    final private int test_userID1 =1;
 
     final private double test_fat1 = 20.0;
 
@@ -131,7 +131,7 @@ public class FoodInteractionUnitTest {
 
         this.insertdata1();
         ArrayList<HashMap<String, String>> test_food_list1 = this.get_food_by_user_id(test_userID);
-        assertEquals(2,test_food_list1);
+        assertEquals(2,test_food_list1.size());
 
         //int numFood1 = GlobalVariables.getG_CurrentMaxFoodId();
         //assertEquals(numFood,numFood1,2);
@@ -148,6 +148,7 @@ public class FoodInteractionUnitTest {
         f3.setCholesterol(test_cholesteral);
         f3.setCalories(test_calories);
         f3.setProtein(test_protein);
+
         f4.setId(testID1);
         f4.setUser_id(test_userID1);
         f4.setFat(test_fat1);
