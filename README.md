@@ -11,7 +11,7 @@ Jesse Rathy (Myself): Project Manager/Co-Tester/Refactorer -- Oversaw documentat
 
 Also did a fair amount of testing and refactoring code on the project near the end of its lifecycle.
 
-Yu Gu (Aka Ray): Tester/Programmer -- Managed a lot of the testing work as well as some addition code work when Yuhan or Moran were busy. Also helped with writing and other project needs when required.
+Yu Gu (Aka Ray): Tester/Programmer -- Managed a lot of the testing work as well as some addition code work when Yuhan or Moran were busy. Also helped with writing and other project needs when required, like Pretty Printing (and minor linting) of code.
 
 Yuhan Hu: Programmer -- The Secondary programmer of the team, Yuhan did a lot of work on Programming, and also made many graphs to show the complexity of the project
 
